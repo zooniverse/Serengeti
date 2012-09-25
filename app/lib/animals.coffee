@@ -4,9 +4,9 @@ Animal = require 'models/animal'
 module.exports = new FilteringSet items: [
   new Animal
     id: 'aardvark'
-    face: ['long', 'snout']
-    back: ['round']
-    coat: ['short']
+    face: ['faceLong', 'faceSnout']
+    back: 'backRound'
+    coat: 'coatShort'
     frontLimbs: ['short']
     backLimbs: ['short']
     build: ['stocky']
@@ -17,8 +17,9 @@ module.exports = new FilteringSet items: [
 
   new Animal
     id: 'batEaredFox'
-    face: ['short']
-    back: ['round']
+    face: 'faceShort'
+    back: 'backRound'
+    coat: 'coatShort'
     frontChest: ['light']
     ears: ['large']
     tail: ['bushy']
@@ -26,8 +27,9 @@ module.exports = new FilteringSet items: [
 
   new Animal
     id: 'cheetah'
-    face: ['short']
-    back: ['flat']
+    face: 'faceShort'
+    back: 'backFlat'
+    coat: 'coatShort'
     frontLimbs: ['thin']
     backLimbs: ['thin']
     feet: ['small']
@@ -36,7 +38,9 @@ module.exports = new FilteringSet items: [
 
   new Animal
     id: 'dikDik'
-    face: ['long', 'snout']
+    face: ['faceLong', 'faceSnout']
+    back: 'backRound'
+    coat: 'coatShort'
     frontChest: ['light']
     build: ['small']
     horns: ['small', 'backward']

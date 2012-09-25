@@ -23,6 +23,12 @@ class FilteringSet
     else
       @options[property] = value for own property, value of options
 
+    # Clear out empty options.
+    for feature, value of @options
+      delete @options[feature] unless value?
+
+    console.log @options
+
     @matches = for item in @items
       mismatch = false
       for feature, value of @options

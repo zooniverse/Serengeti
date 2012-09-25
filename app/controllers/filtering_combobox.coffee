@@ -35,10 +35,9 @@ class FilteringCombobox extends Controller
     @el.toggleClass 'no-matches', @set.matches.length is 0
 
     @possibleValues.html @set.matches.length
-    @available.html @set.matches.length
 
     matchIds = (match.id for match in @set.matches)
-    for itemNode in @menu.children()
+    for itemNode in @menu.children('[data-item]')
       itemNode = $(itemNode)
       itemNode.toggleClass 'hidden', itemNode.attr('data-item') not in matchIds
 

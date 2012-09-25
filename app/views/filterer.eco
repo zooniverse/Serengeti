@@ -1,0 +1,8 @@
+<button name="characteristic">
+  <span class="label"></span>
+  <span class="value"><span>
+</button>
+
+<div class="filterer-menu">
+  <button name="clear">Clear</button>
+</div>
