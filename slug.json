@@ -1,0 +1,10 @@
+{
+  "dependencies": [
+    "es5-shimify",
+    "json2ify",
+    "jqueryify",
+    "spine"
+  ],
+
+  "libs": []
+}

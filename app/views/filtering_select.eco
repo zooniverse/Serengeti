@@ -1,0 +1,13 @@
+<input type="text" value="" />
+<button>
+  <span class="possible-values"></span>
+  <span class="arrow">&darr;</span>
+</button>
+
+<div class="filtering-select-menu">
+  <% for item in @set.items: %>
+    <div data-item="<%= item.id %>">
+      <%- @itemTemplate item %>
+    </div>
+  <% end %>
+</div>
