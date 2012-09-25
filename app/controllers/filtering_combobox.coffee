@@ -10,11 +10,13 @@ class FilteringCombobox extends Controller
 
   events:
     'keyup input': 'onKeyUpInput'
+    'click button[name="clear-options"]': 'onClickClearOptions'
 
   elements:
     'input': 'input'
     '.possible-values': 'possibleValues'
     '.filtering-combobox-menu': 'menu'
+    '.filtering-combobox-menu header .total': 'total'
 
   constructor: ->
     super
@@ -33,6 +35,7 @@ class FilteringCombobox extends Controller
     @el.toggleClass 'no-matches', @set.matches.length is 0
 
     @possibleValues.html @set.matches.length
+    @available.html @set.matches.length
 
     matchIds = (match.id for match in @set.matches)
     for itemNode in @menu.children()
@@ -40,6 +43,9 @@ class FilteringCombobox extends Controller
       itemNode.toggleClass 'hidden', itemNode.attr('data-item') not in matchIds
 
   onKeyUpInput: (e) ->
-    @set.filter name: new RegExp @input.val(), 'i'
+    @set.filter name: new RegExp(@input.val(), 'i'), false
+
+  onClickClearOptions: ->
+    @set.filter name: new RegExp @input.val(), 'i', true
 
 module.exports = FilteringCombobox
