@@ -4,10 +4,4 @@
   <span class="arrow">&#9660;</span>
 </button>
 
-<div class="filtering-combobox-menu">
-  <% for item in @set.items: %>
-    <div data-item="<%= item.id %>">
-      <%- @itemTemplate item %>
-    </div>
-  <% end %>
-</div>
+<div class="filtering-combobox-menu"></div>

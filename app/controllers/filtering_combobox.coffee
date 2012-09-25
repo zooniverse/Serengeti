@@ -3,7 +3,8 @@ template = require 'views/filtering_combobox'
 
 class FilteringCombobox extends Controller
   set: null
-  itemTemplate: (item) -> "<span>#{item.name}</span>"
+
+  itemTemplate: (item) -> "<div>#{item.name || item.id}</div>"
 
   className: 'filtering-combobox'
 
@@ -20,8 +21,12 @@ class FilteringCombobox extends Controller
     throw new Error 'FilteringCombobox needs a FilteringSet' unless @set?
 
     @html template @
+    for item in @set.items
+      itemNode = $(@itemTemplate item)
+      itemNode.attr 'data-item': item.id
+      @menu.append itemNode
 
-    @onSetFilter()
+    setTimeout @onSetFilter
     @set.bind 'filter', @onSetFilter
 
   onSetFilter: =>
