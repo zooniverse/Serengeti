@@ -1,6 +1,9 @@
 FilteringSet = require 'models/filtering_set'
+{translate} = require 'lib/translation'
 
 animals = []
+
+# TODO: These should all be instances of some Animal model.
 
 animals.push
   id: 'aardvark'
@@ -44,5 +47,11 @@ animals.push
   eyes: ['large']
   tail: ['short']
   color: ['gray', 'brown']
+
+updateNames = ->
+  animal.name = translate 'animals', animal.id for animal in animals
+
+updateNames()
+translate.bind 'change', updateNames
 
 module.exports = new FilteringSet items: animals
