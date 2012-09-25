@@ -1,4 +1,9 @@
+{Module, Events} = require 'spine'
+
 class FilteringSet
+  Module.extend.call @, Events
+  Module.include.call @, Events
+
   items: null
   matches: null
 
@@ -20,5 +25,7 @@ class FilteringSet
           mismatch = true unless item[feature] is value
       continue if mismatch
       item
+
+    @trigger 'filter', @matches
 
 module.exports = FilteringSet

@@ -1,7 +1,7 @@
 <input type="text" value="" />
 <button>
   <span class="possible-values"></span>
-  <span class="arrow">&darr;</span>
+  <span class="arrow">&#9660;</span>
 </button>
 
 <div class="filtering-select-menu">
