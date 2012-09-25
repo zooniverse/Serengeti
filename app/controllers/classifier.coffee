@@ -5,7 +5,7 @@ FilteringCombobox = require './filtering_combobox'
 
 class Classifier extends Controller
   elements:
-    '.filtering-select': 'filteringComboboxNode'
+    '.filtering-combobox': 'filteringComboboxNode'
 
   constructor: ->
     super
