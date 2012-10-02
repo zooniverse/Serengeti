@@ -1,0 +1,11 @@
+<div class="images">
+  <% for image in @location: %>
+    <figure><img src="<%= image %>" /></figure>
+  <% end %>
+</div>
+
+<div class="toggles">
+  <% for image in @location: %>
+    <button name="toggle" value="<%= i %>"><%= i + 1 %></button>
+  <% end %>
+</div>
