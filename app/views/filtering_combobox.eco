@@ -1,5 +1,5 @@
 <input type="text" value="" />
-<button>
+<button name="toggle">
   <span class="possible-values"></span>
   <span class="arrow">&#9660;</span>
 </button>

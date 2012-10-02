@@ -7,6 +7,8 @@ class Filterer extends Controller
 
   valueTemplate: (value) -> "<div><button>#{value.label}</button></div>"
 
+  className: 'filterer'
+
   events:
     'click button[name="characteristic"]': 'onClick'
     'click .filterer-menu button[name="clear"]': 'onClickClear'
@@ -21,6 +23,7 @@ class Filterer extends Controller
     @values ?= []
 
     @html template @
+    @close()
     for value in @characteristic.values
       valueNode = $(@valueTemplate value)
       valueNode.attr 'data-value': value.id
@@ -34,6 +37,13 @@ class Filterer extends Controller
     @characteristicLabel.html @characteristic.label
 
   onClick: ->
+    @menu.toggle() # TODO
+
+  open: ->
+    @menu.show()
+
+  close: ->
+    @menu.hide()
 
   onClickClear: ->
     result = {}
@@ -45,6 +55,7 @@ class Filterer extends Controller
     result = {}
     result[@characteristic.id] = id
     @set.filter result, false
+    @close()
 
   onSetFilter: =>
     @menu.children().removeClass 'selected'

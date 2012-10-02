@@ -59,7 +59,7 @@ module.exports =
     like: 'Similar to'
     pattern: 'Pattern'
     coat: 'Coat color'
-    horns: 'Horns`'
+    horns: 'Horns'
     tail: 'Tail'
     build: 'Build'
     back: 'Back'

@@ -8,6 +8,8 @@ Filterer = require './filterer'
 CharacteristicMenuItem = require './characteristic_menu_item'
 
 class Classifier extends Controller
+  className: 'classifier'
+
   elements:
     '.filtering-combobox': 'filteringComboboxNode'
     '.filterers': 'filterersNode'

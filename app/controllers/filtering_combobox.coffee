@@ -10,6 +10,7 @@ class FilteringCombobox extends Controller
 
   events:
     'keyup input': 'onKeyUpInput'
+    'click button[name="toggle"]': 'onClickToggle'
     'click button[name="clear-options"]': 'onClickClearOptions'
 
   elements:
@@ -23,6 +24,7 @@ class FilteringCombobox extends Controller
     throw new Error 'FilteringCombobox needs a FilteringSet' unless @set?
 
     @html template @
+    @close()
     for item in @set.items
       itemNode = $(@itemTemplate item)
       itemNode.attr 'data-item': item.id
@@ -44,7 +46,16 @@ class FilteringCombobox extends Controller
   onKeyUpInput: (e) ->
     @set.filter name: new RegExp(@input.val(), 'i'), false
 
+  onClickToggle: (e) ->
+    @menu.toggle()
+
   onClickClearOptions: ->
     @set.filter name: new RegExp @input.val(), 'i', true
+
+  open: ->
+    @menu.show()
+
+  close: ->
+    @menu.hide()
 
 module.exports = FilteringCombobox
