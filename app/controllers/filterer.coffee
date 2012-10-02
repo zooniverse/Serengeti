@@ -11,12 +11,12 @@ class Filterer extends Controller
 
   events:
     'click button[name="characteristic"]': 'onClick'
-    'click .filterer-menu button[name="clear"]': 'onClickClear'
-    'click .filterer-menu [data-value]': 'onSelect'
+    'click .menu button[name="clear"]': 'onClickClear'
+    'click .menu [data-value]': 'onSelect'
 
   elements:
     'button[name="characteristic"] .label': 'characteristicLabel'
-    '.filterer-menu': 'menu'
+    '.menu': 'menu'
 
   constructor: ->
     super
@@ -37,13 +37,19 @@ class Filterer extends Controller
     @characteristicLabel.html @characteristic.label
 
   onClick: ->
-    @menu.toggle() # TODO
+    @toggle()
 
   open: ->
-    @menu.show()
+    @el.addClass 'open'
+    @menu.removeClass 'hidden'
 
   close: ->
-    @menu.hide()
+    @el.removeClass 'open'
+    @menu.addClass 'hidden'
+
+  toggle: ->
+    @el.toggleClass 'open'
+    @menu.toggleClass 'hidden'
 
   onClickClear: ->
     result = {}

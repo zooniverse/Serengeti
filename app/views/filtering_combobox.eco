@@ -4,7 +4,7 @@
   <span class="arrow">&#9660;</span>
 </button>
 
-<div class="filtering-combobox-menu">
+<div class="menu">
   <header>
     Showing <span class="possible-values"></span> of <%= @set.items.length %>.
     <button name="clear-options">Clear options</button>

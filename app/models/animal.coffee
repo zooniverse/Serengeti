@@ -1,21 +1,21 @@
 {Model} = require 'spine'
 {translate} = require 'lib/translation'
+characteristics = require 'lib/characteristics'
+
+characteristicIds = (characteristic.id for characteristic in characteristics)
 
 class Animal extends Model
-  @configure 'Animal', \
-    'name', 'face', 'back', 'coat', \
-    'frontLimbs', 'backLimbs', 'build', \
-    'horns', 'ears', 'tail', 'color'
+  @configure 'Animal', 'label', 'image', characteristicIds...
 
   constructor: ->
     super
 
-    translate.bind 'change-language', @translateName
+    translate.bind 'change-language', @translateLabel
 
     # Delay so the model can initialize before updating its attributes.
-    setTimeout @translateName
+    setTimeout @translateLabel
 
-  translateName: =>
-    @updateAttribute 'name', translate 'animals', @id
+  translateLabel: =>
+    @updateAttribute 'label', translate 'animals', @id
 
 module.exports = Animal

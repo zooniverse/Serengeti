@@ -24,6 +24,8 @@ class Classifier extends Controller
       set: animals
       itemTemplate: AnimalMenuItem.getInstanceEl
 
+    @filteringCombobox.bind 'select', @onSelect
+
     for characteristic in characteristics
       filterer = new Filterer
         set: animals
@@ -31,5 +33,8 @@ class Classifier extends Controller
         valueTemplate: CharacteristicMenuItem.getInstanceEl
 
       @filterersNode.append filterer.el
+
+  onSelect: (animal) =>
+    console.log 'Selected', animal
 
 module.exports = Classifier

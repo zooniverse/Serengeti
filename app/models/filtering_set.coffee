@@ -27,9 +27,14 @@ class FilteringSet
     for feature, value of @options
       delete @options[feature] unless value?
 
-    @matches = for item in @items
+    @matches = @find @options
+
+    @trigger 'filter', @matches
+
+  find: (params) ->
+    for item in @items
       mismatch = false
-      for feature, value of @options
+      for feature, value of params
         if value instanceof RegExp and typeof item[feature] is 'string'
           # If given a regex option value, check it against a string.
           mismatch = true unless value.test item[feature]
@@ -42,7 +47,5 @@ class FilteringSet
 
       continue if mismatch
       item
-
-    @trigger 'filter', @matches
 
 module.exports = FilteringSet

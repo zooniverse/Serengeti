@@ -3,21 +3,21 @@ template = require 'views/filtering_combobox'
 
 class FilteringCombobox extends Controller
   set: null
-
-  itemTemplate: (item) -> "<div>#{item.name || item.id}</div>"
+  itemTemplate: (item) -> "<span>#{item.label}</span>"
 
   className: 'filtering-combobox'
 
   events:
     'keyup input': 'onKeyUpInput'
     'click button[name="toggle"]': 'onClickToggle'
+    'click .menu > [data-item]': 'onClickItem'
     'click button[name="clear-options"]': 'onClickClearOptions'
 
   elements:
     'input': 'input'
     '.possible-values': 'possibleValues'
-    '.filtering-combobox-menu': 'menu'
-    '.filtering-combobox-menu header .total': 'total'
+    '.menu': 'menu'
+    '.menu header .total': 'total'
 
   constructor: ->
     super
@@ -43,19 +43,49 @@ class FilteringCombobox extends Controller
       itemNode = $(itemNode)
       itemNode.toggleClass 'hidden', itemNode.attr('data-item') not in matchIds
 
-  onKeyUpInput: (e) ->
-    @set.filter name: new RegExp(@input.val(), 'i'), false
+  DELETE = 8
+  ENTER = 13
 
-  onClickToggle: (e) ->
-    @menu.toggle()
+  onKeyUpInput: (e) ->
+    inputValue = @input.val()
+    @set.filter label: new RegExp(inputValue, 'i'), false
+
+    prefixMatch = @set.find(label: new RegExp("^#{inputValue}.*", 'i'))[0]
+    if prefixMatch
+      changed = inputValue isnt prefixMatch?.label
+
+      if e.which is ENTER
+        @select prefixMatch
+      else if changed and e.which isnt DELETE
+        @input.val prefixMatch.label
+        @input.get(0).setSelectionRange inputValue.length, 999
+
+  onClickItem: ({currentTarget}) =>
+    itemId = $(currentTarget).attr 'data-item'
+    item = @set.find(id: itemId)[0]
+    @select item
+    @close()
+
+  select: (item) ->
+    @input.val item.label
+    @trigger 'select', item
 
   onClickClearOptions: ->
-    @set.filter name: new RegExp @input.val(), 'i', true
+    @set.filter label: new RegExp @input.val(), 'i', true
+
+  onClickToggle: ->
+    @toggle()
 
   open: ->
-    @menu.show()
+    @el.addClass 'open'
+    @menu.removeClass 'hidden'
 
   close: ->
-    @menu.hide()
+    @el.removeClass 'open'
+    @menu.addClass 'hidden'
+
+  toggle: ->
+    @el.toggleClass 'open'
+    @menu.toggleClass 'hidden'
 
 module.exports = FilteringCombobox

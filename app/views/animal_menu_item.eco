@@ -1,3 +1,4 @@
 <header>
-  <span class="name"><%= @name %></span>
+  <span class="label"><%= @model.label %></span>
+  <img src="<%= @model.image %>" />
 </header>
