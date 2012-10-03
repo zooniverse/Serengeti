@@ -33,6 +33,8 @@ class Filterer extends Controller
 
     @set.bind 'filter', @onSetFilter
 
+    $(document).on 'click', @onDocumentClick
+
   onCharacteristicChange: =>
     @characteristicLabel.html @characteristic.label
 
@@ -42,14 +44,18 @@ class Filterer extends Controller
   open: ->
     @el.addClass 'open'
     @menu.removeClass 'hidden'
+    @trigger 'open'
 
   close: ->
     @el.removeClass 'open'
     @menu.addClass 'hidden'
+    @trigger 'close'
 
   toggle: ->
-    @el.toggleClass 'open'
-    @menu.toggleClass 'hidden'
+    if @el.hasClass 'open'
+      @close()
+    else
+      @open()
 
   onClickClear: ->
     result = {}
@@ -70,5 +76,8 @@ class Filterer extends Controller
     return unless selectedValue?
 
     @menu.children("[data-value='#{selectedValue}']").addClass 'selected'
+
+  onDocumentClick: ({target}) =>
+    @close() unless (@el.has(target).length > 0) or @el.is target
 
 module.exports = Filterer
