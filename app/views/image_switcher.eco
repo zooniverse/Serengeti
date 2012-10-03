@@ -5,7 +5,7 @@
 </div>
 
 <div class="toggles">
-  <% for image in @location: %>
+  <% for image, i in @location: %>
     <button name="toggle" value="<%= i %>"><%= i + 1 %></button>
   <% end %>
 </div>

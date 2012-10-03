@@ -6,7 +6,11 @@ class ImageSwitcher extends Controller
   subject: null
 
   events:
-    'click button[name="toggle"]': onClickToggle
+    'click button[name="toggle"]': 'onClickToggle'
+
+  elements:
+    '.images > *': 'images'
+    '.toggles > *': 'toggles'
 
   constructor: ->
     super
@@ -24,16 +28,16 @@ class ImageSwitcher extends Controller
     @activate selectedIndex
 
   activate: (activeIndex) ->
-    for img, i in @el.find 'img'
-      @setActiveClasses img, i, activeIndex
+    for image, i in @images
+      @setActiveClasses image, i, activeIndex
 
-    for button, i in @el.find 'button[name="toggle"]'
+    for button, i in @toggles
       @setActiveClasses button, i, activeIndex
 
   setActiveClasses: (el, elIndex, activeIndex) ->
     el = $(el)
-    el.toggleClass 'before', i < activeIndex
-    el.toggleClass 'active', i is activeIndex
-    el.toggleClass 'after', i > activeIndex
+    el.toggleClass 'before', +elIndex < +activeIndex
+    el.toggleClass 'active', +elIndex is +activeIndex
+    el.toggleClass 'after', +elIndex > +activeIndex
 
 module.exports = ImageSwitcher
