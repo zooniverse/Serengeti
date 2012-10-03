@@ -11,13 +11,12 @@ class FilteringSelect extends Controller
   selection: null
 
   events:
-    'click button[name="select"]': 'onClickButton'
     'keyup input': 'onKeyUpSearchInput'
     'click button[name="clear-filters"]': 'onClickClearFilters'
     'click [data-item]': 'onClickItem'
 
   elements:
-    'button[name="select"] .label': 'label'
+    '.selection-label': 'label'
     '.filtering-select-menu': 'menu'
     'input[name="search"]': 'searchInput'
     '.filtering-select-menu .match .filterers': 'filterersContainer'
@@ -29,7 +28,6 @@ class FilteringSelect extends Controller
     throw new Error 'FilteringSelect needs some characteristics' unless @characteristics
 
     @html template @
-    @close()
     @appendItems()
     @appendFilterers()
 
@@ -55,16 +53,11 @@ class FilteringSelect extends Controller
   onSetFilter: =>
     @el.toggleClass 'no-matches', @set.matches.length is 0
 
-    # @possibleValues.html @set.matches.length
-
     matchIds = (match.id for match in @set.matches)
     for itemNode in @itemsContainer.children '[data-item]'
       itemNode = $(itemNode)
       itemId = itemNode.attr 'data-item'
       itemNode.toggleClass 'hidden',  itemId not in matchIds
-
-  onClickButton: ->
-    @toggle()
 
   onKeyUpSearchInput: (e) ->
     inputValue = @searchInput.val()
@@ -77,7 +70,6 @@ class FilteringSelect extends Controller
     itemId = $(currentTarget).attr 'data-item'
     item = @set.find(id: itemId)[0]
     @select item
-    @close()
 
   select: (item) ->
     @label.html ''
@@ -88,17 +80,5 @@ class FilteringSelect extends Controller
       @itemsContainer.children("[data-item='#{item.id}']").addClass 'selected'
 
     @trigger 'select', item
-
-  open: ->
-    @el.addClass 'open'
-    @menu.removeClass 'hidden'
-
-  close: ->
-    @el.removeClass 'open'
-    @menu.addClass 'hidden'
-
-  toggle: ->
-    @el.toggleClass 'open'
-    @menu.toggleClass 'hidden'
 
 module.exports = FilteringSelect

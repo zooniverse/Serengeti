@@ -1,6 +1,4 @@
-<button name="select">
-  <span class="label">...</span>
-</button>
+<span class="selection-label">...</span>
 
 <div class="filtering-select-menu">
   <header>
