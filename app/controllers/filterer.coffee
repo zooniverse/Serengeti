@@ -5,7 +5,7 @@ class Filterer extends Controller
   set: null
   characteristic: null
 
-  valueTemplate: (value) -> "<div><button>#{value.label}</button></div>"
+  valueController: null
 
   className: 'filterer'
 
@@ -25,9 +25,9 @@ class Filterer extends Controller
     @html template @
     @close()
     for value in @characteristic.values
-      valueNode = $(@valueTemplate value)
-      valueNode.attr 'data-value': value.id
-      @menu.append valueNode
+      controller = new @valueController model: value
+      controller.el.attr 'data-value': value.id
+      @menu.append controller.el
 
     @characteristic.bind 'change', @onCharacteristicChange
 

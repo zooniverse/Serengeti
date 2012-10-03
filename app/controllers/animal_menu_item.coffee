@@ -8,7 +8,7 @@ class AnimalMenuItem extends Controller
   model: null
 
   elements:
-    '.label': 'labelNode'
+    'figcaption': 'caption'
 
   constructor: ->
     super
@@ -18,6 +18,6 @@ class AnimalMenuItem extends Controller
     @model.bind 'change', @onModelChange
 
   onModelChange: =>
-    @labelNode.html @model.label
+    @caption.html @model.label
 
 module.exports = AnimalMenuItem

@@ -1,4 +1,4 @@
-<header>
-  <span class="label"><%= @model.label %></span>
+<figure>
   <img src="<%= @model.image %>" />
-</header>
+  <figcaption><%= @model.label %></figcaption>
+</figure>
