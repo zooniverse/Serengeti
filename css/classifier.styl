@@ -1,0 +1,68 @@
+.filtering-select {
+  position: relative;
+
+  // button[name="select"] {}
+
+  .filtering-select-menu {
+    left: 0;
+    position: absolute;
+    top: 100%;
+
+    header {
+      .filterers {
+        display: inline-block;
+
+        .filterer {
+          display: inline-block;
+          position: relative;
+
+          .menu {
+            left: 0;
+            position: absolute;
+            top: 100%;
+            z-index: 1;
+
+            [data-value] {
+              display: inline-block;
+            }
+          }
+        }
+      }
+    }
+
+    .items {
+      background: gray;
+
+      [data-item] {
+        display: inline-block;
+        height: 50px;
+        margin: 5px;
+        overflow: hidden;
+        width: 50px;
+
+        figure {
+          margin: 0;
+          position: relative;
+
+          img {
+            max-width: 100%;
+          }
+
+          figcaption {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+          }
+        }
+
+        &.hidden {
+          display: none;
+        }
+      }
+    }
+
+    &.hidden {
+      display: none;
+    }
+  }
+}

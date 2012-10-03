@@ -100,3 +100,8 @@ module.exports =
     backSloped: 'Sloped'
     backRound: 'Round'
     backStraight: 'Straight'
+
+  behaviors:
+    sleeping: 'Sleeping'
+    playing: 'Playing'
+    eating: 'Eating'

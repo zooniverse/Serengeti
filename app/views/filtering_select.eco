@@ -1,21 +1,18 @@
-<div class="filtering-select">
-  <button name="select">
-    <span class="label">...</span>
-  </button>
+<button name="select">
+  <span class="label">...</span>
+</button>
 
-  <div class="filtering-select-menu">
-    <header>
-      <div class="search">
-        <input name="search" type="search" />
-        <button name="clear-search">&times;</button>
-      </div>
+<div class="filtering-select-menu">
+  <header>
+    <div class="search">
+      <input name="search" type="search" />
+    </div>
 
-      <div class="match">
-        <div class="filterers"></div>
-        <button name="clear-filters">&times;</button>
-      </div>
-    </header>
+    <div class="match">
+      <div class="filterers"></div>
+      <button name="clear-filters">&times;</button>
+    </div>
+  </header>
 
-    <div class="items"></div>
-  </div>
+  <div class="items"></div>
 </div>
