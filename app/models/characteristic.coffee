@@ -1,13 +1,11 @@
 {Model} = require 'spine'
-{translate} = require 'lib/translation'
+translate = require 'lib/translate'
 
 class Characteristic extends Model
   @configure 'Characteristic', 'label', 'values'
 
   constructor: ->
     super
-
-    translate.bind 'change-language', @translateLabel
 
     setTimeout @translateLabel
 
@@ -19,8 +17,6 @@ class Characteristic extends Model
 
     constructor: ->
       super
-
-      translate.bind 'change-language', @translateLabel
 
       setTimeout @translateLabel
 

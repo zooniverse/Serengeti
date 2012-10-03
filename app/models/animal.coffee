@@ -1,5 +1,5 @@
 {Model} = require 'spine'
-{translate} = require 'lib/translation'
+translate = require 'lib/translate'
 characteristics = require 'lib/characteristics'
 
 characteristicIds = (characteristic.id for characteristic in characteristics)
@@ -9,8 +9,6 @@ class Animal extends Model
 
   constructor: ->
     super
-
-    translate.bind 'change-language', @translateLabel
 
     # Delay so the model can initialize before updating its attributes.
     setTimeout @translateLabel
