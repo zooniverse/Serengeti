@@ -2,6 +2,7 @@
 template = require 'views/filtering_select'
 Filterer = require './filterer'
 CharacteristicMenuItem = require './characteristic_menu_item'
+getPhysicallyAdjacentSibling = require 'lib/get_physically_adjacent_sibling'
 
 class FilteringSelect extends Controller
   set: null
@@ -11,8 +12,9 @@ class FilteringSelect extends Controller
   selection: null
 
   events:
-    'keyup input': 'onKeyUpSearchInput'
+    'keydown input': 'onKeyDownSearchInput'
     'click button[name="clear-filters"]': 'onClickClearFilters'
+    'keydown .items': 'onKeyDownItems'
     'click [data-item]': 'onClickItem'
 
   elements:
@@ -59,12 +61,28 @@ class FilteringSelect extends Controller
       itemId = itemNode.attr 'data-item'
       itemNode.toggleClass 'hidden',  itemId not in matchIds
 
-  onKeyUpSearchInput: (e) ->
+  onKeyDownSearchInput: (e) ->
     inputValue = @searchInput.val()
     @set.filter label: new RegExp(inputValue, 'i'), false
 
   onClickClearFilters: ->
     @set.filter {}, true
+
+  directions = [LEFT, UP, RIGHT, DOWN] = [37, 38, 39, 40]
+  onKeyDownItems: (e) ->
+    if e.which in directions
+      e.preventDefault()
+
+      selectedItem = @itemsContainer.children '.selected'
+      if selectedItem.length > 0
+        direction = switch e.which
+          when LEFT then 'left'
+          when UP then 'up'
+          when RIGHT then 'right'
+          when DOWN then 'down'
+
+        keyed = getPhysicallyAdjacentSibling selectedItem, direction
+        keyed?.click()
 
   onClickItem: ({currentTarget}) ->
     itemId = $(currentTarget).attr 'data-item'

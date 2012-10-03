@@ -4,7 +4,7 @@ module.exports = (el, direction = 'right', range = 25, step = 5) ->
   return unless 'elementFromPoint' of document
 
   el = $(el)
-  {top, left} = el.offset()
+  {left, top} = el.offset()
   width = el.width()
   height = el.height()
 
@@ -24,7 +24,9 @@ module.exports = (el, direction = 'right', range = 25, step = 5) ->
       when 'down' then position[1] += step
       when 'left' then position[0] -= step
 
-    target = document.elementFromPoint position...
+    scrollPosition = [position[0] - window.scrollX, position[1] - window.scrollY]
+
+    target = document.elementFromPoint scrollPosition...
     return target if siblings.is target
 
     has = siblings.has target

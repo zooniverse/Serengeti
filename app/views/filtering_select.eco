@@ -12,5 +12,5 @@
     </div>
   </header>
 
-  <div class="items"></div>
+  <div class="items" tabindex="0"></div>
 </div>
