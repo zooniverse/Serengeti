@@ -11,5 +11,13 @@ button {
   overflow: visible;
   width: auto;
 
-  // TODO: &::-moz-focus-inner {}
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+  }
 }
