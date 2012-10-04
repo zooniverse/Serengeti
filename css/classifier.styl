@@ -8,48 +8,7 @@
     width: 550px;
   }
 
-  .filtering-select {
-    background: $green-dark;
-    border: 1px solid rgba($black, 0.75);
-    border-radius: 5px;
-    box-shadow: 0 2px 0 rgba($white, 0.25) inset, 0 0 0 3px rgba($black, 0.33);
-    box-sizing: border-box;
+  .animal-selector {
     float: right;
-    padding: 10px;
-    position: relative;
-    width: 430px;
-
-    button {
-      standard-button();
-    }
-
-    .filtering-select-menu {
-      header {
-        .filterers {
-          display: inline-block;
-
-          .filterer {
-            display: inline-block;
-            position: relative;
-
-            .menu {
-              left: 0;
-              position: absolute;
-              top: 100%;
-              z-index: 1;
-
-              [data-value] {
-                display: inline-block;
-              }
-            }
-          }
-        }
-      }
-
-      .items {
-        max-height: 250px;
-        overflow: auto;
-      }
-    }
   }
 }

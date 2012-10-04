@@ -1,50 +1,30 @@
 {Controller} = require 'spine'
-animals = require 'lib/animals'
-template = require 'views/classifier'
 ImageSwitcher = require './image_switcher'
-FilteringSelect = require './filtering_select'
-AnimalMenuItem = require './animal_menu_item'
+AnimalSelector = require './animal_selector'
+animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
-Filterer = require './filterer'
-CharacteristicMenuItem = require './characteristic_menu_item'
-Classification = require 'models/classification'
+AnimalMenuItem = require './animal_menu_item'
 
 class Classifier extends Controller
   subject: null
 
   className: 'classifier'
 
-  elements:
-    '.image-switcher': 'imageSwitcherNode'
-    '.filtering-select': 'filteringSelectNode'
-
   constructor: ->
     super
 
-    @html template
-
     @imageSwitcher = new ImageSwitcher
-      el: @imageSwitcherNode
 
-    @filteringSelect = new FilteringSelect
-      el: @filteringSelectNode
+    @el.append @imageSwitcher.el
+
+    @animalSelector = new AnimalSelector
       set: animals
       characteristics: characteristics
       itemController: AnimalMenuItem
 
-    @filteringSelect.bind 'select', @onSelect
+    @el.append @animalSelector.el
 
-  nextSubjects: =>
-    # Subject.next @onChangeSubjects
-
-  onSubjectSet: (@subject) =>
-    @imageSwitcher.setSubject @subject
-    @classification = new Classification {@subject}
-    @classification.bind 'change', @onClassificationChange
-
-  onSelect: (animal) =>
-    console.log 'Selected', animal
-
-  onClassificationChange: =>
+  onSubjectSet: (subject) ->
+    @imageSwitcher.setSubject subject
 
 module.exports = Classifier

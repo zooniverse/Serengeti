@@ -1,0 +1,12 @@
+<button name="characteristic" value="<%= @characteristic.id %>"><%= @characteristic.label %></button>
+
+<div class="menu">
+  <% for value in @characteristic.values: %>
+    <button name="characteristic-value" value="<%= value.id %>">
+      <img src="<%= value.image %>" />
+      <span class="label"><%= value.label %></span>
+    </button>
+  <% end %>
+
+  <button name="clear-characteristic" value="@characteristic.id">Clear</button>
+</div>

@@ -5,6 +5,8 @@ $ = require 'jqueryify'
 class ImageSwitcher extends Controller
   subject: null
 
+  className: 'image-switcher'
+
   events:
     'click button[name="toggle"]': 'onClickToggle'
 

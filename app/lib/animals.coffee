@@ -1,5 +1,6 @@
 FilteringSet = require 'models/filtering_set'
 Animal = require 'models/animal'
+translate = require 'lib/translate'
 
 # The master list of animals is generated from this spreadsheet that the science team put together.
 # https://docs.google.com/spreadsheet/ccc?key=0AlwCBXG5ae-wdGo5b3hRcnU1RDZsYlV2YVpjMWtNU0E
@@ -77,15 +78,17 @@ idFromLabel = (label) ->
   label = label.replace /\W(\w)/i, upperCapture # Camel-case hyphens
   label
 
-imageFromId = (id) ->
-  '//placehold.it/300.png'
+imagesFromId = (id) ->
+  ['//placehold.it/300.png']
 
 animalInstances = for label, grid of animals
   id = idFromLabel label
 
   animal = new Animal
     id: id
-    image: imageFromId id
+    label: translate 'animals', id, 'label'
+    images: imagesFromId id
+    description: translate 'animals', id, 'description'
 
   for char in characteristics
     animal[char] = (value for value, i in values when value[0...char.length] is char and grid[i] is 1)
@@ -94,7 +97,5 @@ animalInstances = for label, grid of animals
 
   animal.save()
   animal
-
-window.animals = animalInstances
 
 module.exports = new FilteringSet items: animalInstances

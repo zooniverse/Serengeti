@@ -1,0 +1,184 @@
+.animal-selector {
+  background: $green-dark;
+  border: 1px solid rgba($black, 0.75);
+  border-radius: 5px;
+  box-shadow: 0 2px 0 rgba($white, 0.25) inset, 0 0 0 3px rgba($black, 0.33);
+  box-sizing: border-box;
+  color: $white;
+  padding: 10px;
+  position: relative;
+  width: 405px;
+
+  .filter-menu {
+    button[name="characteristic"] {
+      position: relative;
+
+      &:after {
+        border: 4px solid transparent;
+        border-top-color: $white;
+        content: '';
+        height: 0;
+        margin-top: -3px;
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        width: 0;
+      }
+    }
+
+    .menu {
+      position: absolute;
+
+      &.hidden {
+        display: none;
+      }
+    }
+  }
+
+  .characteristic-filters {
+    clearfix();
+
+    .filter-menu {
+      float: left;
+      margin-bottom: 10px;
+      overflow: hidden;
+      width: 20%;
+
+      button[name="characteristic"] {
+        standard-button();
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 5px;
+        overflow: hidden;
+        padding: 3px 0;
+        text-overflow: ellipsis;
+        width: 100%;
+      }
+
+      &.open button[name="characteristic"] {
+        standard-button-active();
+      }
+
+      &.in-use button[name="characteristic"] {
+        background: rgba($white, 0.25);
+      }
+    }
+  }
+
+  .selection-area {
+    background: rgba($black, 0.33);
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba($black, 0.5) inset;
+
+    .general-filters {
+      clearfix();
+      border-bottom: 1px solid $green-dark;
+      padding: 10px;
+      text-align: right;
+
+      input[name="search"] {
+        appearance: none;
+        background: $black;
+        border: 2px solid rgba($gray, 0.5);
+        border-radius: 20px;
+        color: $white;
+        float: left;
+        font: inherit;
+        height: 20px;
+        padding: 0 10px 0 20px;
+        width: 150px;
+      }
+
+      .filter-menu {
+        button[name="characteristic"] {
+          padding-right: 20px;
+        }
+      }
+    }
+
+    .items {
+      clearfix();
+      min-height: 300px;
+
+      [data-animal] {
+        border: 1px solid $green-dark;
+        box-sizing: border-box;
+        cursor: pointer;
+        float: left;
+        font-size: 14px;
+        opacity: 1;
+        transition: opacity 0.25s ease-in-out;
+
+        &:hover {
+          background: rgba($black, 0.5);
+        }
+
+        &.dimmed {
+          opacity: 0.33;
+        }
+
+        &.hidden {
+          display: none;
+        }
+      }
+
+      &[data-items="gt20"] [data-animal] {
+        font-size: 12px;
+        padding: 3px 0 1px 5px;
+        width: 33.33%;
+
+        img {
+          display: none;
+        }
+      }
+
+      &[data-items="20"] [data-animal] {
+        padding: 7px 0 6px;
+        text-align: center;
+        width: 50%;
+
+        img {
+          display: none;
+        }
+      }
+
+      &[data-items="10"] [data-animal],
+      &[data-items="5"] [data-animal] {
+        clearfix();
+        padding: 0;
+        text-align: center;
+        width: 50%;
+
+        img {
+          float: left;
+          height: 60px;
+        }
+
+        .label {
+          float: left;
+          margin-left: 10px;
+          line-height: 60px;
+        }
+
+        &[data-items="5"] [data-animal] {
+          width: 100%;
+        }
+      }
+
+      .none {
+        display: none;
+        font-size: 12px;
+        margin-top: 125px;
+        text-align: center;
+
+        button[name="clear-filters"] {
+          text-decoration: underline;
+        }
+      }
+
+      &[data-items="0"] .none {
+        display: block;
+      }
+    }
+  }
+}

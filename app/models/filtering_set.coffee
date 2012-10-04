@@ -6,7 +6,6 @@ class FilteringSet
 
   items: null
   options: null
-  matches: null
 
   constructor: (params = {}) ->
     @[property] = value for own property, value of params
@@ -14,22 +13,6 @@ class FilteringSet
     @options ?= {}
 
     @filter @options
-
-  filter: (options = {}, hard = true) ->
-    # "Hard" will replace all filtering options.
-    # "Soft" will modify the current options.
-    if hard
-      @options = options
-    else
-      @options[property] = value for own property, value of options
-
-    # Clear out empty options.
-    for feature, value of @options
-      delete @options[feature] unless value?
-
-    @matches = @find @options
-
-    @trigger 'filter', @matches
 
   find: (params) ->
     for item in @items
@@ -47,5 +30,34 @@ class FilteringSet
 
       continue if mismatch
       item
+
+  filter: (options = {}, hard = true) ->
+    # "Hard" will replace all filtering options.
+    # "Soft" will modify the current options.
+    if hard
+      @options = options
+    else
+      @options[property] = value for own property, value of options
+
+    console.log 'Filtering by', @options
+
+    # Clear out empty options.
+    for feature, value of @options
+      delete @options[feature] unless value?
+
+    @trigger 'filter', @find @options
+
+  search: (searchString) ->
+    searchExpression = new RegExp searchString, 'i'
+
+    matches = for item in @items
+      match = false
+      for feature, value of item when feature of item.attributes()
+        match = true if searchExpression.test value
+
+      continue unless match
+      item
+
+    @trigger 'search', matches
 
 module.exports = FilteringSet

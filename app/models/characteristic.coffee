@@ -6,7 +6,6 @@ class Characteristic extends Model
 
   constructor: ->
     super
-
     setTimeout @translateLabel
 
   translateLabel: =>
@@ -17,7 +16,6 @@ class Characteristic extends Model
 
     constructor: ->
       super
-
       setTimeout @translateLabel
 
     translateLabel: =>

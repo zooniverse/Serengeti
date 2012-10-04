@@ -1,0 +1,30 @@
+<div class="characteristic-filters">
+  <div class="pattern filter-menu"></div>
+  <div class="coat filter-menu"></div>
+  <div class="horns filter-menu"></div>
+  <div class="tail filter-menu"></div>
+  <div class="build filter-menu"></div>
+</div>
+
+<div class="selection-area">
+  <div class="general-filters">
+    <input name="search" />
+    <span class="like filter-menu"></span>
+  </div>
+
+  <div class="items">
+    <% for animal in @set.items: %>
+      <div data-animal="<%= animal.id %>">
+        <img src="<%= animal.images[0] %>" />
+        <span class="label"><%= animal.label %></span>
+      </div>
+    <% end %>
+
+    <div class="none">
+      <p>
+        <%= $t 'nothingToShow' %>
+        <button name="clear-filters"><%= $t 'clearFilters' %></button>
+      </p>
+    </div>
+  </div>
+</div>

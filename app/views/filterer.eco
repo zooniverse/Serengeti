@@ -1,8 +1,0 @@
-<button name="characteristic">
-  <span class="label"></span>
-  <span class="value"><span>
-</button>
-
-<div class="menu">
-  <button name="clear">Clear</button>
-</div>
