@@ -40,8 +40,11 @@ class Classifier extends Controller
   onSubjectSet: (@subject) =>
     @imageSwitcher.setSubject @subject
     @classification = new Classification {@subject}
+    @classification.bind 'change', @onClassificationChange
 
   onSelect: (animal) =>
     console.log 'Selected', animal
+
+  onClassificationChange: =>
 
 module.exports = Classifier

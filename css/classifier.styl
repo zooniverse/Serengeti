@@ -1,64 +1,68 @@
-.filtering-select {
-  position: relative;
+.classifier {
+  // .image-switcher {}
 
-  // button[name="select"] {}
+  .filtering-select {
+    position: relative;
 
-  .filtering-select-menu {
-    header {
-      .filterers {
-        display: inline-block;
+    // button[name="select"] {}
 
-        .filterer {
+    .filtering-select-menu {
+      header {
+        .filterers {
           display: inline-block;
-          position: relative;
 
-          .menu {
-            left: 0;
-            position: absolute;
-            top: 100%;
-            z-index: 1;
+          .filterer {
+            display: inline-block;
+            position: relative;
 
-            [data-value] {
-              display: inline-block;
+            .menu {
+              left: 0;
+              position: absolute;
+              top: 100%;
+              z-index: 1;
+
+              [data-value] {
+                display: inline-block;
+              }
             }
           }
         }
       }
-    }
 
-    .items {
-      background: gray;
+      .items {
+        background: gray;
 
-      [data-item] {
-        display: inline-block;
-        height: 50px;
-        margin: 5px;
-        overflow: hidden;
-        width: 50px;
+        [data-item] {
+          display: inline-block;
+          height: 50px;
+          margin: 5px;
+          overflow: hidden;
+          width: 50px;
 
-        figure {
-          margin: 0;
-          position: relative;
+          figure {
+            margin: 0;
+            position: relative;
 
-          img {
-            max-width: 100%;
+            img {
+              max-width: 100%;
+            }
+
+            figcaption {
+              bottom: 0;
+              left: 0;
+              position: absolute;
+            }
           }
 
-          figcaption {
-            bottom: 0;
-            left: 0;
-            position: absolute;
+          &.hidden {
+            display: none;
           }
-        }
-
-        &.hidden {
-          display: none;
         }
       }
-    }
 
-    &.hidden {
-      display: none;
+      &.hidden {
+        display: none;
+      }
     }
   }
 }
