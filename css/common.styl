@@ -32,6 +32,11 @@ standard-button() {
   &:active {
     standard-button-active();
   }
+
+  &:disabled,
+  &.disabled {
+    standard-button-disabled();
+  }
 }
 
 standard-button-hover() {
@@ -41,4 +46,8 @@ standard-button-hover() {
 standard-button-active() {
   background: rgba($black, 0.25);
   box-shadow: 0 1px 0 rgba($black, 0.25) inset;
+}
+
+standard-button-disabled() {
+  opacity: 0.5;
 }

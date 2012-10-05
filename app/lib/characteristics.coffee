@@ -46,13 +46,13 @@ module.exports = [
       new Value id: 'hornsStraight', label: translate('characteristicValues', 'hornsStraight'), image: '//placehold.it/50.png'
       new Value id: 'hornsSimpleCurve', label: translate('characteristicValues', 'hornsSimpleCurve'), image: '//placehold.it/50.png'
       new Value id: 'hornsLyrate', label: translate('characteristicValues', 'hornsLyrate'), image: '//placehold.it/50.png'
+      new Value id: 'hornsCurly', label: translate('characteristicValues', 'hornsCurly'), image: '//placehold.it/50.png'
     ]
 
   new Characteristic
     id: 'tail'
     label: translate 'characteristics', 'tail'
     values: [
-      new Value id: 'tailCurly', label: translate('characteristicValues', 'tailCurly'), image: '//placehold.it/50.png'
       new Value id: 'tailBushy', label: translate('characteristicValues', 'tailBushy'), image: '//placehold.it/50.png'
       new Value id: 'tailSmooth', label: translate('characteristicValues', 'tailSmooth'), image: '//placehold.it/50.png'
       new Value id: 'tailTufted', label: translate('characteristicValues', 'tailTufted'), image: '//placehold.it/50.png'

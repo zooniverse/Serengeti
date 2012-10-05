@@ -27,31 +27,44 @@
     }
 
     .menu {
+      background: $black;
+      color: $white;
       position: absolute;
+      z-index: 1;
 
       &.hidden {
         display: none;
+      }
+
+      button[name="characteristic-value"] {
+        display: block;
       }
     }
   }
 
   .characteristic-filters {
     clearfix();
+    margin-bottom: 10px;
 
     .filter-menu {
+      box-sizing: border-box;
       float: left;
-      margin-bottom: 10px;
       overflow: hidden;
-      width: 20%;
+      margin-left: 7px;
+      width: 71px;
+
+      &:first-child {
+        margin-left: 0;
+      }
 
       button[name="characteristic"] {
         standard-button();
         font-size: 12px;
         font-weight: bold;
-        margin-right: 5px;
         overflow: hidden;
         padding: 3px 0;
         text-overflow: ellipsis;
+        white-space: nowrap;
         width: 100%;
       }
 
@@ -81,16 +94,19 @@
         background: $black;
         border: 2px solid rgba($gray, 0.5);
         border-radius: 20px;
+        box-sizing: border-box;
         color: $white;
         float: left;
         font: inherit;
+        font-size: 12px;
         height: 20px;
         padding: 0 10px 0 20px;
-        width: 150px;
+        width: 160px;
       }
 
       .filter-menu {
         button[name="characteristic"] {
+          font-size: 12px;
           padding-right: 20px;
         }
       }
@@ -98,7 +114,9 @@
 
     .items {
       clearfix();
+      margin: 0 -1px;
       min-height: 300px;
+      position: relative;
 
       [data-animal] {
         border: 1px solid $green-dark;
@@ -159,10 +177,10 @@
           margin-left: 10px;
           line-height: 60px;
         }
+      }
 
-        &[data-items="5"] [data-animal] {
-          width: 100%;
-        }
+      &[data-items="5"] [data-animal] {
+        width: 100%;
       }
 
       .none {
@@ -178,6 +196,53 @@
 
       &[data-items="0"] .none {
         display: block;
+      }
+
+      .animal-details {
+        background: $black;
+        font-size: 12px;
+        height: 100%;
+        left: 0;
+        opacity: 1;
+        overflow: auto;
+        position: absolute;
+        top: 0;
+        transform: scale(1);
+        transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
+        width: 100%;
+
+        &.hidden {
+          transform: scale(0.95);
+          opacity: 0;
+        }
+
+        .images {
+          float: left;
+          height: 100%;
+          width: 30%;
+
+          img {
+            max-width: 100%;
+          }
+        }
+
+        .content,
+        .options,
+        .action {
+          box-sizing: border-box;
+          float: right;
+          padding-left: 20px;
+          width: 70%;
+        }
+
+        p.label {
+          font-size: 16px;
+        }
+
+        button {
+          standard-button();
+          background: $green-dark;
+        }
       }
     }
   }

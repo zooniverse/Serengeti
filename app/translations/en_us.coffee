@@ -224,7 +224,7 @@ module.exports =
     hornsStraight: 'Straight'
     hornsSimpleCurve: 'Simple Curve'
     hornsLyrate: 'Lyrate'
-    tailCurly: 'Curly'
+    hornsCurly: 'Curly'
     tailBushy: 'Bushy'
     tailSmooth: 'Smooth'
     tailTufted: 'Tufted'
@@ -239,10 +239,7 @@ module.exports =
     backRound: 'Round'
     backStraight: 'Straight'
 
-  behaviors:
-    sleeping: 'Sleeping'
-    playing: 'Playing'
-    eating: 'Eating'
+  count: 'Count'
 
   counts:
     '1': '1'
@@ -251,5 +248,17 @@ module.exports =
     '11-20': '11-20'
     '20+': '21+'
 
+  behavior: 'Behavior'
+
+  behaviors:
+    sleeping: 'Sleeping'
+    playing: 'Playing'
+    eating: 'Eating'
+
+  cancel: 'Cancel'
+
+  identify: 'Identify'
+
   nothingToShow: 'There\'s nothing to show with these filters.'
+
   clearFilters: 'Clear filters'
