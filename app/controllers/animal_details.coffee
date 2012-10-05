@@ -36,7 +36,7 @@ class AnimalDetails extends Controller
     setTimeout @release, 333
 
   onClickIdentify: ->
-    console.log "Identified #{@animal.label} (#{countSelect.val()}) #{behaviorSelect.val()}"
+    @log "Identified #{@countSelect.val()} #{@behaviorSelect.val()} #{@animal.label}"
     @onClickCancel()
 
 module.exports = AnimalDetails

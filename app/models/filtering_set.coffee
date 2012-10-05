@@ -39,8 +39,6 @@ class FilteringSet
     else
       @options[property] = value for own property, value of options
 
-    console.log 'Filtering by', @options
-
     # Clear out empty options.
     for feature, value of @options
       delete @options[feature] unless value?
