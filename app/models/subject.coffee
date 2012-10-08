@@ -14,6 +14,7 @@ class Subject extends Model
     &zoom=17
     &size=565x380
     &maptype=hybrid
+    &markers=size:tiny|#{@coords.join ','}
     &sensor=false
   """.replace '\n', ''
 
