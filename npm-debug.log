@@ -1,0 +1,81 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '.' ]
+2 info using npm@1.1.61
+3 info using node@v0.8.4
+4 verbose node symlink /usr/local/bin/node
+5 verbose read json /Users/brian/Zooniverse/Serengeti/package.json
+6 warn package.json serengeti@0.0.1 No README.md file found!
+7 verbose readDependencies using package.json deps
+8 verbose install where, deps [ '/Users/brian/Zooniverse/Serengeti',
+8 verbose install   [ 'serveup',
+8 verbose install     'hem',
+8 verbose install     'es5-shimify',
+8 verbose install     'html5shiv',
+8 verbose install     'json2ify',
+8 verbose install     'jqueryify',
+8 verbose install     'spine',
+8 verbose install     'nib' ] ]
+9 verbose from cache /Users/brian/Zooniverse/Serengeti/package.json
+10 info preinstall serengeti@0.0.1
+11 verbose read json /Users/brian/Zooniverse/Serengeti/node_modules/es5-shimify/package.json
+12 verbose read json /Users/brian/Zooniverse/Serengeti/node_modules/hem/package.json
+13 verbose read json /Users/brian/Zooniverse/Serengeti/node_modules/jqueryify/package.json
+14 verbose read json /Users/brian/Zooniverse/Serengeti/node_modules/json2ify/package.json
+15 verbose read json /Users/brian/Zooniverse/Serengeti/node_modules/nib/package.json
+16 verbose read json /Users/brian/Zooniverse/Serengeti/node_modules/serveup/package.json
+17 verbose read json /Users/brian/Zooniverse/Serengeti/node_modules/spine/package.json
+18 verbose from cache /Users/brian/Zooniverse/Serengeti/package.json
+19 verbose readDependencies using package.json deps
+20 verbose read json /Users/brian/Zooniverse/Serengeti/node_modules/.bin/package.json
+21 verbose from cache /Users/brian/Zooniverse/Serengeti/node_modules/es5-shimify/package.json
+22 verbose from cache /Users/brian/Zooniverse/Serengeti/node_modules/hem/package.json
+23 verbose from cache /Users/brian/Zooniverse/Serengeti/node_modules/jqueryify/package.json
+24 verbose from cache /Users/brian/Zooniverse/Serengeti/node_modules/json2ify/package.json
+25 verbose from cache /Users/brian/Zooniverse/Serengeti/node_modules/nib/package.json
+26 verbose from cache /Users/brian/Zooniverse/Serengeti/node_modules/serveup/package.json
+27 verbose from cache /Users/brian/Zooniverse/Serengeti/node_modules/spine/package.json
+28 verbose already installed skipping es5-shimify@~0.0.1 /Users/brian/Zooniverse/Serengeti
+29 verbose cache add [ 'html5shiv@git://github.com/aFarkas/html5shiv.git', null ]
+30 silly cache add name=undefined spec="html5shiv@git://github.com/aFarkas/html5shiv.git" args=["html5shiv@git://github.com/aFarkas/html5shiv.git",null]
+31 verbose parsed url { pathname: 'html5shiv@git://github.com/aFarkas/html5shiv.git',
+31 verbose parsed url   path: 'html5shiv@git://github.com/aFarkas/html5shiv.git',
+31 verbose parsed url   href: 'html5shiv@git://github.com/aFarkas/html5shiv.git' }
+32 silly cache add name="html5shiv" spec="git://github.com/aFarkas/html5shiv.git" args=["html5shiv","git://github.com/aFarkas/html5shiv.git"]
+33 verbose parsed url { protocol: 'git:',
+33 verbose parsed url   slashes: true,
+33 verbose parsed url   host: 'github.com',
+33 verbose parsed url   hostname: 'github.com',
+33 verbose parsed url   href: 'git://github.com/aFarkas/html5shiv.git',
+33 verbose parsed url   pathname: '/aFarkas/html5shiv.git',
+33 verbose parsed url   path: '/aFarkas/html5shiv.git' }
+34 verbose already installed skipping json2ify@~0.0.1 /Users/brian/Zooniverse/Serengeti
+35 verbose already installed skipping jqueryify@~0.0.1 /Users/brian/Zooniverse/Serengeti
+36 silly lockFile 1e9a87db-github-com-aFarkas-html5shiv-git git://github.com/aFarkas/html5shiv.git
+37 verbose lock git://github.com/aFarkas/html5shiv.git /Users/brian/.npm/1e9a87db-github-com-aFarkas-html5shiv-git.lock
+38 verbose already installed skipping spine@~1.0.7 /Users/brian/Zooniverse/Serengeti
+39 verbose already installed skipping nib@~0.8.2 /Users/brian/Zooniverse/Serengeti
+40 verbose addRemoteGit [ 'git://github.com/aFarkas/html5shiv.git', 'master' ]
+41 silly exec git "clone" "git://github.com/aFarkas/html5shiv.git" "/var/folders/wx/w3yy_jys7f98fd0_552s3pb40000gn/T/npm-8601/1349732815241-0.8842252679169178"
+42 silly git,clone,git://github.com/aFarkas/html5shiv.git,/var/folders/wx/w3yy_jys7f98fd0_552s3pb40000gn/T/npm-8601/1349732815241-0.8842252679169178, spawning
+43 verbose already installed skipping serveup@~0.0.5 /Users/brian/Zooniverse/Serengeti
+44 verbose already installed skipping hem@~0.1.8 /Users/brian/Zooniverse/Serengeti
+45 verbose git clone git://github.com/aFarkas/html5shiv.git Cloning into '/var/folders/wx/w3yy_jys7f98fd0_552s3pb40000gn/T/npm-8601/1349732815241-0.8842252679169178'...
+46 silly exec git "checkout" "master"
+47 silly git,checkout,master,/var/folders/wx/w3yy_jys7f98fd0_552s3pb40000gn/T/npm-8601/1349732815241-0.8842252679169178 spawning
+48 verbose git checkout master Already on 'master'
+49 verbose read json /var/folders/wx/w3yy_jys7f98fd0_552s3pb40000gn/T/npm-8601/1349732815241-0.8842252679169178/package.json
+50 silly lockFile 1e9a87db-github-com-aFarkas-html5shiv-git git://github.com/aFarkas/html5shiv.git
+51 error Error: ENOENT, open '/var/folders/wx/w3yy_jys7f98fd0_552s3pb40000gn/T/npm-8601/1349732815241-0.8842252679169178/package.json'
+52 error If you need help, you may report this log at:
+52 error     <http://github.com/isaacs/npm/issues>
+52 error or email it to:
+52 error     <npm-@googlegroups.com>
+53 error System Darwin 11.4.0
+54 error command "node" "/usr/local/bin/npm" "install" "."
+55 error cwd /Users/brian/Zooniverse/Serengeti
+56 error node -v v0.8.4
+57 error npm -v 1.1.61
+58 error path /var/folders/wx/w3yy_jys7f98fd0_552s3pb40000gn/T/npm-8601/1349732815241-0.8842252679169178/package.json
+59 error code ENOENT
+60 error errno 34
+61 verbose exit [ 34, true ]

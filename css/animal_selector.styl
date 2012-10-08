@@ -11,45 +11,29 @@
 
   .filter-menu {
     button[name="characteristic"] {
-      position: relative;
-
       &:after {
-        border: 4px solid transparent;
+        border: 3px solid transparent;
         border-top-color: $white;
         content: '';
         height: 0;
-        margin-top: -3px;
+        margin-top: -2px;
         position: absolute;
         right: 5px;
         top: 50%;
         width: 0;
       }
     }
-
-    .menu {
-      background: $black;
-      color: $white;
-      position: absolute;
-      z-index: 1;
-
-      &.hidden {
-        display: none;
-      }
-
-      button[name="characteristic-value"] {
-        display: block;
-      }
-    }
   }
 
   .characteristic-filters {
     clearfix();
-    margin-bottom: 10px;
+    height: 30px;
+    position: relative;
+    z-index: 2;
 
     .filter-menu {
       box-sizing: border-box;
       float: left;
-      overflow: hidden;
       margin-left: 7px;
       width: 71px;
 
@@ -61,15 +45,72 @@
         standard-button();
         font-size: 12px;
         font-weight: bold;
+        height: 22px;
         overflow: hidden;
-        padding: 3px 0;
+        padding: 3px 5px 3px 0;
+        position: relative;
         text-overflow: ellipsis;
         white-space: nowrap;
         width: 100%;
       }
 
+      .menu {
+        background: lighten($green, 0.33);
+        border: 1px solid $black;
+        border-top: 0;
+        box-sizing: border-box;
+        height: 50px;
+        left: 0;
+        opacity: 1;
+        overflow: hidden;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+
+        &.hidden {
+          height: 0;
+          opacity: 0;
+        }
+
+        button[name="characteristic-value"] {
+          float: left;
+
+          img {
+            background: black;
+            height: 40px;
+            font-size: 12px;
+            margin: 4px 0 4px 4px;
+            width: 40px;
+          }
+
+          .label {
+            display: none;
+          }
+
+          &:hover img {
+            //
+          }
+
+          &.selected img {
+            box-shadow: 0 0 0 1px $white;
+          }
+        }
+
+        button[name="clear-characteristic"] {
+          height: 40px;
+          font-size: 12px;
+          margin: 5px 0 5px 5px;
+          text-align: center;
+          width: 58px;
+        }
+      }
+
       &.open button[name="characteristic"] {
-        standard-button-active();
+        background: lighten($green, 0.33);
+        border-bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        height: 30px;
       }
 
       &.in-use button[name="characteristic"] {
@@ -84,10 +125,12 @@
     box-shadow: 0 2px 3px rgba($black, 0.5) inset;
 
     .general-filters {
-      clearfix();
       border-bottom: 1px solid $green-dark;
-      padding: 10px;
-      text-align: right;
+      height: 50px;
+      line-height: 50px;
+      padding: 0 10px;
+      position: relative;
+      text-align: left;
 
       input[name="search"] {
         appearance: none;
@@ -96,8 +139,7 @@
         border-radius: 20px;
         box-sizing: border-box;
         color: $white;
-        float: left;
-        font: inherit;
+        font-family: inherit;
         font-size: 12px;
         height: 20px;
         padding: 0 10px 0 20px;
@@ -105,9 +147,68 @@
       }
 
       .filter-menu {
+        font-size: 14px;
+        line-height: 2;
+        margin-top: 10px;
+        position: absolute;
+        right: 10px;
+        text-align: center;
+        top: 3px;
+        z-index: 1;
+
         button[name="characteristic"] {
+          padding: 0 10px;
+          position: relative;
+          width: 110px;
+
+          &:hover {
+            box-shadow: 0 0 0 1px rgba($white, 0.5) inset;
+          }
+        }
+
+        .menu {
+          background: $white;
+          color: rgba($green-dark, 0.67);
           font-size: 12px;
-          padding-right: 20px;
+          overflow: hidden;
+          padding-top: 2px;
+          right: 0;
+          top: 100%;
+          white-space: nowrap;
+          z-index: 1;
+
+          button {
+            border-top: 1px solid $gray;
+            display: block;
+            padding: 0 10px;
+            width: 110px;
+
+            &:hover {
+              background: rgba($green-dark, 0.67);
+              color: $white;
+            }
+
+            img {
+              display: none;
+            }
+          }
+
+          &.hidden {
+            height: 0;
+            padding-top: 0;
+          }
+        }
+
+        &.open {
+          button[name="characteristic"] {
+            background: $white;
+            border-bottom: 1px solid $gray;
+            color: rgba($green-dark, 0.67);
+
+            &:after {
+              border-top-color: rgba($green-dark, 0.67);
+            }
+          }
         }
       }
     }

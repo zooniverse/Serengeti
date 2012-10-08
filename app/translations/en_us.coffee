@@ -194,7 +194,7 @@ module.exports =
 
 
   characteristics:
-    like: 'Similar to'
+    like: 'Looks like'
     pattern: 'Pattern'
     coat: 'Color'
     horns: 'Horns'
