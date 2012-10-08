@@ -1,0 +1,56 @@
+html {
+  background: #930;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+
+  body {
+    margin: 0;
+    padding: 50px 0 100px;
+
+    > h1 {
+      left: 50%;
+      margin-left: -300px;
+      position: fixed;
+      text-align: center;
+      top: 0;
+      width: 600px;
+    }
+
+    > nav {
+      background: $white;
+      bottom: 0;
+      padding: 15px 0;
+      position: fixed;
+      text-align: center;
+      width: 100%;
+      z-index: 3;
+
+      ul {
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: inline-block;
+          width: 15%;
+          border-left: 1px solid #fff;
+          box-shadow: -2px 0 0 -1px $gray;
+
+          a {
+            color: inherit;
+            display: block;
+            line-height: 40px;
+            opacity: 0.75;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+
+            &:hover,
+            &.active {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
