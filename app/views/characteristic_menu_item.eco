@@ -1,4 +1,0 @@
-<button>
-  <span class="label"></span>
-  <img src="<%= @image %>" />
-</button>
