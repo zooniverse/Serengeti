@@ -2,10 +2,12 @@
   <% for image in @location: %>
     <figure><img src="<%= image %>" /></figure>
   <% end %>
+  <figure class="satellite"><img src="<%= @satelliteImage() %>" /></figure>
 </div>
 
 <div class="toggles">
   <% for image, i in @location: %>
     <button name="toggle" value="<%= i %>"><%= i + 1 %></button>
   <% end %>
+  <button name="toggle" value="<%= @location.length %>" class="satellite"><%= location.length + 1 %></button>
 </div>
