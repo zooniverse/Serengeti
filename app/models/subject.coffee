@@ -3,6 +3,11 @@
 class Subject extends Model
   @configure 'Subject', 'zooniverseId', 'location', 'coords', 'metadata'
 
+  @toClassify = []
+
+  select: ->
+    @trigger 'select'
+
   satelliteImage: -> """
     //maps.googleapis.com/maps/api/staticmap
     ?center=#{@coords.join ','}

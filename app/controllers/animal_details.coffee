@@ -28,15 +28,22 @@ class AnimalDetails extends Controller
   show: =>
     @el.removeClass 'hidden'
 
+  hide: =>
+    @el.addClass 'hidden'
+    setTimeout @release, 333
+
   onSelectChange: ->
     setTimeout => @identifyButton.attr disabled: not (@countSelect.val() and @behaviorSelect.val())
 
   onClickCancel: ->
-    @el.addClass 'hidden'
-    setTimeout @release, 333
+    @hide()
 
   onClickIdentify: ->
-    @log "Identified #{@countSelect.val()} #{@behaviorSelect.val()} #{@animal.label}"
-    @onClickCancel()
+    @classification.annotate
+      species: @animal
+      count: @countSelect.val()
+      behavior: @behaviorSelect.val()
+
+    @hide()
 
 module.exports = AnimalDetails

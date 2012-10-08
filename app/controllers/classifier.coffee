@@ -4,11 +4,15 @@ AnimalSelector = require './animal_selector'
 animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
 AnimalMenuItem = require './animal_menu_item'
+Subject = require 'models/subject'
+Classification = require 'models/classification'
 
 class Classifier extends Controller
   subject: null
 
   className: 'classifier'
+
+  classification: null
 
   constructor: ->
     super
@@ -24,7 +28,11 @@ class Classifier extends Controller
 
     @el.append @animalSelector.el
 
-  onSubjectSet: (subject) ->
-    @imageSwitcher.setSubject subject
+    Subject.bind 'select', @onSubjectSelect
+
+  onSubjectSelect: (@subject) =>
+    @classification = new Classification {@subject}
+    @imageSwitcher.setSubject @subject
+    @animalSelector.setClassification @classification
 
 module.exports = Classifier

@@ -43,7 +43,7 @@ class FilteringSet
     for feature, value of @options
       delete @options[feature] unless value?
 
-    @trigger 'filter', @find @options
+    @trigger 'filter', @find(@options), @options
 
   search: (searchString) ->
     searchExpression = new RegExp searchString, 'i'
@@ -56,6 +56,6 @@ class FilteringSet
       continue unless match
       item
 
-    @trigger 'search', matches
+    @trigger 'search', matches, searchString
 
 module.exports = FilteringSet

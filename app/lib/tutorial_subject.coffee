@@ -7,6 +7,6 @@ module.exports = new Subject
     '//placehold.it/565x380.png'
   ]
 
-  coords: [0, 0]
+  coords: [2.3308, 34.8333]
 
   metadata: {}

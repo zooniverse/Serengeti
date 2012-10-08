@@ -7,6 +7,6 @@ classifier = new Classifier
 classifier.el.appendTo 'body'
 
 # Simulate setting a subject.
-classifier.onSubjectSet tutorialSubject
+tutorialSubject.select()
 
 module.exports = {classifier}

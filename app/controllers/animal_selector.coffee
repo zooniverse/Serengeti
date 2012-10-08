@@ -13,7 +13,6 @@ class AnimalSelector extends Controller
     'keydown input[name="search"]': 'onSearchKeyDown'
     'click [data-animal]': 'onAnimalItemClick'
     'keydown [data-animal]': 'onAnimalItemKeyDown'
-    'click button[name="clear-filters"]': 'onClearFiltersClick'
 
   elements:
     'input[name="search"]': 'searchInput'
@@ -37,9 +36,12 @@ class AnimalSelector extends Controller
   createFilterMenus: ->
     for characteristic in @characteristics
       new FilterMenu
-        el: @el.find(".#{characteristic.id}.filter-menu")
+        el: @el.find ".#{characteristic.id}.filter-menu"
         set: @set
         characteristic: characteristic
+
+  setClassification: (@classification) ->
+    @classification.bind 'add-species', @clearFilters
 
   ESC = 27
   onSearchKeyDown: ({which}) ->
@@ -47,24 +49,21 @@ class AnimalSelector extends Controller
       @searchInput.attr value: '' if which is ESC
       @set.search @searchInput.val()
 
-  onSetFilter: (matches) =>
+  onSetFilter: (matches, options) =>
+    @classification?.annotate filters: options, true
+
     matchIds = (match.id for match in matches)
     for item in @items
       item = $(item)
       item.toggleClass 'hidden', item.attr('data-animal') not in matchIds
 
-    @itemsContainer.attr 'data-items': if matches.length is 0
-      0
-    else if matches.length <= 5
-      5
-    else if matches.length <= 10
-      10
-    else if matches.length <= 20
-      20
-    else
-      'gt20'
+    breakpoints = [20, 10, 5, 0]
+    breakpoint = point for point in breakpoints when matches.length <= point
+    @itemsContainer.attr 'data-items': breakpoint ? 'gt20'
 
-  onSetSearch: (matches) =>
+  onSetSearch: (matches, searchString) =>
+    @classification?.annotate search: searchString, true
+
     matchIds = (match.id for match in matches)
     for item in @items
       item = $(item)
@@ -82,12 +81,14 @@ class AnimalSelector extends Controller
       animal = @set.find(id: animalId)[0]
       @select animal
 
-  onClearFiltersClick: ->
-    @set.filter {}, true
-
   select: (animal) ->
-    details = new AnimalDetails {animal}
+    details = new AnimalDetails {animal, @classification}
     @itemsContainer.append details.el
     setTimeout details.show, 125
+
+  clearFilters: =>
+    @set.filter {}, true
+    @searchInput.val ''
+    @searchInput.trigger 'keydown'
 
 module.exports = AnimalSelector
