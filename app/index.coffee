@@ -1,25 +1,40 @@
 require 'lib/setup'
 
 $ = require 'jqueryify'
+{Stack} = require 'spine/lib/manager'
+Route = require 'spine/lib/route'
 ContentPage = require 'controllers/content_page'
 Classifier = require 'controllers/classifier'
 tutorialSubject = require 'lib/tutorial_subject'
+
 translate = require 'lib/translate'
 
 app = {}
 
+class MainStack extends Stack
+  el: '#main'
+
+  controllers:
+    home: class extends ContentPage then content: 'home.content'
+    about: class extends ContentPage then content: 'about.content'
+    classify: Classifier
+
+  routes:
+    '/home': 'home'
+    '/about': 'about'
+    '/classify': 'classify'
+
+  default: 'classify'
+
 $(window).one 'translate-init', ->
   $('.before-load').remove()
 
-  for page in ['home', 'about']
-    app[page] = new ContentPage content: "#{page}.content"
-    app[page].el.appendTo 'body'
-
-  app.classifier = new Classifier
-  app.classifier.el.appendTo 'body'
+  app.stack = new MainStack
 
   # Simulate setting a subject.
   tutorialSubject.select()
+
+  Route.setup()
 
 language = window.localStorage.language
 translate.init language, '$t'

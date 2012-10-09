@@ -2,6 +2,7 @@ html {
   background: #803e1e;
   font-family: "Open Sans", sans-serif;
   margin: 0;
+  overflow-y: scroll;
 
   body {
     margin: 0;
@@ -54,16 +55,26 @@ html {
         }
       }
     }
+  }
+}
 
-    > section {
-      paper-stripe();
-      background: $white;
-      box-shadow: 0 3px 10px $black;
-      color: $black;
-      margin: 0 auto;
-      padding: 33px 50px;
-      position: relative;
-      width: 700px;
+#main {
+  > * {
+    display: none;
+
+    &.active {
+      display: block;
     }
+  }
+
+  > .content-page {
+    paper-stripe();
+    background: $white;
+    box-shadow: 0 3px 10px $black;
+    color: $black;
+    margin: 0 auto;
+    padding: 33px 50px;
+    position: relative;
+    width: 700px;
   }
 }

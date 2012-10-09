@@ -3,7 +3,9 @@
     "es5-shimify",
     "json2ify",
     "jqueryify",
-    "spine"
+    "spine",
+    "spine/lib/route",
+    "spine/lib/manager"
   ],
 
   "libs": []
