@@ -15,7 +15,7 @@
   <div class="items">
     <% for animal in @set.items: %>
       <div data-animal="<%= animal.id %>" tabindex="0">
-        <img src="<%= animal.images[0] %>" />
+        <div class="image"><img src="<%= animal.images[0] %>" /></div>
         <span class="label"><%= animal.label %></span>
       </div>
     <% end %>
