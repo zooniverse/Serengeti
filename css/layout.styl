@@ -1,5 +1,5 @@
 html {
-  background: #803e1e;
+  background: url("./images/big-wood.jpg") fixed center top;
   font-family: "Open Sans", sans-serif;
   margin: 0;
   overflow-y: scroll;
@@ -7,15 +7,18 @@ html {
   body {
     margin: 0;
     padding: 0 0 100px;
+    position: relative;
 
     > h1 {
       color: $white;
       font: normal 30px Georgia, serif;
       letter-spacing: 10px
       margin: 30px 0;
+      position: relative;
       text-align: center;
       text-shadow: 0 2px 3px $black;
       text-transform: uppercase;
+      z-index: 1;
 
       a {
         color: inherit;
@@ -65,6 +68,9 @@ html {
 }
 
 #main {
+  position: relative;
+  z-index: 1;
+
   > * {
     display: none;
 
