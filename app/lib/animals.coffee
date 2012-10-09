@@ -79,7 +79,11 @@ idFromLabel = (label) ->
   label
 
 imagesFromId = (id) ->
-  ['//placehold.it/300.png']
+  [
+    'http://lorempixel.com/565/380/nature/4'
+    'http://lorempixel.com/565/380/nature/5'
+    'http://lorempixel.com/565/380/nature/6'
+  ]
 
 animalInstances = for label, grid of animals
   id = idFromLabel label
