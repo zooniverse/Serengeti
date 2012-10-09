@@ -60,6 +60,7 @@ class AnimalSelector extends Controller
     breakpoints = [20, 10, 5, 0]
     breakpoint = point for point in breakpoints when matches.length <= point
     @itemsContainer.attr 'data-items': breakpoint ? 'gt20'
+    @itemsContainer.toggleClass 'safari-hack'
 
   onSetSearch: (matches, searchString) =>
     @classification?.annotate search: searchString, true
