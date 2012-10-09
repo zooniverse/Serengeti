@@ -265,3 +265,4 @@ module.exports =
 
   home: content: 'This is the home page!'
   about: content: 'This is the about page!'
+  team: content: 'This is the team page!'

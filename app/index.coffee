@@ -18,13 +18,15 @@ class MainStack extends Stack
     home: class extends ContentPage then content: 'home.content'
     about: class extends ContentPage then content: 'about.content'
     classify: Classifier
+    team: class extends ContentPage then content: 'team.content'
 
   routes:
     '/home': 'home'
     '/about': 'about'
     '/classify': 'classify'
+    '/team': 'team'
 
-  default: 'classify'
+  default: 'home'
 
 $(window).one 'translate-init', ->
   $('.before-load').remove()
