@@ -43,11 +43,12 @@
 
       button[name="characteristic"] {
         standard-button();
+        float: left;
         font-size: 12px;
         font-weight: bold;
         height: 22px;
         overflow: hidden;
-        padding: 3px 5px 3px 0;
+        padding: 0;
         position: relative;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -127,7 +128,6 @@
     .general-filters {
       border-bottom: 1px solid $green-dark;
       height: 50px;
-      line-height: 50px;
       padding: 0 10px;
       position: relative;
       text-align: left;
@@ -142,6 +142,7 @@
         font-family: inherit;
         font-size: 12px;
         height: 20px;
+        margin-top: 15px;
         padding: 0 10px 0 20px;
         width: 160px;
       }
@@ -149,11 +150,10 @@
       .filter-menu {
         font-size: 14px;
         line-height: 2;
-        margin-top: 10px;
         position: absolute;
         right: 10px;
         text-align: center;
-        top: 3px;
+        top: 10px;
         z-index: 1;
 
         button[name="characteristic"] {

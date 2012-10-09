@@ -1,20 +1,19 @@
-language = ''
-strings = {}
+$ = require 'jqueryify'
+strings = require 'translations/en_us'
 
 translate = (keys...) ->
   keys = keys[0].split '.' if keys.length is 1
   reference = strings
-  reference = reference[key] for key in keys
+
+  for key in keys
+    return unless reference[key]
+    reference = reference[key]
+
   reference
 
-updateStrings = ->
-  strings = require "translations/#{language}"
-
-setLanguage = (newLanguage) ->
-  language = newLanguage
-  updateStrings()
-
-setLanguage 'en_us' # TODO: Pick the language out of localStorage.
+translate.init = (language = null, global) ->
+  # TODO: Load the new language and modify the "strings" variable (if language).
+  window[global] = translate if global
+  $(window).trigger 'translate-init'
 
 module.exports = translate
-window.$t = translate

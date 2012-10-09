@@ -262,3 +262,6 @@ module.exports =
   nothingToShow: 'There\'s nothing to show with these filters.'
 
   clearFilters: 'Clear filters'
+
+  home: content: 'This is the home page!'
+  about: content: 'This is the about page!'
