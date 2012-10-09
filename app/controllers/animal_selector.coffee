@@ -13,6 +13,7 @@ class AnimalSelector extends Controller
     'keydown input[name="search"]': 'onSearchKeyDown'
     'click [data-animal]': 'onAnimalItemClick'
     'keydown [data-animal]': 'onAnimalItemKeyDown'
+    'click button[name="clear-filters"]': 'onClickClearFilters'
 
   elements:
     'input[name="search"]': 'searchInput'
@@ -86,6 +87,9 @@ class AnimalSelector extends Controller
     details = new AnimalDetails {animal, @classification}
     @itemsContainer.append details.el
     setTimeout details.show, 125
+
+  onClickClearFilters: ->
+    @clearFilters()
 
   clearFilters: =>
     @set.filter {}, true
