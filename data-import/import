@@ -7,15 +7,14 @@ require './lib/subject'
 CaptureTimeThreshold = 60
 
 Subjects = []
-
 Errors = []
 
 def walk_season(root)
   # Directory structure is {root}/{site}/{roll}/{image}
 
   root_path = File.expand_path root
-  total = Dir[File.join root_path, '**/*.{jpg,JPG,jpeg,JPEG}'].count
-  index = 0.0
+  total = Dir[File.join root_path, '**/*.{jpg,JPG}'].count
+  index = 0
 
   Dir.new(root_path).each do |site|
     next if site.start_with? '.'
@@ -24,44 +23,47 @@ def walk_season(root)
     Dir.new(site_path).each do |roll|
       next if roll.start_with? '.'
 
+      roll_images = Mysql.query("SELECT * FROM `image`
+        WHERE `SiteCode` = '#{site}'
+        AND `SiteRollCode` LIKE '%#{roll}'
+      ").to_a
+
       roll_path = File.expand_path File.join root, site, roll
       Dir.new(roll_path).each do |image|
         next if image.match(/jpg$/i).nil?
 
+        puts "#{index} / #{total}"
         index = index + 1
-        done = "#{(index / total) * 100}%"
-        puts done
 
         image_path = File.expand_path File.join root, site, roll, image
 
-        query = "SELECT * FROM `image` WHERE `Filename` = '#{image}' AND `SiteCode` = '#{site}' AND `SiteRollCode` LIKE '%#{roll}'"
-        matches = Mysql.query(query).to_a
+        image_record = roll_images.find do |roll_image|
+          roll_image['Filename'] == image
+        end
 
-        if matches.count != 1
-          puts "#{matches.count} found for #{site}/#{roll}/#{image}!"
-          Errors << matches
+        if image_record.nil?
+          puts "No image record found for #{site}/#{roll}/#{image}!"
+          Errors << "#{site}/#{roll}/#{image}"
         else
           last_subject = Subjects.last
-          match = matches.first
 
           if last_subject
-            difference = last_subject.location.keys.last - match['DateTime']
+            difference = last_subject.location.keys.last - image_record['DateTime']
           end
 
           if last_subject.nil? or difference.abs > CaptureTimeThreshold
-            unless last_subject.nil?
-              puts last_subject.location
-              puts last_subject.coords.join ', '
-            end
-
-            Subjects << Subject.new(match, roll, site)
+            last_subject.save unless last_subject.nil?
+            Subjects.pop
+            Subjects << Subject.new(image_record, image_path)
           else
-            last_subject.location.merge!({match['DateTime'] => match['Filename']})
+            last_subject.location.merge!({image_record['DateTime'] => image_path})
           end
         end
       end
     end
   end
 end
+
+really = !ARGV.delete('--really').nil?
 
 walk_season ARGV[0]
