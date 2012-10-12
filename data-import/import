@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'time'
-require './lib/mysql_connection'
-require './lib/subject'
+require_relative 'lib/mysql_connection'
+require_relative 'lib/subject'
 
 CaptureTimeThreshold = 60
 

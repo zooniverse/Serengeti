@@ -1,5 +1,5 @@
-require './lib/mysql_connection'
 require 'json'
+require_relative 'mysql_connection'
 
 class Site
   @instances = {}
