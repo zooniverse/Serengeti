@@ -1,3 +1,48 @@
 #!/usr/bin/env ruby
 
-puts 'TODO'
+require 'json'
+require 'mysql2'
+require 'aws-sdk'
+require 'tmpdir'
+require_relative 'lib/mysql_connection'
+
+Season, Site, Roll = ARGV
+
+if [Season, Site, Roll].any? {|x| x.nil?}
+  puts 'Usage: ./to_s3 SEASON SITE ROLL'
+  exit 1
+end
+
+Bucket = 'zooniverse-demo'
+ProjectRoot = 'serengeti'.gsub(/^\/|\/$/, '') # NOTE: Probably blank!
+
+AWS.config access_key_id: ENV['S3_ACCESS_ID'], secret_access_key: ENV['S3_SECRET_KEY']
+
+@s3 = AWS::S3.new
+@bucket = @s3.buckets[Bucket]
+
+Errors = []
+
+query = "SELECT * FROM zooniverse_subjects WHERE site_roll_code = '#{Season}_#{Site}_#{Roll}'"
+
+records = Mysql.query(query)
+total = records.count
+puts "Found #{total} records"
+
+records.each_with_index do |record, i|
+  puts "#{i + 1} / #{total}"
+
+  location_map = Hash[JSON.parse(record['local_location']).zip(JSON.parse(record['location']))]
+  location_map.each do |local, remote|
+    if @bucket.objects["#{ProjectRoot}#{remote}"].exists?
+      puts "Already exists: #{remote}"
+      Errors << record
+    else
+      temp = "#{Dir.tmpdir}/#{File.basename remote}"
+      converted = system "convert #{local} -resize 600x600 #{temp}"
+      raise 'File conversion failed' unless converted
+      puts "Uploading #{temp} -> #{ProjectRoot}#{remote}"
+      @bucket.objects["#{ProjectRoot}#{remote}"].write file: temp, acl: :public_read
+    end
+  end
+end
