@@ -1,7 +1,7 @@
 require 'json'
-require_relative 'mysql_connection'
 require_relative 'site'
 require_relative 'q'
+require_relative 'mysql_connection'
 
 class Subject
   attr_accessor 'site', 'location', 'coords', 'metadata'
@@ -22,6 +22,7 @@ class Subject
 
   def save
     data = {
+      :site_roll_code => q(self.metadata['SiteRollCode']),
       :local_location => q(JSON.dump(self.location.values)),
       :coords => q(JSON.dump(self.coords)),
       :metadata => q(JSON.dump(self.metadata))

@@ -1,0 +1,100 @@
+#!/usr/bin/env ruby
+
+require 'time'
+require_relative 'lib/mysql_connection'
+require_relative 'lib/subject'
+
+CaptureTimeThreshold = 60
+
+@roll_images = nil
+@last_subject = nil
+@errors = []
+
+@current = 0
+@total = 0
+
+# Directory structure must be "SEASON/SITE/SITE_ROLL", e.g. "S1/B04/B04_R1".
+
+@root, @season, @site, @roll = ARGV
+
+def manifest_season
+  season_path = File.join @root, @season
+  puts "Manifesting season at #{season_path}"
+
+  Dir.new(season_path).each do |site|
+    next if site.start_with? '.'
+
+    @site = site
+    manifest_site
+  end
+end
+
+def manifest_site
+  site_path = File.join @root, @season, @site
+  puts "Manifesting site at #{site_path}"
+
+  Dir.new(site_path).each do |roll|
+    next if roll.start_with? '.'
+
+    @roll = roll
+    manifest_roll
+  end
+end
+
+def manifest_roll
+  roll_path = File.join @root, @season, @site, @roll
+
+  @roll_images = Mysql.query "SELECT * FROM image WHERE SiteRollCode = '#{@season}_#{@roll}'"
+  @last_subject = nil
+
+  puts "Manifesting roll at #{roll_path} (#{@roll_images.count})"
+
+  Dir.new(roll_path).each do |image|
+    next if image.match(/jpg$/i).nil?
+
+    manifest_image image
+  end
+end
+
+def manifest_image(image)
+  @current += 1
+  image_path = File.join @root, @season, @site, @roll, image
+  puts "Manifesting #{image_path} (#{@current}/#{@total})"
+
+  image_record = @roll_images.find do |roll_image|
+    roll_image['Filename'] == image
+  end
+
+  if image_record.nil?
+    puts "No image record found for #{image_path}!"
+    @errors << image_path
+    return
+  end
+  if @last_subject
+    difference = @last_subject.location.keys.last - image_record['DateTime']
+  end
+
+  if @last_subject.nil? or difference.abs > CaptureTimeThreshold
+    @last_subject.save unless @last_subject.nil?
+    @last_subject = Subject.new(image_record, image_path)
+  else
+    @last_subject.location.merge!({image_record['DateTime'] => image_path})
+  end
+end
+
+if !@season.nil?
+  if !@site.nil?
+    if !@roll.nil?
+      @total = Dir[File.join @root, @season, @site, @roll, '**/*.{jpg,JPG}'].count
+      manifest_roll
+    else
+      @total = Dir[File.join @root, @season, @site, '**/*.{jpg,JPG}'].count
+      manifest_site
+    end
+  else
+    @total = Dir[File.join @root, @season, '**/*.{jpg,JPG}'].count
+    manifest_season
+  end
+else
+  puts 'At least a season is required'
+end

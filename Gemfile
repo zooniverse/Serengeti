@@ -1,5 +1,6 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "bson"
-gem "bson_ext"
-gem "mysql2"
+gem 'aws-sdk'
+gem 'bson'
+gem 'bson_ext'
+gem 'mysql2'

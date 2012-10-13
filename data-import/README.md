@@ -8,20 +8,20 @@ Make a MySQL database called "carnivore_coexistence".
 
 Import "carnivorecoexistence_10-07-2012.sql" (from the science team).
 
-Import "subjects.sql" (from this repo) to create an empty "zooniverse_subjects" table.
+Import "subjects_table.sql" (from this repo) to create an empty "zooniverse_subjects" table.
 
-Import
-------
+Generate manifest
+-----------------
 
-The images are divided into seasons, the script runs on one season at a time:
+Point the manifest script at the directory containing the seasons. Then pass in the season, site and roll you want to import.
 
-**TODO: Make this a site/roll/image at a time.**
+E.g. To generate records for a whole season: `./manifest path/to/seasons S1`
 
-```
-./import path/to/S1
-```
+For a site: `./manifest path/to/seasons S1 B05`
 
-Now there are records in the "zooniverse_subjects" table.
+For a roll: `./manifest path/to/seasons S1 B05 B05_R1`
+
+Records will be created in the "zooniverse_subjects" table.
 
 Create Subjects
 ---------------
