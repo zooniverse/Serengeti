@@ -6,7 +6,6 @@ Route = require 'spine/lib/route'
 ContentPage = require 'controllers/content_page'
 Classifier = require 'controllers/classifier'
 tutorialSubject = require 'lib/tutorial_subject'
-
 translate = require 'lib/translate'
 
 app = {}

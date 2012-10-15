@@ -2,10 +2,15 @@
   "dependencies": [
     "es5-shimify",
     "json2ify",
+
     "jqueryify",
+
     "spine",
     "spine/lib/route",
-    "spine/lib/manager"
+    "spine/lib/manager",
+
+    "zooniverse",
+    "underscore/underscore"
   ],
 
   "libs": []
