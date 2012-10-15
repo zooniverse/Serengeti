@@ -7,6 +7,13 @@ module.exports =
     discuss: 'Discuss'
     blog: 'Blog'
 
+  images:
+    notSignedIn: 'You\'re not signed in!'
+    play: 'Play series'
+    satellite: 'Satellite'
+    favorite: 'Favorite'
+    unfavorite: 'Unfavorite'
+
   animals:
     aardvark:
       label: 'Aardvark'

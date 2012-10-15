@@ -1,3 +1,4 @@
+<% translate = require 'lib/translate' %>
 <div class="images">
   <% for image in @location: %>
     <figure><img src="<%= image %>" /></figure>
@@ -5,9 +6,14 @@
   <figure class="satellite"><img src="<%= @satelliteImage() %>" /></figure>
 </div>
 
-<div class="toggles">
-  <% for image, i in @location: %>
-    <button name="toggle" value="<%= i %>"><%= i + 1 %></button>
-  <% end %>
-  <button name="toggle" value="<%= @location.length %>" class="satellite">Satellite</button>
+<div class="controls">
+  <button name="play" title="<%= translate 'images.play' %>">&#9654;</button>
+
+  <span class="toggles">
+    <% for image, i in @location: %>
+      <button name="toggle" value="<%= i %>"><%= i + 1 %></button>
+    <% end %>
+  </span>
+
+  <button name="satellite" title="<%= translate 'images.satellite' %>">&#9873;</button>
 </div>

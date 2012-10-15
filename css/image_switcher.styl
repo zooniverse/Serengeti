@@ -5,79 +5,98 @@
     position: relative;
 
     figure {
-      transition: opacity 0.33s ease-in-out, transform 0.33s ease-in;
       left: 0;
       margin: 0;
       opacity: 0.67;
       position: absolute;
       top: 0;
 
-      &.before {
-        transform: rotate(0.5deg) translateX(-2%);
-
-        & + figure.before {
-          transform: rotate(1.5deg) translateX(-1%);
-        }
-      }
-
       &.active {
+        box-shadow: 0 3px 5px rgba($black, 0.33);
         opacity: 1;
         position: relative;
         z-index: 1;
       }
 
-      &.after {
-        transform: rotate(-1deg) translateX(1%);
-
-        & + figure.after {
-          transform: rotate(2deg) translateX(2%);
-        }
-      }
-
       img {
         border: 5px solid $white;
-        box-shadow: 0 3px 5px rgba($black, 0.33);
+        display: block;
       }
     }
   }
 
-  .toggles {
-    margin-top: 20px;
+  .controls {
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    margin-top: 5px;
     position: relative;
     text-align: center;
+    text-shadow: 0 1px 1px rgba($white, 0.5);
 
-    button {
-      color: transparent;
-      height: 15px;
-      position: relative;
-      width: 15px;
+    button[name="play"],
+    button[name="satellite"] {
+      color: darken($brown, 75%);
+      height: 20px;
+      margin: 0 15px;
+      overflow: hidden;
+      width: 20px;
+    }
 
-      &:before {
-        background: rgba($black, 0.5);
-        border-radius: 50%;
-        box-shadow: 0 1px 0 rgba($black, 0.5) inset, 0 1px 0 rgba($white, 0.5);
-        content: ' ';
-        height: 10px;
-        left: 50%;
-        margin: -5px 0 0 -5px;
-        overflow: hidden;
-        position: absolute;
-        top: 50%;
-        width: 10px;
-      }
+    button[name="play"] {
+      font-size: 14px;
+    }
 
-      &.active:after {
+    button[name="satellite"] {
+      border-radius: 50%;
+      font-size: 18px;
+
+      &.active {
         background: rgba($white, 0.5);
-        border-radius: 50%;
-        box-shadow: 0 1px 0 $white inset;
-        content: ' ';
-        height: 6px;
-        left: 50%;
-        margin: -3px 0 0 -3px;
-        overflow: hidden;
-        position: absolute;
-        top: 50%;
-        width: 6px;
+      }
+    }
+
+    .toggles {
+      border-left: 1px solid rgba($white, 0.25);
+      border-right: 1px solid rgba($black, 0.33);
+      box-shadow: -2px 0 0 -1px rgba($black, 0.33), 2px 0 0 -1px rgba($white, 0.25);
+      display: inline-block;
+      padding: 0 10px;
+
+      button[name="toggle"] {
+        color: transparent;
+        height: 20px;
+        position: relative;
+        text-shadow: none;
+        width: 20px;
+
+        &:before {
+          background: rgba($black, 0.5);
+          border-radius: 50%;
+          box-shadow: 0 1px 0 rgba($black, 0.5) inset, 0 1px 0 rgba($white, 0.5);
+          content: ' ';
+          height: 10px;
+          left: 50%;
+          margin: -5px 0 0 -5px;
+          overflow: hidden;
+          position: absolute;
+          top: 50%;
+          width: 10px;
+        }
+
+        &.active:after {
+          background: rgba($white, 0.5);
+          border-radius: 50%;
+          box-shadow: 0 1px 0 $white inset;
+          content: ' ';
+          height: 6px;
+          left: 50%;
+          margin: -3px 0 0 -3px;
+          overflow: hidden;
+          position: absolute;
+          top: 50%;
+          width: 6px;
+        }
       }
     }
   }
