@@ -13,5 +13,7 @@
     "underscore/underscore"
   ],
 
-  "libs": []
+  "libs": [
+    "node_modules/zooniverse/vendor/base64.js"
+  ]
 }
