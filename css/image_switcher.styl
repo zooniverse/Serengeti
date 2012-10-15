@@ -7,7 +7,7 @@
     figure {
       left: 0;
       margin: 0;
-      opacity: 0.67;
+      opacity: 0;
       position: absolute;
       top: 0;
 
@@ -16,6 +16,10 @@
         opacity: 1;
         position: relative;
         z-index: 1;
+
+        &.satellite {
+          position: absolute;
+        }
       }
 
       img {

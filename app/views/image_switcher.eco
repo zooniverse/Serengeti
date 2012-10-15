@@ -1,19 +1,33 @@
-<% translate = require 'lib/translate' %>
+<% translate = require 'lib/translate' %><% %>
+
 <div class="images">
-  <% for image in @location: %>
-    <figure><img src="<%= image %>" /></figure>
-  <% end %>
-  <figure class="satellite"><img src="<%= @satelliteImage() %>" /></figure>
+  <div class="subject-images">
+    <% for image in @location: %>
+      <figure><img src="<%= image %>" /></figure>
+    <% end %>
+  </div>
+  <!--<figure class="satellite"><img src="<%= @satelliteImage() %>" /></figure>-->
 </div>
 
 <div class="controls">
   <button name="play" title="<%= translate 'images.play' %>">&#9654;</button>
 
-  <span class="toggles">
+  <span class="toggles" tabindex="0">
     <% for image, i in @location: %>
       <button name="toggle" value="<%= i %>"><%= i + 1 %></button>
     <% end %>
   </span>
 
-  <button name="satellite" title="<%= translate 'images.satellite' %>">&#9873;</button>
+  <!--<button name="satellite" title="<%= translate 'images.satellite' %>">&#9873;</button>-->
+
+  <!--<span class="favorite">
+    <span class="not-signed-in">
+      <button name="sign-in"><%= translate 'images.notSignedIn' %></button>
+    </span>
+
+    <span class="signed-in">
+      <button name="favorite" title="<%= translate 'images.favorite' %>">&#9734;</button>
+      <button name="unfavorite" title="<%= translate 'images.unfavorite' %>">&#9733;</button>
+    </span>
+  </span>-->
 </div>
