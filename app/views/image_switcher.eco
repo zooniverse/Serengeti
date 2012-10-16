@@ -10,7 +10,10 @@
 </div>
 
 <div class="controls">
-  <button name="play" title="<%= translate 'images.play' %> [space]">&#9654;</button>
+  <span class="play">
+    <button name="play" title="<%= translate 'images.play' %> [space]">&#9654;</button>
+    <button name="pause" title="<%= translate 'images.pause' %> [space]">&#10073;&#10073;</button>
+  </span>
 
   <span class="toggles">
     <% for image, i in @subject.location: %>

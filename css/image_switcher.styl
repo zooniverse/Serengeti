@@ -2,6 +2,12 @@
   display: inline-block;
   float: left;
 
+  &:focus {
+    // For now, so Miller doesn't kill me.
+    // TODO: Make it clear that this is in focus.
+    outline: 0;
+  }
+
   .images {
     position: relative;
 
@@ -47,7 +53,10 @@
     text-shadow: 0 1px 1px rgba($white, 0.5);
 
     button[name="play"],
-    button[name="satellite"] {
+    button[name="pause"],
+    button[name="satellite"],
+    button[name="favorite"],
+    button[name="unfavorite"] {
       color: darken($brown, 75%);
       height: 20px;
       margin: 0 15px;
@@ -55,16 +64,14 @@
       width: 20px;
     }
 
-    button[name="play"] {
-      font-size: 14px;
-    }
+    .play {
+      button[name="play"],
+      button[name="pause"] {
+        font-size: 14px;
+      }
 
-    button[name="satellite"] {
-      border-radius: 50%;
-      font-size: 18px;
-
-      &.active {
-        background: rgba($white, 0.5);
+      button[name="pause"] {
+        display: none;
       }
     }
 
@@ -112,15 +119,19 @@
       }
     }
 
+    button[name="satellite"] {
+      border-radius: 50%;
+      font-size: 18px;
+
+      &.active {
+        background: rgba($white, 0.5);
+      }
+    }
+
     .sign-in {
       button[name="sign-in"] {
         standard-button();
-        // background: rgba($black, 0.5);
         font-size: 10px;
-
-        &:active {
-          // background: rgba($black, 0.67);
-        }
       }
     }
 
@@ -137,6 +148,16 @@
         display: none;
         text-shadow: 0 1px 1px $black;
       }
+    }
+  }
+
+  &.playing .controls .play {
+    button[name="play"] {
+      display: none;
+    }
+
+    button[name="pause"] {
+      display: inline-block;
     }
   }
 

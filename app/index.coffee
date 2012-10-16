@@ -48,14 +48,14 @@ $(window).one 'translate-init', ->
 User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
 
-host = if +window.location.port < 1024
+host = if +location.port < 1024
   'http://api.zooniverse.org'
 else
-  "#{window.location.protocol}//#{window.location.hostname}:3000"
+  "#{location.protocol}//#{location.hostname}:3000"
 
 Api.init {host}
 
-language = window.localStorage.language
+language = localStorage.language
 
 translate.init language, '$t'
 
