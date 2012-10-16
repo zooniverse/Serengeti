@@ -10,25 +10,27 @@
 </div>
 
 <div class="controls">
-  <span class="play">
-    <button name="play" title="<%= translate 'images.play' %> [space]">&#9654;</button>
-    <button name="pause" title="<%= translate 'images.pause' %> [space]">&#10073;&#10073;</button>
+  <span class="play group">
+    <button name="play" title="<%= translate 'images.play' %> [space]"><i class="play"><%= translate 'images.play' %></i></button>
+    <button name="pause" title="<%= translate 'images.pause' %> [space]"><i class="pause"><%= translate 'images.pause' %></i></button>
   </span>
 
-  <span class="toggles">
+  <span class="toggles group">
     <% for image, i in @subject.location: %>
       <button name="toggle" value="<%= i %>" title="[<%= i + 1 %>]"><%= i + 1 %></button>
     <% end %>
   </span>
 
-  <button name="satellite" title="<%= translate 'images.satellite' %> [M]">&#9873;</button>
+  <span class="satellite group">
+    <button name="satellite" title="<%= translate 'images.satellite' %> [M]"><i class="location"><%= translate 'images.satellite' %></i></button>
+  </span>
 
-  <span class="sign-in">
+  <span class="sign-in group">
     <button name="sign-in"><%= translate 'images.notSignedIn' %></button>
   </span>
 
-  <span class="favorite">
-    <button name="favorite" title="<%= translate 'images.favorite' %> [F]">&#9734;</button>
-    <button name="unfavorite" title="<%= translate 'images.unfavorite' %> [F]">&#9733;</button>
+  <span class="favorite group">
+    <button name="favorite" title="<%= translate 'images.favorite' %> [F]"><i class="star-empty"><%= translate 'images.favorite' %></i></button>
+    <button name="unfavorite" title="<%= translate 'images.unfavorite' %> [F]"><i class="star"><%= translate 'images.unfavorite' %></i></button>
   </span>
 </div>

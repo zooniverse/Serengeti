@@ -44,87 +44,79 @@
   }
 
   .controls {
-    font-size: 12px;
-    font-weight: bold;
+    color: darken($brown, 75%);
     line-height: 1;
     margin-top: 5px;
     position: relative;
     text-align: center;
     text-shadow: 0 1px 1px rgba($white, 0.5);
 
-    button[name="play"],
-    button[name="pause"],
-    button[name="satellite"],
-    button[name="favorite"],
-    button[name="unfavorite"] {
-      color: darken($brown, 75%);
-      height: 20px;
-      margin: 0 15px;
-      overflow: hidden;
-      width: 20px;
+    .group {
+      border-left: 1px solid rgba($white, 0.25);
+      box-shadow: -2px 0 0 -1px rgba($black, 0.33);
+      display: inline-block;
+      height: 1em;
+      margin-left: 10px;
+      padding-left: 10px;
+
+      &:first-child {
+        border-left: 0;
+        box-shadow: none;
+        margin-left: 0;
+        padding-left: 0;
+      }
     }
 
     .play {
-      button[name="play"],
-      button[name="pause"] {
-        font-size: 14px;
-      }
+      font-size: 14px;
 
       button[name="pause"] {
         display: none;
       }
     }
 
-    .toggles {
-      border-left: 1px solid rgba($white, 0.25);
-      border-right: 1px solid rgba($black, 0.33);
-      box-shadow: -2px 0 0 -1px rgba($black, 0.33), 2px 0 0 -1px rgba($white, 0.25);
-      display: inline-block;
-      padding: 0 10px;
+    button[name="toggle"] {
+      color: transparent;
+      height: 20px;
+      position: relative;
+      text-shadow: none;
+      width: 20px;
 
-      button[name="toggle"] {
-        color: transparent;
-        height: 20px;
-        position: relative;
-        text-shadow: none;
-        width: 20px;
+      &:before {
+        background: rgba($black, 0.5);
+        border-radius: 50%;
+        box-shadow: 0 1px 0 rgba($black, 0.5) inset, 0 1px 0 rgba($white, 0.5);
+        content: ' ';
+        height: 10px;
+        left: 50%;
+        margin: -5px 0 0 -5px;
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        width: 10px;
+      }
 
-        &:before {
-          background: rgba($black, 0.5);
-          border-radius: 50%;
-          box-shadow: 0 1px 0 rgba($black, 0.5) inset, 0 1px 0 rgba($white, 0.5);
-          content: ' ';
-          height: 10px;
-          left: 50%;
-          margin: -5px 0 0 -5px;
-          overflow: hidden;
-          position: absolute;
-          top: 50%;
-          width: 10px;
-        }
-
-        &.active:after {
-          background: rgba($white, 0.5);
-          border-radius: 50%;
-          box-shadow: 0 1px 0 $white inset;
-          content: ' ';
-          height: 6px;
-          left: 50%;
-          margin: -3px 0 0 -3px;
-          overflow: hidden;
-          position: absolute;
-          top: 50%;
-          width: 6px;
-        }
+      &.active:after {
+        background: rgba($white, 0.5);
+        border-radius: 50%;
+        box-shadow: 0 1px 0 $white inset;
+        content: ' ';
+        height: 6px;
+        left: 50%;
+        margin: -3px 0 0 -3px;
+        overflow: hidden;
+        position: absolute;
+        top: 50%;
+        width: 6px;
       }
     }
 
     button[name="satellite"] {
       border-radius: 50%;
-      font-size: 18px;
 
       &.active {
-        background: rgba($white, 0.5);
+        color $white;
+        text-shadow: 0 1px 1px $black;
       }
     }
 
@@ -140,7 +132,7 @@
 
       button[name="favorite"],
       button[name="unfavorite"] {
-        font-size: 24px;
+        font-size: 16px;
       }
 
       button[name="unfavorite"] {

@@ -62,6 +62,7 @@ class ImageSwitcher extends Controller
 
   onKeyDown: (e) =>
     return unless @el.is ':visible'
+    return if $(e.target).is 'a, button, input, textarea, select'
 
     isNumber = keys[0] <= e.which <= keys[9]
     return unless e.which in keys.values or isNumber
