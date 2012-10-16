@@ -2,11 +2,11 @@
 
 <div class="images">
   <div class="subject-images">
-    <% for image in @location: %>
+    <% for image, i in @location: %>
       <figure><img src="<%= image %>" /></figure>
     <% end %>
   </div>
-  <!--<figure class="satellite"><img src="<%= @satelliteImage() %>" /></figure>-->
+  <figure class="satellite"><img src="<%= @satelliteImage() %>" /></figure>
 </div>
 
 <div class="controls">
@@ -18,7 +18,7 @@
     <% end %>
   </span>
 
-  <!--<button name="satellite" title="<%= translate 'images.satellite' %>">&#9873;</button>-->
+  <button name="satellite" title="<%= translate 'images.satellite' %>">&#9873;</button>
 
   <!--<span class="favorite">
     <span class="not-signed-in">

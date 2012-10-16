@@ -44,10 +44,15 @@ $(window).one 'translate-init', ->
   # Simulate setting a subject.
   tutorialSubject.select()
 
-Api.init
-  host: +window.location.port >= 1024 && 'http://localhost:3000' || 'http://api.zooniverse.org'
+host = if +window.location.port < 1024
+  'http://api.zooniverse.org'
+else
+  'http://localhost:3000'
+
+Api.init {host}
 
 language = window.localStorage.language
+
 translate.init language, '$t'
 
 module.exports = app

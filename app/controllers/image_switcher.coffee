@@ -54,7 +54,10 @@ class ImageSwitcher extends Controller
       @activate @active + 1
 
   onClickSatellite: ->
-    @satelliteImage.toggleClass 'active'
+    isActive = @satelliteImage.hasClass 'active'
+
+    @satelliteImage.add(@satelliteToggle).toggleClass 'active', not isActive
+    @activate if isActive then @active else null
 
   play: ->
     # Flip the images back and forth a couple times.
@@ -68,14 +71,18 @@ class ImageSwitcher extends Controller
     for index, i in iterator then do (index, i) =>
       setTimeout (=> @activate index), i * 333
 
-  activate: (@active) ->
-    @active = modulus @active, @subject.location.length
+  activate: (active) ->
+    if active is null
+      active = -1
+    else
+      active = modulus +active, @subject.location.length
+      @active = active
 
     for image, i in @images
-      @setActiveClasses image, i, @active
+      @setActiveClasses image, i, active
 
     for button, i in @toggles
-      @setActiveClasses button, i, @active
+      @setActiveClasses button, i, active
 
   setActiveClasses: (el, elIndex, activeIndex) ->
     el = $(el)
