@@ -9,6 +9,7 @@ tutorialSubject = require 'lib/tutorial_subject'
 translate = require 'lib/translate'
 Api = require 'zooniverse/lib/api'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
+User = require 'zooniverse/lib/models/user'
 
 app = {}
 
@@ -43,6 +44,9 @@ $(window).one 'translate-init', ->
 
   # Simulate setting a subject.
   tutorialSubject.select()
+
+User.bind 'sign-in', ->
+  $('html').toggleClass 'signed-in', User.current?
 
 host = if +window.location.port < 1024
   'http://api.zooniverse.org'
