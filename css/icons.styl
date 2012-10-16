@@ -1,0 +1,51 @@
+@font-face {
+  font-family: "Icons";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fonts/icons.eot");
+  src: url("fonts/icons.eot?#iefix") format('embedded-opentype'), url("fonts/icons.woff") format('woff'), url("fonts/icons.ttf") format('truetype'), url("fonts/icons.svg#icons") format('svg');
+}
+
+
+i {
+  display: inline-block;
+  height: 1em;
+  line-height: 1em;
+  position: relative;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  width: 1em;
+
+  &:before {
+    font-family: Icons;
+    font-style: normal;
+    font-weight: normal;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  &.pause:before       {content: '\2389';}
+  &.stop:before        {content: '\25aa';}
+  &.play:before        {content: '\25b6';}
+  &.star:before        {content: '\2605';}
+  &.star-empty:before  {content: '\2606';}
+  &.heart-empty:before {content: '\2661';}
+  &.heart:before       {content: '\2665';}
+  &.flag:before        {content: '\2691';}
+  &.comment:before     {content: '\e718';}
+  &.chat:before        {content: '\e720';}
+  &.location:before    {content: '\e724';}
+  &.twitter:before     {content: '\f304';}
+  &.facebook:before    {content: '\f308';}
+  &.picture:before     {content: '🌄';}
+  &.thumbs-up:before   {content: '👍';}
+  &.thumbs-down:before {content: '👎';}
+  &.pin:before         {content: '📌';}
+}
