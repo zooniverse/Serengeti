@@ -2,7 +2,7 @@
 $ = require 'jqueryify'
 
 class Classification extends Model
-  @configure 'Classification', 'subject', 'annotations', 'metadata'
+  @configure 'Classification', 'subject', 'annotations', 'metadata', 'favorite'
 
   constructor: ->
     super
@@ -38,6 +38,7 @@ class Classification extends Model
     classification:
       subject_ids: [@subject.id]
       annotations: @annotations.concat metaAnnotations
+      favorite: @favorite
 
   url: ->
     "/projects/serengeti/workflows/#{@subject.workflowId}/classifications"

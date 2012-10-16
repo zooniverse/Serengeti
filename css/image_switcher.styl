@@ -105,11 +105,33 @@
     }
 
     .sign-in {
-      display: inline;
+      button[name="sign-in"] {
+        background: $black;
+        color: $white;
+      }
     }
 
     .favorite {
       display: none;
+
+      button[name="favorite"],
+      button[name="unfavorite"] {
+        font-size: 24px;
+      }
+
+      button[name="unfavorite"] {
+        display: none;
+      }
+    }
+  }
+
+  &.favorite .controls .favorite {
+    button[name="favorite"] {
+      display: none;
+    }
+
+    button[name="unfavorite"] {
+      display: inline-block;
     }
   }
 }

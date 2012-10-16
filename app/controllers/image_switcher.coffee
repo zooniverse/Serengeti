@@ -16,8 +16,8 @@ class ImageSwitcher extends Controller
     'click button[name="satellite"]': 'onClickSatellite'
     'keydown .toggles': 'onKeyDownToggles'
     # 'click button[name="sign-in"]': 'onClickSignIn'
-    # 'click button[name="favorite"]': 'onClickFavorite'
-    # 'click button[name="unfavorite"]': 'onClickUnfavorite'
+    'click button[name="favorite"]': 'onClickFavorite'
+    'click button[name="unfavorite"]': 'onClickUnfavorite'
 
   elements:
     '.subject-images figure': 'images'
@@ -29,13 +29,20 @@ class ImageSwitcher extends Controller
     super
     @setClassification @classification
 
-  setClassification: (@classification) ->
+  setClassification: (classification) ->
+    @classification?.unbind 'change', @onClassificationChange
+    @classification = classification
+
     if @classification
+      @classification.bind 'change', @onClassificationChange
       @active = Math.floor @classification.subject.location.length / 2
       @html template @classification
       @activate @active
     else
       @html ''
+
+  onClassificationChange: =>
+    @el.toggleClass 'favorite', @classification.favorite
 
   onClickPlay: ->
     @play()
@@ -65,10 +72,10 @@ class ImageSwitcher extends Controller
     console.log 'Clicked sign-in'
 
   onClickFavorite: ->
-    console.log 'Clicked favorite'
+    @classification.updateAttribute favorite: true
 
   onClickUnfavorite: ->
-    console.log 'Clicked unfavorite'
+    @classification.updateAttribute favorite: false
 
   play: ->
     # Flip the images back and forth a couple times.
