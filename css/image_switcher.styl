@@ -108,8 +108,13 @@
 
     .sign-in {
       button[name="sign-in"] {
-        background: $black;
-        color: $white;
+        standard-button();
+        // background: rgba($black, 0.5);
+        font-size: 10px;
+
+        &:active {
+          // background: rgba($black, 0.67);
+        }
       }
     }
 
