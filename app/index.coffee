@@ -51,7 +51,7 @@ User.bind 'sign-in', ->
 host = if +window.location.port < 1024
   'http://api.zooniverse.org'
 else
-  'http://localhost:3000'
+  "#{window.location.protocol}//#{window.location.hostname}:3000"
 
 Api.init {host}
 
