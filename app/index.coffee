@@ -12,21 +12,6 @@ TopBar = require 'zooniverse/lib/controllers/top_bar'
 
 app = {}
 
-class MainStack extends Stack
-  controllers:
-    home: class extends ContentPage then content: 'home.content'
-    about: class extends ContentPage then content: 'about.content'
-    classify: Classifier
-    team: class extends ContentPage then content: 'team.content'
-
-  routes:
-    '/home': 'home'
-    '/about': 'about'
-    '/classify': 'classify'
-    '/team': 'team'
-
-  default: 'home'
-
 $(window).one 'translate-init', ->
   $('.before-load').remove()
 
@@ -34,15 +19,30 @@ $(window).one 'translate-init', ->
     app: 'serengeti'
     appName: 'Serengeti'
 
-  app.topBar.el.prependTo 'body'
+  app.stack = new Stack
+    className: "main #{Stack::className}"
 
-  app.stack = new MainStack
-    el: '#main'
+    controllers:
+      home: class extends ContentPage then content: 'home.content'
+      about: class extends ContentPage then content: 'about.content'
+      classify: Classifier
+      team: class extends ContentPage then content: 'team.content'
+
+    routes:
+      '/home': 'home'
+      '/about': 'about'
+      '/classify': 'classify'
+      '/team': 'team'
+
+    default: 'home'
+
+  Route.setup()
+
+  app.topBar.el.prependTo 'body'
+  app.stack.el.appendTo 'body'
 
   # Simulate setting a subject.
   tutorialSubject.select()
-
-  Route.setup()
 
 Api.init
   host: +window.location.port >= 1024 && 'http://localhost:3000' || 'http://api.zooniverse.org'

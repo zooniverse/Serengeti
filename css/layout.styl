@@ -83,29 +83,29 @@ html {
         margin-left: -500px;
       }
     }
-  }
-}
 
-#main {
-  position: relative;
-  z-index: 1;
+    .main {
+      position: relative;
+      z-index: 1;
 
-  > * {
-    display: none;
+      > * {
+        display: none;
 
-    &.active {
-      display: block;
+        &.active {
+          display: block;
+        }
+      }
+
+      > .content-page {
+        paper-stripe();
+        background: $white;
+        box-shadow: 0 3px 10px $black;
+        color: $black;
+        margin: 0 auto;
+        padding: 33px 50px;
+        position: relative;
+        width: 700px;
+      }
     }
-  }
-
-  > .content-page {
-    paper-stripe();
-    background: $white;
-    box-shadow: 0 3px 10px $black;
-    color: $black;
-    margin: 0 auto;
-    padding: 33px 50px;
-    position: relative;
-    width: 700px;
   }
 }
