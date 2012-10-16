@@ -10,7 +10,7 @@ module.exports =
   images:
     notSignedIn: 'You\'re not signed in!'
     play: 'Play series'
-    satellite: 'Satellite'
+    satellite: 'Satellite view'
     favorite: 'Favorite'
     unfavorite: 'Unfavorite'
 

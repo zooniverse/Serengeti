@@ -11,10 +11,10 @@ class ImageSwitcher extends Controller
   className: 'image-switcher'
 
   events:
+    'keydown': 'onKeyDown'
     'click button[name="play"]': 'onClickPlay'
     'click button[name="toggle"]': 'onClickToggle'
     'click button[name="satellite"]': 'onClickSatellite'
-    'keydown .toggles': 'onKeyDownToggles'
     # 'click button[name="sign-in"]': 'onClickSignIn'
     'click button[name="favorite"]': 'onClickFavorite'
     'click button[name="unfavorite"]': 'onClickUnfavorite'
@@ -27,6 +27,7 @@ class ImageSwitcher extends Controller
 
   constructor: ->
     super
+    @el.attr tabindex: 0
     @setClassification @classification
 
   setClassification: (classification) ->
@@ -41,6 +42,30 @@ class ImageSwitcher extends Controller
     else
       @html ''
 
+  keys =
+    SPACE: 32
+    LEFT: 37
+    RIGHT: 39
+    F: 70
+    M: 77
+    0: 48
+    9: 57
+
+  keys.values = (value for key, value of keys)
+
+  onKeyDown: (e) ->
+    isNumber = keys[0] <= e.which <= keys[9]
+    return unless e.which in keys.values or isNumber
+
+    e.preventDefault()
+    switch e.which
+      when keys.SPACE then @play()
+      when keys.LEFT then @activate @active - 1
+      when keys.RIGHT then @activate @active + 1
+      when keys.F then @el.find('button[name$="favorite"]:visible').click()
+      when keys.M then @satelliteToggle.click()
+      else @activate e.which - 49
+
   onClassificationChange: =>
     @el.toggleClass 'favorite', !!@classification.favorite
 
@@ -50,17 +75,6 @@ class ImageSwitcher extends Controller
   onClickToggle: ({currentTarget}) =>
     selectedIndex = $(currentTarget).val()
     @activate selectedIndex
-
-  LEFT = 37
-  RIGHT = 39
-  onKeyDownToggles: (e) ->
-    return unless e.which in [LEFT, RIGHT]
-    e.preventDefault()
-
-    if e.which is LEFT
-      @activate @active - 1
-    else if e.which is RIGHT
-      @activate @active + 1
 
   onClickSatellite: ->
     @satelliteImage.add(@satelliteToggle).toggleClass 'active'

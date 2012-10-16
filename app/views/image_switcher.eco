@@ -10,22 +10,22 @@
 </div>
 
 <div class="controls">
-  <button name="play" title="<%= translate 'images.play' %>">&#9654;</button>
+  <button name="play" title="<%= translate 'images.play' %> [space]">&#9654;</button>
 
-  <span class="toggles" tabindex="0">
+  <span class="toggles">
     <% for image, i in @subject.location: %>
-      <button name="toggle" value="<%= i %>"><%= i + 1 %></button>
+      <button name="toggle" value="<%= i %>" title="[<%= i + 1 %>]"><%= i + 1 %></button>
     <% end %>
   </span>
 
-  <button name="satellite" title="<%= translate 'images.satellite' %>">&#9873;</button>
+  <button name="satellite" title="<%= translate 'images.satellite' %> [M]">&#9873;</button>
 
   <span class="sign-in">
     <button name="sign-in"><%= translate 'images.notSignedIn' %></button>
   </span>
 
   <span class="favorite">
-    <button name="favorite" title="<%= translate 'images.favorite' %>">&#9734;</button>
-    <button name="unfavorite" title="<%= translate 'images.unfavorite' %>">&#9733;</button>
+    <button name="favorite" title="<%= translate 'images.favorite' %> [F]">&#9734;</button>
+    <button name="unfavorite" title="<%= translate 'images.unfavorite' %> [F]">&#9733;</button>
   </span>
 </div>
