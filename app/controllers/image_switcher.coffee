@@ -42,7 +42,7 @@ class ImageSwitcher extends Controller
       @html ''
 
   onClassificationChange: =>
-    @el.toggleClass 'favorite', @classification.favorite
+    @el.toggleClass 'favorite', !!@classification.favorite
 
   onClickPlay: ->
     @play()
@@ -63,10 +63,7 @@ class ImageSwitcher extends Controller
       @activate @active + 1
 
   onClickSatellite: ->
-    isActive = @satelliteImage.hasClass 'active'
-
-    @satelliteImage.add(@satelliteToggle).toggleClass 'active', not isActive
-    @activate if isActive then @active else null
+    @satelliteImage.add(@satelliteToggle).toggleClass 'active'
 
   onClickSignIn: ->
     console.log 'Clicked sign-in'
@@ -89,18 +86,16 @@ class ImageSwitcher extends Controller
     for index, i in iterator then do (index, i) =>
       setTimeout (=> @activate index), i * 333
 
-  activate: (active) ->
-    if active is null
-      active = -1
-    else
-      active = modulus +active, @classification.subject.location.length
-      @active = active
+  activate: (@active) ->
+    @satelliteImage.add(@satelliteToggle).removeClass 'active'
+
+    @active = modulus +@active, @classification.subject.location.length
 
     for image, i in @images
-      @setActiveClasses image, i, active
+      @setActiveClasses image, i, @active
 
     for button, i in @toggles
-      @setActiveClasses button, i, active
+      @setActiveClasses button, i, @active
 
   setActiveClasses: (el, elIndex, activeIndex) ->
     el = $(el)
