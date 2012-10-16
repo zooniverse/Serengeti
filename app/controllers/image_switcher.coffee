@@ -5,7 +5,7 @@ $ = require 'jqueryify'
 modulus = (a, b) -> ((a % b) + b) % b
 
 class ImageSwitcher extends Controller
-  subject: null
+  classification: null
   active: NaN
 
   className: 'image-switcher'
@@ -27,14 +27,13 @@ class ImageSwitcher extends Controller
 
   constructor: ->
     super
-    @setSubject @subject
+    @setClassification @classification
 
-  setSubject: (@subject) ->
-    if @subject
-      @active = Math.floor @subject.location.length / 2
-      @html template @subject
+  setClassification: (@classification) ->
+    if @classification
+      @active = Math.floor @classification.subject.location.length / 2
+      @html template @classification
       @activate @active
-      $()
     else
       @html ''
 
@@ -73,12 +72,12 @@ class ImageSwitcher extends Controller
 
   play: ->
     # Flip the images back and forth a couple times.
-    last = @subject.location.length - 1
+    last = @classification.subject.location.length - 1
     iterator = [0...last].concat [last...0]
     iterator = iterator.concat [0...last].concat [last...0]
 
     # End half way through.
-    iterator = iterator.concat [0...Math.floor(@subject.location.length / 2) + 1]
+    iterator = iterator.concat [0...Math.floor(@classification.subject.location.length / 2) + 1]
 
     for index, i in iterator then do (index, i) =>
       setTimeout (=> @activate index), i * 333
@@ -87,7 +86,7 @@ class ImageSwitcher extends Controller
     if active is null
       active = -1
     else
-      active = modulus +active, @subject.location.length
+      active = modulus +active, @classification.subject.location.length
       @active = active
 
     for image, i in @images

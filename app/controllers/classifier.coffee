@@ -32,7 +32,7 @@ class Classifier extends Controller
 
   onSubjectSelect: (@subject) =>
     @classification = new Classification {@subject}
-    @imageSwitcher.setSubject @subject
+    @imageSwitcher.setClassification @classification
     @animalSelector.setClassification @classification
 
 module.exports = Classifier
