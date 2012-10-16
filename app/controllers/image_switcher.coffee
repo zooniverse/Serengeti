@@ -69,10 +69,10 @@ class ImageSwitcher extends Controller
     console.log 'Clicked sign-in'
 
   onClickFavorite: ->
-    @classification.updateAttribute favorite: true
+    @classification.updateAttribute 'favorite', true
 
   onClickUnfavorite: ->
-    @classification.updateAttribute favorite: false
+    @classification.updateAttribute 'favorite', false
 
   play: ->
     # Flip the images back and forth a couple times.
