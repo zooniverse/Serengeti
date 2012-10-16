@@ -1,15 +1,21 @@
 .image-switcher {
   display: inline-block;
+  float: left;
 
   .images {
     position: relative;
 
     figure {
+      border: 5px solid $white;
+      box-sizing: border-box;
+      height: 410px;
       left: 0;
       margin: 0;
       opacity: 0;
+      overflow: hidden;
       position: absolute;
       top: 0;
+      width: 580px;
 
       &.active {
         box-shadow: 0 3px 5px rgba($black, 0.33);
@@ -25,8 +31,8 @@
       }
 
       img {
-        border: 5px solid $white;
         display: block;
+        width: 100%;
       }
     }
   }
