@@ -15,6 +15,9 @@ class ImageSwitcher extends Controller
     'click button[name="toggle"]': 'onClickToggle'
     'click button[name="satellite"]': 'onClickSatellite'
     'keydown .toggles': 'onKeyDownToggles'
+    # 'click button[name="sign-in"]': 'onClickSignIn'
+    # 'click button[name="favorite"]': 'onClickFavorite'
+    # 'click button[name="unfavorite"]': 'onClickUnfavorite'
 
   elements:
     '.subject-images figure': 'images'
@@ -58,6 +61,15 @@ class ImageSwitcher extends Controller
 
     @satelliteImage.add(@satelliteToggle).toggleClass 'active', not isActive
     @activate if isActive then @active else null
+
+  onClickSignIn: ->
+    console.log 'Clicked sign-in'
+
+  onClickFavorite: ->
+    console.log 'Clicked favorite'
+
+  onClickUnfavorite: ->
+    console.log 'Clicked unfavorite'
 
   play: ->
     # Flip the images back and forth a couple times.

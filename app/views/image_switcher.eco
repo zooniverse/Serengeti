@@ -20,14 +20,12 @@
 
   <button name="satellite" title="<%= translate 'images.satellite' %>">&#9873;</button>
 
-  <!--<span class="favorite">
-    <span class="not-signed-in">
-      <button name="sign-in"><%= translate 'images.notSignedIn' %></button>
-    </span>
+  <span class="sign-in">
+    <button name="sign-in"><%= translate 'images.notSignedIn' %></button>
+  </span>
 
-    <span class="signed-in">
-      <button name="favorite" title="<%= translate 'images.favorite' %>">&#9734;</button>
-      <button name="unfavorite" title="<%= translate 'images.unfavorite' %>">&#9733;</button>
-    </span>
-  </span>-->
+  <span class="favorite">
+    <button name="favorite" title="<%= translate 'images.favorite' %>">&#9734;</button>
+    <button name="unfavorite" title="<%= translate 'images.unfavorite' %>">&#9733;</button>
+  </span>
 </div>
