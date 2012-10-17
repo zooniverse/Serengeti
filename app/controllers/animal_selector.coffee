@@ -1,6 +1,7 @@
 {Controller} = require 'spine'
 template = require 'views/animal_selector'
 FilterMenu = require './filter_menu'
+columnize = require 'lib/columnize'
 AnimalDetails = require './animal_details'
 
 class AnimalSelector extends Controller
@@ -54,14 +55,30 @@ class AnimalSelector extends Controller
     @classification?.annotate filters: options, true
 
     matchIds = (match.id for match in matches)
-    for item in @items
-      item = $(item)
-      item.toggleClass 'hidden', item.attr('data-animal') not in matchIds
 
     breakpoints = [20, 10, 5, 0]
     breakpoint = point for point in breakpoints when matches.length <= point
     @itemsContainer.attr 'data-items': breakpoint ? 'gt20'
     @itemsContainer.toggleClass 'safari-hack'
+
+    columns = switch breakpoint
+      when 0, 5 then 1
+      when 10, 20 then 2
+      else 3
+
+    sortedItems = matchIds.map (id) =>
+      @itemsContainer.find "[data-animal='#{id}']"
+
+    sortedItems = columnize sortedItems, columns
+
+    for item in sortedItems
+      item.appendTo item.parent()
+
+    for item in @items
+      item = $(item)
+      item.toggleClass 'hidden', item.attr('data-animal') not in matchIds
+
+    @items
 
   onSetSearch: (matches, searchString) =>
     @classification?.annotate search: searchString, true
