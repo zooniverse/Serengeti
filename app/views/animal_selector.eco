@@ -1,3 +1,5 @@
+<% translate = require 'lib/translate' %>
+
 <div class="characteristic-filters">
   <div class="pattern filter-menu"></div>
   <div class="coat filter-menu"></div>
@@ -22,8 +24,8 @@
 
     <div class="none">
       <p>
-        <%= $t 'nothingToShow' %>
-        <button name="clear-filters"><%= $t 'clearFilters' %></button>
+        <%= translate 'nothingToShow' %>
+        <button name="clear-filters"><%= translate 'clearFilters' %></button>
       </p>
     </div>
   </div>

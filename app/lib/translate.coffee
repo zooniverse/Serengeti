@@ -11,9 +11,8 @@ translate = (keys...) ->
 
   reference
 
-translate.init = (language = null, global) ->
+translate.init = (language = null) ->
   # TODO: Load the new language and modify the "strings" variable (if language).
-  window[global] = translate if global
   $(window).trigger 'translate-init'
 
 module.exports = translate

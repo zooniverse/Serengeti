@@ -1,3 +1,5 @@
+<% translate = require 'lib/translate' %>
+
 <div class="images">
   <% for image in @images: %>
     <img src="<%= image %>" />
@@ -12,24 +14,24 @@
 <div class="options">
   <p>
     <select name="count">
-      <option value=""><%= $t 'count' %></option>
+      <option value=""><%= translate 'count' %></option>
       <% for count in ['1', '2-5', '6-10', '11-20', '20+']: %>
-        <option value="<%= count %>"><%= $t 'counts', count %></option>
+        <option value="<%= count %>"><%= translate 'counts', count %></option>
       <% end %>
     </select>
 
     <br />
 
     <select name="behavior">
-      <option value=""><%= $t 'behavior' %></option>
+      <option value=""><%= translate 'behavior' %></option>
       <% for behavior in ['sleeping', 'playing', 'eating']: %>
-        <option value="<%= behavior %>"><%= $t 'behaviors', behavior %></option>
+        <option value="<%= behavior %>"><%= translate 'behaviors', behavior %></option>
       <% end %>
     </select>
   </p>
 </div>
 
 <div class="action">
-  <button name="cancel"><%= $t 'cancel' %></button>
-  <button name="identify"><%= $t 'identify' %></button>
+  <button name="cancel"><%= translate 'cancel' %></button>
+  <button name="identify"><%= translate 'identify' %></button>
 </div>

@@ -57,6 +57,6 @@ Api.init {host}
 
 language = localStorage.language
 
-translate.init language, '$t'
+translate.init language
 
 module.exports = app
