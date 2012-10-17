@@ -1,0 +1,7 @@
+<% translate = require 'lib/translate' %><% %>
+
+<span class="species"><%= translate 'animals', @species.id, 'label' %></span>
+<span class="count">(<%= translate 'counts', @count %>)</span>
+<span class="behavior"><%= translate 'behaviors', @behavior %></span>
+
+<button name="delete" title="<%= translate 'images.deleteAnnotation' %>">&times;</button>

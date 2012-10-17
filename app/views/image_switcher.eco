@@ -1,4 +1,4 @@
-<% translate = require 'lib/translate' %><% %>
+<% translate = require 'lib/translate' %>
 
 <div class="images">
   <div class="subject-images">
@@ -6,7 +6,10 @@
       <figure><img src="<%= image %>" /></figure>
     <% end %>
   </div>
+
   <figure class="satellite"><img src="<%= @subject.satelliteImage() %>" /></figure>
+
+  <div class="annotations"></div>
 </div>
 
 <div class="controls">

@@ -14,6 +14,8 @@ module.exports =
     satellite: 'Satellite view'
     favorite: 'Favorite'
     unfavorite: 'Unfavorite'
+    deleteAnnotation: 'Delete'
+
 
   animals:
     aardvark:

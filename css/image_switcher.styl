@@ -41,6 +41,35 @@
         width: 100%;
       }
     }
+
+    .annotations {
+      color: $white;
+      font-size: 12px;
+      font-weight: bold;
+      position: absolute;
+      right: 10px;
+      text-align: right;
+      text-shadow: 0 0 1px $black, 0 0 1px $black, 0 0 1px $black, 0 0 2px $black, 0 0 2px $black;
+      top: 10px;
+      z-index: 1;
+
+      .annotation-item {
+        border-radius: 20px;
+        padding: 0 5px 0 10px;
+
+        &:hover {
+          background: rgba($black, 0.75);
+        }
+
+        button[name="delete"] {
+          border-radius: 50%;
+          height: 1em;
+          line-height: 1em;
+          text-align: center;
+          width: 1em;
+        }
+      }
+    }
   }
 
   .controls {

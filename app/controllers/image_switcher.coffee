@@ -1,5 +1,6 @@
 {Controller} = require 'spine'
 template = require 'views/image_switcher'
+AnnotationItem = require './annotation_item'
 $ = require 'jqueryify'
 
 modulus = (a, b) -> ((a % b) + b) % b
@@ -24,6 +25,7 @@ class ImageSwitcher extends Controller
   elements:
     '.subject-images figure': 'images'
     'figure.satellite': 'satelliteImage'
+    '.annotations': 'annotationsContainer'
     '.toggles button': 'toggles'
     'button[name="satellite"]': 'satelliteToggle'
 
@@ -39,12 +41,16 @@ class ImageSwitcher extends Controller
 
   setClassification: (classification) ->
     @classification?.unbind 'change', @onClassificationChange
+    @classification?.unbind 'add-species', @onClassificationAddSpecies
     @classification = classification
 
     if @classification
       @classification.bind 'change', @onClassificationChange
-      @active = Math.floor @classification.subject.location.length / 2
+      @classification.bind 'add-species', @onClassificationAddSpecies
+
       @html template @classification
+
+      @active = Math.floor @classification.subject.location.length / 2
       @activate @active
     else
       @html ''
@@ -78,6 +84,11 @@ class ImageSwitcher extends Controller
 
   onClassificationChange: =>
     @el.toggleClass 'favorite', !!@classification.favorite
+
+  onClassificationAddSpecies: (classification, annotation) =>
+    item = new AnnotationItem {@classification, annotation}
+    item.el.appendTo @annotationsContainer
+    console.log 'Added species', annotation
 
   onClickPlay: ->
     @play()

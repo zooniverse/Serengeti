@@ -9,7 +9,7 @@ class Classification extends Model
     @annotations ||= []
     @metadata ||= {}
 
-    setTimeout =>
+    if @annotations.length < 2 then setTimeout =>
       @annotations.push agent: window.navigator.userAgent
       @annotations.push started: (new Date).toUTCString()
 
