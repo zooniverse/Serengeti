@@ -16,15 +16,15 @@
   </span>
 
   <span class="favorite">
-    <button name="favorite" title="<%= translate 'images.favorite' %> [F]"><i class="heart-empty"><%= translate 'images.favorite' %></i></button>
-    <button name="unfavorite" title="<%= translate 'images.unfavorite' %> [F]"><i class="heart"><%= translate 'images.unfavorite' %></i></button>
+    <button name="favorite" title="<%= translate 'images.favorite' %> [F]"><i rel="heart-empty"><%= translate 'images.favorite' %></i></button>
+    <button name="unfavorite" title="<%= translate 'images.unfavorite' %> [F]"><i rel="heart"><%= translate 'images.unfavorite' %></i></button>
   </span>
 </div>
 
 <div class="controls">
   <span class="play group">
-    <button name="play" title="<%= translate 'images.play' %> [space]"><i class="play"><%= translate 'images.play' %></i></button>
-    <button name="pause" title="<%= translate 'images.pause' %> [space]"><i class="pause"><%= translate 'images.pause' %></i></button>
+    <button name="play" title="<%= translate 'images.play' %> [space]"><i rel="play"><%= translate 'images.play' %></i></button>
+    <button name="pause" title="<%= translate 'images.pause' %> [space]"><i rel="pause"><%= translate 'images.pause' %></i></button>
   </span>
 
   <span class="toggles group">
@@ -34,6 +34,6 @@
   </span>
 
   <span class="satellite group">
-    <button name="satellite" title="<%= translate 'images.satellite' %> [M]"><i class="location"><%= translate 'images.satellite' %></i></button>
+    <button name="satellite" title="<%= translate 'images.satellite' %> [M]"><i rel="location"><%= translate 'images.satellite' %></i></button>
   </span>
 </div>

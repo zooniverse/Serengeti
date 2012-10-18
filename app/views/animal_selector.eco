@@ -10,7 +10,10 @@
 
 <div class="selection-area">
   <div class="general-filters">
-    <input name="search" />
+    <span class="search">
+      <i rel="search">Search</i>
+      <input name="search" />
+    </span>
     <div class="like filter-menu"></div>
   </div>
 

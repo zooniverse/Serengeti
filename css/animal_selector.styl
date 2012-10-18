@@ -128,19 +128,33 @@
       position: relative;
       text-align: left;
 
-      input[name="search"] {
-        appearance: none;
-        background: $black;
-        border: 2px solid rgba($gray, 0.5);
-        border-radius: 20px;
-        box-sizing: border-box;
-        color: $white;
-        font-family: inherit;
-        font-size: 12px;
-        height: 20px;
+      .search {
+        display: inline-block;
         margin-top: 15px;
-        padding: 0 10px 0 20px;
-        width: 160px;
+        position: relative;
+
+        > i[rel="search"] {
+          font-size: 12px;
+          left: 7px;
+          position: absolute;
+          top: 4px;
+          z-index: 1;
+        }
+
+        input[name="search"] {
+          appearance: none;
+          background: $black;
+          border: 2px solid rgba($gray, 0.5);
+          border-radius: 20px;
+          box-sizing: border-box;
+          color: $white;
+          font-family: inherit;
+          font-size: 12px;
+          height: 20px;
+          padding: 0 10px 0 20px;
+          vertical-align: top;
+          width: 160px;
+        }
       }
 
       .filter-menu {
