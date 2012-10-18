@@ -88,7 +88,6 @@ class ImageSwitcher extends Controller
   onClassificationAddSpecies: (classification, annotation) =>
     item = new AnnotationItem {@classification, annotation}
     item.el.appendTo @annotationsContainer
-    console.log 'Added species', annotation
 
   onClickPlay: ->
     @play()
@@ -104,7 +103,7 @@ class ImageSwitcher extends Controller
     @satelliteImage.add(@satelliteToggle).toggleClass 'active'
 
   onClickSignIn: ->
-    console.log 'Clicked sign-in'
+    # console.log 'Clicked sign-in'
 
   onClickFavorite: ->
     @classification.updateAttribute 'favorite', true
