@@ -1,14 +1,8 @@
 columnize = (array, columns) ->
-  untouchedLength = array.length
-
-  sorted = []
-
-  while array.length > 0
-    sorted.push array.shift()
-    per = Math.floor array.length / columns
-    array = array.splice(per).concat array
-    console.log per, sorted, array
-
-  sorted
+  until array.length is 0
+    item = array.shift()
+    perColumn = Math.floor array.length / columns
+    array = array.splice(perColumn).concat array
+    item
 
 module.exports = columnize
