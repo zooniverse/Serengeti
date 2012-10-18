@@ -10,6 +10,15 @@
   <figure class="satellite"><img src="<%= @subject.satelliteImage() %>" /></figure>
 
   <div class="annotations"></div>
+
+  <span class="sign-in">
+    <button name="sign-in"><%= translate 'images.notSignedIn' %></button>
+  </span>
+
+  <span class="favorite">
+    <button name="favorite" title="<%= translate 'images.favorite' %> [F]"><i class="heart-empty"><%= translate 'images.favorite' %></i></button>
+    <button name="unfavorite" title="<%= translate 'images.unfavorite' %> [F]"><i class="heart"><%= translate 'images.unfavorite' %></i></button>
+  </span>
 </div>
 
 <div class="controls">
@@ -26,14 +35,5 @@
 
   <span class="satellite group">
     <button name="satellite" title="<%= translate 'images.satellite' %> [M]"><i class="location"><%= translate 'images.satellite' %></i></button>
-  </span>
-
-  <span class="sign-in group">
-    <button name="sign-in"><%= translate 'images.notSignedIn' %></button>
-  </span>
-
-  <span class="favorite group">
-    <button name="favorite" title="<%= translate 'images.favorite' %> [F]"><i class="star-empty"><%= translate 'images.favorite' %></i></button>
-    <button name="unfavorite" title="<%= translate 'images.unfavorite' %> [F]"><i class="star"><%= translate 'images.unfavorite' %></i></button>
   </span>
 </div>

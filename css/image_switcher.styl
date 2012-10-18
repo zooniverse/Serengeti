@@ -44,17 +44,23 @@
 
     .annotations {
       color: $white;
-      font-size: 12px;
+      font-size: 10px;
       font-weight: bold;
+      opacity: 0.75;
       position: absolute;
-      right: 10px;
-      text-align: right;
+      left: 10px;
       text-shadow: 0 0 1px $black, 0 0 1px $black, 0 0 1px $black, 0 0 2px $black, 0 0 2px $black;
       top: 10px;
       z-index: 1;
 
+      &:hover {
+        opacity: 1;
+      }
+
       .annotation-item {
         border-radius: 20px;
+        clear: left;
+        float: left;
         padding: 0 5px 0 10px;
 
         &:hover {
@@ -68,6 +74,87 @@
           text-align: center;
           width: 1em;
         }
+      }
+    }
+
+    .sign-in,
+    .favorite {
+      background: $red;
+      box-shadow: 0 1px 1px $black;
+      color: $white;
+      font-size: 12px;
+      font-weight: bold;
+      position: absolute;
+      transition: padding 0.25s ease-out;
+      z-index: 1;
+
+      > button {
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    .sign-in {
+      padding: 0 10px;
+      right: -3px;
+      top: 10px;
+
+      &:hover {
+        padding-right: 15px;
+      }
+
+      &:before,
+      &:after {
+        border: 10px solid transparent;
+        content: "";
+        position: absolute;
+        left: -10px;
+      }
+
+      &:before {
+        border-top-color: $red;
+        top: 0;
+      }
+
+      &:after {
+        border-bottom-color: $red;
+        bottom: 0;
+      }
+    }
+
+    .favorite {
+      display: none;
+      font-size: 16px;
+      padding: 5px 5px 0;
+      right: 10px;
+      top: -3px;
+
+      &:hover {
+        padding-top: 10px;
+      }
+
+      &:before,
+      &:after {
+        border: 15px solid transparent;
+        content: "";
+        position: absolute;
+        bottom: -15px;
+      }
+
+      &:before {
+        border-left-color: $red;
+        left: 0;
+      }
+
+      &:after {
+        border-right-color: $red;
+        right: 0;
+      }
+
+      button[name="unfavorite"] {
+        color: $gold;
+        display: none;
+        text-shadow: 0 1px 1px $black;
       }
     }
   }
@@ -148,28 +235,6 @@
         text-shadow: 0 1px 1px $black;
       }
     }
-
-    .sign-in {
-      button[name="sign-in"] {
-        standard-button();
-        font-size: 10px;
-      }
-    }
-
-    .favorite {
-      display: none;
-
-      button[name="favorite"],
-      button[name="unfavorite"] {
-        font-size: 16px;
-      }
-
-      button[name="unfavorite"] {
-        color: $gold;
-        display: none;
-        text-shadow: 0 1px 1px $black;
-      }
-    }
   }
 
   &.playing .controls .play {
@@ -182,7 +247,7 @@
     }
   }
 
-  &.favorite .controls .favorite {
+  &.favorite .images .favorite {
     button[name="favorite"] {
       display: none;
     }
@@ -193,7 +258,7 @@
   }
 }
 
-.signed-in .image-switcher .controls {
+.signed-in .image-switcher .images {
   .sign-in {
     display: none;
   }
