@@ -1,20 +1,14 @@
 columnize = (array, columns) ->
-  square = array.length + (columns - (columns % array.length))
-  perColumn = Math.ceil square / columns
+  untouchedLength = array.length
 
-  rowed = for i in [0...columns]
-    start = i * perColumn
-    array[start...start + perColumn]
+  sorted = []
 
-  columned = for i in [0...perColumn]
-    for column in [0...columns]
-      rowed[column][i]
+  while array.length > 0
+    sorted.push array.shift()
+    per = Math.floor array.length / columns
+    array = array.splice(per).concat array
+    console.log per, sorted, array
 
-  flattened = []
-
-  for column in columned then for item in column when item?
-    flattened.push item
-
-  flattened
+  sorted
 
 module.exports = columnize
