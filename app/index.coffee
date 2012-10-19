@@ -4,6 +4,7 @@ $ = require 'jqueryify'
 {Stack} = require 'spine/lib/manager'
 Route = require 'spine/lib/route'
 ContentPage = require 'controllers/content_page'
+HomePage = require 'controllers/home_page'
 Classifier = require 'controllers/classifier'
 tutorialSubject = require 'lib/tutorial_subject'
 translate = require 'lib/translate'
@@ -24,7 +25,7 @@ $(window).one 'translate-init', ->
     className: "main #{Stack::className}"
 
     controllers:
-      home: class extends ContentPage then content: 'home.content'
+      home: HomePage
       about: class extends ContentPage then content: 'about.content'
       classify: Classifier
       team: class extends ContentPage then content: 'team.content'

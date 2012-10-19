@@ -7,6 +7,14 @@ module.exports =
     discuss: 'Discuss'
     blog: 'Blog'
 
+  home:
+    heading: 'Welcome to the Serengeti Project'
+    content: '''
+      Researchers in the Serengeti need your help classifying the animals spotted by their camera traps.
+      There are over 40 different species on camera, and you have the chance to see them all!
+    '''
+    action: 'Start classifying'
+
   images:
     notSignedIn: 'You\'re not signed in!'
     play: 'Play series'
@@ -273,6 +281,5 @@ module.exports =
 
   clearFilters: 'Clear filters'
 
-  home: content: 'This is the home page!'
   about: content: 'This is the about page!'
   team: content: 'This is the team page!'

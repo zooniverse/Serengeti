@@ -1,0 +1,64 @@
+.home-page {
+  clearfix();
+  color: $white;
+  margin: 0 auto;
+  text-align: center;
+  width: 1000px;
+
+  .recents {
+    float: left;
+    height: 450px;
+    vertical-align: middle;
+    width: 600px;
+
+    figure {
+      border: 5px solid $white;
+      box-sizing: border-box;
+      height: 420px;
+      margin: 0;
+      overflow: hidden;
+      position: absolute;
+      width: 600px;
+
+      & + figure {
+        transform: rotate(2deg) translateX(10px);
+
+        & + figure {
+          transform: rotate(-3deg) translateX(-15px);
+        }
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+    }
+  }
+
+  .introduction {
+    float: left;
+    font-size: 14px;
+    margin: 50px;
+    text-align: left;
+    text-shadow: 0 1px 1px $black;
+    vertical-align: middle;
+    width: 300px;
+
+    h1 {
+      font-weight: normal;
+    }
+
+    hr {
+      height: 0;
+      border: 1px solid transparent;
+      border-top-color: rgba($black, 0.5);
+      border-bottom-color: rgba($white, 0.25);
+    }
+
+    a.action {
+      standard-button();
+      background: $red;
+      padding: 5px 25px;
+    }
+  }
+}
