@@ -19,11 +19,15 @@
         border-radius: 1em;
         color: inherit;
         padding: 0 15px 2px;
+        position: relative;
         text-decoration: none;
 
         &.active {
-          background: rgba($black, 0.25);
-          box-shadow: 0 1px 2px rgba($black, 0.5) inset, 0 -1px 0px rgba($white, 0.25) inset;
+          outer-deboss: 0;
+
+          &:before {
+            border-radius: 1em;
+          }
         }
       }
     }
@@ -78,11 +82,11 @@
 
       button[name="load-more"] {
         standard-button();
-        outer-deboss();
         border-radius: 50%;
         font-size: 30px;
         height: 35px;
         line-height: 1;
+        outer-deboss: 5px;
         padding: 0;
         width: 35px;
 

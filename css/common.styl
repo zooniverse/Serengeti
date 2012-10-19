@@ -27,8 +27,8 @@ paper-stripe() {
   }
 }
 
-standard-button() {
-  background: $green-dark;
+standard-button($color = $green-dark) {
+  background: $color;
   border: 1px solid rgba($black, 0.5);
   border-radius: 2px;
   box-shadow: 0px 1px 0px rgba($white, 0.125) inset, 0 1px 3px rgba($black, 0.75);
@@ -44,43 +44,31 @@ standard-button() {
   vertical-align: middle;
 
   &:hover {
-    standard-button-hover();
+    border-color: $black;
   }
 
   &:active {
-    standard-button-active();
+    background: darken($color, 25%);
+    box-shadow: 0 1px 0 rgba($black, 0.25) inset;
   }
 
   &:disabled,
   &.disabled {
-    standard-button-disabled();
+    opacity: 0.5;
   }
 }
 
-standard-button-hover() {
-  border-color: $black;
-}
-
-standard-button-active() {
-  background: darken($green-dark, 25%);
-  box-shadow: 0 1px 0 rgba($black, 0.25) inset;
-}
-
-standard-button-disabled() {
-  opacity: 0.5;
-}
-
-outer-deboss() {
+outer-deboss($distance) {
   &:before {
     background: rgba($black, 0.25);
-    border-radius: 5px;
+    border-radius: $distance;
     box-shadow: 0 1px 2px rgba($black, 0.5) inset, 0 -1px 0px rgba($white, 0.25) inset;
     content: "";
     height: 100%;
-    left: -5px;
-    padding: 5px 5px 6px;
+    left: 0 - $distance;
+    padding: $distance $distance ($distance + 1);
     position: absolute;
-    top: -5px;
+    top: 0 - $distance;
     width: 100%;
     z-index: -1;
   }
