@@ -26,8 +26,7 @@
     <hr />
 
     <p class="more">
-      <%= translate 'profile.showing' %> <span class="showing">0</span>/<span class="total">0</span>
-      <button name="load-more" value="favorites"><%= translate 'profile.loadMore' %></button>
+      <button name="load-more" value="favorites" title="<%= translate 'profile.loadMore' %>">+</button>
     </p>
   </div>
 
@@ -47,8 +46,7 @@
     <hr />
 
     <p class="more">
-      <%= translate 'profile.showing' %> <span class="showing">0</span>/<span class="total">0</span>
-      <button name="load-more" value="favorites"><%= translate 'profile.loadMore' %></button>
+      <button name="load-more" value="recents" title="<%= translate 'profile.loadMore' %>">+</button>
     </p>
   </div>
 </div>

@@ -69,3 +69,19 @@ standard-button-active() {
 standard-button-disabled() {
   opacity: 0.5;
 }
+
+outer-deboss() {
+  &:before {
+    background: rgba($black, 0.25);
+    border-radius: 5px;
+    box-shadow: 0 1px 2px rgba($black, 0.5) inset, 0 -1px 0px rgba($white, 0.25) inset;
+    content: "";
+    height: 100%;
+    left: -5px;
+    padding: 5px 5px 6px;
+    position: absolute;
+    top: -5px;
+    width: 100%;
+    z-index: -1;
+  }
+}

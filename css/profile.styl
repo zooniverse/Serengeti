@@ -39,13 +39,8 @@
       p {
         clear: left;
 
-        &.none {
-          font-weight: bold;
-          text-align: center;
-        }
-
+        &.none,
         &.more {
-          font-size: 12px;
           font-weight: bold;
           text-align: center;
         }
@@ -83,9 +78,17 @@
 
       button[name="load-more"] {
         standard-button();
-        font-size: 10px;
-        margin-left: 10px;
-        padding: 0 10px;
+        outer-deboss();
+        border-radius: 50%;
+        font-size: 30px;
+        height: 35px;
+        line-height: 1;
+        padding: 0;
+        width: 35px;
+
+        &:before {
+          border-radius: 50%;
+        }
       }
     }
   }
