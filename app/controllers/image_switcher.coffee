@@ -2,8 +2,7 @@
 template = require 'views/image_switcher'
 AnnotationItem = require './annotation_item'
 $ = require 'jqueryify'
-
-modulus = (a, b) -> ((a % b) + b) % b
+modulus = require 'lib/modulus'
 
 class ImageSwitcher extends Controller
   classification: null

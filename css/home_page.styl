@@ -13,12 +13,21 @@
 
     figure {
       border: 5px solid $white;
+      box-shadow: 0 3px 5px $black;
       box-sizing: border-box;
       height: 420px;
       margin: 0;
+      opacity: 0.75;
       overflow: hidden;
       position: absolute;
+      transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
       width: 600px;
+
+      &.active {
+        z-index: 1;
+        opacity: 1;
+        transform: none;
+      }
 
       & + figure {
         transform: rotate(2deg) translateX(10px);
