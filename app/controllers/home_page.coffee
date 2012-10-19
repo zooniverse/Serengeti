@@ -16,6 +16,7 @@ class HomePage extends Controller
 
   activate: ->
     super
+    @rotate();
     # @autoRotate()
 
   autoRotate: =>
