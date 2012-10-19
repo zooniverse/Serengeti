@@ -49,7 +49,7 @@ User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
 
 host = if +location.port < 1024
-  'http://api.zooniverse.org'
+  'https://api.zooniverse.org'
 else
   "#{location.protocol}//#{location.hostname}:3000"
 
