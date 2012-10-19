@@ -10,8 +10,8 @@ class Profile extends Controller
   elements:
     'nav button': 'navButtons'
     '.page': 'pages'
-    '.favorites': 'favoritesList'
-    '.recents': 'recentsList'
+    '.favorites ul': 'favoritesList'
+    '.recents ul': 'recentsList'
 
   constructor: ->
     super

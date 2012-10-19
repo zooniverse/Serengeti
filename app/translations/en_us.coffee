@@ -282,6 +282,10 @@ module.exports =
   profile:
     favorites: 'Favorites'
     recents: 'Recents'
+    noFavorites: 'You have no favorites!'
+    noRecents: 'You have no recent classifications!'
+    showing: 'Showing'
+    loadMore: 'Load more'
 
   about: content: 'This is the about page!'
   team: content: 'This is the team page!'

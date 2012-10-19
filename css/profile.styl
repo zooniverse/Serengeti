@@ -1,57 +1,102 @@
 .profile {
-  color: $white;
   margin: 0 auto;
-  text-shadow: 0 1px 1px $black;
   width: 1000px;
 
-  nav {
-    button {
-      border-radius: 1em;
-      color: inherit;
-      margin-right: 10px;
-      padding: 0 15px 2px;
-      text-decoration: none;
-
-      &.active {
-        background: rgba($black, 0.1);
-        box-shadow: 0 1px 1px rgba($black, 0.5) inset, 0 -1px 1px rgba($white, 0.25) inset;
-      }
-    }
+  .sign-in {
+    // TODO
   }
 
-  .page {
-    clearfix();
-    margin-left: -10px;
-    margin-right: -10px;
-    padding: 0;
-    text-align: center;
+  .user-profile {
+    color: $black;
     display: none;
+    text-shadow: 0 1px 0 rgba($white, 0.5);
 
-    &.active {
-      display: block;
-    }
+    nav {
+      color: $white;
+      text-shadow: 0 1px 1px $black;
 
-    li {
-      display: block;
-      float: left;
+      button {
+        border-radius: 1em;
+        color: inherit;
+        padding: 0 15px 2px;
+        text-decoration: none;
 
-      a {
-        display: block;
-        margin: 10px;
-
-        figure {
-          border: 5px solid $white;
-          box-shadow: 0 2px 5px $black;
-          box-sizing: border-box;
-          margin: 0;
-          width: 235px;
-
-          img {
-            display: block;
-            width: 100%;
-          }
+        &.active {
+          background: rgba($black, 0.25);
+          box-shadow: 0 1px 2px rgba($black, 0.5) inset, 0 -1px 0px rgba($white, 0.25) inset;
         }
       }
     }
+
+    .page {
+      clearfix();
+      display: none;
+
+      &.active {
+        display: block;
+      }
+
+      p {
+        clear: left;
+
+        &.none {
+          font-weight: bold;
+          text-align: center;
+        }
+
+        &.more {
+          font-size: 12px;
+          font-weight: bold;
+          text-align: center;
+        }
+      }
+
+      ul {
+        clearfix();
+        margin-left: -10px;
+        margin-right: -10px;
+        padding: 0;
+
+        li {
+          display: block;
+          float: left;
+
+          a {
+            display: block;
+            margin: 10px;
+
+            figure {
+              border: 5px solid $white;
+              box-shadow: 0 2px 5px $black;
+              box-sizing: border-box;
+              margin: 0;
+              width: 235px;
+
+              img {
+                display: block;
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+
+      button[name="load-more"] {
+        standard-button();
+        font-size: 10px;
+        margin-left: 10px;
+        padding: 0 10px;
+      }
+    }
+  }
+}
+
+.signed-in .profile {
+  .sign-in {
+    display: none;
+  }
+
+  .user-profile {
+    display: block;
   }
 }

@@ -1,28 +1,54 @@
 <% translate = require 'lib/translate' %>
 
-<nav>
-  <button name="turn-page" value="favorites"><%= translate 'profile.favorites' %></button>
-  <button name="turn-page" value="recents"><%= translate 'profile.recents' %></button>
-</nav>
+<div class="sign-in">
+  <p>TODO: Sign-in form</p>
+</div>
 
-<ul class="favorites page">
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-</ul>
+<div class="user-profile">
+  <nav>
+    <button name="turn-page" value="favorites"><%= translate 'profile.favorites' %></button>
+    <button name="turn-page" value="recents"><%= translate 'profile.recents' %></button>
+  </nav>
 
-<ul class="recents page">
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-</ul>
+  <div class="favorites page">
+    <p class="none"><%= translate 'profile.noFavorites' %></p>
+  <!--   <ul>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+    </ul>
+   -->
+    <hr />
+
+    <p class="more">
+      <%= translate 'profile.showing' %> <span class="showing">0</span>/<span class="total">0</span>
+      <button name="load-more" value="favorites"><%= translate 'profile.loadMore' %></button>
+    </p>
+  </div>
+
+  <div class="recents page">
+    <p class="none"><%= translate 'profile.noRecents' %></p>
+  <!--   <ul>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+    </ul>
+   -->
+    <hr />
+
+    <p class="more">
+      <%= translate 'profile.showing' %> <span class="showing">0</span>/<span class="total">0</span>
+      <button name="load-more" value="favorites"><%= translate 'profile.loadMore' %></button>
+    </p>
+  </div>
+</div>
