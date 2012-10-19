@@ -8,7 +8,7 @@ module.exports =
     blog: 'Blog'
 
   home:
-    heading: 'Welcome to the Serengeti Project'
+    heading: 'Welcome to Snapshot Serengeti'
     content: '''
       Researchers in the Serengeti need your help classifying the animals spotted by their camera traps.
       There are over 40 different species on camera, and you have the chance to see them all!
