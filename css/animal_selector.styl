@@ -10,27 +10,125 @@
   position: relative;
   width: 405px;
 
-  .filter-menu {
-    button[name="characteristic"] {
-      &:after {
-        border: 3px solid transparent;
-        border-top-color: $white;
-        content: '';
-        height: 0;
-        margin-top: -2px;
+  .general-filters {
+    background: rgba($black, 0.33);
+    border-radius: 3px;
+    box-shadow: 0 2px 3px rgba($black, 0.5) inset;
+    box-sizing: border-box;
+    height: 50px;
+    padding: 10px 5px;
+    position: relative;
+    text-align: left;
+
+    .filter-menu {
+      font-size: 14px;
+      line-height: 30px;
+      position: absolute;
+      text-align: center;
+      z-index: 1;
+
+      button[name="characteristic"] {
+        padding: 0 10px;
+        position: relative;
+        text-align: left;
+        text-shadow: 0 1px 1px $black;
+        width: 110px;
+
+        &:hover {
+          box-shadow: 0 0 0 1px rgba($white, 0.5) inset;
+        }
+
+        &:after {
+          border: 4px solid transparent;
+          border-top-color: $white;
+          content: "";
+          height: 0;
+          margin-top: -2px;
+          position: absolute;
+          right: 5px;
+          top: 50%;
+          width: 0;
+        }
+      }
+
+      .menu {
+        background: $white;
+        box-shadow: 0 2px 3px $black;
+        color: $green-dark;
+        font-size: 12px;
+        overflow: hidden;
+        padding-top: 2px;
+        right: 0;
+        top: 100%;
+        white-space: nowrap;
+        z-index: 1;
+
+        button {
+          border-top: 1px solid $gray;
+          display: block;
+          padding: 0 10px;
+          width: 110px;
+
+          &:hover {
+            background: $green;
+            color: $white;
+          }
+
+          img {
+            display: none;
+          }
+        }
+
+        &.hidden {
+          display: none;
+        }
+      }
+
+      &.open {
+        button[name="characteristic"] {
+          background: $white;
+          border-bottom: 1px solid $gray;
+          color: $green-dark;
+          text-shadow: none;
+        }
+      }
+    }
+
+    .search {
+      display: inline-block;
+      float: right;
+      margin: 5px 5px 0 0;
+      position: relative;
+
+      i[rel="search"] {
+        font-size: 12px;
+        left: 7px;
         position: absolute;
-        right: 5px;
-        top: 50%;
-        width: 0;
+        top: 4px;
+        z-index: 1;
+      }
+
+      input[name="search"] {
+        appearance: none;
+        background: $black;
+        border: 2px solid rgba($gray, 0.5);
+        border-radius: 20px;
+        box-sizing: border-box;
+        color: $white;
+        font-family: inherit;
+        font-size: 12px;
+        height: 20px;
+        padding: 0 10px 0 20px;
+        vertical-align: top;
+        width: 160px;
       }
     }
   }
 
   .characteristic-filters {
     clearfix();
-    height: 30px;
+    padding: 5px 0;
     position: relative;
-    z-index: 2;
 
     .filter-menu {
       box-sizing: border-box;
@@ -48,7 +146,6 @@
         font-size: 12px;
         font-weight: bold;
         height: 22px;
-        overflow: hidden;
         padding: 0;
         position: relative;
         text-overflow: ellipsis;
@@ -59,15 +156,15 @@
       .menu {
         background: lighten($green, 0.33);
         border: 1px solid $black;
-        border-top: 0;
+        bottom: 100%;
         box-sizing: border-box;
         height: 50px;
         left: 0;
         opacity: 1;
         overflow: hidden;
         position: absolute;
-        top: 100%;
         width: 100%;
+        z-index: 1;
 
         &.hidden {
           display: none;
@@ -104,10 +201,18 @@
 
       &.open button[name="characteristic"] {
         background: lighten($green, 0.33);
-        border-bottom: 0;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        height: 30px;
+
+        &:after {
+          border: 6px solid transparent;
+          border-bottom-color: lighten($green, 0.33);
+          bottom: 100%;
+          content: "";
+          height: 0;
+          margin: 0 0 -1px -6px;
+          position: absolute;
+          left: 50%;
+          width: 0;
+        }
       }
 
       &.in-use button[name="characteristic"] {
@@ -120,107 +225,6 @@
     background: rgba($black, 0.33);
     border-radius: 3px;
     box-shadow: 0 2px 3px rgba($black, 0.5) inset;
-
-    .general-filters {
-      border-bottom: 1px solid $green-dark;
-      height: 50px;
-      padding: 0 10px;
-      position: relative;
-      text-align: left;
-
-      .search {
-        display: inline-block;
-        margin-top: 15px;
-        position: relative;
-
-        > i[rel="search"] {
-          font-size: 12px;
-          left: 7px;
-          position: absolute;
-          top: 4px;
-          z-index: 1;
-        }
-
-        input[name="search"] {
-          appearance: none;
-          background: $black;
-          border: 2px solid rgba($gray, 0.5);
-          border-radius: 20px;
-          box-sizing: border-box;
-          color: $white;
-          font-family: inherit;
-          font-size: 12px;
-          height: 20px;
-          padding: 0 10px 0 20px;
-          vertical-align: top;
-          width: 160px;
-        }
-      }
-
-      .filter-menu {
-        font-size: 14px;
-        line-height: 2;
-        position: absolute;
-        right: 10px;
-        text-align: center;
-        top: 13px;
-        z-index: 1;
-
-        button[name="characteristic"] {
-          padding: 0 10px;
-          position: relative;
-          width: 110px;
-
-          &:hover {
-            box-shadow: 0 0 0 1px rgba($white, 0.5) inset;
-          }
-        }
-
-        .menu {
-          background: $white;
-          color: $green-dark;
-          font-size: 12px;
-          overflow: hidden;
-          padding-top: 2px;
-          right: 0;
-          top: 100%;
-          white-space: nowrap;
-          z-index: 1;
-
-          button {
-            border-top: 1px solid $gray;
-            display: block;
-            padding: 0 10px;
-            width: 110px;
-
-            &:hover {
-              background: $green;
-              color: $white;
-            }
-
-            img {
-              display: none;
-            }
-          }
-
-          &.hidden {
-            display: none;
-          }
-        }
-
-        &.open {
-          button[name="characteristic"] {
-            background: $white;
-            border-bottom: 1px solid $gray;
-            color: $green-dark;
-
-            &:after {
-              border-top-color: rgba($green-dark, 0.67);
-            }
-          }
-        }
-      }
-    }
 
     .items {
       clearfix();

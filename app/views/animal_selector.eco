@@ -1,5 +1,14 @@
 <% translate = require 'lib/translate' %>
 
+<div class="general-filters">
+  <div class="like filter-menu"></div>
+
+  <span class="search">
+    <i rel="search">Search</i>
+    <input name="search" />
+  </span>
+</div>
+
 <div class="characteristic-filters">
   <div class="pattern filter-menu"></div>
   <div class="coat filter-menu"></div>
@@ -9,14 +18,6 @@
 </div>
 
 <div class="selection-area">
-  <div class="general-filters">
-    <span class="search">
-      <i rel="search">Search</i>
-      <input name="search" />
-    </span>
-    <div class="like filter-menu"></div>
-  </div>
-
   <div class="items">
     <% for animal in @set.items: %>
       <div data-animal="<%= animal.id %>" tabindex="0">
