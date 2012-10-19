@@ -24,7 +24,6 @@ module.exports =
     unfavorite: 'Unfavorite'
     deleteAnnotation: 'Delete'
 
-
   animals:
     aardvark:
       label: 'Aardvark'
@@ -210,7 +209,6 @@ module.exports =
       label: 'Zebra'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
-
   characteristics:
     like: 'Looks like'
     pattern: 'Pattern'
@@ -280,6 +278,10 @@ module.exports =
   nothingToShow: 'There\'s nothing to show with these filters.'
 
   clearFilters: 'Clear filters'
+
+  profile:
+    favorites: 'Favorites'
+    recents: 'Recents'
 
   about: content: 'This is the about page!'
   team: content: 'This is the team page!'

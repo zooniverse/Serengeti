@@ -6,6 +6,7 @@ Route = require 'spine/lib/route'
 ContentPage = require 'controllers/content_page'
 HomePage = require 'controllers/home_page'
 Classifier = require 'controllers/classifier'
+Profile = require 'controllers/profile'
 tutorialSubject = require 'lib/tutorial_subject'
 translate = require 'lib/translate'
 Api = require 'zooniverse/lib/api'
@@ -28,13 +29,13 @@ $(window).one 'translate-init', ->
       home: HomePage
       about: class extends ContentPage then content: 'about.content'
       classify: Classifier
-      team: class extends ContentPage then content: 'team.content'
+      profile: Profile
 
     routes:
       '/home': 'home'
       '/about': 'about'
       '/classify': 'classify'
-      '/team': 'team'
+      '/profile': 'profile'
 
     default: 'home'
 

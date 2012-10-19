@@ -1,0 +1,57 @@
+.profile {
+  color: $white;
+  margin: 0 auto;
+  text-shadow: 0 1px 1px $black;
+  width: 1000px;
+
+  nav {
+    button {
+      border-radius: 1em;
+      color: inherit;
+      margin-right: 10px;
+      padding: 0 15px 2px;
+      text-decoration: none;
+
+      &.active {
+        background: rgba($black, 0.1);
+        box-shadow: 0 1px 1px rgba($black, 0.5) inset, 0 -1px 1px rgba($white, 0.25) inset;
+      }
+    }
+  }
+
+  .page {
+    clearfix();
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 0;
+    text-align: center;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    li {
+      display: block;
+      float: left;
+
+      a {
+        display: block;
+        margin: 10px;
+
+        figure {
+          border: 5px solid $white;
+          box-shadow: 0 2px 5px $black;
+          box-sizing: border-box;
+          margin: 0;
+          width: 235px;
+
+          img {
+            display: block;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

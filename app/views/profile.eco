@@ -1,0 +1,28 @@
+<% translate = require 'lib/translate' %>
+
+<nav>
+  <button name="turn-page" value="favorites"><%= translate 'profile.favorites' %></button>
+  <button name="turn-page" value="recents"><%= translate 'profile.recents' %></button>
+</nav>
+
+<ul class="favorites page">
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+</ul>
+
+<ul class="recents page">
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+  <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+</ul>
