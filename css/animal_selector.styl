@@ -25,15 +25,12 @@
       font-size: 14px;
       line-height: 30px;
       position: absolute;
-      text-align: center;
       z-index: 1;
 
       button[name="characteristic"] {
-        padding: 0 10px;
+        padding: 0 20px 0 10px;
         position: relative;
-        text-align: left;
         text-shadow: 0 1px 1px $black;
-        width: 110px;
 
         &:hover {
           box-shadow: 0 0 0 1px rgba($white, 0.5) inset;
@@ -60,17 +57,20 @@
         overflow: hidden;
         padding-top: 2px;
         right: 0;
+        text-align: center;
         top: 100%;
         white-space: nowrap;
         z-index: 1;
 
         button {
           border-top: 1px solid $gray;
+          box-sizing: border-box;
           display: block;
+          min-width: 100%;
           padding: 0 10px;
-          width: 110px;
 
-          &:hover {
+          &:hover,
+          &.selected {
             background: $green;
             color: $white;
           }
