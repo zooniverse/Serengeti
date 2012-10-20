@@ -49,7 +49,7 @@ class ImageSwitcher extends Controller
 
       @html template @classification
 
-      @active = Math.floor @classification.subject.location.length / 2
+      @active = Math.floor @classification.subject.location.standard.length / 2
       @activate @active
     else
       @html ''
@@ -112,12 +112,12 @@ class ImageSwitcher extends Controller
 
   play: ->
     # Flip the images back and forth a couple times.
-    last = @classification.subject.location.length - 1
+    last = @classification.subject.location.standard.length - 1
     iterator = [0...last].concat [last...0]
     iterator = iterator.concat [0...last].concat [last...0]
 
     # End half way through.
-    iterator = iterator.concat [0...Math.floor(@classification.subject.location.length / 2) + 1]
+    iterator = iterator.concat [0...Math.floor(@classification.subject.location.standard.length / 2) + 1]
 
     @el.addClass 'playing'
 
@@ -134,7 +134,7 @@ class ImageSwitcher extends Controller
   activate: (@active) ->
     @satelliteImage.add(@satelliteToggle).removeClass 'active'
 
-    @active = modulus +@active, @classification.subject.location.length
+    @active = modulus +@active, @classification.subject.location.standard.length
 
     for image, i in @images
       @setActiveClasses image, i, @active

@@ -2,7 +2,7 @@
 
 <div class="images">
   <div class="subject-images">
-    <% for image, i in @subject.location: %>
+    <% for image, i in @subject.location.standard: %>
       <figure><img src="<%= image %>" /></figure>
     <% end %>
   </div>
@@ -28,7 +28,7 @@
   </span>
 
   <span class="toggles group">
-    <% for image, i in @subject.location: %>
+    <% for image, i in @subject.location.standard: %>
       <button name="toggle" value="<%= i %>" title="[<%= i + 1 %>]"><%= i + 1 %></button>
     <% end %>
   </span>
