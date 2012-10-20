@@ -12,17 +12,17 @@
 
   <div class="favorites page">
     <p class="none"><%= translate 'profile.noFavorites' %></p>
-  <!--   <ul>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
+    <ul>
+      <li class="new"><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
+      <li class="new"><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
+      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
     </ul>
-   -->
+
     <hr />
 
     <p class="more">
