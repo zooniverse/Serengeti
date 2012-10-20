@@ -102,7 +102,7 @@ class AnimalSelector extends Controller
 
   select: (animal) ->
     details = new AnimalDetails {animal, @classification}
-    @itemsContainer.append details.el
+    @el.append details.el
     setTimeout details.show, 125
 
   onClickClearFilters: ->
