@@ -1,5 +1,8 @@
 {Model} = require 'spine'
 $ = require 'jqueryify'
+Api = require 'zooniverse/lib/api'
+Favorite = require 'zooniverse/lib/models/favorite'
+Recent = require 'zooniverse/lib/models/recent'
 
 class Classification extends Model
   @configure 'Classification', 'subject', 'annotations', 'metadata', 'favorite'
@@ -44,6 +47,10 @@ class Classification extends Model
     "/projects/serengeti/workflows/#{@subject.workflowId}/classifications"
 
   send: ->
-    # Api.post @url(), @toJSON(), arguments...
+    @trigger 'send'
+    Api.post(@url(), @toJSON(), arguments...).deferred
+
+    Recent.create subjects: [@subject]
+    Favorite.create subjects: [@subject] if @favorite
 
 module.exports = Classification

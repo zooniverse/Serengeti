@@ -12,6 +12,8 @@
     "zooniverse/lib/api",
     "zooniverse/lib/controllers/top_bar",
     "zooniverse/lib/models/user",
+    "zooniverse/lib/models/recent",
+    "zooniverse/lib/models/favorite",
     "underscore/underscore"
   ],
 

@@ -7,7 +7,6 @@ ContentPage = require 'controllers/content_page'
 HomePage = require 'controllers/home_page'
 Classifier = require 'controllers/classifier'
 Profile = require 'controllers/profile'
-tutorialSubject = require 'lib/tutorial_subject'
 translate = require 'lib/translate'
 Api = require 'zooniverse/lib/api'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
@@ -43,9 +42,6 @@ $(window).one 'translate-init', ->
 
   app.topBar.el.prependTo 'body'
   app.stack.el.appendTo 'body'
-
-  # Simulate setting a subject.
-  tutorialSubject.select()
 
 User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
