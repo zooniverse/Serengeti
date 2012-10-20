@@ -12,41 +12,21 @@
 
   <div class="favorites page">
     <p class="none"><%= translate 'profile.noFavorites' %></p>
-    <ul>
-      <li class="new"><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
-      <li class="new"><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a><button name="delete">&times;</button></li>
-    </ul>
-
+    <ul></ul>
     <hr />
 
     <p class="more">
-      <button name="load-more" value="favorites" title="<%= translate 'profile.loadMore' %>">+</button>
+      <button name="load-more" value="favorite" disabled="disabled" title="<%= translate 'profile.loadMore' %>">+</button>
     </p>
   </div>
 
   <div class="recents page">
     <p class="none"><%= translate 'profile.noRecents' %></p>
-  <!--   <ul>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-      <li><a href="#"><figure><img src="//placehold.it/640x480.png" /></figure></a></li>
-    </ul>
-   -->
+    <ul></ul>
     <hr />
 
     <p class="more">
-      <button name="load-more" value="recents" title="<%= translate 'profile.loadMore' %>">+</button>
+      <button name="load-more" value="recent" disabled="disabled" title="<%= translate 'profile.loadMore' %>">+</button>
     </p>
   </div>
 </div>

@@ -38,7 +38,6 @@ class Subject extends Model
     fetcher = new $.Deferred
 
     Api.get "/projects/serengeti/subjects?limit=#{count}", (rawSubjects) =>
-      console?.info "Got #{rawSubjects.length} new subjects!", rawSubjects
       fetcher.resolve (@fromJSON rawSubject for rawSubject in rawSubjects)
 
     fetcher.promise()

@@ -1,0 +1,13 @@
+<% Subject = require 'models/subject' %>
+<% Favorite = require 'zooniverse/lib/models/favorite' %>
+<% translate = require 'lib/translate' %>
+
+<li data-item="<%= @id %>">
+  <a href="<%= Subject.talkHref @subjects.zooniverseId || @subjects.zooniverse_id %>">
+    <figure><img src="<%= @subjects.location.standard[0] %>" /></figure>
+  </a>
+
+  <% if @ instanceof Favorite: %>
+    <button name="delete" value="<%= @id %>">&times;</button>
+  <% end %>
+</li>

@@ -20,6 +20,7 @@ class ImageSwitcher extends Controller
     'click button[name="sign-in"]': 'onClickSignIn'
     'click button[name="favorite"]': 'onClickFavorite'
     'click button[name="unfavorite"]': 'onClickUnfavorite'
+    'click button[name="next"]': 'onClickNext'
 
   elements:
     '.subject-images figure': 'images'
@@ -27,6 +28,7 @@ class ImageSwitcher extends Controller
     '.annotations': 'annotationsContainer'
     '.toggles button': 'toggles'
     'button[name="satellite"]': 'satelliteToggle'
+    'button[name="next"]': 'nextButton'
 
   constructor: ->
     super
@@ -42,6 +44,7 @@ class ImageSwitcher extends Controller
     @classification?.unbind 'change', @onClassificationChange
     @classification?.unbind 'add-species', @onClassificationAddSpecies
     @classification = classification
+    @nextButton.attr disabled: false
 
     if @classification
       @classification.bind 'change', @onClassificationChange
@@ -51,6 +54,8 @@ class ImageSwitcher extends Controller
 
       @active = Math.floor @classification.subject.location.standard.length / 2
       @activate @active
+
+      @onClassificationChange()
     else
       @html ''
 
@@ -109,6 +114,10 @@ class ImageSwitcher extends Controller
 
   onClickUnfavorite: ->
     @classification.updateAttribute 'favorite', false
+
+  onClickNext: ->
+    @classification.send()
+    @nextButton.attr disabled: true
 
   play: ->
     # Flip the images back and forth a couple times.

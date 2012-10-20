@@ -36,4 +36,6 @@
   <span class="satellite group">
     <button name="satellite" title="<%= translate 'images.satellite' %> [M]"><i rel="location"><%= translate 'images.satellite' %></i></button>
   </span>
+
+  <button name="next">NEXT</button><!--Temporary-->
 </div>

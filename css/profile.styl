@@ -61,6 +61,7 @@
           display: block;
           float: left;
           margin: 10px;
+          position: relative;
 
           a {
             display: block;
@@ -126,14 +127,22 @@
       }
     }
   }
-}
 
-.signed-in .profile {
-  .sign-in {
+  &.signed-in {
+    .sign-in {
+      display: none;
+    }
+
+    .user-profile {
+      display: block;
+    }
+  }
+
+  &.has-favorites .favorites .none {
     display: none;
   }
 
-  .user-profile {
-    display: block;
+  &.has-recents .recents .none {
+    display: none;
   }
 }

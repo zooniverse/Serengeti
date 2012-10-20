@@ -50,7 +50,12 @@ class Classification extends Model
     @trigger 'send'
     Api.post(@url(), @toJSON(), arguments...).deferred
 
-    Recent.create subjects: [@subject]
-    Favorite.create subjects: [@subject] if @favorite
+    recent = Recent.create subjects: @subject
+    favorite = Favorite.create subjects: @subject if @favorite
+
+    favoriteSend = favorite.send().deferred
+    favoriteSend.done ->
+      favorite.trigger 'send'
+      favorite.trigger 'is-new'
 
 module.exports = Classification
