@@ -1,9 +1,7 @@
 <% translate = require 'lib/translate' %>
 
 <div class="recents">
-  <figure><img src="images/tutorial-subject/PICT0518.JPG" /></figure>
-  <figure><img src="images/tutorial-subject/PICT0519.JPG" /></figure>
-  <figure><img src="images/tutorial-subject/PICT0520.JPG" /></figure>
+  <div class="image-changer"></div>
 </div>
 
 <div class="introduction">

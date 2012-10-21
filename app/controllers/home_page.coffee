@@ -1,6 +1,6 @@
 {Controller} = require 'spine'
 template = require 'views/home_page'
-modulus = require 'lib/modulus'
+ImageChanger = require './image_changer'
 
 class HomePage extends Controller
   className: 'home-page'
@@ -14,18 +14,12 @@ class HomePage extends Controller
     super
     @html template
 
-  activate: ->
-    super
-    @rotate();
-    # @autoRotate()
-
-  autoRotate: =>
-    @rotate()
-    setTimeout @autoRotate, 2000 if @el.is ':visible'
-
-  rotate: ->
-    @activeRecent = modulus @activeRecent + 1, @recents.length
-    @recents.removeClass 'active'
-    @recents.eq(@activeRecent).addClass 'active'
+    @imageChanger = new ImageChanger
+      el: @el.find '.recents .image-changer'
+      sources: [
+        '//placehold.it/600x400.png'
+        '//placehold.it/600x400.png'
+        '//placehold.it/600x400.png'
+      ]
 
 module.exports = HomePage
