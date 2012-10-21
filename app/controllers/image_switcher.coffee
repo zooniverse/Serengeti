@@ -107,7 +107,7 @@ class ImageSwitcher extends Controller
     @satelliteImage.add(@satelliteToggle).toggleClass 'active'
 
   onClickSignIn: ->
-    # console.log 'Clicked sign-in'
+    $(window).trigger 'request-login-dialog'
 
   onClickFavorite: ->
     @classification.updateAttribute 'favorite', true

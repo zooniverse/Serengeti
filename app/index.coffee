@@ -21,6 +21,11 @@ $(window).one 'translate-init', ->
     app: 'serengeti'
     appName: 'Serengeti'
 
+  $(window).on 'request-login-dialog', ->
+    app.topBar.onClickSignUp()
+    app.topBar.loginForm.signInButton.click()
+    app.topBar.loginDialog.reattach()
+
   app.stack = new Stack
     className: "main #{Stack::className}"
 
