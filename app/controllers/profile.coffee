@@ -1,5 +1,6 @@
 {Controller} = require 'spine'
 template = require 'views/profile'
+LoginForm = require 'zooniverse/lib/controllers/login_form'
 User = require 'zooniverse/lib/models/user'
 Favorite = require 'zooniverse/lib/models/favorite'
 Recent = require 'zooniverse/lib/models/recent'
@@ -16,6 +17,7 @@ class Profile extends Controller
     'click button[name="load-more"]': 'onClickLoadMore'
 
   elements:
+    '.sign-in': 'signInContainer'
     'nav button': 'navButtons'
     '.page': 'pages'
     '.favorites ul': 'favoritesList'
@@ -25,6 +27,7 @@ class Profile extends Controller
     super
 
     @html template
+    @loginForm = new LoginForm el: @signInContainer
 
     User.bind 'sign-in', @onUserSignIn
 

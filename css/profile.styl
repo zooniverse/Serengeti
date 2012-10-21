@@ -2,8 +2,50 @@
   margin: 0 auto;
   width: 1000px;
 
-  .sign-in {
-    // TODO
+  .zooniverse-login-form {
+    color: $white
+    font-size: 12px;
+    margin: 0 auto;
+    outer-deboss: 15px;
+    padding: 10px 0;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 1px $black
+    width: 360px;
+
+    .title {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    form {
+      label {
+        display: block;
+        margin: 15px 0;
+
+        > span {
+          display: block;
+        }
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 20em;
+      }
+
+      button {
+        standard-button();
+        font-weight: bold;
+      }
+    }
+
+    .picker {
+      margin-top: 20px;
+
+      button {
+        text-decoration: underline;
+      }
+    }
   }
 
   .user-profile {
