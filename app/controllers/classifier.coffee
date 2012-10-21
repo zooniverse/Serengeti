@@ -1,4 +1,5 @@
 {Controller} = require 'spine'
+$ = require 'jqueryify'
 SubjectViewer = require './subject_viewer'
 AnimalSelector = require './animal_selector'
 animals = require 'lib/animals'
@@ -17,6 +18,8 @@ class Classifier extends Controller
   className: 'classifier'
 
   tutorial: null
+
+  subject: null
   classification: null
 
   constructor: ->
@@ -39,7 +42,12 @@ class Classifier extends Controller
     Subject.bind 'select', @onSubjectSelect
     User.bind 'sign-in', @onUserSignIn
 
+    $(window).on 'hashchange', =>
+      setTimeout @afterHashChange
+
   onSubjectSelect: (@subject) =>
+    @afterHashChange()
+
     @el.toggleClass 'tutorial', !!@subject.metadata.tutorial
 
     @classification = new Classification {@subject}
@@ -61,5 +69,14 @@ class Classifier extends Controller
     else
       tutorialSubject().select()
       @tutorial.start()
+
+  afterHashChange: =>
+    return unless !!@subject.metadata.tutorial
+
+    # TODO
+    if @el.is ':visible'
+      @log 'Tutorial should be showing'
+    else
+      @log 'Tutorial should be hidden'
 
 module.exports = Classifier
