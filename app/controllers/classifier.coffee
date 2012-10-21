@@ -73,10 +73,9 @@ class Classifier extends Controller
   afterHashChange: =>
     return unless !!@subject.metadata.tutorial
 
-    # TODO
     if @el.is ':visible'
-      @log 'Tutorial should be showing'
+      @tutorial.show()
     else
-      @log 'Tutorial should be hidden'
+      @tutorial.hide()
 
 module.exports = Classifier
