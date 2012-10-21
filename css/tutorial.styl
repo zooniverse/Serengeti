@@ -8,6 +8,17 @@
   position: absolute;
   transition: left 0.25s ease-out, top 0.25s ease-out 0.125s;
 
+  button[name="close"] {
+    font-size: 18px;
+    height: 1em;
+    line-height: 1em;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 1em;
+  }
+
   > header {
     font-size: 18px;
     font-weight: bold;
@@ -18,7 +29,7 @@
     text-align: center;
 
     button {
-      standard-button($red);
+      standard-button($green-really);
     }
   }
 

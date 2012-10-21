@@ -8,6 +8,8 @@ inline = (string) ->
   string = string.replace '_NEWLINE_', '\n'
   string
 
+Step::defaultButton = translate 'tutorial.continueButton'
+
 # TODO: Drop all these strings into en_us.coffee.
 
 module.exports = [
@@ -19,7 +21,6 @@ module.exports = [
 
       Let's get started!
     '''
-    buttons: ['Continue']
     className: 'up arrow'
 
   new Step
@@ -29,8 +30,8 @@ module.exports = [
       Many of these photos come as a sequence of two or three.
       Check out other snapshots in the sequence using the buttons below the image.
     '''
-    focus: '.image-switcher'
-    nextOn: click: '.image-switcher button'
+    focus: '.subject-viewer'
+    nextOn: click: '.subject-viewer button'
 
   new Step
     content: inline '''
@@ -40,12 +41,14 @@ module.exports = [
       so let's take a look at some ways we can narrow that list down using
       charactaristics we can identify in the image.
     '''
+    block: '.animal-selector'
 
   new Step
     content: inline '''
       The creature on the left is shaped a lot like a horse.
       Let's choose "Cow/horse" from the "looks like" menu.
     '''
+    nextOn: click: 'button[value="likeCowHorse"]'
 
   new Step
     content: inline '''
@@ -54,6 +57,7 @@ module.exports = [
       It's got stripes running vertically over most of its body,
       so let's choose the vertical stripes icon under the "Pattern" menu.
     '''
+    nextOn: click: 'button[value="patternVerticalStripe"]'
 
   new Step
     content: inline '''

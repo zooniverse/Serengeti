@@ -279,7 +279,8 @@ module.exports =
 
   clearFilters: 'Clear filters'
 
-  tutorial: {}
+  tutorial:
+    continueButton: 'Continue'
 
   profile:
     favorites: 'Favorites'
