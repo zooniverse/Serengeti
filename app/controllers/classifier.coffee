@@ -1,5 +1,5 @@
 {Controller} = require 'spine'
-ImageSwitcher = require './image_switcher'
+SubjectViewer = require './subject_viewer'
 AnimalSelector = require './animal_selector'
 animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
@@ -22,9 +22,9 @@ class Classifier extends Controller
   constructor: ->
     super
 
-    @imageSwitcher = new ImageSwitcher
+    @subjectViewer = new SubjectViewer
 
-    @el.append @imageSwitcher.el
+    @el.append @subjectViewer.el
 
     @animalSelector = new AnimalSelector
       set: animals
@@ -45,7 +45,7 @@ class Classifier extends Controller
     @classification = new Classification {@subject}
     @classification.bind 'send', @onClassificationSend
 
-    @imageSwitcher.setClassification @classification
+    @subjectViewer.setClassification @classification
     @animalSelector.setClassification @classification
 
   onClassificationSend: =>

@@ -1,14 +1,14 @@
 {Controller} = require 'spine'
-template = require 'views/image_switcher'
+template = require 'views/subject_viewer'
 AnnotationItem = require './annotation_item'
 $ = require 'jqueryify'
 modulus = require 'lib/modulus'
 
-class ImageSwitcher extends Controller
+class SubjectViewer extends Controller
   classification: null
   active: NaN
 
-  className: 'image-switcher'
+  className: 'subject-viewer'
 
   playTimeouts: null
 
@@ -157,4 +157,4 @@ class ImageSwitcher extends Controller
     el.toggleClass 'active', +elIndex is +activeIndex
     el.toggleClass 'after', +elIndex > +activeIndex
 
-module.exports = ImageSwitcher
+module.exports = SubjectViewer

@@ -1,4 +1,4 @@
-.image-switcher {
+.subject-viewer {
   display: inline-block;
   float: left;
 
@@ -192,39 +192,7 @@
     }
 
     button[name="toggle"] {
-      color: transparent;
-      height: 20px;
-      position: relative;
-      text-shadow: none;
-      width: 20px;
-
-      &:before {
-        background: rgba($black, 0.5);
-        border-radius: 50%;
-        box-shadow: 0 1px 0 rgba($black, 0.5) inset, 0 1px 0 rgba($white, 0.5);
-        content: ' ';
-        height: 10px;
-        left: 50%;
-        margin: -5px 0 0 -5px;
-        overflow: hidden;
-        position: absolute;
-        top: 50%;
-        width: 10px;
-      }
-
-      &.active:after {
-        background: rgba($white, 0.5);
-        border-radius: 50%;
-        box-shadow: 0 1px 0 $white inset;
-        content: ' ';
-        height: 6px;
-        left: 50%;
-        margin: -3px 0 0 -3px;
-        overflow: hidden;
-        position: absolute;
-        top: 50%;
-        width: 6px;
-      }
+      standard-toggle();
     }
 
     button[name="satellite"] {
@@ -258,7 +226,7 @@
   }
 }
 
-.signed-in .image-switcher .images {
+.signed-in .subject-viewer .images {
   .sign-in {
     display: none;
   }
