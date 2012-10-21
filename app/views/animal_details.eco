@@ -1,37 +1,32 @@
 <% translate = require 'lib/translate' %>
 
-<div class="images">
-  <% for image in @images: %>
-    <img src="<%= image %>" />
-  <% end %>
-</div>
+<div class="image-changer"></div>
 
 <div class="content">
   <p class="label"><%= @label %></p>
   <p><%= @description %></p>
 </div>
 
-<div class="options">
-  <p>
+<div class="action">
+  <label>
     <select name="count">
       <option value=""><%= translate 'count' %></option>
       <% for count in ['1', '2-5', '6-10', '11-20', '20+']: %>
         <option value="<%= count %>"><%= translate 'counts', count %></option>
       <% end %>
     </select>
+  </label>
 
-    <br />
-
+  <label>
     <select name="behavior">
       <option value=""><%= translate 'behavior' %></option>
       <% for behavior in ['sleeping', 'playing', 'eating']: %>
         <option value="<%= behavior %>"><%= translate 'behaviors', behavior %></option>
       <% end %>
     </select>
-  </p>
-</div>
+  </label>
 
-<div class="action">
-  <button name="cancel"><%= translate 'cancel' %></button>
-  <button name="identify"><%= translate 'identify' %></button>
+  <label><button name="cancel"><%= translate 'cancel' %></button></label>
+
+  <label><button name="identify"><%= translate 'identify' %></button></label>
 </div>

@@ -324,6 +324,7 @@
   .animal-details {
     background: rgba($black, 0.9);
     border-width: 75px 5px 5px;
+    box-shadow: 0 1px 1px rgba($white, 0.33) inset;
     box-sizing: border-box;
     font-size: 12px;
     height: 100%;
@@ -343,31 +344,83 @@
       opacity: 0;
     }
 
-    .images {
-      float: left;
-      height: 100%;
-      width: 30%;
+    .image-changer {
+      position: relative;
+      top: 0;
 
-      img {
-        max-width: 100%;
+      .images {
+        border-bottom: 1px solid $black;
+        box-shadow: 0px 1px 1px -1px rgba($white, 0.5);
+        overflow: hidden;
+        position: relative;
+
+        figure {
+          height: 200px;
+          margin: 0;
+          left: 0;
+          position: absolute;
+          top: 0;
+
+          &.active {
+            position: relative;
+            z-index: 1;
+          }
+
+          img {
+            max-width: 100%;
+          }
+        }
+      }
+
+      .toggles {
+        position: absolute;
+        right: 0;
+        top: 100%;
+
+        button[name="toggle"] {
+          standard-toggle();
+
+          &:before {
+            background: $green-dark;
+          }
+        }
       }
     }
 
-    .content,
-    .options,
+    .content {
+      height: 140px;
+
+      p.label {
+        font-size: 24px;
+        margin: 10px 0 -10px;
+      }
+    }
+
     .action {
-      box-sizing: border-box;
-      float: right;
-      padding-left: 20px;
-      width: 70%;
-    }
+      bottom: 0;
+      border-radius: 5px;
+      border-top: 1px solid $black;
+      box-shadow: 0 1px 1px rgba($white, 0.25) inset;
+      font-weight: bold;
+      height: 25px;
+      left: 0;
+      padding: 10px 0;
+      position: absolute;
+      text-align: center;
+      width: 100%;
 
-    p.label {
-      font-size: 16px;
-    }
+      > label {
+        display: inline-block;
+        margin: 0 5px;
+      }
 
-    button {
-      standard-button();
+      button[name="cancel"] {
+        standard-button($red);
+      }
+
+      button[name="identify"] {
+        standard-button($green-really);
+      }
     }
   }
 }

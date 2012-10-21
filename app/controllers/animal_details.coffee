@@ -1,5 +1,6 @@
 {Controller} = require 'spine'
 template = require 'views/animal_details'
+ImageChanger = require './image_changer'
 
 class AnimalDetails extends Controller
   animal: null
@@ -22,6 +23,12 @@ class AnimalDetails extends Controller
 
     @html template @animal
     @el.addClass 'hidden'
+
+    @imageChanger = new ImageChanger
+      el: @el.find '.image-changer'
+      sources: @animal.images
+
+    window.ic = @imageChanger
 
     @onSelectChange()
 
