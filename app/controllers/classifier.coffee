@@ -6,6 +6,8 @@ characteristics = require 'lib/characteristics'
 AnimalMenuItem = require './animal_menu_item'
 Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
+{Tutorial} = require 'zootorial'
+tutorialSteps = require 'lib/tutorial_steps'
 tutorialSubject = require 'lib/tutorial_subject'
 Classification = require 'models/classification'
 
@@ -31,6 +33,9 @@ class Classifier extends Controller
 
     @el.append @animalSelector.el
 
+    @tutorial = new Tutorial
+      steps: tutorialSteps
+
     Subject.bind 'select', @onSubjectSelect
     User.bind 'sign-in', @onUserSignIn
 
@@ -51,10 +56,10 @@ class Classifier extends Controller
     doingTutorial = Subject.current?.metadata.tutorial
 
     if tutorialDone
+      @tutorial.end()
       Subject.next() if doingTutorial or not Subject.current
-      # @tutorial.end()
     else
       tutorialSubject().select()
-      # @tutorial.start()
+      @tutorial.start()
 
 module.exports = Classifier

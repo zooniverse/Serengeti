@@ -279,6 +279,8 @@ module.exports =
 
   clearFilters: 'Clear filters'
 
+  tutorial: {}
+
   profile:
     favorites: 'Favorites'
     recents: 'Recents'

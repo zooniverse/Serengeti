@@ -1,0 +1,70 @@
+.tutorial.zootorial-dialog {
+  background: $white;
+  border-radius: 5px;
+  color: $black;
+  font-size: 14px;
+  max-width: 300px;
+  padding: 0 20px;
+  position: absolute;
+  transition: left 0.25s ease-out, top 0.25s ease-out 0.125s;
+
+  > header {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  > footer {
+    margin: 1em;
+    text-align: center;
+
+    button {
+      standard-button($red);
+    }
+  }
+
+  &.arrow {
+    &:after {
+      border: 15px solid transparent;
+      content: "";
+      position: absolute;
+    }
+
+    &.up:after {
+      bottom: 100%;
+      border-bottom-color: $white;
+      left: 50%;
+      margin-left: -15px;
+    }
+
+    &.right:after {
+      border-left-color: $white
+      left: 100%;
+      margin-top: -15px;
+      top: 50%
+    }
+
+    &.down:after {
+      border-top-color: $white;
+      left: 50%;
+      margin-left: -15px;
+      top: 100%;
+    }
+
+    &.left:after {
+      border-right-color: $white;
+      margin-top: -15px;
+      right: 100%;
+      top: 50%;
+    }
+  }
+}
+
+.zootorial-focuser {
+  background: rgba($black, 0.75);
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+
+  &.hidden {
+    opacity: 0;
+  }
+}
