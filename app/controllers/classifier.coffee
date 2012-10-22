@@ -45,8 +45,6 @@ class Classifier extends Controller
     $(window).on 'hashchange', =>
       setTimeout @afterHashChange
 
-    @onUserSignIn()
-
   onSubjectSelect: (@subject) =>
     @afterHashChange()
 
