@@ -59,7 +59,7 @@
 
   .introduction {
     float: left;
-    margin: 50px;
+    margin: 0 50px;
     width: 300px;
 
     h1 {
@@ -68,10 +68,46 @@
       line-height: 1;
     }
 
-    a.action {
-      standard-button($red);
-      outer-deboss: 5px;
-      padding: 5px 25px;
+    .progress {
+      margin: 10px 0;
+
+      .label {
+        display: inline-block;
+        width: 25%;
+      }
+
+      .track {
+        display: inline-block;
+        height: 5px;
+        margin-bottom: 2px;
+        outer-deboss: 3px;
+        position: relative;
+        width: 70%;
+
+        &:before {
+          border-radius: 5px;
+        }
+
+        .fill {
+          background: $green-really;
+          border-radius: 5px;
+          bottom: 0;
+          box-shadow: 0 1px 1px rgba($white, 0.5) inset;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+
+    .action {
+      margin-top: 25px;
+
+      a {
+        standard-button($red);
+        outer-deboss: 5px;
+        padding: 5px 25px;
+      }
     }
   }
 }

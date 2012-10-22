@@ -7,8 +7,33 @@
 <div class="introduction">
   <h1><%= translate 'home.heading' %></h1>
   <hr />
+
   <p><%= translate 'home.content' %></p>
+  <!--<hr />
+
+  <div class="progress">
+    <span class="label">Season 1</span>
+    <span class="track">
+      <span class="fill" style="width: 50%;"></span>
+    </span>
+
+    <span class="label">Season 2</span>
+    <span class="track">
+      <span class="fill" style="width: 0%;"></span>
+    </span>
+
+    <span class="label">Season 3</span>
+    <span class="track">
+      <span class="fill" style="width: 0%;"></span>
+    </span>
+
+    <span class="label">Season 4</span>
+    <span class="track">
+      <span class="fill" style="width: 0%;"></span>
+    </span>
+  </div>-->
+
   <p class="action">
-    <a href="#/classify" class="action"><%= translate 'home.action' %></a>
+    <a href="#/classify"><%= translate 'home.action' %></a>
   </p>
 </div>
