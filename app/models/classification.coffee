@@ -48,7 +48,7 @@ class Classification extends Model
 
   send: ->
     @trigger 'send'
-    Api.post(@url(), @toJSON(), arguments...).deferred
+    Api.post @url(), @toJSON(), arguments...
 
     recent = Recent.create subjects: @subject
 

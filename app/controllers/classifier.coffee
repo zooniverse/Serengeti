@@ -45,10 +45,13 @@ class Classifier extends Controller
     $(window).on 'hashchange', =>
       setTimeout @afterHashChange
 
+    @onUserSignIn()
+
   onSubjectSelect: (@subject) =>
     @afterHashChange()
 
-    @el.toggleClass 'tutorial', !!@subject.metadata.tutorial
+    for property in ['tutorial', 'empty']
+      @el.toggleClass property, !!@subject.metadata[property]
 
     @classification = new Classification {@subject}
     @classification.bind 'send', @onClassificationSend
