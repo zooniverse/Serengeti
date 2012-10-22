@@ -9,7 +9,7 @@ Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
 {Tutorial} = require 'zootorial'
 tutorialSteps = require 'lib/tutorial_steps'
-tutorialSubject = require 'lib/tutorial_subject'
+getTutorialSubject = require 'lib/get_tutorial_subject'
 Classification = require 'models/classification'
 
 class Classifier extends Controller
@@ -67,7 +67,7 @@ class Classifier extends Controller
       @tutorial.end()
       Subject.next() if doingTutorial or not Subject.current
     else
-      tutorialSubject().select()
+      getTutorialSubject().select()
       @tutorial.start()
 
   afterHashChange: =>
