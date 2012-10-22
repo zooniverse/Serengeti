@@ -1,4 +1,5 @@
 {Controller} = require 'spine'
+$ = require 'jqueryify'
 template = require 'views/animal_selector'
 FilterMenu = require './filter_menu'
 columnize = require 'lib/columnize'

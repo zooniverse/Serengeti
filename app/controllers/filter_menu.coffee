@@ -1,5 +1,6 @@
 {Controller} = require 'spine'
 template = require 'views/filter_menu'
+$ = require 'jqueryify'
 
 class FilterMenu extends Controller
   set: null

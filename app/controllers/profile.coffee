@@ -1,4 +1,5 @@
 {Controller} = require 'spine'
+$ = require 'jqueryify'
 template = require 'views/profile'
 LoginForm = require 'zooniverse/lib/controllers/login_form'
 User = require 'zooniverse/lib/models/user'
