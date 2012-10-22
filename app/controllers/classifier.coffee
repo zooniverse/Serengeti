@@ -70,6 +70,7 @@ class Classifier extends Controller
     else
       getTutorialSubject().select()
       @tutorial.start()
+      @afterHashChange()
 
   afterHashChange: =>
     return unless !!@subject.metadata.tutorial
