@@ -10,6 +10,7 @@ User = require 'zooniverse/lib/models/user'
 {Tutorial} = require 'zootorial'
 tutorialSteps = require 'lib/tutorial_steps'
 getTutorialSubject = require 'lib/get_tutorial_subject'
+getEmptySubject = require 'lib/get_empty_subject'
 Classification = require 'models/classification'
 
 class Classifier extends Controller
@@ -40,6 +41,7 @@ class Classifier extends Controller
       steps: tutorialSteps
 
     Subject.bind 'select', @onSubjectSelect
+    Subject.bind 'no-subjects', @onNoSubjects
     User.bind 'sign-in', @onUserSignIn
 
     $(window).on 'hashchange', =>
@@ -56,6 +58,9 @@ class Classifier extends Controller
 
     @subjectViewer.setClassification @classification
     @animalSelector.setClassification @classification
+
+  onNoSubjects: =>
+    getEmptySubject().select()
 
   onClassificationSend: =>
     Subject.next()

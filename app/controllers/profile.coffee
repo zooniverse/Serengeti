@@ -34,9 +34,11 @@ class Profile extends Controller
 
     Favorite.bind 'create destroy', @onItemCreateDestroy
     Favorite.bind 'send', @onCreateItem
-    Favorite.bind 'is-new', @onMarkNewFavorite
+    Favorite.bind 'is-new', @onMarkNew
 
     Recent.bind 'create destroy', @onItemCreateDestroy
+    Recent.bind 'send', @onCreateItem
+    Recent.bind 'is-new', @onMarkNew
 
     @navButtons.first().click()
     @onUserSignIn()
@@ -92,8 +94,8 @@ class Profile extends Controller
     item.bind 'destroy', -> item.remove()
     item.appendTo list
 
-  onMarkNewFavorite: (favorite) =>
-    item = @favoritesList.find "[data-item='#{favorite.id}']"
+  onMarkNew: (item) =>
+    item = @el.find "[data-item='#{item.id}']"
     item.prependTo item.parent()
     item.addClass 'new'
 

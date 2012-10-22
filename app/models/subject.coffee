@@ -1,6 +1,5 @@
 {Model} = require 'spine'
 $ = require 'jqueryify'
-getEmptySubject = require 'lib/get_empty_subject'
 Api = require 'zooniverse/lib/api'
 
 class Subject extends Model
@@ -20,14 +19,14 @@ class Subject extends Model
 
     if @count() is 0
       nexter = fetcher.pipe =>
-        getEmptySubject() if @count() is 0 # No more subjects!
-        @first().select()
-        @current
+        if @count() is 0
+          @trigger 'no-subjects'
+        else
+          @first().select()
     else
       nexter = new $.Deferred
       nexter.done =>
         @first().select()
-        @current
 
       nexter.resolve()
 
@@ -42,9 +41,6 @@ class Subject extends Model
 
     getter.done (rawSubjects) =>
       fetcher.resolve (@fromJSON rawSubject for rawSubject in rawSubjects)
-
-    getter.fail ->
-      fetcher.reject arguments...
 
     fetcher.promise()
 

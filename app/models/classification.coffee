@@ -51,6 +51,8 @@ class Classification extends Model
     Api.post @url(), @toJSON(), arguments...
 
     recent = Recent.create subjects: @subject
+    recent.trigger 'send'
+    recent.trigger 'is-new'
 
     if @favorite
       favorite = Favorite.create subjects: @subject
