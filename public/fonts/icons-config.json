@@ -18,35 +18,11 @@
       "src": "fontawesome"
     },
     {
-      "uid": "474656633f79ea2f1dad59ff63f6bf07",
-      "orig_css": "star",
-      "orig_code": 9733,
-      "css": "star",
-      "code": 9733,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "d17030afaecc1e1c22349b99f3c4992a",
-      "orig_css": "star-empty",
-      "orig_code": 9734,
-      "css": "star-empty",
-      "code": 9734,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "381da2c2f7fd51f8de877c044d7f439d",
-      "orig_css": "picture",
-      "orig_code": 127748,
-      "css": "picture",
-      "code": 127748,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "5b0772e9484a1a11646793a82edd622a",
-      "orig_css": "pin",
-      "orig_code": 128204,
-      "css": "pin",
-      "code": 128204,
+      "uid": "dcedf50ab1ede3283d7a6c70e2fe32f3",
+      "orig_css": "chat",
+      "orig_code": 59168,
+      "css": "chat",
+      "code": 59168,
       "src": "fontawesome"
     },
     {
@@ -55,30 +31,6 @@
       "orig_code": 59172,
       "css": "location",
       "code": 59172,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "57a0ac800df728aad61a7cf9e12f5fef",
-      "orig_css": "flag",
-      "orig_code": 9873,
-      "css": "flag",
-      "code": 9873,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "4743b088aa95d6f3b6b990e770d3b647",
-      "orig_css": "facebook",
-      "orig_code": 62216,
-      "css": "facebook",
-      "code": 62216,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "906348dc798a0d42715cc97c875e3ac6",
-      "orig_css": "twitter",
-      "orig_code": 62212,
-      "css": "twitter",
-      "code": 62212,
       "src": "fontawesome"
     },
     {
@@ -106,44 +58,36 @@
       "src": "fontawesome"
     },
     {
-      "uid": "85528017f1e6053b2253785c31047f44",
-      "orig_css": "comment",
-      "orig_code": 59160,
-      "css": "comment",
-      "code": 59160,
+      "uid": "dc3f1d5b1d006f7f7b3b6295eccab9da",
+      "orig_css": "camera",
+      "orig_code": 128247,
+      "css": "camera",
+      "code": 128247,
       "src": "fontawesome"
     },
     {
-      "uid": "dcedf50ab1ede3283d7a6c70e2fe32f3",
-      "orig_css": "chat",
-      "orig_code": 59168,
-      "css": "chat",
-      "code": 59168,
-      "src": "fontawesome"
+      "uid": "4c01f5d3ba5fbf029bca8630cce41e6a",
+      "orig_css": "twitter-bird",
+      "orig_code": 62211,
+      "css": "twitter-bird",
+      "code": 62211,
+      "src": "brandico"
     },
     {
-      "uid": "acf41aa4018e58d49525665469e35665",
-      "orig_css": "thumbs-up",
-      "orig_code": 128077,
-      "css": "thumbs-up",
-      "code": 128077,
-      "src": "fontawesome"
+      "uid": "8045477f6a7ef0bd7caff130ad25b88d",
+      "orig_css": "facebook-rect",
+      "orig_code": 62209,
+      "css": "facebook-rect",
+      "code": 62209,
+      "src": "brandico"
     },
     {
-      "uid": "7533e68038fc6d520ede7a7ffa0a2f64",
-      "orig_css": "thumbs-down",
-      "orig_code": 128078,
-      "css": "thumbs-down",
-      "code": 128078,
-      "src": "fontawesome"
-    },
-    {
-      "uid": "9dd9e835aebe1060ba7190ad2b2ed951",
+      "uid": "7222571caa5c15f83dcfd447c58d68d9",
       "orig_css": "search",
       "orig_code": 128269,
       "css": "search",
       "code": 128269,
-      "src": "fontawesome"
+      "src": "entypo"
     }
   ]
 }

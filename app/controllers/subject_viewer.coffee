@@ -20,6 +20,7 @@ class SubjectViewer extends Controller
     'click button[name="sign-in"]': 'onClickSignIn'
     'click button[name="favorite"]': 'onClickFavorite'
     'click button[name="unfavorite"]': 'onClickUnfavorite'
+    'click button[name="finish"]': 'onClickFinish'
     'click button[name="next"]': 'onClickNext'
 
   elements:
@@ -28,7 +29,8 @@ class SubjectViewer extends Controller
     '.annotations': 'annotationsContainer'
     '.toggles button': 'toggles'
     'button[name="satellite"]': 'satelliteToggle'
-    'button[name="next"]': 'nextButton'
+    'button[name="finish"]': 'finishButton'
+    'a.talk-link': 'talkLink'
 
   constructor: ->
     super
@@ -43,8 +45,8 @@ class SubjectViewer extends Controller
   setClassification: (classification) ->
     @classification?.unbind 'change', @onClassificationChange
     @classification?.unbind 'add-species', @onClassificationAddSpecies
+
     @classification = classification
-    @nextButton.attr disabled: false
 
     if @classification
       @classification.bind 'change', @onClassificationChange
@@ -116,8 +118,11 @@ class SubjectViewer extends Controller
   onClickUnfavorite: ->
     @classification.updateAttribute 'favorite', false
 
+  onClickFinish: ->
+    @el.addClass 'finished'
+
   onClickNext: ->
-    @nextButton.attr disabled: true
+    @el.removeClass 'finished'
     @classification.send()
 
   play: ->
