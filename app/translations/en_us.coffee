@@ -17,8 +17,8 @@ module.exports =
 
   images:
     notSignedIn: 'You\'re not signed in!'
-    play: 'Play series'
-    pause: 'Stop playing'
+    play: 'View series'
+    pause: 'Stop'
     satellite: 'Satellite view'
     favorite: 'Favorite'
     unfavorite: 'Unfavorite'
@@ -278,6 +278,9 @@ module.exports =
   nothingToShow: 'There\'s nothing to show with these filters.'
 
   clearFilters: 'Clear filters'
+
+  skipLabel: 'Skip this image'
+  nextSubjectButton: 'Finished'
 
   tutorial:
     continueButton: 'Continue'

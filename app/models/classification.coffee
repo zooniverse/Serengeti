@@ -12,9 +12,8 @@ class Classification extends Model
     @annotations ||= []
     @metadata ||= {}
 
-    if @annotations.length < 2 then setTimeout =>
-      @annotations.push agent: window.navigator.userAgent
-      @annotations.push started: (new Date).toUTCString()
+    @metadata.agent ||= window.navigator.userAgent
+    @metadata.started ||= (new Date).toUTCString()
 
   annotate: (values, isMetadata = false) ->
     if isMetadata
@@ -29,6 +28,7 @@ class Classification extends Model
   deannotate: (toDelete) ->
     for annotation, i in @annotations when annotation is toDelete
       @annotations.splice i, 1
+      @save()
       @trigger 'deannotate', toDelete
       return toDelete
 

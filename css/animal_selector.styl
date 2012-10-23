@@ -6,6 +6,8 @@
   box-sizing: border-box;
   color: $white;
   float: right;
+  height: 435px;
+  margin-top: 5px;
   outer-deboss: 7px;
   padding: 10px;
   position: relative;
@@ -229,7 +231,7 @@
     .items {
       clearfix();
       margin: 0 -1px;
-      min-height: 300px;
+      min-height: 330px;
       position: relative;
 
       [data-animal] {
@@ -256,7 +258,7 @@
 
       &[data-items="gt20"] [data-animal] {
         font-size: 12px;
-        padding-left: 5px;
+        padding: 1px 0 0.67px 5px;
         width: 33.33%;
 
         img {
@@ -265,7 +267,7 @@
       }
 
       &[data-items="20"] [data-animal] {
-        padding: 7px 0 6px;
+        padding: 8px 0 7px;
         text-align: center;
         width: 50%;
 
@@ -283,10 +285,10 @@
 
         .image {
           float: left;
-          height: 60px;
+          height: 64px;
           overflow: hidden;
           text-indent: -15px;
-          width: 60px;
+          width: 64px;
 
           img {
             height: 100%;
@@ -296,7 +298,7 @@
         .label {
           float: left;
           margin-left: 10px;
-          line-height: 60px;
+          line-height: 64px;
         }
       }
 

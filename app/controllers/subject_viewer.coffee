@@ -87,6 +87,7 @@ class SubjectViewer extends Controller
       else @activate e.which - 49
 
   onClassificationChange: =>
+    @el.toggleClass 'no-annotations', @classification.annotations.length is 0
     @el.toggleClass 'favorite', !!@classification.favorite
 
   onClassificationAddSpecies: (classification, annotation) =>

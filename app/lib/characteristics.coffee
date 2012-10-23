@@ -66,7 +66,7 @@ module.exports = [
     id: 'build'
     label: translate 'characteristics', 'build'
     values: [
-      new Value id: 'buildStocky', label: translate('characteristicValues', 'buildStocky'), image: 'images/characteristics/color-red-brown.png'
+      new Value id: 'buildStocky', label: translate('characteristicValues', 'buildStocky'), image: 'images/characteristics/build-stocky.png'
       new Value id: 'buildLanky', label: translate('characteristicValues', 'buildLanky'), image: 'images/characteristics/build-lanky.png'
       new Value id: 'buildTall', label: translate('characteristicValues', 'buildTall'), image: 'images/characteristics/build-tall.png'
       new Value id: 'buildSmall', label: translate('characteristicValues', 'buildSmall'), image: 'images/characteristics/build-small.png'

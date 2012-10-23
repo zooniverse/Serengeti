@@ -160,47 +160,58 @@
   }
 
   .controls {
-    color: darken($brown, 75%);
+    color: darken($brown, 67%);
+    font-size: 14px;
     line-height: 1;
-    margin-top: 5px;
+    margin: 10px 4px 4px;
     position: relative;
-    text-align: center;
-    text-shadow: 0 1px 1px rgba($white, 0.5);
+    text-shadow: 0 1px 0 rgba($white, 0.25);
 
-    .group {
-      border-left: 1px solid rgba($white, 0.25);
-      box-shadow: -2px 0 0 -1px rgba($black, 0.33);
-      display: inline-block;
-      height: 1em;
-      margin-left: 10px;
-      padding-left: 10px;
-
-      &:first-child {
-        border-left: 0;
-        box-shadow: none;
-        margin-left: 0;
-        padding-left: 0;
-      }
+    .play button,
+    .finished button {
+      standard-button();
+      font-weight: bold;
+      height: 24px;
+      outer-deboss: 4px;
+      padding: 0 20px;
+      position: relative;
+      width: 150px;
     }
 
-    .play {
-      font-size: 14px;
+    button[name="pause"] {
+      display: none;
+    }
 
-      button[name="pause"] {
-        display: none;
-      }
+    .toggles {
+      margin-left: 10px;
     }
 
     button[name="toggle"] {
       standard-toggle();
     }
 
+    .satellite {
+      margin-left: 5px;
+    }
+
     button[name="satellite"] {
-      border-radius: 50%;
+      vertical-align: -2px;
 
       &.active {
         color $white;
         text-shadow: 0 1px 1px $black;
+      }
+    }
+
+    .finished {
+      float: right;
+
+      .skip-label {
+        cursor: pointer;
+        display: none;
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 10px;
       }
     }
   }
@@ -223,6 +234,10 @@
     button[name="unfavorite"] {
       display: inline-block;
     }
+  }
+
+  &.no-annotations .controls .finished .skip-label {
+    display: inline-block;
   }
 }
 

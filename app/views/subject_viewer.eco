@@ -23,8 +23,8 @@
 
 <div class="controls">
   <span class="play group">
-    <button name="play" title="<%= translate 'images.play' %> [space]"><i rel="play"><%= translate 'images.play' %></i></button>
-    <button name="pause" title="<%= translate 'images.pause' %> [space]"><i rel="pause"><%= translate 'images.pause' %></i></button>
+    <button name="play" title="<%= translate 'images.play' %> [space]"><%= translate 'images.play' %></button>
+    <button name="pause" title="<%= translate 'images.pause' %> [space]"><%= translate 'images.pause' %></button>
   </span>
 
   <span class="toggles group">
@@ -37,5 +37,10 @@
     <button name="satellite" title="<%= translate 'images.satellite' %> [M]"><i rel="location"><%= translate 'images.satellite' %></i></button>
   </span>
 
-  <button name="next">NEXT</button><!--Temporary-->
+  <span class="finished group">
+    <label>
+      <span class="skip-label"><%= translate 'skipLabel' %></span>
+      <button name="next"><%= translate 'nextSubjectButton' %></button>
+    </label>
+  </span>
 </div>
