@@ -22,9 +22,9 @@ module.exports = [
     label: translate 'characteristics', 'pattern'
     values: [
       new Value id: 'patternVerticalStripe', label: translate('characteristicValues', 'patternVerticalStripe'), image: 'images/characteristics/pattern-stripes.png'
-      new Value id: 'patternHorizontalStripe', label: translate('characteristicValues', 'patternHorizontalStripe'), image: 'images/characteristics/pattern-color-bands.png'
+      new Value id: 'patternHorizontalStripe', label: translate('characteristicValues', 'patternHorizontalStripe'), image: 'images/characteristics/pattern-band.png'
       new Value id: 'patternSpots', label: translate('characteristicValues', 'patternSpots'), image: 'images/characteristics/pattern-spots.png'
-      new Value id: 'patternSolid', label: translate('characteristicValues', 'patternSolid'), image: 'images/characteristics/color-red-brown.png'
+      new Value id: 'patternSolid', label: translate('characteristicValues', 'patternSolid'), image: 'images/characteristics/pattern-solid.png'
     ]
 
   new Characteristic
@@ -44,9 +44,8 @@ module.exports = [
     id: 'horns'
     label: translate 'characteristics', 'horns'
     values: [
-      new Value id: 'hornsNone', label: translate('characteristicValues', 'hornsNone'), image: 'images/characteristics/color-red-brown.png'
       new Value id: 'hornsStraight', label: translate('characteristicValues', 'hornsStraight'), image: 'images/characteristics/horns-straight.png'
-      new Value id: 'hornsSimpleCurve', label: translate('characteristicValues', 'hornsSimpleCurve'), image: 'images/characteristics/horns-simple-curve.png'
+      new Value id: 'hornsSimpleCurve', label: translate('characteristicValues', 'hornsSimpleCurve'), image: 'images/characteristics/horns-curve.png'
       new Value id: 'hornsLyrate', label: translate('characteristicValues', 'hornsLyrate'), image: 'images/characteristics/horns-lyrate.png'
       new Value id: 'hornsCurly', label: translate('characteristicValues', 'hornsCurly'), image: 'images/characteristics/horns-curly.png'
     ]
@@ -67,8 +66,8 @@ module.exports = [
     label: translate 'characteristics', 'build'
     values: [
       new Value id: 'buildStocky', label: translate('characteristicValues', 'buildStocky'), image: 'images/characteristics/build-stocky.png'
-      new Value id: 'buildLanky', label: translate('characteristicValues', 'buildLanky'), image: 'images/characteristics/build-lanky.png'
       new Value id: 'buildTall', label: translate('characteristicValues', 'buildTall'), image: 'images/characteristics/build-tall.png'
+      new Value id: 'buildLanky', label: translate('characteristicValues', 'buildLanky'), image: 'images/characteristics/build-lanky.png'
       new Value id: 'buildSmall', label: translate('characteristicValues', 'buildSmall'), image: 'images/characteristics/build-small.png'
       new Value id: 'buildLowSlung', label: translate('characteristicValues', 'buildLowSlung'), image: 'images/characteristics/build-low-slung.png'
     ]
