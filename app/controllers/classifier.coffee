@@ -70,19 +70,19 @@ class Classifier extends Controller
     doingTutorial = Subject.current?.metadata.tutorial
 
     if tutorialDone
-      @tutorial.end()
+      # @tutorial.end()
       Subject.next() if doingTutorial or not Subject.current
     else
       getTutorialSubject().select()
-      @tutorial.start()
+      # @tutorial.start()
       @afterHashChange()
 
   afterHashChange: =>
     return unless !!@subject.metadata.tutorial
 
     if @el.is ':visible'
-      @tutorial.show()
+      # @tutorial.show()
     else
-      @tutorial.hide()
+      # @tutorial.hide()
 
 module.exports = Classifier
