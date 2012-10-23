@@ -117,8 +117,8 @@ class SubjectViewer extends Controller
     @classification.updateAttribute 'favorite', false
 
   onClickNext: ->
-    @classification.send()
     @nextButton.attr disabled: true
+    @classification.send()
 
   play: ->
     # Flip the images back and forth a couple times.
