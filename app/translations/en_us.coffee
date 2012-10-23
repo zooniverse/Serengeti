@@ -280,7 +280,7 @@ module.exports =
   clearFilters: 'Clear filters'
 
   skipLabel: 'Skip this image'
-  nextSubjectButton: 'Finished'
+  nextSubjectButton: 'Finish'
 
   tutorial:
     continueButton: 'Continue'
