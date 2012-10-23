@@ -46,6 +46,8 @@
 </div>
 
 <div class="followup">
+  <!--<button name="not-done">I'm not done!</button>-->
+
   <span class="group">
     <a href="#TODO_FACEBOOK" target="_blank"><i rel="facebook">Facebook</i> Share</a>
     <a href="#TODO_TWITTER" target="_blank"><i rel="twitter">Twitter</i>Tweet</a>

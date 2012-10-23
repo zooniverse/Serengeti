@@ -219,35 +219,44 @@
     display: none;
     text-align: center;
 
+    button[name="not-done"] {
+      background: rgba($black, 0.5);
+      border-radius: 15px;
+      color: $white;
+      font-size: 10px;
+      margin-right: 10px;
+      padding: 0 10px;
+      text-shadow: none;
+    }
+
     .group {
       display: inline-block;
       margin: 0 4px;
       outer-deboss: 4px;
       position: relative;
-    }
+      a,
+      button {
+        standard-button();
+        padding-left: 32px;
 
-    a,
-    button {
-      standard-button();
-      padding-left: 32px;
-
-      i {
-        color: $black;
-        border-right: 1px solid rgba($black, 0.5);
-        box-shadow: 2px 0 1px -1px rgba($white, 0.25);
-        height: 22px;
-        left: 0
-        line-height: 20px;
-        opacity: 0.75;
-        position: absolute;
-        top: 2px;
-        text-shadow: 0 1px 0 rgba($white, 0.25);
-        width: 24px;
+        i {
+          color: $black;
+          border-right: 1px solid rgba($black, 0.5);
+          box-shadow: 2px 0 1px -1px rgba($white, 0.25);
+          height: 22px;
+          left: 0
+          line-height: 20px;
+          opacity: 0.75;
+          position: absolute;
+          top: 2px;
+          text-shadow: 0 1px 0 rgba($white, 0.25);
+          width: 24px;
+        }
       }
-    }
 
-    button[name="next"] {
-      background: darken($green-really, 25%);
+      button[name="next"] {
+        background: darken($green-really, 25%);
+      }
     }
   }
 
