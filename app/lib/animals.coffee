@@ -78,11 +78,14 @@ idFromLabel = (label) ->
   label = label.replace /\W(\w)/i, upperCapture # Camel-case hyphens
   label
 
+dashedFromId = (id) ->
+  id.replace /[A-Z]/g, (cap) -> "-#{cap.toLowerCase()}"
+
 imagesFromId = (id) ->
   [
-    'http://lorempixel.com/565/380/nature/4'
-    'http://lorempixel.com/565/380/nature/5'
-    'http://lorempixel.com/565/380/nature/6'
+    "images/animals/#{dashedFromId id}-1.jpg"
+    "images/animals/#{dashedFromId id}-2.jpg"
+    "images/animals/#{dashedFromId id}-3.jpg"
   ]
 
 animalInstances = for label, grid of animals
