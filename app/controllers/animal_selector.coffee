@@ -59,7 +59,7 @@ class AnimalSelector extends Controller
 
     breakpoints = [20, 10, 5, 0]
     breakpoint = point for point in breakpoints when matches.length <= point
-    @itemsContainer.attr 'data-items': breakpoint ? 'gt20'
+    @itemsContainer.attr 'data-items': breakpoint ? 'lots'
     @itemsContainer.toggleClass 'safari-hack'
 
     columns = switch breakpoint
