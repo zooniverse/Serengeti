@@ -3,7 +3,7 @@ require 'lib/setup'
 $ = require 'jqueryify'
 {Stack} = require 'spine/lib/manager'
 Route = require 'spine/lib/route'
-ContentPage = require 'controllers/content_page'
+AboutPage = require 'controllers/about_page'
 HomePage = require 'controllers/home_page'
 Classifier = require 'controllers/classifier'
 Profile = require 'controllers/profile'
@@ -31,7 +31,7 @@ $(window).one 'translate-init', ->
 
     controllers:
       home: HomePage
-      about: class extends ContentPage then content: 'about.content'
+      about: AboutPage
       classify: Classifier
       profile: Profile
 

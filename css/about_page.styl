@@ -1,0 +1,115 @@
+.about-page {
+  font-size: 12px;
+  padding: 70px 90px;
+
+  > section {
+    clearfix();
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    .column {
+      box-sizing: border-box;
+      float: left;
+      width: 50%;
+
+      & + .column {
+        padding-left: 30px;
+      }
+    }
+  }
+
+  > nav {
+    color: rgba($black, 0.75);
+    left: -2px;
+    position: absolute;
+    text-shadow: -1px 1px rgba($white, 0.5);
+    top: 70px;
+
+    button {
+      clearfix();
+      border-radius: 2px 0 0 2px;
+      display: block;
+      margin-bottom: 10px;
+      padding: 5px 10px 5px 15px;
+      position: relative;
+      opacity: 0.5;
+
+      &:before,
+      &:after {
+        border: 20px solid rgba($red, 0);
+        border-right-width: 10px;
+        content: "";
+        position: absolute;
+        right: -10px;
+      }
+
+      &:before {
+        top: 0;
+      }
+
+      &:after {
+        bottom: 0;
+      }
+
+      &.active {
+        background: $green-light;
+        opacity: 1;
+
+        &:before {
+          border-top-color: $green-light;
+        }
+
+        &:after {
+          border-bottom-color: $green-light;
+        }
+      }
+
+      i {
+        clear: left;
+        float: left;
+        font-size: 30px;
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+
+  .column {
+    &.content {
+      width: 67%;
+    }
+
+    &.sidebar {
+      width 33%;
+    }
+  }
+
+  .member {
+    clearfix();
+    border-top: 1px solid rgba($black, 0.25);
+    clear: left;
+    font-size: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+
+    img {
+      border: 3px solid #fff;
+      box-shadow: 0 2px 3px -1px rgba($black, 0.5);
+      float: left;
+      height: 70px;
+      margin-right: 10px;
+      width: 50px;
+    }
+
+    h3 {
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+    }
+  }
+}
