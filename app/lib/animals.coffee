@@ -10,7 +10,7 @@ values = [
   'likeCatDog', 'likeCowHorse', 'likeAntelopeDeer', 'likeBird', 'likeOther', 'likeWeasel',
   'patternVerticalStripe', 'patternHorizontalStripe', 'patternSpots', 'patternSolid',
   'coatTanYellow', 'coatOrange', 'coatRedBrown', 'coatBrownBlack', 'coatWhite', 'coatGray', 'coatBlack',
-  'hornsNone', 'hornsStraight', 'hornsCurve', 'hornsLyrate', 'hornsCurly',
+  'hornsNone', 'hornsStraight', 'hornsSimpleCurve', 'hornsLyrate', 'hornsCurly',
   'tailBushy', 'tailSmooth', 'tailTufted', 'tailLong', 'tailShort',
   'buildStocky', 'buildLanky', 'buildTall', 'buildSmall', 'buildLowSlung',
   'backSloped', 'backRound', 'backStraight'
