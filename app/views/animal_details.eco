@@ -10,23 +10,23 @@
 <div class="action">
   <label>
     <select name="count">
-      <option value=""><%= translate 'count' %></option>
+      <option value=""><%= translate 'classify.count' %></option>
       <% for count in ['1', '2-5', '6-10', '11-20', '20+']: %>
-        <option value="<%= count %>"><%= translate 'counts', count %></option>
+        <option value="<%= count %>"><%= translate 'classify', 'counts', count %></option>
       <% end %>
     </select>
   </label>
 
   <label>
     <select name="behavior">
-      <option value=""><%= translate 'behavior' %></option>
+      <option value=""><%= translate 'classify.behavior' %></option>
       <% for behavior in ['sleeping', 'playing', 'eating']: %>
-        <option value="<%= behavior %>"><%= translate 'behaviors', behavior %></option>
+        <option value="<%= behavior %>"><%= translate 'classify', 'behaviors', behavior %></option>
       <% end %>
     </select>
   </label>
 
-  <label><button name="cancel"><%= translate 'cancel' %></button></label>
+  <label><button name="cancel"><%= translate 'classify.cancel' %></button></label>
 
-  <label><button name="identify"><%= translate 'identify' %></button></label>
+  <label><button name="identify"><%= translate 'classify.identify' %></button></label>
 </div>

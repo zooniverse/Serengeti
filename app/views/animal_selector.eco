@@ -28,8 +28,8 @@
 
     <div class="none">
       <p>
-        <%= translate 'nothingToShow' %>
-        <button name="clear-filters"><%= translate 'clearFilters' %></button>
+        <%= translate 'classify.nothingToShow' %>
+        <button name="clear-filters"><%= translate 'classify.clearFilters' %></button>
       </p>
     </div>
   </div>

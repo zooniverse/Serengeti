@@ -8,7 +8,7 @@ inline = (string) ->
   string = string.replace '_NEWLINE_', '\n'
   string
 
-Step::defaultButton = translate 'tutorial.continueButton'
+Step::defaultButton = translate 'classify.tutorial.continueButton'
 
 # TODO: Drop all these strings into en_us.coffee.
 

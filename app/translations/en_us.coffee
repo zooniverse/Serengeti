@@ -15,18 +15,42 @@ module.exports =
     '''
     action: 'Start classifying'
 
-  images:
+  classify:
+    deleteAnnotation: 'Delete'
     notSignedIn: 'You\'re not signed in!'
+    favorite: 'Favorite'
+    unfavorite: 'Unfavorite'
     play: 'View series'
     pause: 'Stop'
     satellite: 'Satellite view'
-    favorite: 'Favorite'
-    unfavorite: 'Unfavorite'
-    deleteAnnotation: 'Delete'
+    skipLabel: 'Skip this image'
+    nextSubjectButton: 'Finish'
     share: 'Share'
     tweet: 'Tweet'
     discuss: 'Discuss'
     next: 'Next capture'
+    nothingToShow: 'There\'s nothing to show with these filters.'
+    clearFilters: 'Clear filters'
+
+    count: 'Count'
+    counts:
+      '1': '1'
+      '2-5': '2-5'
+      '6-10': '6-10'
+      '11-20': '11-20'
+      '20+': '21+'
+
+    behavior: 'Behavior'
+    behaviors:
+      sleeping: 'Sleeping'
+      playing: 'Playing'
+      eating: 'Eating'
+
+    cancel: 'Cancel'
+    identify: 'Identify'
+
+    tutorial:
+      continueButton: 'Continue'
 
   animals:
     aardvark:
@@ -259,36 +283,6 @@ module.exports =
     backRound: 'Round'
     backStraight: 'Straight'
 
-  count: 'Count'
-
-  counts:
-    '1': '1'
-    '2-5': '2-5'
-    '6-10': '6-10'
-    '11-20': '11-20'
-    '20+': '21+'
-
-  behavior: 'Behavior'
-
-  behaviors:
-    sleeping: 'Sleeping'
-    playing: 'Playing'
-    eating: 'Eating'
-
-  cancel: 'Cancel'
-
-  identify: 'Identify'
-
-  nothingToShow: 'There\'s nothing to show with these filters.'
-
-  clearFilters: 'Clear filters'
-
-  skipLabel: 'Skip this image'
-  nextSubjectButton: 'Finish'
-
-  tutorial:
-    continueButton: 'Continue'
-
   profile:
     favorites: 'Favorites'
     recents: 'Recents'
@@ -298,4 +292,3 @@ module.exports =
     loadMore: 'Load more'
 
   about: content: 'This is the about page!'
-  team: content: 'This is the team page!'
