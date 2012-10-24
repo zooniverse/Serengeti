@@ -163,7 +163,7 @@
   .followup {
     color: darken($brown, 67%);
     font-size: 14px;
-    margin: 10px 4px 4px;
+    margin: 15px 4px 4px;
     position: relative;
     text-shadow: 0 1px 0 rgba($white, 0.25);
   }
@@ -172,7 +172,7 @@
     .play button,
     .finished button {
       standard-button();
-      outer-deboss: 4px;
+      outer-deboss: 5px;
       position: relative;
       width: 120px;
     }
@@ -231,9 +231,10 @@
 
     .group {
       display: inline-block;
-      margin: 0 4px;
+      margin: 0 5px;
       outer-deboss: 4px;
       position: relative;
+
       a,
       button {
         standard-button();
@@ -256,6 +257,10 @@
 
       button[name="next"] {
         background: darken($green-really, 25%);
+
+        &:active {
+          background: darken($green-really, 50%);
+        }
       }
     }
   }
