@@ -18,9 +18,10 @@ class Subject extends Model
     fetcher = @fetch (@queueLength - @count()) + 1
 
     if @count() is 0
+      @trigger 'no-local-subjects'
       nexter = fetcher.pipe =>
         if @count() is 0
-          @trigger 'no-subjects'
+          @trigger 'no-subjects-at-all'
         else
           @first().select()
     else

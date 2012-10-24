@@ -41,7 +41,7 @@ class Classifier extends Controller
       steps: tutorialSteps
 
     Subject.bind 'select', @onSubjectSelect
-    Subject.bind 'no-subjects', @onNoSubjects
+    Subject.bind 'no-local-subjects', @onNoSubjects
     User.bind 'sign-in', @onUserSignIn
 
     $(window).on 'hashchange', =>
