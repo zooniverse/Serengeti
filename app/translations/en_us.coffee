@@ -23,6 +23,10 @@ module.exports =
     favorite: 'Favorite'
     unfavorite: 'Unfavorite'
     deleteAnnotation: 'Delete'
+    share: 'Share'
+    tweet: 'Tweet'
+    discuss: 'Discuss'
+    next: 'Next capture'
 
   animals:
     aardvark:
