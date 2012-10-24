@@ -5,9 +5,6 @@ Api = require 'zooniverse/lib/api'
 class Subject extends Model
   @configure 'Subject', 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata'
 
-  @talkHref: (zooniverseId) ->
-    "http://talk.cyclonecenter.org/objects/#{zooniverseId}"
-
   @queueLength: 3
   @current: null
 
@@ -74,6 +71,23 @@ class Subject extends Model
   """.replace '\n', ''
 
   talkHref: ->
-    @constructor.talkHref @zooniverseId
+    "http://talk.snapshotserengeti.org/objects/#{@zooniverseId}"
+
+  facebookHref: ->
+    title = 'Snapshot Serengeti'
+    summary = 'I just classified this image on Snapshot Serengeti!'
+    image = $("<a href='#{@location.standard[0]}'></a>").get(0).href
+    """
+      https://www.facebook.com/sharer/sharer.php
+      ?s=100
+      &p[url]=#{@talkHref()}
+      &p[title]=#{encodeURIComponent title}
+      &p[summary]=#{encodeURIComponent summary}
+      &p[images][0]=#{image}
+    """
+
+  twitterHref: ->
+    message = "Classifying animals in the Serengeti! #{@talkHref()} #zooniverse"
+    "http://twitter.com/home?status=#{encodeURIComponent message}"
 
 module.exports = Subject

@@ -3,6 +3,7 @@ Subject = require 'models/subject'
 module.exports = ->
   Subject.create
     id: '5077375154558fabd7000003'
+    zooniverseId: 'TUTORIAL_SUBJECT'
 
     location: standard: [
       'images/tutorial-subject/PICT0518.JPG'
