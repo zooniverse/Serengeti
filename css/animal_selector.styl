@@ -172,15 +172,47 @@
         }
 
         button[name="characteristic-value"] {
+          background: url("images/characteristics-values.png");
           float: left;
+          height: 40px;
+          margin: 4px 0 0 5px;
           position: relative;
+          width: 40px;
 
-          img {
-            background: black;
-            height: 40px;
-            margin: 4px 0 0 4px;
-            width: 40px;
+          &.selected {
+            border: 1px solid $gold;
+            margin: 3px 0 0 4px;
           }
+
+          &[value="patternVerticalStripe"]   {background-position: -8px -152px;}
+          &[value="patternHorizontalStripe"] {background-position: -56px -152px;}
+          &[value="patternSpots"]            {background-position: -104px -152px;}
+          &[value="patternSolid"]            {background-position: -152px -152px;}
+
+          &[value="coatTanYellow"]           {background-position: -8px -56px;}
+          &[value="coatOrange"]              {background-position: -56px -56px;}
+          &[value="coatRedBrown"]            {background-position: -104px -56px;}
+          &[value="coatBrownBlack"]          {background-position: -152px -56px;}
+          &[value="coatWhite"]               {background-position: -200px -56px;}
+          &[value="coatGray"]                {background-position: -248px -56px;}
+          &[value="coatBlack"]               {background-position: -296px -56px;}
+
+          &[value="hornsStraight"]           {background-position: -8px -104px;}
+          &[value="hornsSimpleCurve"]        {background-position: -56px -104px;}
+          &[value="hornsLyrate"]             {background-position: -104px -104px;}
+          &[value="hornsCurly"]              {background-position: -152px -104px;}
+
+          &[value="tailBushy"]               {background-position: -8px -200px;}
+          &[value="tailSmooth"]              {background-position: -56px -200px;}
+          &[value="tailTufted"]              {background-position: -104px -200px;}
+          &[value="tailLong"]                {background-position: -152px -200px;}
+          &[value="tailShort"]               {background-position: -200px -200px;}
+
+          &[value="buildStocky"]             {background-position: -8px -8px;}
+          &[value="buildTall"]               {background-position: -56px -8px;}
+          &[value="buildLanky"]              {background-position: -104px -8px;}
+          &[value="buildSmall"]              {background-position: -152px -8px;}
+          &[value="buildLowSlung"]           {background-position: -200px -8px;}
 
           .label {
             background: $gold;
@@ -210,10 +242,6 @@
 
           &:hover .label {
             display: block;
-          }
-
-          &.selected img {
-            box-shadow: 0 0 0 1px $white;
           }
         }
 
