@@ -33,15 +33,15 @@ module.exports =
     nothingToShow: 'There\'s nothing to show with these filters.'
     clearFilters: 'Clear filters'
 
-    young: 'Babies present'
-    rain: 'Raining'
-
     count: 'Count'
 
     behavior: 'Behavior'
     behaviors:
       atRest: 'At rest'
       moving: 'On the move'
+
+    babies: 'Babies present'
+    rain: 'Raining'
 
     cancel: 'Cancel'
     identify: 'Identify'

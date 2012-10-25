@@ -3,7 +3,7 @@
 <% translate = require 'lib/translate' %>
 
 <li data-item="<%= @id %>">
-  <a href="<%= Subject.talkHref @subjects.zooniverseId || @subjects.zooniverse_id %>">
+  <a href="<%= Subject::talkHref zooniverseId: @subjects.zooniverseId || @subjects.zooniverse_id %>">
     <figure><img src="<%= @subjects.location.standard[0] %>" /></figure>
   </a>
 

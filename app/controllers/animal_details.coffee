@@ -16,6 +16,8 @@ class AnimalDetails extends Controller
   elements:
     'select[name="count"]': 'countSelect'
     'select[name="behavior"]': 'behaviorSelect'
+    'input[name="rain"]': 'rainCheckbox'
+    'input[name="babies"]': 'babiesCheckbox'
     'button[name="identify"]': 'identifyButton'
 
   constructor: ->
@@ -50,6 +52,8 @@ class AnimalDetails extends Controller
       species: @animal
       count: @countSelect.val()
       behavior: @behaviorSelect.val()
+      babies: !!@babiesCheckbox.attr 'checked'
+      rain: !!@rainCheckbox.attr 'checked'
 
     @hide()
 

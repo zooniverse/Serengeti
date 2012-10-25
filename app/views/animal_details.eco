@@ -34,7 +34,7 @@
     </label>
 
     <label>
-      <input type="checkbox" name="young" /> <%= translate 'classify.young' %>
+      <input type="checkbox" name="babies" /> <%= translate 'classify.babies' %>
     </label>
   </div>
 </div>
