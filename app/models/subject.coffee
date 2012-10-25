@@ -90,4 +90,7 @@ class Subject extends Model
     message = "Classifying animals in the Serengeti! #{@talkHref()} #zooniverse"
     "http://twitter.com/home?status=#{encodeURIComponent message}"
 
+  pinterestHref: ->
+    "http://pinterest.com/pin/create/button/?url=#{@talkHref()}"
+
 module.exports = Subject

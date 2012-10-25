@@ -51,6 +51,7 @@
   <span class="group">
     <a href="<%= @subject.facebookHref() %>" target="_blank"><i rel="facebook">Facebook</i> <%= translate 'classify.share' %></a>
     <a href="<%= @subject.twitterHref() %>" target="_blank"><i rel="twitter">Twitter</i><%= translate 'classify.tweet' %></a>
+    <a href="<%= @subject.pinterestHref() %>" target="_blank"><i rel="pin">Pinterest</i><%= translate 'classify.pin' %></a>
   </span>
 
   <span class="group">

@@ -27,6 +27,7 @@ module.exports =
     nextSubjectButton: 'Finish'
     share: 'Share'
     tweet: 'Tweet'
+    pin: 'Pin it'
     discuss: 'Discuss'
     next: 'Next capture'
     nothingToShow: 'There\'s nothing to show with these filters.'

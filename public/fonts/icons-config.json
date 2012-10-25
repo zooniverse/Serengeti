@@ -2,6 +2,46 @@
   "name": "icons",
   "glyphs": [
     {
+      "uid": "7222571caa5c15f83dcfd447c58d68d9",
+      "orig_css": "search",
+      "orig_code": 128269,
+      "css": "search",
+      "code": 128269,
+      "src": "entypo"
+    },
+    {
+      "uid": "7e89c12b577c31bc91bfb61bb597f01f",
+      "orig_css": "down-dir",
+      "orig_code": 9662,
+      "css": "down-dir",
+      "code": 9662,
+      "src": "entypo"
+    },
+    {
+      "uid": "9aeaf29161eb005a308bbd624d6e066a",
+      "orig_css": "left-dir",
+      "orig_code": 9666,
+      "css": "left-dir",
+      "code": 9666,
+      "src": "entypo"
+    },
+    {
+      "uid": "ff9a85aa20950dcc0615a2707a2b3f8e",
+      "orig_css": "right-dir",
+      "orig_code": 9656,
+      "css": "right-dir",
+      "code": 9656,
+      "src": "entypo"
+    },
+    {
+      "uid": "401b644723fb2f20b0df30cce7745c18",
+      "orig_css": "up-dir",
+      "orig_code": 9652,
+      "css": "up-dir",
+      "code": 9652,
+      "src": "entypo"
+    },
+    {
       "uid": "d73eceadda1f594cec0536087539afbf",
       "orig_css": "heart",
       "orig_code": 9829,
@@ -15,6 +55,14 @@
       "orig_code": 9825,
       "css": "heart-empty",
       "code": 9825,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "dc3f1d5b1d006f7f7b3b6295eccab9da",
+      "orig_css": "camera",
+      "orig_code": 128247,
+      "css": "camera",
+      "code": 128247,
       "src": "fontawesome"
     },
     {
@@ -58,12 +106,12 @@
       "src": "fontawesome"
     },
     {
-      "uid": "dc3f1d5b1d006f7f7b3b6295eccab9da",
-      "orig_css": "camera",
-      "orig_code": 128247,
-      "css": "camera",
-      "code": 128247,
-      "src": "fontawesome"
+      "uid": "8045477f6a7ef0bd7caff130ad25b88d",
+      "orig_css": "facebook-rect",
+      "orig_code": 62209,
+      "css": "facebook-rect",
+      "code": 62209,
+      "src": "brandico"
     },
     {
       "uid": "4c01f5d3ba5fbf029bca8630cce41e6a",
@@ -74,20 +122,12 @@
       "src": "brandico"
     },
     {
-      "uid": "8045477f6a7ef0bd7caff130ad25b88d",
-      "orig_css": "facebook-rect",
-      "orig_code": 62209,
-      "css": "facebook-rect",
-      "code": 62209,
-      "src": "brandico"
-    },
-    {
-      "uid": "7222571caa5c15f83dcfd447c58d68d9",
-      "orig_css": "search",
-      "orig_code": 128269,
-      "css": "search",
-      "code": 128269,
-      "src": "entypo"
+      "uid": "5b0772e9484a1a11646793a82edd622a",
+      "orig_css": "pin",
+      "orig_code": 128204,
+      "css": "pin",
+      "code": 128204,
+      "src": "fontawesome"
     }
   ]
 }
