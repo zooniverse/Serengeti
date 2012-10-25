@@ -3,4 +3,4 @@
 <span class="species"><%= translate 'animals', @species.id, 'label' %></span>
 <span class="count">(<%= @count %>)</span>
 
-<button name="delete" title="<%= translate 'images.deleteAnnotation' %>">&times;</button>
+<button name="delete" title="<%= translate 'classify.deleteAnnotation' %>">&times;</button>
