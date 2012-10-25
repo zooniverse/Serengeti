@@ -495,7 +495,7 @@
     }
 
     .content {
-      height: 190px;
+      height: 165px;
       overflow: auto;
 
       p.label {
@@ -505,25 +505,23 @@
     }
 
     .options {
-      bottom: 0;
-      left: 0;
-      position: absolute;
-      right: 50px;
+      .group {
+        margin: 10px 0;
+      }
+
+      label {
+        display: inline-block;
+        margin: 0 10px;
+      }
     }
 
     .action {
-      border-left: 1px solid $white;
       bottom: 0;
-      border-radius: 5px;
-      border-top: 1px solid $black;
-      box-shadow: 0 1px 1px rgba($white, 0.25) inset;
-      box-sizing: border-box;
       font-weight: bold;
-      padding: 10px 0;
+      padding: 10px;
       position: absolute;
       right: 0;
       text-align: center;
-      width: 50px;
 
       > label {
         display: inline-block;

@@ -7,13 +7,8 @@
   <p><%= @description %></p>
 </div>
 
-<div class="describe">
-  <div>
-    <label>
-      <input type="checkbox" name="young" /> <%= translate 'classify.young' %>
-      <input type="checkbox" name="rain" /> <%= translate 'classify.rain' %>
-    </label>
-
+<div class="options">
+  <div class="group">
     <label>
       <select name="count">
         <option value=""><%= translate 'classify.count' %></option>
@@ -30,6 +25,16 @@
           <option value="<%= behavior %>"><%= translate 'classify', 'behaviors', behavior %></option>
         <% end %>
       </select>
+    </label>
+  </div>
+
+  <div class="group">
+    <label>
+      <input type="checkbox" name="rain" /> <%= translate 'classify.rain' %>
+    </label>
+
+    <label>
+      <input type="checkbox" name="young" /> <%= translate 'classify.young' %>
     </label>
   </div>
 </div>

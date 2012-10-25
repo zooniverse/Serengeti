@@ -33,8 +33,8 @@ module.exports =
     nothingToShow: 'There\'s nothing to show with these filters.'
     clearFilters: 'Clear filters'
 
-    young: 'Young animals present'
-    rain: 'It\'s raining in this image'
+    young: 'Babies present'
+    rain: 'Raining'
 
     count: 'Count'
 
