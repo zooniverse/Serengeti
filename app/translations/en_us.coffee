@@ -23,7 +23,7 @@ module.exports =
     play: 'View series'
     pause: 'Stop'
     satellite: 'Satellite view'
-    skipLabel: 'Skip this image'
+    nothingLabel: 'Nothing here'
     nextSubjectButton: 'Finish'
     share: 'Share'
     tweet: 'Tweet'

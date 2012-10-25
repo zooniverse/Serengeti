@@ -163,7 +163,7 @@
   .followup {
     color: darken($brown, 67%);
     font-size: 14px;
-    margin: 15px 4px 4px;
+    margin: 15px 0 4px;
     position: relative;
     text-shadow: 0 1px 0 rgba($white, 0.25);
   }
@@ -172,9 +172,17 @@
     .play button,
     .finished button {
       standard-button();
+      margin: 0 4px;
       outer-deboss: 5px;
       position: relative;
-      width: 120px;
+    }
+
+    button[name="play"],
+    button[name="pause"] {
+      i {
+        position: relative;
+        top: 2px;
+      }
     }
 
     button[name="pause"] {
@@ -205,19 +213,22 @@
     .finished {
       float: right;
 
-      .skip-label {
+      .nothing-label {
         cursor: pointer;
         display: none;
         font-size: 12px;
         font-weight: bold;
         margin-right: 10px;
       }
+
+      button {
+        width: 120px;
+      }
     }
   }
 
   .followup {
     display: none;
-    text-align: center;
 
     button[name="not-done"] {
       background: rgba($black, 0.5);
@@ -234,6 +245,10 @@
       margin: 0 5px;
       outer-deboss: 4px;
       position: relative;
+
+      &.continue {
+        float: right;
+      }
 
       a,
       button {
@@ -284,7 +299,7 @@
     }
   }
 
-  &.no-annotations .controls .finished .skip-label {
+  &.no-annotations .controls .finished .nothing-label {
     display: inline-block;
   }
 
