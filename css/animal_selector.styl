@@ -306,6 +306,58 @@
         &.hidden {
           display: none;
         }
+
+        .image {
+          background: url("images/animal-thumbnails.jpg");
+          background-size: 70px; // Compensate for background-size anti-aliasing.
+        }
+
+        &[data-animal="aardvark"]         .image {background-position: 0 -0px;}
+        &[data-animal="aardwolf"]         .image {background-position: 0 -78px;}
+        &[data-animal="baboon"]           .image {background-position: 0 -148px;}
+        &[data-animal="batEaredFox"]      .image {background-position: 0 -230px;}
+        &[data-animal="buffalo"]          .image {background-position: 0 -378px;}
+        &[data-animal="bushbuck"]         .image {background-position: 0 -458px;}
+        &[data-animal="caracal"]          .image {background-position: 0 -536px;}
+        &[data-animal="cheetah"]          .image {background-position: 0 -612px;}
+        &[data-animal="civet"]            .image {background-position: 0 -688px;}
+        &[data-animal="dikDik"]           .image {background-position: 0 -764px;}
+        &[data-animal="eland"]            .image {background-position: 0 0;}
+        &[data-animal="elephant"]         .image {background-position: 0 -986px;}
+        &[data-animal="femaleLion"]       .image {background-position: 0 -2062px;}
+        &[data-animal="genet"]            .image {background-position: 0 0;}
+        &[data-animal="giraffe"]          .image {background-position: 0 -840px;}
+        &[data-animal="grantsGazelle"]    .image {background-position: 0 0;}
+        &[data-animal="guineaFowl"]       .image {background-position: 0 0;}
+        &[data-animal="hartebeest"]       .image {background-position: 0 0;}
+        &[data-animal="hippopotamus"]     .image {background-position: 0 -1452px;}
+        &[data-animal="honeyBadger"]      .image {background-position: 0 -1528px;}
+        &[data-animal="impala"]           .image {background-position: 0 0;}
+        &[data-animal="jackal"]           .image {background-position: 0 -1604px;}
+        &[data-animal="koriBustard"]      .image {background-position: 0 0;}
+        &[data-animal="leopard"]          .image {background-position: 0 -1910px;}
+        &[data-animal="lizard"]           .image {background-position: 0 0;}
+        &[data-animal="maleLion"]         .image {background-position: 0 -1986px;}
+        &[data-animal="mongoose"]         .image {background-position: 0 -2140px;}
+        &[data-animal="ostrich"]          .image {background-position: 0 -2216px;}
+        &[data-animal="otherBird"]        .image {background-position: 0 0;}
+        &[data-animal="otherPrimate"]     .image {background-position: 0 0;}
+        &[data-animal="otherRodent"]      .image {background-position: 0 0;}
+        &[data-animal="porcupine"]        .image {background-position: 0 -2292px;}
+        &[data-animal="reedbuck"]         .image {background-position: 0 -2368px;}
+        &[data-animal="rhinoceros"]       .image {background-position: 0 -2444px;}
+        &[data-animal="secretaryBird"]    .image {background-position: 0 0;}
+        &[data-animal="serval"]           .image {background-position: 0 0;}
+        &[data-animal="spottedHyena"]     .image {background-position: 0 0;}
+        &[data-animal="stripedHyena"]     .image {background-position: 0 0;}
+        &[data-animal="thompsonsGazelle"] .image {background-position: 0 -2750px;}
+        &[data-animal="topi"]             .image {background-position: 0 0;}
+        &[data-animal="vervetMonkey"]     .image {background-position: 0 -2902px;}
+        &[data-animal="warthog"]          .image {background-position: 0 -2978px;}
+        &[data-animal="waterbuck"]        .image {background-position: 0 -3056px;}
+        &[data-animal="wildcat"]          .image {background-position: 0 -3132px;}
+        &[data-animal="wildebeest"]       .image {background-position: 0 -3208px;}
+        &[data-animal="zebra"]            .image {background-position: 0 -3284px;}
       }
 
       &[data-items="lots"] [data-animal] {
@@ -314,7 +366,7 @@
         padding: 1px 0 0 5px;
         width: 33.33%;
 
-        img {
+        .image {
           display: none;
         }
       }
@@ -325,7 +377,7 @@
         text-align: center;
         width: 50%;
 
-        img {
+        .image {
           display: none;
         }
       }
@@ -339,14 +391,10 @@
 
         .image {
           float: left;
-          height: 64px;
+          height: 68px;
           overflow: hidden;
           text-indent: -15px;
-          width: 64px;
-
-          img {
-            height: 100%;
-          }
+          width: 68px;
         }
 
         .label {
