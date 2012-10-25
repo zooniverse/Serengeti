@@ -33,19 +33,15 @@ module.exports =
     nothingToShow: 'There\'s nothing to show with these filters.'
     clearFilters: 'Clear filters'
 
+    young: 'Young animals present'
+    rain: 'It\'s raining in this image'
+
     count: 'Count'
-    counts:
-      '1': '1'
-      '2-5': '2-5'
-      '6-10': '6-10'
-      '11-20': '11-20'
-      '20+': '21+'
 
     behavior: 'Behavior'
     behaviors:
-      sleeping: 'Sleeping'
-      playing: 'Playing'
-      eating: 'Eating'
+      atRest: 'At rest'
+      moving: 'On the move'
 
     cancel: 'Cancel'
     identify: 'Identify'
