@@ -14,7 +14,7 @@ class AboutPage extends Controller
     super
     @html template
 
-    @navButtons.first().next().next().click()
+    @navButtons.first().click()
 
   onClickNavButton: ({currentTarget}) ->
     button = $(currentTarget)

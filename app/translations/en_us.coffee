@@ -307,20 +307,13 @@ module.exports =
     information:
       main: '''
         <h2>Observing animals in the wild</h2>
-        <h3>What are we discovering?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-        <h3>What are we discovering?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-        <h3>What are we discovering?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        <h3>TODO: Here's how we observe animals in the wild...</h3>
       '''
 
       sidebar: '''
-        <p><img src="//placehold.it/200x150.png" /></p>
+        <p><img src="//placehold.it/200x150.png" class="framed" /></p>
         <h3>What are we discovering?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-        <h3>What are we discovering?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+        <p>TODO: Here's what we're discovering...</p>
       '''
 
     organizations:
