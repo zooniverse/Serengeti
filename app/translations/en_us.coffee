@@ -102,10 +102,6 @@ module.exports =
       label: 'Elephant'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
-    femaleLion:
-      label: 'Female lion'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-
     genet:
       label: 'Genet'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
@@ -114,13 +110,21 @@ module.exports =
       label: 'Giraffe'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
-    grantsGazelle:
-      label: 'Grant\'s gazelle'
+    gazelleGrants:
+      label: 'Gazelle (Grant\'s)'
+      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+
+    gazelleThompsons:
+      label: 'Gazelle (Thompson\'s)'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
     guineaFowl:
       label: 'Guinea fowl'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+
+    hare:
+      label: 'Hare'
+      description: 'Lorem ipsum et cetera'
 
     hartebeest:
       label: 'Hartebeest'
@@ -132,6 +136,14 @@ module.exports =
 
     honeyBadger:
       label: 'Honey-badger'
+      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+
+    hyenaSpotted:
+      label: 'Spotted hyena'
+      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+
+    hyenaStriped:
+      label: 'Striped hyena'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
     impala:
@@ -150,12 +162,16 @@ module.exports =
       label: 'Leopard'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
-    lizard:
-      label: 'Lizard'
+    lionFemale:
+      label: 'Lion (female or cub)'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
-    maleLion:
-      label: 'Male lion'
+    lionMale:
+      label: 'Lion (male)'
+      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+
+    lizard:
+      label: 'Lizard'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
     mongoose:
@@ -164,18 +180,6 @@ module.exports =
 
     ostrich:
       label: 'Ostrich'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-
-    otherBird:
-      label: 'Other bird'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-
-    otherPrimate:
-      label: 'Other primate'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-
-    otherRodent:
-      label: 'Other rodent'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
     porcupine:
@@ -196,18 +200,6 @@ module.exports =
 
     serval:
       label: 'Serval'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-
-    spottedHyena:
-      label: 'Spotted hyena'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-
-    stripedHyena:
-      label: 'Striped hyena'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-
-    thompsonsGazelle:
-      label: 'Thompson\'s gazelle'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
     topi:
@@ -237,6 +229,22 @@ module.exports =
     zebra:
       label: 'Zebra'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+
+    otherBird:
+      label: 'Other bird'
+      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+
+    otherPrimate:
+      label: 'Other primate'
+      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+
+    otherRodent:
+      label: 'Other rodent'
+      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+
+    human:
+      label: 'Human'
+      description: 'Humans are the best.'
 
   characteristics:
     like: 'Looks like'
