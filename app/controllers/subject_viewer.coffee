@@ -1,6 +1,7 @@
 {Controller} = require 'spine'
 template = require 'views/subject_viewer'
 AnnotationItem = require './annotation_item'
+Subject = require 'models/subject'
 $ = require 'jqueryify'
 modulus = require 'lib/modulus'
 
@@ -120,10 +121,11 @@ class SubjectViewer extends Controller
 
   onClickFinish: ->
     @el.addClass 'finished'
+    @classification.send()
 
   onClickNext: ->
     @el.removeClass 'finished'
-    @classification.send()
+    Subject.next()
 
   play: ->
     # Flip the images back and forth a couple times.

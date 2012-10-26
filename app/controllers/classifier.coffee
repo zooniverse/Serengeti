@@ -56,16 +56,11 @@ class Classifier extends Controller
       @el.toggleClass property, !!@subject.metadata[property]
 
     @classification = new Classification {@subject}
-    @classification.bind 'send', @onClassificationSend
-
     @subjectViewer.setClassification @classification
     @animalSelector.setClassification @classification
 
   onNoSubjects: =>
     getEmptySubject().select()
-
-  onClassificationSend: =>
-    Subject.next()
 
   onUserSignIn: =>
     tutorialDone = User.current?.project.tutorial_done
