@@ -21,7 +21,6 @@ module.exports = [
 
       Let's get started!
     '''
-    className: 'up arrow'
 
   new Step
     content: inline '''
@@ -30,8 +29,10 @@ module.exports = [
       Many of these photos come as a sequence of two or three.
       Check out other snapshots in the sequence using the buttons below the image.
     '''
+    attachment: x: 'left', to: '.subject-viewer', at: x: 'right'
     focus: '.subject-viewer'
-    nextOn: click: '.subject-viewer button'
+    block: 'button[name="finish"]'
+    className: 'arrow left'
 
   new Step
     content: inline '''
@@ -39,9 +40,12 @@ module.exports = [
       The species that will appear are listed to the right.
       That's a big list, and not all the species are familiar,
       so let's take a look at some ways we can narrow that list down using
-      charactaristics we can identify in the image.
+      characteristics we can identify in the image.
     '''
+    attachment: x: 'right', to: '.animal-selector', at: x: 'left'
+    focus: '.animal-selector'
     block: '.animal-selector'
+    className: 'arrow right'
 
   new Step
     content: inline '''
@@ -49,6 +53,8 @@ module.exports = [
       Let's choose "Cow/horse" from the "looks like" menu.
     '''
     nextOn: click: 'button[value="likeCowHorse"]'
+    attachment: x: 'right', to: 'button[name="characteristic"][value="like"]', at: x: 'left'
+    className: 'arrow right'
 
   new Step
     content: inline '''
@@ -58,30 +64,42 @@ module.exports = [
       so let's choose the vertical stripes icon under the "Pattern" menu.
     '''
     nextOn: click: 'button[value="patternVerticalStripe"]'
+    attachment: x: 'right', to: 'button[name="characteristic"][value="pattern"]', at: x: 'left'
+    className: 'arrow right'
 
   new Step
     content: inline '''
-      Great, that leaves us with two options! This looks like a zebra.
-      Let's click "Zebra" to describe it and add it to our classification.
+      Great, that leaves us with two options, because there are two cow/horse-shaped things with stripes.
+      This one looks like a zebra. Let's click "Zebra" to describe it and add it to the classification.
     '''
+    nextOn: click: '[data-animal="zebra"]'
+    attachment: y: 'top', to: '[data-animal="zebra"]', at: y: 'bottom'
+    className: 'arrow up'
 
   new Step
     content: inline '''
-      We can confirm that this is indeed a zebra by comparing it to to the photos here.
+      We can confirm that this is indeed a zebra by comparing it to to the photos here
+      and reading the description below.
+    '''
+    attachment: x: 'right', to: '.animal-details .image-changer', at: x: 'left'
+    className: 'arrow right'
 
-      Chooose "1" from the count menu and "Walking around" from the behavior menu.
+  new Step
+    content: '''
+      Chooose "1" from the count menu and "Walking" from the behavior menu.
       Then click "Identify" to move on to the next animal.
     '''
-
-  new Step
-    content: inline '''
-      ...same thing, different animal, maybe show off the search feature...
-    '''
+    attachment: x: 'right', to: '.animal-details .options', at: x: 'left'
+    className: 'arrow right'
+    nextOn: click: 'button[name="identify"]'
 
   new Step
     content: inline '''
       Nice job! Now you\'re ready to classify on your own.
-      Click "Next" to move on.
+      Click "Finish" to move on.
       Don't forget: you can discuss an image with professional and citizen scientists after classifying it.
     '''
+    attachment: y: 'bottom', to: 'button[name="finish"]', at: y: 'top'
+    className: 'arrow down'
+    nextOn: click: 'button[name="finish"]'
 ]

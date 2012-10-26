@@ -4,6 +4,7 @@ template = require 'views/animal_selector'
 FilterMenu = require './filter_menu'
 columnize = require 'lib/columnize'
 AnimalDetails = require './animal_details'
+getTutorialSubject = require 'lib/get_tutorial_subject'
 
 class AnimalSelector extends Controller
   set: null
@@ -16,6 +17,7 @@ class AnimalSelector extends Controller
     'click [data-animal]': 'onAnimalItemClick'
     'keydown [data-animal]': 'onAnimalItemKeyDown'
     'click button[name="clear-filters"]': 'onClickClearFilters'
+    'click button[name="start-tutorial"]': 'onClickStartTutorial'
 
   elements:
     'input[name="search"]': 'searchInput'
@@ -113,5 +115,8 @@ class AnimalSelector extends Controller
     @set.filter {}, true
     @searchInput.val ''
     @searchInput.trigger 'keydown'
+
+  onClickStartTutorial: ->
+    getTutorialSubject().select()
 
 module.exports = AnimalSelector

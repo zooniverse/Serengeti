@@ -34,38 +34,56 @@
   }
 
   &.arrow {
+    transition: margin 0.5s ease-in-out, 0.25s;
+
     &:after {
       border: 15px solid transparent;
       content: "";
       position: absolute;
     }
 
-    &.up:after {
-      bottom: 100%;
-      border-bottom-color: $white;
-      left: 50%;
+    &.up {
+      margin-top: 15px;
+
+      &:after {
+        bottom: 100%;
+        border-bottom-color: $white;
+        left: 50%;
+        margin-left: -15px;
+      }
+    }
+
+    &.right {
       margin-left: -15px;
+
+      &:after {
+        border-left-color: $white
+        left: 100%;
+        margin-top: -15px;
+        top: 50%
+      }
     }
 
-    &.right:after {
-      border-left-color: $white
-      left: 100%;
+    &.down {
       margin-top: -15px;
-      top: 50%
+
+      &:after {
+        border-top-color: $white;
+        left: 50%;
+        margin-left: -15px;
+        top: 100%;
+      }
     }
 
-    &.down:after {
-      border-top-color: $white;
-      left: 50%;
-      margin-left: -15px;
-      top: 100%;
-    }
+    &.left {
+      margin-left: 15px;
 
-    &.left:after {
-      border-right-color: $white;
-      margin-top: -15px;
-      right: 100%;
-      top: 50%;
+      &:after {
+        border-right-color: $white;
+        margin-top: -15px;
+        right: 100%;
+        top: 50%;
+      }
     }
   }
 }

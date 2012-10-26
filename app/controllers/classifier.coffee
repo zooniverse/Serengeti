@@ -59,6 +59,9 @@ class Classifier extends Controller
     @subjectViewer.setClassification @classification
     @animalSelector.setClassification @classification
 
+    if !!@subject.metadata.tutorial
+      @tutorial.start()
+
   onNoSubjects: =>
     getEmptySubject().select()
 
@@ -67,11 +70,10 @@ class Classifier extends Controller
     doingTutorial = Subject.current?.metadata.tutorial
 
     if tutorialDone
-      # @tutorial.end()
+      @tutorial.end()
       Subject.next() if doingTutorial or not Subject.current
     else
       getTutorialSubject().select()
-      # @tutorial.start()
       @afterHashChange()
 
   afterHashChange: =>
