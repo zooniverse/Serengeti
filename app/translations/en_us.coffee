@@ -59,195 +59,383 @@ module.exports =
   animals:
     aardvark:
       label: 'Aardvark'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Long pig like snout.
+        Long tubular ears.
+        Rounded back, highest at shoulders tapering back to tail end.
+        Thick kangaroo like tail.
+        Stout legs with strong claws for digging.
+        Sparsely covered with hair that appears pinkish brown.
+      '''
 
     aardwolf:
       label: 'Aardwolf'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        The smallest hyena, has typical downward sloping appearance from shoulders down.
+        Longish hair and a thick mane that can be raised.
+        Black snout and pointy ears
+        Body tan coloured with vertical black stripes
+        Tail bushy and mostly black.
+      '''
 
     baboon:
       label: 'Baboon'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Large primate with dog like muzzle and eyes set closely together
+        When on all fours shoulders are higher than rump.
+        Tail raises up then kinks downwards.
+        Grey to pink bare patches on rump.
+        Olive brown colouring, males have darker manes.
+        New borns are black with pink faces.
+      '''
 
     batEaredFox:
       label: 'Bat-eared fox'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
-
-    buffalo:
-      label: 'Buffalo'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Very large ears and pointy muzzle with pale band across forehead
+        Slivery grey to tan grizzled hair with dark slender legs
+        Tail bushy, black upper side and tip.
+      '''
 
     bushbuck:
       label: 'Bushbuck'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Chestnut to dark brown coat with white spots and faint stripes on flanks
+        White patch under chin and white stripe on lower neck.
+        Males only have horns with a single spiral pointing backwards.
+        Tail is bushy and white underneath
+      '''
+
+    capeBuffalo:
+      label: 'Cape buffalo'
+      description: '''
+        Massive cattle like, dark brown to black colouration.
+        Both sexes have horns but males are more developed joining in the middle in a boss.
+        Ears are large and stick out sideways under the horns
+        Cattle like tail with dark tuft.
+      '''
 
     caracal:
       label: 'Caracal'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Uniform reddish brown colour with pale white belly
+        Hind quarters slightly higher than shoulders
+        Face has black markings above eyes and around whiskers
+        large pointed ears with prominent black tufts
+        Short tail
+      '''
 
     cheetah:
       label: 'Cheetah'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Slender cat with long legs and short rounded head.
+        Pale fawn coloured with black spots, belly and chin paler.
+        A black line from the eye to the mouth ‘tear mark’ is distinctive
+        Tail long and spotted with several black rings towards the tip.
+      '''
 
     civet:
       label: 'Civet'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Long heavy set body with short legs.
+        Racoon like black band across eyes, white muzzle
+        Whitish grey colour with black blotches. Dark legs
+        Tail short, spotted with black tip.
+      '''
 
     dikDik:
       label: 'Dik dik'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Small antelope with elongated upper lip and nose
+        Large eyes with pre orbital glands
+        Yellowish grey colour with pale belly
+        Tuft of hair between ears
+        Males have short spiky horns
+      '''
 
     eland:
       label: 'Eland'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Largest antelope with cow like appearance.
+        Tawny grey colouring with faint white stripes sometimes visable.
+        Both sexes have straight horns with a single spiral.
+        Males develop thick neck, dewlap and wholly hair on forehead.
+      '''
 
     elephant:
       label: 'Elephant'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Massive grey skinned animal
+        Very large ears, long trunk and tusks
+        Tail bare with black hairy tip.
+      '''
 
     genet:
       label: 'Genet'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Long, lithe cat-like animal with short legs and small paws.
+        Silvery grey colour with black spots.
+        Tail long with black rings.
+        Black markings on muzzle.
+      '''
 
     giraffe:
       label: 'Giraffe'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Very tall with long legs and neck.
+        Light fawn to almost black patches separated by off white borders.
+        Two short horns covered in hair with black tufts.
+        Tail bare tipped with black tassel.
+      '''
 
     gazelleGrants:
       label: 'Gazelle (Grant\'s)'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        This pale fawn gazelle has distinctive white belly, white rump, and white tail, with vertical black stripes on either side of the rump.  Juveniles have a band of darker fur along their sides that can mimic a Thomson gazelle.  Long black lines extend from both corners of their eyes.  Adult males have long, ridged horns that widen slightly towards their tips.
+      '''
 
     gazelleThompsons:
       label: 'Gazelle (Thompson\'s)'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Locally referred to as a “tommy,” this small, fawn-colored gazelle has a horizontal dark black stripe that runs from their elbow to hip.  They have a white rump and underbelly, but black tail.  They have dark fur running from the inner corners of their eyes to their nose.  Both sexes have ridged horns that curve up and slightly backward.
+      '''
 
     guineaFowl:
       label: 'Guinea fowl'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Chicken sized, dark blue-grey with white spots.
+        Large rounded body with longish neck.
+        Small head with blue and red naked skin. Yellowish casque on head.
+        Longish dark naked legs
+      '''
 
     hare:
       label: 'Hare'
-      description: 'Lorem ipsum et cetera'
+      description: '''
+        The Cape hare looks a lot like the rabbits in your backyard.  It has large ears, a grizzled coat that ranges from gray to brown to red, and a short fluffy tail.
+      '''
 
     hartebeest:
       label: 'Hartebeest'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Fawn to chestnut colour with pale lower rump.
+        Shoulders slope back towards rump.
+        Both sexes have horns
+      '''
 
     hippopotamus:
       label: 'Hippopotamus'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Large rounded animal with short legs and grey to pink naked skin.
+        Eyes near top of head with two small ears above, massive wide mouth.
+        Short thick tail with black bristles.
+      '''
 
     honeyBadger:
       label: 'Honey-badger'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Stocky with short legs.
+        Hair longish, black with white/grey covering head and back.
+        Ears very small and close to head.
+        Long claws on front paws
+        Short black tail.
+      '''
 
     hyenaSpotted:
       label: 'Hyena (spotted)'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Tan coloured with black blotches. Lower legs and muzzle black.
+        Broad head with large ears. Neck well developed.
+        Short tail
+        Stands higher at the shoulders than the rump.
+      '''
 
     hyenaStriped:
       label: 'Hyena (striped)'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Striped hyenas have the same sloping build as spotted hyenas, but their beige or grey coats have vertical black stripes.  They have a crest of long hair along their neck that sometimes rises, and a very bushy grey tail.
+      '''
 
     impala:
       label: 'Impala'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Lightly built antelope, reddish brown in colour, paler on sides with white under belly, chin and around eyes
+        Tuft of hair between ears black, males only have lyre shaped horns.
+        Black lines on buttocks and tail form M shape.
+      '''
 
     jackal:
       label: 'Jackal'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Yellow brown body and legs with grizzled black grey back
+        Tail predominantly black.
+        Ears erect and pointy.
+        Most of the jackals captured on camera are black-backed jackals.  Occasionally you will see a golden or side-striped jackal, which have lighter coloring and white-tipped tails.
+      '''
 
     koriBustard:
       label: 'Kori bustard'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Large heavy bird with thick finely barred grey neck
+        Back brown and belly white.
+        Long yellow legs
+        Dark crest on head usually flat.
+      '''
 
     leopard:
       label: 'Leopard'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Powerfully built golden brown cat with black spots and rosettes.
+        Face spotted with no black lines, small round ears
+        Shortish legs
+        Long spotted tail ending in black rings.
+      '''
 
     lionFemale:
       label: 'Lion (female or cub)'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Tawny coloured with paler under parts. Cubs show some faint spotting.
+        Tail has black tuft on tip.
+        Male has mane that gets darker and thicker with age
+        Chin white.
+      '''
 
     lionMale:
       label: 'Lion (male)'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+      '''
 
     lizard:
       label: 'Lizard'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+      '''
 
     mongoose:
       label: 'Mongoose'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        With short legs and a humped back, mongooses appear very weasel or ferret like.  The mongooses here range in size and color – from tiny brown dwarf mongooses to larger striped banded mongooses.
+      '''
 
     ostrich:
       label: 'Ostrich'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Very large tall bird with heavy long legs.
+        Body black in male grey brown in female. Male has white tail and wing tips.
+        Long neck grey to pink .
+      '''
 
     porcupine:
       label: 'Porcupine'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Short rounded appearance. Black legs, body and face.
+        Covered from top of head, back and sides to tail with quills that are white with black rings.
+      '''
 
     reedbuck:
       label: 'Reedbuck'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Yellowish to red brown body with white under parts.
+        Short fluffy tail, white underside.
+        Black spot beneath large ears.
+        Male only has horns that curve forward and are ridged.
+      '''
 
     rhinoceros:
       label: 'Rhinoceros'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Despite its name, the black rhino is grey.  It is immediately recognizable by the large horn on its nose, which can get up to 60cm long!  It has another smaller horn higher on its nose as well.  These are massive, thick animals and are a rare find on our camera traps.
+      '''
 
     secretaryBird:
       label: 'Secretary bird'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Tall bird with long legs, black feathered thighs.
+        Grey neck, body and tail plumes. Black across lower back and wings.
+        Bare skin on face red / yellow. Hooked bill raptor like.
+        Several head plumes on back of head.
+      '''
 
     serval:
       label: 'Serval'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        This relatively small cat has long slender legs, a small head, and a yellowish coat which dotted with black spots that sometimes run into stripes. The serval’s enormous pointed ears and distinctive black nose help distinguish it from the cheetah.
+      '''
 
     topi:
       label: 'Topi'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+      '''
 
     vervetMonkey:
       label: 'Vervet monkey'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+      '''
 
     warthog:
       label: 'Warthog'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Pig-like with grey body covered sparsely with darker hairs.
+        Mane of long hairs along back
+        Tusks curve up around snout
+        Warts on face, more pronounced in males
+        Tail very thin with black tassel.
+      '''
 
     waterbuck:
       label: 'Waterbuck'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Large antelope with grey brown coarse hair.
+        White circle around rump.
+        White band from ear to ear under neck. White chin and around nose.
+        Male only has horns that are ridged, curving first backwards then forwards towards the tips.
+      '''
 
     wildcat:
       label: 'Wildcat'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Resembles a large domestic cat with sandy brown to grey body with paler under parts.
+        Dark vertical stripes on legs and tail variable.
+        Back of ears redish brown.
+      '''
 
     wildebeest:
       label: 'Wildebeest'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Dark grey-brown colour with faint dark stripes on neck and flank
+        Dark mane covers head neck and shoulders
+        Both sexes have horns that row out sideways then curve sharply back towards head
+        Shoulders higher than hind quarters.
+      '''
 
     zebra:
       label: 'Zebra'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+        Horse-like appearance.
+        White with dark stripes
+        Thick, striped erect mane
+        Black and white tail with black tassel.
+      '''
 
     otherBird:
       label: 'Other bird'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+      '''
 
     otherPrimate:
       label: 'Other primate'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+      '''
 
     otherRodent:
       label: 'Other rodent'
-      description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
+      description: '''
+      '''
 
     human:
       label: 'Human'
-      description: 'Humans are the best.'
+      description: '''
+        Vehicles and hot-air balloons are some of the signs you’ll see that people visit Serengeti.  You might even catch a researcher checking the camera, or a curious tourist investigating.
+      '''
 
   characteristics:
     like: 'Looks like'
