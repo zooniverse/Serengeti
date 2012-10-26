@@ -80,8 +80,8 @@ class Classifier extends Controller
     return unless !!@subject.metadata.tutorial
 
     if @el.is ':visible'
-      # @tutorial.show()
+      @tutorial.show()
     else
-      # @tutorial.hide()
+      @tutorial.hide()
 
 module.exports = Classifier
