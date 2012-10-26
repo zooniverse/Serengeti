@@ -135,11 +135,11 @@ module.exports =
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
     hyenaSpotted:
-      label: 'Spotted hyena'
+      label: 'Hyena (spotted)'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
     hyenaStriped:
-      label: 'Striped hyena'
+      label: 'Hyena (striped)'
       description: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.'
 
     impala:
