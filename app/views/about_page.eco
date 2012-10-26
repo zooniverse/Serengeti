@@ -1,9 +1,9 @@
 <% translate = require 'lib/translate' %>
 
 <nav>
-  <button name="turn-page" value="information"><i rel="camera"><%= translate 'about.sections.information' %></i></button>
-  <button name="turn-page" value="organizations"><i rel="camera"><%= translate 'about.sections.organizations' %></i></button>
-  <button name="turn-page" value="teams"><i rel="camera"><%= translate 'about.sections.teams' %></i></button>
+  <button name="turn-page" value="information"><i rel="globe"><%= translate 'about.sections.information' %></i></button>
+  <button name="turn-page" value="organizations"><i rel="home"><%= translate 'about.sections.organizations' %></i></button>
+  <button name="turn-page" value="teams"><i rel="users"><%= translate 'about.sections.teams' %></i></button>
 </nav>
 
 <section data-page="information">

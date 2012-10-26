@@ -66,6 +66,14 @@
       "src": "fontawesome"
     },
     {
+      "uid": "5b0772e9484a1a11646793a82edd622a",
+      "orig_css": "pin",
+      "orig_code": 128204,
+      "css": "pin",
+      "code": 128204,
+      "src": "fontawesome"
+    },
+    {
       "uid": "dcedf50ab1ede3283d7a6c70e2fe32f3",
       "orig_css": "chat",
       "orig_code": 59168,
@@ -122,11 +130,27 @@
       "src": "brandico"
     },
     {
-      "uid": "5b0772e9484a1a11646793a82edd622a",
-      "orig_css": "pin",
-      "orig_code": 128204,
-      "css": "pin",
-      "code": 128204,
+      "uid": "x8m4z7b33cv1h2s784tjlam56uq40wtd",
+      "orig_css": "users",
+      "orig_code": 128101,
+      "css": "users",
+      "code": 128101,
+      "src": "typicons"
+    },
+    {
+      "uid": "n1ld0w7zazkxq7bsqtksyez86sdufqgd",
+      "orig_css": "globe-alt",
+      "orig_code": 127760,
+      "css": "globe-alt",
+      "code": 127760,
+      "src": "typicons"
+    },
+    {
+      "uid": "d7271d490b71df4311e32cdacae8b331",
+      "orig_css": "home",
+      "orig_code": 8962,
+      "css": "home",
+      "code": 8962,
       "src": "fontawesome"
     }
   ]
