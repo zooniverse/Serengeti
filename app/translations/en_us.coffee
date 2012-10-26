@@ -60,114 +60,79 @@ module.exports =
     aardvark:
       label: 'Aardvark'
       description: '''
-        Long pig like snout.
-        Long tubular ears.
-        Rounded back, highest at shoulders tapering back to tail end.
-        Thick kangaroo like tail.
-        Stout legs with strong claws for digging.
-        Sparsely covered with hair that appears pinkish brown.
+        The elusive aardvark has a long, tubular, pig-like snout with large, pointed ears.  It has short, stout legs with large digging claws and a very rounded back that tapers into a thick tail.  This animal has skin that appears gray to pinkish-brown and is only sparsely covered with bristly hair.
       '''
 
     aardwolf:
       label: 'Aardwolf'
       description: '''
-        The smallest hyena, has typical downward sloping appearance from shoulders down.
-        Longish hair and a thick mane that can be raised.
-        Black snout and pointy ears
-        Body tan coloured with vertical black stripes
-        Tail bushy and mostly black.
+        The aardwolf can be easily confused for its larger cousin, the striped hyena: it has the same downward sloping build, gray/tan coat color, vertical black stripes, and a crest of long hair along its neck.  However, aardwolves are smaller than striped hyenas, and their bushy tails are tipped with black.  They only have about 3, very vertical stripes along their sides, and their black snouts are shorter and narrower than those of hyenas.
       '''
 
     baboon:
       label: 'Baboon'
       description: '''
-        Large primate with dog like muzzle and eyes set closely together
-        When on all fours shoulders are higher than rump.
-        Tail raises up then kinks downwards.
-        Grey to pink bare patches on rump.
-        Olive brown colouring, males have darker manes.
-        New borns are black with pink faces.
+        This is the largest Serengeti primate.  Baboons are olive-brown in color, with grey/pink bare patches on their rump.  Adults have large, dog-like muzzles and close-set eyes, whereas young dark brown and have flat, pink faces.
       '''
 
     batEaredFox:
       label: 'Bat-eared fox'
       description: '''
-        Very large ears and pointy muzzle with pale band across forehead
-        Slivery grey to tan grizzled hair with dark slender legs
-        Tail bushy, black upper side and tip.
+        This silvery-gray/tan insectivore has short legs, a humped appearance, and a very busy black-tipped tail.  It has distinctively large ears and a pointy muzzle with pale band across its forehead.
+      '''
+
+    otherBird:
+      label: 'Bird (other)'
+      description: '''
+        See a bird that doesn't have its own category? Mark it here!
       '''
 
     bushbuck:
       label: 'Bushbuck'
       description: '''
-        Chestnut to dark brown coat with white spots and faint stripes on flanks
-        White patch under chin and white stripe on lower neck.
-        Males only have horns with a single spiral pointing backwards.
-        Tail is bushy and white underneath
+        Bushbucks have a chestnut to dark brown coat, with white spots and faint stripes on their flanks.  They also have a white patch under their chin, white stripe on their lower neck, and white patch under their bushy tail.  Males have backward-pointing horns with a single twist.
       '''
 
     capeBuffalo:
       label: 'Cape buffalo'
       description: '''
-        Massive cattle like, dark brown to black colouration.
-        Both sexes have horns but males are more developed joining in the middle in a boss.
-        Ears are large and stick out sideways under the horns
-        Cattle like tail with dark tuft.
+        Buffalo are massive and cattle like.  They dark brown to black, with relatively long, tufted tails.  Both sexes have horns but those of males are more developed and join in the middle in what is called a ‘boss’. Their large, droopy ears stick out sideways under their horns
       '''
 
     caracal:
       label: 'Caracal'
       description: '''
-        Uniform reddish brown colour with pale white belly
-        Hind quarters slightly higher than shoulders
-        Face has black markings above eyes and around whiskers
-        large pointed ears with prominent black tufts
-        Short tail
+        A medium to large cat, the caracal is uniformly reddish-brown/tawny in color with a pale white belly.  It is relatively muscular, with hind quarters rising slightly higher than its shoulders.  The caracal looks almost as though it is wearing makeup – with darkly lined eyes, and striking black markings above its eyes and around its whiskers.  Its large, pointed ears have prominent tufts of black hair.
       '''
 
     cheetah:
       label: 'Cheetah'
       description: '''
-        Slender cat with long legs and short rounded head.
-        Pale fawn coloured with black spots, belly and chin paler.
-        A black line from the eye to the mouth ‘tear mark’ is distinctive
-        Tail long and spotted with several black rings towards the tip.
+        This is a lanky, slender cat with long legs, short rounded head, and very round ears.  The cheetah is pale tawny/yellow with black spots.  The tail long and also spotted with several black rings towards the tip.  “Tears ” refers to the distinctive black line that runs from the cheetah’s eyes down its cheeks.
       '''
 
     civet:
       label: 'Civet'
       description: '''
-        Long heavy set body with short legs.
-        Racoon like black band across eyes, white muzzle
-        Whitish grey colour with black blotches. Dark legs
-        Tail short, spotted with black tip.
+        Long, and heavy-set with short legs, the civet looks like a cross between a cat and a dog.  It has a racoon-like black band across its eyes and a white muzzle, its body is generally gray with black spots that darken to solid black on the legs and tail tip.
       '''
 
     dikDik:
       label: 'Dik dik'
       description: '''
-        Small antelope with elongated upper lip and nose
-        Large eyes with pre orbital glands
-        Yellowish grey colour with pale belly
-        Tuft of hair between ears
-        Males have short spiky horns
+        This is the smallest Serengeti antelope.  It has large eyes and an elongated upper lip and nose, with tufts of hair between its ears.  Males have short, spiky horns.
       '''
 
     eland:
       label: 'Eland'
       description: '''
-        Largest antelope with cow like appearance.
-        Tawny grey colouring with faint white stripes sometimes visable.
-        Both sexes have straight horns with a single spiral.
-        Males develop thick neck, dewlap and wholly hair on forehead.
+        Elands are large and vaguely ox-like in appearance.  They are tawny-grey with faint white vertical stripes.  Both sexes have straight horns with a single spiral.  Males develop a thick neck with a large, draping dewlap.
       '''
 
     elephant:
       label: 'Elephant'
       description: '''
-        Massive grey skinned animal
-        Very large ears, long trunk and tusks
-        Tail bare with black hairy tip.
+        This massive, grey, thick skinned animal is famous for its very large ears, long trunk, and ivory tusks.  Because elephants are so tall, we frequently see only their legs or trunk in the camera trap photos.
       '''
 
     gazelleGrants:
@@ -185,28 +150,19 @@ module.exports =
     genet:
       label: 'Genet'
       description: '''
-        Long, lithe cat-like animal with short legs and small paws.
-        Silvery grey colour with black spots.
-        Tail long with black rings.
-        Black markings on muzzle.
+        This long, lithe animal appears a bit like a cross between a cat and a racoon.  Genets (also called “genet cats”) , have short legs, silvery grey fur with black spots, and a long bushy, ringed tail.
       '''
 
     giraffe:
       label: 'Giraffe'
       description: '''
-        Very tall with long legs and neck.
-        Light fawn to almost black patches separated by off white borders.
-        Two short horns covered in hair with black tufts.
-        Tail bare tipped with black tassel.
+        The tallest animals in Serengeti, giraffes are immediately recognizable by their long necks, long legs, and sloping body.  Their reddish-orange blotches give every individual its own unique pattern.  Both sexes have two short horns, covered in hair, with black tufts on the end.  Their tails are tipped with long black tassels.
       '''
 
     guineaFowl:
       label: 'Guinea fowl'
       description: '''
-        Chicken sized, dark blue-grey with white spots.
-        Large rounded body with longish neck.
-        Small head with blue and red naked skin. Yellowish casque on head.
-        Longish dark naked legs
+        A chicken sized bird with dark blue-grey feathers and white spots.  These have large, rounded body with longish necks, and small heads with blue and red skin.
       '''
 
     hare:
@@ -218,36 +174,25 @@ module.exports =
     hartebeest:
       label: 'Hartebeest'
       description: '''
-        Fawn to chestnut colour with pale lower rump.
-        Shoulders slope back towards rump.
-        Both sexes have horns
+        This large antelope is yellowish tan with pale lower rump.  Its body slopes distinctively from shoulders towards rump.  The hartebeest has a long nose and high-set eyes.  Both sexes have horns that curve out sideways and then inward.
       '''
 
     hippopotamus:
       label: 'Hippopotamus'
       description: '''
-        Large rounded animal with short legs and grey to pink naked skin.
-        Eyes near top of head with two small ears above, massive wide mouth.
-        Short thick tail with black bristles.
+        Hippos are large, rounded animal with short legs and grey to pink skin.  They have small ears and a massive, wide mouth.  Their short, thick tail is trimmed with black bristles.  You mostly see them in the cameras at night when the leave the rivers to forage.
       '''
 
     honeyBadger:
       label: 'Honey-badger'
       description: '''
-        Stocky with short legs.
-        Hair longish, black with white/grey covering head and back.
-        Ears very small and close to head.
-        Long claws on front paws
-        Short black tail.
+        This fierce creature is stocky with short legs, black fur with a white/grey band covering its head and back.  Its ears are very small and close to its head.
       '''
 
     hyenaSpotted:
       label: 'Hyena (spotted)'
       description: '''
-        Tan coloured with black blotches. Lower legs and muzzle black.
-        Broad head with large ears. Neck well developed.
-        Short tail
-        Stands higher at the shoulders than the rump.
+        The spotted hyena looks typically dog-like.  Juveniles have dark gray fur with black spots; both spots and fur tend to fade to red/brown in adults. Their lower legs and muzzle are black.  Their heads are broad, they have large, rather pointed ears, and they slope dramatically from shoulder to hip.
       '''
 
     hyenaStriped:
@@ -259,105 +204,85 @@ module.exports =
     impala:
       label: 'Impala'
       description: '''
-        Lightly built antelope, reddish brown in colour, paler on sides with white under belly, chin and around eyes
-        Tuft of hair between ears black, males only have lyre shaped horns.
-        Black lines on buttocks and tail form M shape.
+        Impalas are lightly built antelopes, reddish brown in color, with paler fur on sides.  They have white under their belly and chin, and around their eyes.  They have black tufts of hair between their ears, black lines on their rump, and black spots above their heels.  Males have large, S-shaped horns.
       '''
 
     jackal:
       label: 'Jackal'
       description: '''
-        Yellow brown body and legs with grizzled black grey back
-        Tail predominantly black.
-        Ears erect and pointy.
-        Most of the jackals captured on camera are black-backed jackals.  Occasionally you will see a golden or side-striped jackal, which have lighter coloring and white-tipped tails.
+        Jackals look much like a small dog or coyote.  They have yellow-brown bodies and legs, with grizzled black grey back trimmed with a  black band.  Black-backed jackals have a predominantly black tail with black tip, whereas side-striped jackals have a white-tipped tail.
       '''
 
     koriBustard:
       label: 'Kori bustard'
       description: '''
-        Large heavy bird with thick finely barred grey neck
-        Back brown and belly white.
-        Long yellow legs
-        Dark crest on head usually flat.
+        This is a large, heavy bird with a thick pale grey neck, brown back, and white belly, and long yellow legs
       '''
 
     leopard:
       label: 'Leopard'
       description: '''
-        Powerfully built golden brown cat with black spots and rosettes.
-        Face spotted with no black lines, small round ears
-        Shortish legs
-        Long spotted tail ending in black rings.
+        These are powerfully built, golden brown cats with black rosettes.  Leopards have a spotted face - no black lines as cheetahs have – and small, round ears.  Their long, spotted tail has bright white fur underneath the tip, which is easy to see when they curl their tails upward.
       '''
 
     lionFemale:
       label: 'Lion (female or cub)'
       description: '''
-        Tawny coloured with paler under parts. Cubs show some faint spotting.
-        Tail has black tuft on tip.
-        Male has mane that gets darker and thicker with age
-        Chin white.
+        These are massive, muscular cats.  They are tawny coloured with paler underparts; cubs show some spots, especially on their bellies and legs.  They have a long tail with smooth fur and a dark tuft on its tip.  Males have manes that get darker and thicker with age.
       '''
 
     lionMale:
       label: 'Lion (male)'
       description: '''
+        These are massive, muscular cats.  They are tawny coloured with paler underparts; cubs show some spots, especially on their bellies and legs.  They have a long tail with smooth fur and a dark tuft on its tip.  Males have manes that get darker and thicker with age.
       '''
 
     mongoose:
       label: 'Mongoose'
       description: '''
-        With short legs and a humped back, mongooses appear very weasel or ferret like.  The mongooses here range in size and color – from tiny brown dwarf mongooses to larger striped banded mongooses.
+        With short legs and a humped back, mongooses appear very weasel- or ferret-like.  The mongooses you’ll see here range in size and color – from the tiny, brown dwarf mongoose to the larger banded mongoose, to the bushy tailed white-tailed mongoose.
       '''
 
     ostrich:
       label: 'Ostrich'
       description: '''
-        Very large tall bird with heavy long legs.
-        Body black in male grey brown in female. Male has white tail and wing tips.
-        Long neck grey to pink .
+        This is a very large, tall bird with long, heavy legs.  Females are mainly brown with pale legs and necks.  Males have black fur with white tail and wing tips, and their legs and neck turn pink in mating season.
       '''
 
     porcupine:
       label: 'Porcupine'
       description: '''
-        Short rounded appearance. Black legs, body and face.
-        Covered from top of head, back and sides to tail with quills that are white with black rings.
+        This short, rounded creature is covered from head to tail with long, black and white quills.  Porcupines have tiny black eyes set in gopher-like faces.
       '''
 
     reedbuck:
       label: 'Reedbuck'
       description: '''
-        Yellowish to red brown body with white under parts.
-        Short fluffy tail, white underside.
-        Black spot beneath large ears.
-        Male only has horns that curve forward and are ridged.
+        Reedbucks range in color from tan to reddish brown.  They have white bellies and a  short fluffy tail with a white underside.  The have a dark black nose, with white mouth and chin, and a black spot beneath their large ears.  Males have forward-curving ridged horns.
       '''
 
     reptiles:
       label: 'Reptiles'
       description: '''
+        You will occasionally see skinks, Agama lizards, snakes, and other reptiles sunning themselves in front of the camera.  This category includes any reptiles that you see.
       '''
 
     rhinoceros:
       label: 'Rhinoceros'
       description: '''
-        Despite its name, the black rhino is grey.  It is immediately recognizable by the large horn on its nose, which can get up to 60cm long!  It has another smaller horn higher on its nose as well.  These are massive, thick animals and are a rare find on our camera traps.
+        Despite its name, the black rhino is grey.  It is immediately recognizable by the large horn on its nose, which can get up to 60cm long.  It has another smaller horn higher on its nose as well.  These are massive, thick animals and are a rare find on our camera traps.
       '''
 
     rodents:
       label: 'Rodents'
       description: '''
+        Though the name is deceiving, spring hares are actually rodents and not hares.  (Hares are lagomorphs, not rodents, and have their own category here.)  The springhare looks like a rabbit-sized kangaroo, with long, powerful hind legs, short front legs, a long semi-bushy, black-tipped tail.  Mainly found on the open grassland, the spring hare grazes primarily at night.  Mice are seen infrequently in the cameras because they are so small, but you might get lucky.
       '''
 
     secretaryBird:
       label: 'Secretary bird'
       description: '''
-        Tall bird with long legs, black feathered thighs.
-        Grey neck, body and tail plumes. Black across lower back and wings.
-        Bare skin on face red / yellow. Hooked bill raptor like.
-        Several head plumes on back of head.
+        This is a tall bird with long legs and black feathered thighs.  It has a grey neck, body and tail plumes, with black feathers across its lower back and wings.  The bare skin on its face is red and yellow.  It has several long plumes on back of its head that sometimes stick out.
       '''
 
     serval:
@@ -369,72 +294,55 @@ module.exports =
     topi:
       label: 'Topi'
       description: '''
+        The topi is a tall hoofed animal that is recognizable for standing sentry on termite mounds.  It has a long nose with high set eyes and horns that curve up and back.  Like the hartebeest, its body slopes steeply down from their shoulder to rump, but topis are reddish brown in color with black patches on their shoulder and hip.
       '''
 
     vervetMonkey:
       label: 'Vervet monkey'
       description: '''
+        A regular sight in the Serengeti, this small monkey has a light gray/brown coat, small black face, and a very, very long gray tail.
       '''
 
     warthog:
       label: 'Warthog'
       description: '''
-        Pig-like with grey body covered sparsely with darker hairs.
-        Mane of long hairs along back
-        Tusks curve up around snout
-        Warts on face, more pronounced in males
-        Tail very thin with black tassel.
+        This pig-like animal has a grey body covered sparsely with darker hairs, and aane of long, wiry hairs along its neck and back.  Its tail is think with a black tassel.  It has tusks that curve up around its snout.
       '''
 
     waterbuck:
       label: 'Waterbuck'
       description: '''
-        Large antelope with grey brown coarse hair.
-        White circle around rump.
-        White band from ear to ear under neck. White chin and around nose.
-        Male only has horns that are ridged, curving first backwards then forwards towards the tips.
+        Waterbucks are large, bulky antelope with brown coarse hair and a white circle around their rumps.  They have white markings on their chin and nose, and a white band runs from ear to ear under their neck. Males have ridged horns that curve first backwards then forwards towards the tips.
       '''
 
     wildcat:
       label: 'Wildcat'
       description: '''
-        Resembles a large domestic cat with sandy brown to grey body with paler under parts.
-        Dark vertical stripes on legs and tail variable.
-        Back of ears redish brown.
+        Resembling a large, domestic cat, wildcats are sandy brown to grey with lighter underparts.  They have sometimes-visible dark stripes on their legs and tail.
       '''
 
     wildebeest:
       label: 'Wildebeest'
       description: '''
-        Dark grey-brown colour with faint dark stripes on neck and flank
-        Dark mane covers head neck and shoulders
-        Both sexes have horns that row out sideways then curve sharply back towards head
-        Shoulders higher than hind quarters.
+        This long-legged, migratory antelope has dark grey-brown fur with faint stripes of darker fur on its neck and flank.  It has a large head with a rounded black nose and white ‘beard’.  It stands higher at the shoulder than the rump.  Both sexes have horns that extend out sideways then curve sharply back towards head.
       '''
 
     zebra:
       label: 'Zebra'
       description: '''
-        Horse-like appearance.
-        White with dark stripes
-        Thick, striped erect mane
-        Black and white tail with black tassel.
+        The Swahili word for zebra means “striped donkey” – and that’s exactly what this animal looks like.  Horse or donkey-like in appearance, zebras are white, with dark stripes, a thick, bristly mane, and a black-tasselled tail.
       '''
 
-    otherBird:
-      label: 'Other bird'
+    zorilla:
+      label: 'Zorilla'
       description: '''
-      '''
-
-    otherPrimate:
-      label: 'Other primate'
-      description: '''
+        Also known as the striped polecat, this member of the weasel family looks a lot like a skunk.  It has short legs and long white stripes down its back – and even emits a foul smell when threatened!
       '''
 
     human:
       label: 'Human'
       description: '''
-        Vehicles and hot-air balloons are some of the signs you’ll see that people visit Serengeti.  You might even catch a researcher checking the camera, or a curious tourist investigating.
+        Vehicles and hot-air balloons are some of the signs you’ll see that people visit Serengeti.  You might even catch a researcher checking the camera, or a curious tourist investigating over lunch.
       '''
 
   characteristics:
