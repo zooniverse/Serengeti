@@ -170,6 +170,18 @@ module.exports =
         Tail bare with black hairy tip.
       '''
 
+    gazelleGrants:
+      label: 'Gazelle (Grant\'s)'
+      description: '''
+        This pale fawn gazelle has distinctive white belly, white rump, and white tail, with vertical black stripes on either side of the rump.  Juveniles have a band of darker fur along their sides that can mimic a Thomson gazelle.  Long black lines extend from both corners of their eyes.  Adult males have long, ridged horns that widen slightly towards their tips.
+      '''
+
+    gazelleThompsons:
+      label: 'Gazelle (Thompson\'s)'
+      description: '''
+        Locally referred to as a “tommy,” this small, fawn-colored gazelle has a horizontal dark black stripe that runs from their elbow to hip.  They have a white rump and underbelly, but black tail.  They have dark fur running from the inner corners of their eyes to their nose.  Both sexes have ridged horns that curve up and slightly backward.
+      '''
+
     genet:
       label: 'Genet'
       description: '''
@@ -186,18 +198,6 @@ module.exports =
         Light fawn to almost black patches separated by off white borders.
         Two short horns covered in hair with black tufts.
         Tail bare tipped with black tassel.
-      '''
-
-    gazelleGrants:
-      label: 'Gazelle (Grant\'s)'
-      description: '''
-        This pale fawn gazelle has distinctive white belly, white rump, and white tail, with vertical black stripes on either side of the rump.  Juveniles have a band of darker fur along their sides that can mimic a Thomson gazelle.  Long black lines extend from both corners of their eyes.  Adult males have long, ridged horns that widen slightly towards their tips.
-      '''
-
-    gazelleThompsons:
-      label: 'Gazelle (Thompson\'s)'
-      description: '''
-        Locally referred to as a “tommy,” this small, fawn-colored gazelle has a horizontal dark black stripe that runs from their elbow to hip.  They have a white rump and underbelly, but black tail.  They have dark fur running from the inner corners of their eyes to their nose.  Both sexes have ridged horns that curve up and slightly backward.
       '''
 
     guineaFowl:
