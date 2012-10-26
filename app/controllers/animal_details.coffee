@@ -5,6 +5,7 @@ ImageChanger = require './image_changer'
 class AnimalDetails extends Controller
   animal: null
   classification: null
+  set: null
 
   className: 'animal-details'
 
@@ -49,9 +50,13 @@ class AnimalDetails extends Controller
   onClickIdentify: ->
     @classification.annotate
       species: @animal
+
       count: @countSelect.val()
       behavior: @behaviorSelect.val()
       babies: !!@babiesCheckbox.attr 'checked'
+
+      filters: @set.options
+      search: @set.searchString
 
     @hide()
 

@@ -6,6 +6,7 @@ class FilteringSet
 
   items: null
   options: null
+  searchString: ''
 
   constructor: (params = {}) ->
     @[property] = value for own property, value of params
@@ -45,8 +46,8 @@ class FilteringSet
 
     @trigger 'filter', @find(@options), @options
 
-  search: (searchString) ->
-    searchExpression = new RegExp searchString, 'i'
+  search: (@searchString) ->
+    searchExpression = new RegExp @searchString, 'i'
 
     matches = for item in @items
       match = false
@@ -56,6 +57,6 @@ class FilteringSet
       continue unless match
       item
 
-    @trigger 'search', matches, searchString
+    @trigger 'search', matches, @searchString
 
 module.exports = FilteringSet

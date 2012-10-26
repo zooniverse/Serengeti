@@ -55,8 +55,6 @@ class AnimalSelector extends Controller
       @set.search @searchInput.val()
 
   onSetFilter: (matches, options) =>
-    @classification?.annotate filters: options, true
-
     matchIds = (match.id for match in matches)
 
     breakpoints = [20, 10, 5, 0]
@@ -84,8 +82,6 @@ class AnimalSelector extends Controller
     @items
 
   onSetSearch: (matches, searchString) =>
-    @classification?.annotate search: searchString, true
-
     matchIds = (match.id for match in matches)
     for item in @items
       item = $(item)
@@ -104,7 +100,7 @@ class AnimalSelector extends Controller
       @select animal
 
   select: (animal) ->
-    details = new AnimalDetails {animal, @classification}
+    details = new AnimalDetails {animal, @classification, @set}
     @el.append details.el
     setTimeout details.show, 125
 
