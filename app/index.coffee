@@ -12,6 +12,10 @@ Api = require 'zooniverse/lib/api'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
 
+# Temporarily disable Talk links
+$(document).on 'click', 'a[href*="talk"]', (e) ->
+  e.preventDefault(); alert 'Talk is currently unavailable. Sorry!'
+
 app = {}
 
 $(window).one 'translate-init', ->
