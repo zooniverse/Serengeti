@@ -13,7 +13,7 @@
 
 <section data-page="organizations">
   <h2><%= translate 'about.sections.organizations' %></h2>
-  <% for organization in ['adler']: %>
+  <% for organization in ['tawiri', 'tanapa', 'nsf', 'uom', 'fzs', 'adler']: %>
     <% organization = translate 'about', 'organizations', organization %>
     <div class="member organization">
       <img src="<%= organization.image %>" />
@@ -26,7 +26,7 @@
 <section data-page="teams">
   <div class="science team column">
     <h2><%= translate 'about.sections.scienceTeam' %></h2>
-    <% for member in ['kosmala', 'packer', 'swanson']: %>
+    <% for member in ['swanson', 'kosmala', 'packer', 'rosengren', 'mwampeta']: %>
       <% member = translate 'about', 'teams', 'science', member %>
       <div class="science team member">
         <img src="<%= member.image %>" />

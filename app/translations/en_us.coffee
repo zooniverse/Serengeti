@@ -10,8 +10,9 @@ module.exports =
   home:
     heading: 'Welcome to Snapshot Serengeti'
     content: '''
-      Researchers in the Serengeti need your help classifying the animals spotted by their camera traps.
-      There are over 40 different species on camera, and you have the chance to see them all!
+      Hundreds of camera traps in Serengeti National Park, Tanzania,
+      are providing a powerful new window into the dynamics of Africa’s most elusive wildlife species.
+      We need your help to classify all the different animals caught in millions of camera trap images.
     '''
     action: 'Start classifying'
 
@@ -410,16 +411,54 @@ module.exports =
     information:
       main: '''
         <h2>Observing animals in the wild</h2>
-        <h3>TODO: Here's how we observe animals in the wild...</h3>
+        <p>Over the last 45 years, the University of Minnesota Lion Project has discovered a lot about lions – everything from why they have manes to why they live in groups. Now we’re turning our sights to understanding how an entire community of large animals interacts. We currently monitor 24 lion prides in Serengeti National Park, Tanzania, using radio-tracking.  To collect information about other species, we’ve set out a grid of 225 camera traps.  With photographs from these cameras, we’re able to study how over 30 species are distributed across the landscape – and how they interact with lions and one another.</p>
+
+        <h3>Our scientific questions</h3>
+        <p>Understanding how competing species coexist is a fundamental theme in ecology, with important implications for food webs, biodiversity, and the sustainability of life on Earth.  Much of our current research focuses on how carnivores coexist with carnivores, herbivores with herbivores, and the joint dynamics of predators and their prey. These insights will guide strategies for species reintroduction, conservation, and ecosystem management around the world.</p>
+        <ul>
+          <li>Carnivore Coexistence: Carnivores eat meat. If two carnivore species eat the same prey, one of those species can outcompete the other, preventing coexistence of both species in the same area. Even where carnivores don’t compete for the exact same prey, aggressive interactions such as scavenging from and killing each other can prevent coexistence.  Research in other parts of the world suggests that when one species avoids the other, the two species might be able to coexist, but coexistence may depend on the structure and complexity of the habitat. Our cameras reveal whether lions, leopards, cheetah and hyenas avoid each other in space or in time and the extent to which this varies across the landscape.</li>
+          <li>Herbivore Coexistence: Herbivores eat plants. The Serengeti supports sixteen different species of hoofed herbivores.  Although these species don’t kill or steal food from each other, we still don’t really understand how they all manage to coexist in this system.  Herbivores that are able to feed most efficiently may also be more likely to be killed by predators, and this could explain some of the coexistence. Another possibility is that different herbivores may specialize on different habitat areas. We are using the camera traps to investigate these ideas, as well as study how the annual migration of 1.5 million wildebeest and zebra through our study area affects changes these dynamics.</li>
+          <li>Predator Prey Relationships: Recent advances in ecology have suggested that there may be costs to herbivores when they avoid predators. For example, if predators hunt in areas with the best plants, herbivores may avoid those areas and only be able to eat plants that aren’t as good. We are using the camera trap data on herbivore distributions to study whether herbivores are found where the best food is or where the risk of being killed by predators is lowest.</li>
+        </ul>
       '''
 
       sidebar: '''
-        <p><img src="//placehold.it/200x150.png" class="framed" /></p>
-        <h3>What are we discovering?</h3>
-        <p>TODO: Here's what we're discovering...</p>
+        <h3>The Serengeti Lion Project</h3>
+        <p>The camera trapping survey is operated by the long-term Serengeti Lion Project.  The Lion Project has been studying African lions in Tanzania’s Serengeti National Park and the Ngorongoro Conservation Area since the 1960’s.  At any given time, our field teams keep track of about 330 lions in 24 prides in the Serengeti, and 50–60 lions in 5 prides on the floor of Ngorongoro Crater.  This daily monitoring has produced one of the most extensive datasets on any mammalian species anywhere in the world - over 5,000 lions have been included in the Serengeti and Crater studies over the past 40+ years, and genealogical data from these two populations extend over 12 generations. The daily records include information on the lions’ location, group size, diet, food intake, health and reproduction.  You can find out more about the Lion Project at http://www.cbs.umn.edu/lionresearch/.</p>
+        <h3>What we do</h3>
+        <p>We check on the camera traps in the course of daily lion monitoring.  We change batteries, exchange the SD cards, and cut tall grass in front of the camera so that grass waving in the wind doesn’t accidentally trigger the sensor.  225 cameras are a lot of work!  When things run smoothly, a camera can last about two months before needing maintenance.  But that’s not always the case – sometimes we return to a camera only to find it chewed on by hyenas or torn down by elephants, waterlogged from a heavy rain or infested by ants. </p>
+        <h3>How the cameras work</h3>
+        <p>The cameras use passive infrared sensors that are triggered when an object warmer than the ambient temperature moves in front of the sensor.  This is usually an animal…but tall sunlit grass can also trigger the camera when it blows in the wind.  We currently use the Scoutguard 565 and DLC Covert Reveal models – these are incandescent flash cameras (with a white flash).  Some people worry that incandescent flashes startle the animals, but in our study area the same individuals often come back to the same camera site night after night!</p>
+        <h3>Where we live</h3>
+        <p>When in Serengeti, we live in the remote Serengeti Wildlife Research Center—a small community of houses and research offices near the park headquarters in the middle of the park.  Our house is modest, but the outdoor toilet provides some of our more exciting run-ins with nocturnal wildlife.  In recent years donations from visitors and supporters have allowed us to install a solar power system that gives us electricity at night and supports the most exciting recent addition to our house – a refrigerator!  </p>
       '''
 
     organizations:
+      tawiri:
+        name: 'The Tanzania Wildlife Research Institute (TAWIRI)'
+        image: '//placehold.it/80x100.png'
+        description: 'TAWIRI coordinates wildlife research in the United Republic of Tanzania to provide scientific information and advice to the Government and wildlife management authorities on the sustainable conservation of wildlife.'
+
+      tanapa:
+        name: 'Tanzania National Parks (TANAPA)'
+        image: '//placehold.it/80x100.png'
+        description: 'Write-up?'
+
+      nsf:
+        name: 'National Science Foundation (NSF)'
+        image: '//placehold.it/80x100.png'
+        description: 'NSF has provided support for the Serengeti Lion Project since 1980 (?).'
+
+      uom:
+        name: 'University of Minnesota'
+        image: '//placehold.it/80x100.png'
+        description: 'TODO'
+
+      fzs:
+        name: 'Frankfurt Zoological Society (FZS)'
+        image: '//placehold.it/80x100.png'
+        description: 'FZS has provided on-the-ground support for our field team for as long as we can remember.'
+
       adler:
         name: 'Adler Planetarium'
         image: '//placehold.it/80x100.png'
@@ -430,17 +469,27 @@ module.exports =
         kosmala:
           name: 'Margaret Kosmala'
           image: '//placehold.it/80x100.png'
-          description: 'Does some science'
+          description: 'Ph.D. Candidate'
+
+        mwampeta:
+          name: 'Stanslaus Mwampeta'
+          image: '//placehold.it/80x100.png'
+          description: 'Field Assistant'
 
         packer:
           name: 'Craig Packer'
           image: '//placehold.it/80x100.png'
-          description: 'Does some science'
+          description: 'Director of the Lion Research Center & Distinguished McKnight University Professor'
+
+        rosengren:
+          name: 'Daniel Rosengren'
+          image: '//placehold.it/80x100.png'
+          description: 'Field Assistant'
 
         swanson:
           name: 'Ali Swanson'
           image: '//placehold.it/80x100.png'
-          description: 'Does some science'
+          description: 'Ph.D. Candidate'
 
       development:
         borden:
