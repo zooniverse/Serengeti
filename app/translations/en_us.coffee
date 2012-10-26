@@ -305,11 +305,6 @@ module.exports =
       description: '''
       '''
 
-    lizard:
-      label: 'Lizard'
-      description: '''
-      '''
-
     mongoose:
       label: 'Mongoose'
       description: '''
@@ -340,10 +335,20 @@ module.exports =
         Male only has horns that curve forward and are ridged.
       '''
 
+    reptiles:
+      label: 'Reptiles'
+      description: '''
+      '''
+
     rhinoceros:
       label: 'Rhinoceros'
       description: '''
         Despite its name, the black rhino is grey.  It is immediately recognizable by the large horn on its nose, which can get up to 60cm long!  It has another smaller horn higher on its nose as well.  These are massive, thick animals and are a rare find on our camera traps.
+      '''
+
+    rodents:
+      label: 'Rodents'
+      description: '''
       '''
 
     secretaryBird:
@@ -423,11 +428,6 @@ module.exports =
 
     otherPrimate:
       label: 'Other primate'
-      description: '''
-      '''
-
-    otherRodent:
-      label: 'Other rodent'
       description: '''
       '''
 
