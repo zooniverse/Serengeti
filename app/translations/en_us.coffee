@@ -30,6 +30,7 @@ module.exports =
     pin: 'Pin it'
     discuss: 'Discuss'
     next: 'Next capture'
+
     nothingToShow: 'There\'s nothing to show with these filters.'
     clearFilters: 'Clear filters'
 
@@ -37,8 +38,14 @@ module.exports =
 
     behavior: 'Behavior'
     behaviors:
-      atRest: 'At rest'
-      moving: 'On the move'
+      eating: 'Eating'
+      standing: 'Standing'
+      walking: 'Walking'
+      running: 'Running'
+      sitting: 'Sitting'
+      lying: 'Lying'
+      climbing: 'Climbing'
+      flying: 'Flying'
 
     babies: 'Babies present'
     rain: 'Raining'
