@@ -34,3 +34,8 @@
     </div>
   </div>
 </div>
+
+<div class="aux">
+  <button name="start-tutorial">Tutorial</button>
+  <button name="clear-filters"><%= translate 'classify.clearFilters' %></button>
+</div>
