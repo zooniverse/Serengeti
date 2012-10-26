@@ -14,4 +14,6 @@ class Animal extends Model
   translateLabel: =>
     @updateAttribute 'label', translate 'animals', @id, 'label'
 
+  toJSON: -> @id
+
 module.exports = Animal

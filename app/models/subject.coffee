@@ -15,8 +15,13 @@ class Subject extends Model
     fetcher = @fetch (@queueLength - @count()) + 1
 
     if @count() is 0
+
       @trigger 'no-local-subjects'
       nexter = fetcher.pipe =>
+
+        first = @first()
+        first.destroy() if first.metadata.empty
+
         if @count() is 0
           @trigger 'no-subjects-at-all'
         else

@@ -35,7 +35,7 @@ class Classification extends Model
   toJSON: ->
     metaAnnotations = for key, value of @metadata
       annotation = {}
-      annotation.key = value
+      annotation[key] = value
       annotation
 
     classification:
@@ -56,9 +56,7 @@ class Classification extends Model
 
     if @favorite
       favorite = Favorite.create subjects: @subject
-      favoriteSend = favorite.send().deferred
-      favoriteSend.done ->
-        favorite.trigger 'send'
-        favorite.trigger 'is-new'
+      favorite.trigger 'send'
+      favorite.trigger 'is-new'
 
 module.exports = Classification

@@ -41,7 +41,7 @@ class Classifier extends Controller
       steps: tutorialSteps
 
     Subject.bind 'select', @onSubjectSelect
-    Subject.bind 'no-local-subjects', @onNoSubjects
+    Subject.bind 'no-local-subjects', @onNoLocalSubjects
     User.bind 'sign-in', @onUserSignIn
 
     $(window).on 'hashchange', =>
@@ -62,7 +62,7 @@ class Classifier extends Controller
     if !!@subject.metadata.tutorial
       @tutorial.start()
 
-  onNoSubjects: =>
+  onNoLocalSubjects: =>
     getEmptySubject().select()
 
   onUserSignIn: =>

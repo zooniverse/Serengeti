@@ -52,7 +52,9 @@ User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
 
 Api.init
-  host: if +location.port < 1024
+  host: if !!~location.search.indexOf 'dev'
+    'https://dev.zooniverse.org'
+  else if +location.port < 1024
     'https://api.zooniverse.org'
   else
     "#{location.protocol}//#{location.hostname}:3000"
