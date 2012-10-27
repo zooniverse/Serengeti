@@ -12,6 +12,9 @@ Api = require 'zooniverse/lib/api'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
 
+ContentPage = require 'controllers/content_page'
+feedbackContent = require 'views/feedback_page'
+
 # Temporarily disable Talk links
 $(document).on 'click', 'a[href*="talk"]', (e) ->
   e.preventDefault(); alert 'Talk is currently unavailable. Sorry!'
@@ -38,12 +41,14 @@ $(window).one 'translate-init', ->
       about: AboutPage
       classify: Classifier
       profile: Profile
+      feedback: class extends ContentPage then content: feedbackContent
 
     routes:
       '/home': 'home'
       '/about': 'about'
       '/classify': 'classify'
       '/profile': 'profile'
+      '/feedback': 'feedback'
 
     default: 'home'
 

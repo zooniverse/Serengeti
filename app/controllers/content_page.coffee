@@ -10,6 +10,9 @@ class ContentPage extends Controller
   constructor: ->
     super
 
-    @el.append translate @content
+    @el.append try
+      translate @content
+    catch e
+      @content
 
 module.exports = ContentPage
