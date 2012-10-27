@@ -33,12 +33,18 @@ html {
       background: $white;
       bottom: 0;
       box-shadow: 0 0 3px $black;
+      font-size: 14px;
       font-weight: bold;
-      padding: 25px 0 15px;
+      opacity: 0.85;
+      padding: 20px 0 10px;
       position: fixed;
       text-align: center;
       width: 100%;
       z-index: 3;
+
+      &:hover {
+        opacity: 1;
+      }
 
       ul {
         margin: 0;
@@ -46,7 +52,7 @@ html {
 
         li {
           display: inline-block;
-          width: 15%;
+          width: 160px;
           border-left: 1px solid #fff;
           box-shadow: -2px 0 0 -1px $gray;
 
@@ -58,7 +64,6 @@ html {
           a {
             color: inherit;
             display: block;
-            line-height: 40px;
             opacity: 0.75;
             text-align: center;
             text-decoration: none;
