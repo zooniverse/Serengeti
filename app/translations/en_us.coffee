@@ -349,7 +349,6 @@ module.exports =
     horns: 'Horns'
     tail: 'Tail'
     build: 'Build'
-    back: 'Back'
 
   characteristicValues:
     likeCatDog: 'Cat/dog'
@@ -363,7 +362,6 @@ module.exports =
     patternSpots: 'Spots'
     patternSolid: 'Solid'
     coatTanYellow: 'Tan/yellow'
-    coatOrange: 'Orange'
     coatRedBrown: 'Red'
     coatBrownBlack: 'Brown'
     coatWhite: 'White'
@@ -384,9 +382,7 @@ module.exports =
     buildTall: 'Tall'
     buildSmall: 'Small'
     buildLowSlung: 'Low-slung'
-    backSloped: 'Sloped'
-    backRound: 'Round'
-    backStraight: 'Straight'
+    buildSloped: 'Sloped'
 
   profile:
     favorites: 'Favorites'

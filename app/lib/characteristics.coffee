@@ -32,7 +32,6 @@ module.exports = [
     label: translate 'characteristics.coat'
     values: [
       new Value id: 'coatTanYellow', label: translate 'characteristicValues.coatTanYellow'
-      new Value id: 'coatOrange', label: translate 'characteristicValues.coatOrange'
       new Value id: 'coatRedBrown', label: translate 'characteristicValues.coatRedBrown'
       new Value id: 'coatBrownBlack', label: translate 'characteristicValues.coatBrownBlack'
       new Value id: 'coatWhite', label: translate 'characteristicValues.coatWhite'
@@ -70,14 +69,6 @@ module.exports = [
       new Value id: 'buildLanky', label: translate 'characteristicValues.buildLanky'
       new Value id: 'buildSmall', label: translate 'characteristicValues.buildSmall'
       new Value id: 'buildLowSlung', label: translate 'characteristicValues.buildLowSlung'
-    ]
-
-  new Characteristic
-    id: 'back'
-    label: translate 'characteristics.back'
-    values: [
-      new Value id: 'backSloped', label: translate 'characteristicValues.backSloped'
-      new Value id: 'backRound', label: translate 'characteristicValues.backRound'
-      new Value id: 'backStraight', label: translate 'characteristicValues.backStraight'
+      # new Value id: 'buildSloped', label: translate 'characteristicValues.buildSloped'
     ]
 ]
