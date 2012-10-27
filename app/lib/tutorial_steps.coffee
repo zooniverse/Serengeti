@@ -36,7 +36,7 @@ module.exports = [
 
   new Step
     content: inline '''
-      Your task is to identify the different animals that appear in the photos.
+      Your task is to identify all the different animals that appear in the photos.
       The species that will appear are listed to the right.
       That's a big list, and not all the species are familiar,
       so let's take a look at some ways we can narrow that list down using
@@ -95,8 +95,11 @@ module.exports = [
 
   new Step
     content: inline '''
-      Nice job! Now you\'re ready to classify on your own.
-      Click "Finish" to move on.
+      Nice job! Now you\'re ready to classify some images on your own.
+      In each image, make your best effort to identify all the animals you can.
+      Your observations will be combined with those of multiple volunteers,
+      so even if you're not sure on something, your contribution is still very useful!
+      Click "Finish" now to move on.
       Don't forget: you can discuss an image with professional and citizen scientists after classifying it.
     '''
     attachment: y: 'bottom', to: 'button[name="finish"]', at: y: 'top'
