@@ -39,14 +39,10 @@ module.exports =
 
     behavior: 'Behavior'
     behaviors:
+      resting: 'Resting'
+      moving: 'Moving'
       eating: 'Eating'
-      standing: 'Standing'
-      walking: 'Walking'
-      running: 'Running'
-      sitting: 'Sitting'
-      lying: 'Lying'
-      climbing: 'Climbing'
-      flying: 'Flying'
+      interacting: 'Interacting'
 
     babies: 'Babies present'
     rain: 'Raining'

@@ -21,7 +21,7 @@
     <label>
       <select name="behavior">
         <option value=""><%= translate 'classify.behavior' %></option>
-        <% for behavior in ['eating', 'standing', 'walking', 'running', 'sitting', 'lying', 'climbing', 'flying']: %>
+        <% for behavior in ['resting', 'moving', 'eating', 'interacting']: %>
           <option value="<%= behavior %>"><%= translate 'classify', 'behaviors', behavior %></option>
         <% end %>
       </select>
