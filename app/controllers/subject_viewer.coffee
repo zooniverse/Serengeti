@@ -21,6 +21,7 @@ class SubjectViewer extends Controller
     'click button[name="sign-in"]': 'onClickSignIn'
     'click button[name="favorite"]': 'onClickFavorite'
     'click button[name="unfavorite"]': 'onClickUnfavorite'
+    'change input[name="nothing"]': 'onChangeNothingCheckbox'
     'click button[name="finish"]': 'onClickFinish'
     'click button[name="next"]': 'onClickNext'
 
@@ -30,6 +31,7 @@ class SubjectViewer extends Controller
     '.annotations': 'annotationsContainer'
     '.toggles button': 'toggles'
     'button[name="satellite"]': 'satelliteToggle'
+    'input[name="nothing"]': 'nothingCheckbox'
     'button[name="finish"]': 'finishButton'
     'a.talk-link': 'talkLink'
 
@@ -90,8 +92,15 @@ class SubjectViewer extends Controller
       else @activate e.which - 49
 
   onClassificationChange: =>
-    @el.toggleClass 'no-annotations', @classification.annotations.length is 0
-    @el.toggleClass 'favorite', !!@classification.favorite
+    noAnnotations = @classification.annotations.length is 0
+
+    nothing = @classification.metadata.nothing
+    isFavorite = !!@classification.favorite
+
+    @el.toggleClass 'no-annotations', noAnnotations
+    @el.toggleClass 'favorite', isFavorite
+
+    @finishButton.attr disabled: noAnnotations and not nothing
 
   onClassificationAddSpecies: (classification, annotation) =>
     item = new AnnotationItem {@classification, annotation}
@@ -118,6 +127,10 @@ class SubjectViewer extends Controller
 
   onClickUnfavorite: ->
     @classification.updateAttribute 'favorite', false
+
+  onChangeNothingCheckbox: ->
+    nothing = !!@nothingCheckbox.attr 'checked'
+    @classification.annotate {nothing}, true
 
   onClickFinish: ->
     @el.addClass 'finished'

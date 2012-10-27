@@ -38,8 +38,12 @@
   </span>
 
   <span class="finished group">
+    <label class="nothing-label">
+      <input type="checkbox" name="nothing" />
+      <span><%= translate 'classify.nothingLabel' %></span>
+    </label>
+
     <label>
-      <span class="nothing-label"><%= translate 'classify.nothingLabel' %></span>
       <button name="finish"><%= translate 'classify.nextSubjectButton' %></button>
     </label>
   </span>
