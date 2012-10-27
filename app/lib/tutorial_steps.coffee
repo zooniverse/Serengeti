@@ -86,7 +86,7 @@ module.exports = [
 
   new Step
     content: '''
-      Chooose "1" from the count menu and "Walking" from the behavior menu.
+      Chooose "1" from the count menu and "Moving" from the behavior menu.
       Then click "Identify" to move on to the next animal.
     '''
     attachment: x: 'right', to: '.animal-details .options', at: x: 'left'
