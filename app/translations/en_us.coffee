@@ -84,16 +84,16 @@ module.exports =
         See a bird that doesn't have its own category? Mark it here!
       '''
 
+    buffalo:
+      label: 'Buffalo'
+      description: '''
+        Buffalo are massive and cattle like.  They dark brown to black, with relatively long, tufted tails.  Both sexes have horns but those of males are more developed and join in the middle in what is called a ‘boss’. Their large, droopy ears stick out sideways under their horns
+      '''
+
     bushbuck:
       label: 'Bushbuck'
       description: '''
         Bushbucks have a chestnut to dark brown coat, with white spots and faint stripes on their flanks.  They also have a white patch under their chin, white stripe on their lower neck, and white patch under their bushy tail.  Males have backward-pointing horns with a single twist.
-      '''
-
-    capeBuffalo:
-      label: 'Cape buffalo'
-      description: '''
-        Buffalo are massive and cattle like.  They dark brown to black, with relatively long, tufted tails.  Both sexes have horns but those of males are more developed and join in the middle in what is called a ‘boss’. Their large, droopy ears stick out sideways under their horns
       '''
 
     caracal:
