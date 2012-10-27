@@ -101,6 +101,11 @@ class AnimalSelector extends Controller
 
   select: (animal) ->
     details = new AnimalDetails {animal, @classification, @set}
+
+    @classification.annotate inSelection: true, true
+    details.bind 'release', =>
+      @classification.annotate inSelection: null, true
+
     @el.append details.el
     setTimeout details.show, 125
 

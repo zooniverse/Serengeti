@@ -93,14 +93,14 @@ class SubjectViewer extends Controller
 
   onClassificationChange: =>
     noAnnotations = @classification.annotations.length is 0
-
     nothing = @classification.metadata.nothing
     isFavorite = !!@classification.favorite
+    inSelection = @classification.metadata.inSelection
 
     @el.toggleClass 'no-annotations', noAnnotations
     @el.toggleClass 'favorite', isFavorite
 
-    @finishButton.attr disabled: noAnnotations and not nothing
+    @finishButton.attr disabled: inSelection or (noAnnotations and not nothing)
 
   onClassificationAddSpecies: (classification, annotation) =>
     item = new AnnotationItem {@classification, annotation}
