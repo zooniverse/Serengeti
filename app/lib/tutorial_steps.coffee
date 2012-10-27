@@ -3,9 +3,9 @@ translate = require 'lib/translate'
 {Step} = Tutorial
 
 inline = (string) ->
-  string = string.replace '\n\n', '_NEWLINE_'
-  string = string.replace '\n', ' '
-  string = string.replace '_NEWLINE_', '\n'
+  string = string.replace '\n\n', '_NEWLINE_', 'g'
+  string = string.replace '\n', ' ', 'g'
+  string = string.replace '_NEWLINE_', '\n', 'g'
   string
 
 Step::defaultButton = translate 'classify.tutorial.continueButton'
