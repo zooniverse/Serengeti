@@ -279,6 +279,19 @@
     }
   }
 
+  &.zoomed .images figure {
+    cursor: -moz-grab;
+
+    img {
+      position: absolute;
+      width: 1200px;
+    }
+  }
+
+  &.dragging .images figure {
+    cursor: -moz-grabbing;
+  }
+
   &.playing .controls .play {
     button[name="play"] {
       display: none;

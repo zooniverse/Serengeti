@@ -14,6 +14,8 @@ class SubjectViewer extends Controller
   playTimeouts: null
 
   events:
+    # 'click button[name="zoom"]': 'onClickZoomToggle'
+    # 'mousedown .subject-images': 'onMouseDownImage'
     'click button[name="play"]': 'onClickPlay'
     'click button[name="pause"]': 'onClickPause'
     'click button[name="toggle"]': 'onClickToggle'
@@ -26,7 +28,7 @@ class SubjectViewer extends Controller
     'click button[name="next"]': 'onClickNext'
 
   elements:
-    '.subject-images figure': 'images'
+    '.subject-images figure': 'figures'
     'figure.satellite': 'satelliteImage'
     '.annotations': 'annotationsContainer'
     '.toggles button': 'toggles'
@@ -43,7 +45,10 @@ class SubjectViewer extends Controller
 
   delegateEvents: ->
     super
-    $(document).on 'keydown', @onKeyDown
+    doc = $(document)
+    doc.on 'keydown', @onKeyDown
+    doc.on 'mousemove', @onDocMouseMove
+    doc.on 'mouseup', @onDocMouseUp
 
   setClassification: (classification) ->
     @classification?.unbind 'change', @onClassificationChange
@@ -106,6 +111,57 @@ class SubjectViewer extends Controller
     item = new AnnotationItem {@classification, annotation}
     item.el.appendTo @annotationsContainer
 
+  onClickZoomToggle: ->
+    @el.toggleClass 'zoomed'
+
+  onMouseDownImage: (e) ->
+    return unless @el.hasClass 'zoomed'
+    e.preventDefault();
+    @el.addClass 'dragging'
+    @mouseDown = e
+    @onDocMouseMove e
+
+  onDocMouseMove: (e) =>
+    return unless @mouseDown
+    @onDragImage e
+
+  onDragImage: (e) ->
+    return unless @mouseDown
+    # TODO: A lot of this can be cached somewhere. POC.
+    e.preventDefault()
+
+    figure = @figures.filter '.active'
+    image = figure.find 'img'
+
+    figureOffset = figure.offset()
+    imageOffset =
+      left: parseFloat image.css 'left'
+      top: parseFloat image.css 'top'
+
+    startX = (@mouseDown.pageX - figureOffset.left)
+    startY = (@mouseDown.pageY - figureOffset.top)
+    currentX = (e.pageX - figureOffset.left)
+    currentY = (e.pageY - figureOffset.top)
+    diffX = startX - currentX
+    diffY = startY - currentY
+
+    rawOffset =
+      left: imageOffset.left - diffX
+      top: imageOffset.top - diffY
+
+    clampedOffset =
+      left: Math.min Math.max(rawOffset.left, figure.outerWidth() - image.outerWidth()), 0
+      top: Math.min Math.max(rawOffset.top, figure.outerHeight() - image.outerHeight()), 0
+
+    @figures.find('img').css clampedOffset
+
+    @mouseDown = e
+
+  onDocMouseUp: (e) =>
+    return unless @mouseDown
+    @el.removeClass 'dragging'
+    delete @mouseDown
+
   onClickPlay: ->
     @play()
 
@@ -166,7 +222,7 @@ class SubjectViewer extends Controller
 
     @active = modulus +@active, @classification.subject.location.standard.length
 
-    for image, i in @images
+    for image, i in @figures
       @setActiveClasses image, i, @active
 
     for button, i in @toggles
