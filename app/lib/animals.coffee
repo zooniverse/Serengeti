@@ -8,7 +8,7 @@ translate = require 'lib/translate'
 # The order of these values must match the order in the spreadsheet.
 values = [
   'likeCatDog', 'likeCowHorse', 'likeAntelopeDeer', 'likeBird', 'likeOther', 'likeWeasel'
-  'patternVerticalStripe', 'patternHorzontialStripe', 'patternSpots', 'patternSolid'
+  'patternVerticalStripe', 'patternHorizontalStripe', 'patternSpots', 'patternSolid'
   'coatTanYellow', 'coatRedBrown', 'coatBrownBlack', 'coatWhite', 'coatGray', 'coatBlack'
   'hornsNone', 'hornsStraight', 'hornsSimpleCurve', 'hornsLyrate', 'hornsCurly'
   'tailBushy', 'tailSmooth', 'tailTufted', 'tailLong', 'tailShort'
