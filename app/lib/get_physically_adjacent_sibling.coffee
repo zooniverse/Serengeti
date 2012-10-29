@@ -30,4 +30,4 @@ module.exports = (el, direction = 'right', range = 25, step = 5) ->
     return target if siblings.is target
 
     has = siblings.has target
-    return has if has.length isnt 0
+    return has.get 0 if has.length isnt 0

@@ -10,20 +10,22 @@
 <div class="options">
   <div class="count group">
     <span class="title"><%= translate 'classify.count' %>:</span>
-    <% for count in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '11-50', '51+']: %>
+    <% countKeys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '-', '='] %>
+    <% for count, i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '11-50', '51+']: %>
       <label>
-        <input type="radio" name="count" value="<%= count %>" />
-        <span class="label"><%= count %></span>
+        <input type="radio" name="count" value="<%= count %>" data-shortcut="<%= countKeys[i] %>" />
+        <span class="label" title="[<%= countKeys[i]  %>]"><%= count %></span>
       </label>
     <% end %>
   </div>
 
   <div class="behavior group">
     <span class="title"><%= translate 'classify.behavior' %>:</span>
-    <% for behavior in ['standing', 'resting', 'moving', 'eating', 'interacting']: %>
+    <% behaviorKeys = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'] %>
+    <% for behavior, i in ['standing', 'resting', 'moving', 'eating', 'interacting']: %>
       <label>
-        <input type="checkbox" name="behavior" value="<%= behavior %>" />
-        <span class="label"><%= translate 'classify', 'behaviors', behavior %></span>
+        <input type="checkbox" name="behavior" value="<%= behavior %>" data-shortcut="<%= behaviorKeys[i] %>" />
+        <span class="label" title="[<%= behaviorKeys[i] %>]"><%= translate 'classify', 'behaviors', behavior %></span>
       </label>
     <% end %>
   </div>
@@ -37,6 +39,6 @@
 </div>
 
 <div class="action">
-  <label><button name="cancel"><%= translate 'classify.cancel' %></button></label>
-  <label><button name="identify"><%= translate 'classify.identify' %></button></label>
+  <label><button name="cancel" data-shortcut="ESC"><%= translate 'classify.cancel' %></button></label>
+  <label><button name="identify" data-shortcut="ENTER"><%= translate 'classify.identify' %></button></label>
 </div>

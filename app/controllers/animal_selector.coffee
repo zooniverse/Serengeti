@@ -5,6 +5,7 @@ FilterMenu = require './filter_menu'
 columnize = require 'lib/columnize'
 AnimalDetails = require './animal_details'
 getTutorialSubject = require 'lib/get_tutorial_subject'
+getPhysicallyAdjacentSibling = require 'lib/get_physically_adjacent_sibling'
 
 class AnimalSelector extends Controller
   set: null
@@ -14,8 +15,8 @@ class AnimalSelector extends Controller
 
   events:
     'keydown input[name="search"]': 'onSearchKeyDown'
+    'keydown .selection-area': 'onSelectionAreaKeyDown'
     'click [data-animal]': 'onAnimalItemClick'
-    'keydown [data-animal]': 'onAnimalItemKeyDown'
     'click button[name="clear-filters"]': 'onClickClearFilters'
     'click button[name="start-tutorial"]': 'onClickStartTutorial'
 
@@ -48,11 +49,41 @@ class AnimalSelector extends Controller
   setClassification: (@classification) ->
     @classification.bind 'add-species', @clearFilters
 
-  ESC = 27
+  KEYS =
+    TAB: 9
+    ENTER: 13
+    ESC: 27
+    SLASH: 191
+
+  ARROWS =
+    LEFT: 37
+    UP: 38
+    RIGHT: 39
+    DOWN: 40
+
   onSearchKeyDown: ({which}) ->
     setTimeout =>
-      @searchInput.attr value: '' if which is ESC
+      @searchInput.attr value: '' if which is KEYS.ESC
+      @items.filter(':not(".dimmed")').first().focus() if which is KEYS.ENTER
+
       @set.search @searchInput.val()
+
+  onSelectionAreaKeyDown: (e) ->
+    {target, which} = e
+
+    switch which
+      when KEYS.ENTER
+        $(document.activeElement).click()
+      when KEYS.SLASH
+        @searchInput.focus()
+      else
+        key = (key for key, val of ARROWS when which is val)[0]
+        return unless key
+
+        sibling = getPhysicallyAdjacentSibling target, key.toLowerCase()
+        $(sibling).focus()
+
+    e.preventDefault()
 
   onSetFilter: (matches, options) =>
     matchIds = (match.id for match in matches)
@@ -91,13 +122,6 @@ class AnimalSelector extends Controller
     animalId = $(currentTarget).attr 'data-animal'
     animal = @set.find(id: animalId)[0]
     @select animal
-
-  ENTER = 13
-  onAnimalItemKeyDown: ({which, currentTarget}) ->
-    if which is ENTER
-      animalId = $(currentTarget).attr 'data-animal'
-      animal = @set.find(id: animalId)[0]
-      @select animal
 
   select: (animal) ->
     details = new AnimalDetails {animal, @classification, @set}
