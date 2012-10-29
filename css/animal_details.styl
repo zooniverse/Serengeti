@@ -1,6 +1,5 @@
 .animal-details {
   background: $black;
-  background: rgba($black, 0.9);
   border-radius: 4px;
   border-width: 75px 5px 5px;
   box-shadow: 0 1px 1px rgba($white, 0.33) inset;
@@ -67,7 +66,7 @@
   }
 
   .content {
-    height: 165px;
+    height: 135px;
     overflow: auto;
 
     p.label {
@@ -77,34 +76,63 @@
   }
 
   .options {
-    .group {
-      margin: 10px 0;
-    }
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
 
-    label {
-      display: inline-block;
+    .group {
+      border-top: 1px solid rgba($green, 0.5);
+      padding: 5px;
+
+      .title {
+        color: $gray;
+        display: inline-block;
+        width: 6em;
+      }
+
+      &.count,
+      &.behavior {
+        clearfix();
+
+        label {
+          cursor: pointer;
+
+          > input {
+            opacity: 0.01;
+            position: absolute;
+          }
+
+          > .label {
+            standard-button();
+            padding: 2px 5px;
+          }
+
+          > input:checked + .label {
+            background: $green-really;
+          }
+        }
+      }
     }
   }
 
   .action {
     bottom: 0;
     font-weight: bold;
-    padding: 10px;
+    padding: 2px;
     position: absolute;
     right: 0;
-    text-align: center;
 
-    > label {
-      display: inline-block;
-      margin: 0 5px;
-    }
+    button {
+      line-height: 12px;
 
-    button[name="cancel"] {
-      standard-button($red);
-    }
+      &[name="cancel"] {
+        standard-button($red);
+      }
 
-    button[name="identify"] {
-      standard-button($green-really);
+      &[name="identify"] {
+        standard-button($green-really);
+      }
     }
   }
 }

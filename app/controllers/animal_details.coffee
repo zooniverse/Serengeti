@@ -10,13 +10,13 @@ class AnimalDetails extends Controller
   className: 'animal-details'
 
   events:
-    'change select': 'onSelectChange'
+    'change input': 'onInputChange'
     'click button[name="cancel"]': 'onClickCancel'
     'click button[name="identify"]': 'onClickIdentify'
 
   elements:
-    'select[name="count"]': 'countSelect'
-    'select[name="behavior"]': 'behaviorSelect'
+    'input[name="count"]': 'countRadios'
+    'input[name="behavior"]': 'behaviorCheckboxes'
     'input[name="babies"]': 'babiesCheckbox'
     'button[name="identify"]': 'identifyButton'
 
@@ -32,7 +32,7 @@ class AnimalDetails extends Controller
 
     window.ic = @imageChanger
 
-    @onSelectChange()
+    @onInputChange()
 
   show: =>
     @el.removeClass 'hidden'
@@ -41,8 +41,24 @@ class AnimalDetails extends Controller
     @el.addClass 'hidden'
     setTimeout @release, 333
 
-  onSelectChange: ->
-    setTimeout => @identifyButton.attr disabled: not (@countSelect.val() and @behaviorSelect.val())
+  onInputChange: ->
+    setTimeout =>
+      count = @getCount()
+      behaviors = @getBehaviors()
+
+      @identifyButton.attr disabled: (not count) or (behaviors.length is 0)
+
+  getCount: ->
+    @countRadios.filter(':checked').val()
+
+  getBehaviors: ->
+    for checkbox in @behaviorCheckboxes
+      checkbox = $(checkbox)
+      continue unless checkbox.attr 'checked'
+      checkbox.val()
+
+  getBabies: ->
+    !!@babiesCheckbox.attr 'checked'
 
   onClickCancel: ->
     @hide()
@@ -51,9 +67,9 @@ class AnimalDetails extends Controller
     @classification.annotate
       species: @animal
 
-      count: @countSelect.val()
-      behavior: @behaviorSelect.val()
-      babies: !!@babiesCheckbox.attr 'checked'
+      count: @getCount()
+      behavior: @getBehaviors()
+      babies: @getBabies()
 
       filters: @set.options
       search: @set.searchString
