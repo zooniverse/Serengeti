@@ -46,24 +46,25 @@
       color: $white;
       font-size: 10px;
       font-weight: bold;
-      opacity: 0.75;
       position: absolute;
       left: 10px;
-      text-shadow: 0 0 1px $black, 0 0 1px $black, 0 0 1px $black, 0 0 2px $black, 0 0 2px $black;
+      text-shadow: 0 0 1px $black, 0 0 1px $black, 0 0 1px $black, 0 0 2px $black, 0 1px 2px $black;
       top: 10px;
       z-index: 1;
 
-      &:hover {
-        opacity: 1;
-      }
-
       .annotation-item {
+        transition: background 0.5s ease-in-out;
         border-radius: 20px;
         clear: left;
         float: left;
-        padding: 0 5px 0 10px;
+        padding: 1px 5px 1px 10px;
+
+        &.new {
+          background: $gold;
+        }
 
         &:hover {
+          transition: none;
           background: rgba($black, 0.75);
         }
 
