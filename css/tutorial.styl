@@ -1,12 +1,13 @@
 .tutorial.zootorial-dialog {
   background: $white;
   border-radius: 5px;
+  box-shadow: 0 0 0 5px rgba($black, 0.5);
   color: $black;
   font-size: 12px;
   max-width: 300px;
   padding: 0 20px;
   position: absolute;
-  transition: left 0.25s ease-out, margin 0.5s ease-out 0.5s, top 0.25s ease-out 0.125s;
+  transition: left 0.25s ease-out, top 0.25s ease-out 0.125s;
 
   button[name="close"] {
     font-size: 18px;
@@ -34,53 +35,76 @@
   }
 
   &.arrow {
+    $arrow-size = 10px;
+
+    &:before,
     &:after {
-      border: 15px solid transparent;
+      border: $arrow-size solid transparent;
       content: "";
       position: absolute;
     }
 
-    &.up {
-      margin-top: 15px;
+    &:before {
+      border-width: $arrow-size + 2
+    }
 
+    &.up {
+      &:before,
       &:after {
         bottom: 100%;
         border-bottom-color: $white;
         left: 50%;
-        margin-left: -15px;
+        margin-left: $arrow-size * -1;
+      }
+
+      &:before {
+        border-bottom-color: rgba($black, 0.5);
+        margin-left: ($arrow-size * -1) - 2;
       }
     }
 
     &.right {
-      margin-left: -15px;
-
+      &:before,
       &:after {
         border-left-color: $white
         left: 100%;
-        margin-top: -15px;
+        margin-top: $arrow-size * -1;
         top: 50%
+      }
+
+      &:before {
+        border-left-color: rgba($black, 0.5);
+        margin-top: ($arrow-size * -1) - 2;
       }
     }
 
     &.down {
-      margin-top: -15px;
-
+      &:before,
       &:after {
         border-top-color: $white;
         left: 50%;
-        margin-left: -15px;
+        margin-left: $arrow-size * -1;
         top: 100%;
+      }
+
+      &:before {
+        border-top-color: rgba($black, 0.5);
+        margin-left: ($arrow-size * -1) - 2;
       }
     }
 
     &.left {
-      margin-left: 15px;
-
+      &:before,
       &:after {
         border-right-color: $white;
-        margin-top: -15px;
+        margin-top: $arrow-size * -1;
         right: 100%;
         top: 50%;
+      }
+
+      &:before {
+        border-right-color: rgba($black, 0.5);
+        margin-top: ($arrow-size * -1) - 2;
       }
     }
   }
