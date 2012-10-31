@@ -50,10 +50,8 @@ class AnimalSelector extends Controller
     @classification.bind 'add-species', @clearFilters
 
   KEYS =
-    TAB: 9
     ENTER: 13
     ESC: 27
-    SLASH: 191
 
   ARROWS =
     LEFT: 37
@@ -63,8 +61,13 @@ class AnimalSelector extends Controller
 
   onSearchKeyDown: ({which}) ->
     setTimeout =>
-      @searchInput.attr value: '' if which is KEYS.ESC
-      @items.filter(':not(".dimmed")').first().focus() if which is KEYS.ENTER
+      if which is KEYS.ESC
+        @searchInput.attr value: ''
+
+      if which is KEYS.ENTER
+        targets = @items.filter ':not(".dimmed")'
+        targets.first().focus()
+        targets.first().click() if targets.length is 1
 
       @set.search @searchInput.val()
 

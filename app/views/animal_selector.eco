@@ -3,9 +3,9 @@
 <div class="general-filters">
   <div class="like filter-menu"></div>
 
-  <span class="search">
+  <span class="search" title="[S]">
     <i rel="search">Search</i>
-    <input name="search" />
+    <input name="search" data-shortcut="S" />
   </span>
 </div>
 

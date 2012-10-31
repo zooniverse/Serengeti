@@ -43,12 +43,11 @@ class SubjectViewer extends Controller
     @el.attr tabindex: 0
     @setClassification @classification
 
-  delegateEvents: ->
-    super
-    doc = $(document)
-    doc.on 'keydown', @onKeyDown
-    doc.on 'mousemove', @onDocMouseMove
-    doc.on 'mouseup', @onDocMouseUp
+  # delegateEvents: ->
+  #   super
+  #   doc = $(document)
+  #   doc.on 'mousemove', @onDocMouseMove
+  #   doc.on 'mouseup', @onDocMouseUp
 
   setClassification: (classification) ->
     @classification?.unbind 'change', @onClassificationChange
@@ -68,33 +67,6 @@ class SubjectViewer extends Controller
       @onClassificationChange()
     else
       @html ''
-
-  keys =
-    SPACE: 32
-    LEFT: 37
-    RIGHT: 39
-    F: 70
-    M: 77
-    0: 48
-    9: 57
-
-  keys.values = (value for key, value of keys)
-
-  onKeyDown: (e) =>
-    return unless @el.is ':visible'
-    return if $(e.target).is 'a, button, input, textarea, select'
-
-    isNumber = keys[0] <= e.which <= keys[9]
-    return unless e.which in keys.values or isNumber
-
-    e.preventDefault()
-    switch e.which
-      when keys.SPACE then @play()
-      when keys.LEFT then @activate @active - 1
-      when keys.RIGHT then @activate @active + 1
-      when keys.F then @el.find('button[name$="favorite"]:visible').click()
-      when keys.M then @satelliteToggle.click()
-      else @activate e.which - 49
 
   onClassificationChange: =>
     noAnnotations = @classification.annotations.length is 0

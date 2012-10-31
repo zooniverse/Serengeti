@@ -47,7 +47,43 @@ class Classifier extends Controller
     $(window).on 'hashchange', =>
       setTimeout @afterHashChange
 
+    $(document).on 'keydown', @onKeyDown
+
     @onUserSignIn()
+
+  KEYS =
+    13: 'ENTER', 27: 'ESC', 32: 'SPACE'
+    48: 0, 49: 1, 50: 2, 51: 3, 52: 4, 53: 5, 54: 6, 55: 7, 56: 8, 57: 9
+    69: 'E', 70: 'F', 73: 'I', 77: 'M', 79: 'O', 80: 'P', 81: 'Q', 82: 'R'
+    83: 'S', 84: 'T', 85: 'U', 87: 'W', 88: 'X', 89: 'Y'
+    61: '=', 173: '-', 188: '<', 190: '>', 219: '[', 221: ']'
+
+  onKeyDown: (e) =>
+    @log 'Keydown', e, e.which
+    return unless @el.is ':visible'
+
+    {target, which} = e
+    target = $(target)
+    key = KEYS[e.which]
+    return unless key
+
+    # Don't break default text field behavior.
+    return if target.is 'input[type="text"], input:not("[type]"), textarea, select'
+
+    # Don't break default link/button behavior.
+    return if key in ['ENTER', 'SPACE'] and target.is 'a, button'
+
+    # Choose the last visible element so newer UI elements
+    # (presumably appended to the end) are favored.
+    element = @el.find("[data-shortcut='#{key}']:visible").last()
+    return if element.length is 0
+
+    e.preventDefault()
+
+    if element.is 'input[type="text"], input:not("[type]")'
+      element.focus()
+    else
+      element.click()
 
   onSubjectSelect: (@subject) =>
     @afterHashChange()

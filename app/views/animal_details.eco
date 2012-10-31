@@ -2,6 +2,11 @@
 
 <div class="image-changer"></div>
 
+<div class="image-changer-shortcuts">
+  <button name="change-image" value="-1" data-shortcut="[">Prev</button>
+  <button name="change-image" value="+1" data-shortcut="]">Next</button>
+</div>
+
 <div class="content">
   <p class="label"><%= @label %></p>
   <p><%= @description %></p>
@@ -31,14 +36,14 @@
   </div>
 
   <div class="babies group">
-    <label>
-      <input type="checkbox" name="babies" />
+    <label title="[Y]">
+      <input type="checkbox" name="babies" data-shortcut="Y" />
       <span class="label"><%= translate 'classify.babies' %></span>
     </label>
   </div>
 </div>
 
 <div class="action">
-  <label><button name="cancel" data-shortcut="ESC"><%= translate 'classify.cancel' %></button></label>
-  <label><button name="identify" data-shortcut="ENTER"><%= translate 'classify.identify' %></button></label>
+  <label><button name="cancel" data-shortcut="ESC" title="[ESC]"><%= translate 'classify.cancel' %></button></label>
+  <label><button name="identify" disabled="disabled" data-shortcut="ENTER" title="[ENTER]"><%= translate 'classify.identify' %></button></label>
 </div>

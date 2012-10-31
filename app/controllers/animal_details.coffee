@@ -10,7 +10,7 @@ class AnimalDetails extends Controller
   className: 'animal-details'
 
   events:
-    'keydown': 'onKeyDown'
+    'click button[name="change-image"]': 'onClickChangeImage'
     'change input': 'onInputChange'
     'click button[name="cancel"]': 'onClickCancel'
     'click button[name="identify"]': 'onClickIdentify'
@@ -34,19 +34,6 @@ class AnimalDetails extends Controller
 
     @onInputChange()
 
-  KEYS =
-    ENTER: 13, ESC: 27
-    0: 48, 1: 49, 2: 50, 3: 51, 4: 52, 5: 53, 6: 54, 7: 55, 8: 56, 9: 57
-    '-': 173, '=': 61
-    Q: 81, W: 87, E: 69, R: 82, T: 84, Y: 89, U: 85, I: 73, O: 79, P: 80
-
-  onKeyDown: (e) ->
-    {which} = e
-    key = (key for key, val of KEYS when which is val)[0]
-    return unless key
-    e.preventDefault()
-    @el.find("[data-shortcut='#{key}']").click()
-
   show: =>
     @hadFocus = document.activeElement
     @el.removeClass 'hidden'
@@ -56,6 +43,10 @@ class AnimalDetails extends Controller
     $(@hadFocus).focus()
     @el.addClass 'hidden'
     setTimeout @release, 333
+
+  onClickChangeImage: ({currentTarget}) ->
+    delta = parseFloat $(currentTarget).val()
+    @imageChanger.activate @imageChanger.active + delta
 
   onInputChange: ->
     setTimeout =>
