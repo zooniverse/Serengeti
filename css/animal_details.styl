@@ -60,7 +60,7 @@
       top: 100%;
 
       button[name="toggle"] {
-        standard-toggle();
+        @extend #standard-toggle;
 
         &:before {
           background: $green-dark;
@@ -117,7 +117,7 @@
           }
 
           > .label {
-            standard-button();
+            @extend #standard-button;
             padding: 2px 5px;
           }
 
@@ -140,11 +140,13 @@
       line-height: 12px;
 
       &[name="cancel"] {
-        standard-button($red);
+        @extend #standard-button;
+        background: $red;
       }
 
       &[name="identify"] {
-        standard-button($green-really);
+        @extend #standard-button
+        background: $green-really;
       }
     }
   }

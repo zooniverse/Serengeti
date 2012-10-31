@@ -172,7 +172,7 @@
   .controls {
     .play button,
     .finished button {
-      standard-button();
+      @extend #standard-button;
       margin: 0 4px;
       outer-deboss: 5px;
       position: relative;
@@ -195,7 +195,7 @@
     }
 
     button[name="toggle"] {
-      standard-toggle();
+      @extend #standard-toggle;
     }
 
     .satellite {
@@ -253,7 +253,7 @@
 
       a,
       button {
-        standard-button();
+        @extend #standard-button;
         padding-left: 32px;
 
         i {

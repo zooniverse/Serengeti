@@ -16,7 +16,7 @@ $brown = #813e1e;
 
 $gold = #fc0; // TODO
 
-paper-stripe() {
+#paper-stripe {
   &:before {
     border: 1px solid $gray;
     border-width: 1px 0;
@@ -29,8 +29,8 @@ paper-stripe() {
   }
 }
 
-standard-button($color = $green-dark) {
-  background: $color;
+#standard-button {
+  background: $green-dark;
   border: 1px solid $black;
   border-color: rgba($black, 0.5);
   border-radius: 2px;
@@ -51,8 +51,8 @@ standard-button($color = $green-dark) {
   }
 
   &:active {
-    background: darken($color, 25%);
     box-shadow: 0 1px 0 rgba($black, 0.25) inset;
+    opacity: 0.75;
   }
 
   &:disabled,
@@ -77,7 +77,7 @@ outer-deboss($distance) {
   }
 }
 
-standard-toggle() {
+#standard-toggle {
   color: transparent;
   height: 20px;
   position: relative;

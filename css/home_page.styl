@@ -61,7 +61,7 @@
 
     .toggles {
       button[name="toggle"] {
-        standard-toggle();
+        @extend #standard-toggle;
       }
     }
   }
@@ -113,7 +113,8 @@
       margin-top: 25px;
 
       a {
-        standard-button($red);
+        @extend #standard-button;
+        background: $red;
         outer-deboss: 5px;
         padding: 5px 25px;
       }
