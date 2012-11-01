@@ -60,8 +60,8 @@ module.exports = [
     content: inline '''
       That narrows things down quite a bit.
 
-      It's got stripes running vertically over most of its body,
-      so let's choose the vertical stripes icon under the "Pattern" menu.
+      It's got stripes running over most of its body,
+      so let's choose the stripes icon under the "Pattern" menu.
     '''
     nextOn: click: 'button[value="patternVerticalStripe"]'
     attachment: x: 'right', to: 'button[name="characteristic"][value="pattern"]', at: x: 'left'
