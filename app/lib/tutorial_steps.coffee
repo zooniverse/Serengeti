@@ -24,8 +24,8 @@ module.exports = [
 
   new Step
     content: inline '''
-      All over the Serengeti, scientists have set up camera traps --
-      cameras that take photos whenever something walks in front of them.
+      All over the Serengeti, scientists have set up motion sensitive camera traps.
+      The camera snaps a few shots anytime something moves in front of it.
       Many of these photos come as a sequence of two or three.
       Check out other snapshots in the sequence using the buttons below the image.
     '''
