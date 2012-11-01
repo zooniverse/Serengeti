@@ -58,17 +58,18 @@ class Classifier extends Controller
     83: 'S', 84: 'T', 85: 'U', 87: 'W', 88: 'X', 89: 'Y'
     61: '=', 173: '-', 188: '<', 190: '>', 219: '[', 221: ']'
 
+  textFieldSelector = 'input[type="text"], input[type="password"], input:not("[type]"), textarea, select'
+
   onKeyDown: (e) =>
     @log 'Keydown', e, e.which
     return unless @el.is ':visible'
 
-    {target, which} = e
-    target = $(target)
+    target = $(e.target)
     key = KEYS[e.which]
     return unless key
 
     # Don't break default text field behavior.
-    return if target.is 'input[type="text"], input:not("[type]"), textarea, select'
+    return if target.is textFieldSelector
 
     # Don't break default link/button behavior.
     return if key in ['ENTER', 'SPACE'] and target.is 'a, button'
@@ -80,7 +81,7 @@ class Classifier extends Controller
 
     e.preventDefault()
 
-    if element.is 'input[type="text"], input:not("[type]")'
+    if element.is textFieldSelector
       element.focus()
     else
       element.click()
