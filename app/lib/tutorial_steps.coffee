@@ -49,7 +49,7 @@ module.exports = [
 
   new Step
     content: inline '''
-      The creature on the left is shaped a lot like a horse.
+      The animal in this photo looks a lot like a horse.
       Let's choose "Cow/horse" from the "looks like" menu.
     '''
     nextOn: click: 'button[value="likeCowHorse"]'
