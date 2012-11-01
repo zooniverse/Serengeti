@@ -69,7 +69,7 @@ module.exports = [
 
   new Step
     content: inline '''
-      Great, that leaves us with two options, because there are two cow/horse-shaped things with stripes.
+      Great, that leaves us with two options, because there are two cow/horse-shaped animals with stripes.
       This one looks like a zebra. Let's click "Zebra" to describe it and add it to the classification.
     '''
     nextOn: click: '[data-animal="zebra"]'
