@@ -113,6 +113,11 @@ module.exports =
         Don't forget: you can discuss an image with professional and citizen scientists after classifying it.
       '''
 
+    splits:
+      social: 'Good job! You and ### other Zooniverse volunteers have contributed to Snapshot Serengeti.'
+      task: 'Good job! You just successfully finished classifying an image taken in Serengeti National Park.'
+      science: 'Good job! Your work is directly helping scientists understand how competing animal species coexist in the Serengeti.'
+
   animals:
     aardvark:
       label: 'Aardvark'

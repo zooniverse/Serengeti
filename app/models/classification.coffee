@@ -7,6 +7,8 @@ Recent = require 'zooniverse/lib/models/recent'
 class Classification extends Model
   @configure 'Classification', 'subject', 'annotations', 'metadata', 'favorite'
 
+  @sentThisSession: 0
+
   constructor: ->
     super
     @annotations ||= []
@@ -47,6 +49,10 @@ class Classification extends Model
     "/projects/serengeti/workflows/#{@subject.workflowId}/classifications"
 
   send: ->
+    unless @subject.metadata.tutorial or @subject.metadata.empty
+      @constructor.sentThisSession += 1
+      console.log 'Sent this session', @constructor.sentThisSession
+
     @trigger 'send'
     Api.post @url(), @toJSON(), arguments...
 

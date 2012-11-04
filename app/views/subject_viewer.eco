@@ -13,6 +13,8 @@
 
   <div class="annotations"></div>
 
+  <div class="extra-message"></div>
+
   <span class="sign-in">
     <button name="sign-in"><%= translate 'classify.notSignedIn' %></button>
   </span>

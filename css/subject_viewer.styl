@@ -78,6 +78,21 @@
       }
     }
 
+    .extra-message {
+      background: rgba($black, 0.75);
+      bottom: 5px;
+      color: $white;
+      display: none;
+      font-weight: bold;
+      left: 5px;
+      padding: 10px;
+      position: absolute;
+      right: 5px;
+      text-align: center;
+      text-shadow: 0 1px 1px $black;
+      z-index: 1;
+    }
+
     .sign-in,
     .favorite {
       background: $red;
@@ -318,6 +333,10 @@
   }
 
   &.finished {
+    .images .extra-message {
+      display: block;
+    }
+
     .controls {
       display: none;
     }

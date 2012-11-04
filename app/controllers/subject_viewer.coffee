@@ -4,6 +4,7 @@ AnnotationItem = require './annotation_item'
 Subject = require 'models/subject'
 $ = require 'jqueryify'
 modulus = require 'lib/modulus'
+splits = require 'lib/splits'
 
 class SubjectViewer extends Controller
   classification: null
@@ -31,6 +32,7 @@ class SubjectViewer extends Controller
     '.subject-images figure': 'figures'
     'figure.satellite': 'satelliteImage'
     '.annotations': 'annotationsContainer'
+    '.extra-message': 'extraMessageContainer'
     '.toggles button': 'toggles'
     'button[name="satellite"]': 'satelliteToggle'
     'input[name="nothing"]': 'nothingCheckbox'
@@ -161,6 +163,10 @@ class SubjectViewer extends Controller
     @classification.annotate {nothing}, true
 
   onClickFinish: ->
+    message = splits.get 'classifier_messaging'
+    @extraMessageContainer.html message
+    @extraMessageContainer.hide() unless message
+
     @el.addClass 'finished'
     @classification.send() unless @classification.subject.metadata.empty
 
