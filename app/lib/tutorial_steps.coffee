@@ -1,5 +1,6 @@
 {Tutorial} = require 'zootorial'
 translate = require 'lib/translate'
+$ = require 'jqueryify'
 
 class Step extends Tutorial.Step
   defaultButton: translate 'classify.tutorial.continueButton'
@@ -9,8 +10,6 @@ inline = (string) ->
   string = string.replace '\n', ' ', 'g'
   string = string.replace '_NEWLINE_', '\n', 'g'
   string
-
-# TODO: Drop all these strings into en_us.coffee.
 
 module.exports = [
   new Step
@@ -76,6 +75,19 @@ module.exports = [
     content: inline translate 'classify.tutorial.typeZebra'
     attachment: x: 'right', to: '.animal-selector .search', at: x: 'left'
     className: 'arrow right'
+    nextOn: {} # This is handled by onEnter.
+
+    onEnter: (tutorial, step) ->
+      console.log 'onEnter called', @
+
+      doc = $(document)
+      search = $('.animal-selector input[name="search"]')
+
+      doc.on 'keydown.typeZebra', (e) ->
+        setTimeout ->
+          if search.val().toLowerCase() is 'zebra'
+            doc.off 'keydown.typeZebra'
+            tutorial.next()
 
   new Step
     content: inline translate 'classify.tutorial.clickZebra'
@@ -100,21 +112,3 @@ module.exports = [
     className: 'arrow down'
     nextOn: click: 'button[name="finish"]'
 ]
-
-###
-  welcome
-  traps
-  task
-  chooseAntelope
-  chooseSolid
-  chooseBrown
-  chooseWildebeest
-  confirmWildebeest
-  identifyWildebeest
-  findZebras
-  typeZebra
-  clickZebra
-  confirmZebra
-  identifyZebra
-  finish
-###
