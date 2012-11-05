@@ -65,16 +65,16 @@ class Subject extends Model
     @constructor.current = @
     @trigger 'select'
 
-  satelliteImage: ->
+  satelliteImage: (width = 640, height = 480, zoom = 10, type = 'hybrid') ->
     # TODO: Fix lat/lng!
     coords = ['Serengeti', 'Tanzania']
 
     """
       //maps.googleapis.com/maps/api/staticmap
       ?center=#{coords.join ','}
-      &zoom=8
-      &size=570x400
-      &maptype=hybrid
+      &zoom=#{zoom}
+      &size=#{width}x#{height}
+      &maptype=#{type}
       &markers=size:tiny|#{coords.join ','}
       &sensor=false
     """.replace '\n', '', 'g'
