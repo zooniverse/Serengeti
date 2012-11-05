@@ -6,9 +6,9 @@ module.exports = ->
     zooniverseId: 'TUTORIAL_SUBJECT'
 
     location: standard: [
-      'images/tutorial-subject/PICT0518.JPG'
-      'images/tutorial-subject/PICT0519.JPG'
-      'images/tutorial-subject/PICT0520.JPG'
+      'images/tutorial-subject/PICT0500.JPG'
+      'images/tutorial-subject/PICT0501.JPG'
+      'images/tutorial-subject/PICT0502.JPG'
     ]
 
     coords: [2.3308, 34.8333]

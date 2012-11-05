@@ -67,6 +67,7 @@ module.exports =
         The camera snaps a few shots anytime something moves in front of it.
         Many of these photos come as a sequence of two or three.
         Check out other snapshots in the sequence using the buttons below the image.
+        You can even play them like a flipbook by clicking the play button.
       '''
 
       task: '''
@@ -77,38 +78,80 @@ module.exports =
         characteristics we can identify in the image.
       '''
 
-      chooseHorse: '''
-        The animal in this photo looks a lot like a horse.
-        Let's choose "Cow/horse" from the "looks like" menu.
+      chooseAntelope: '''
+        The animal in the foreground of this photo looks like a large antelope of some kind.
+        Let's choose "Antelope/deer" from the "looks like" menu.
       '''
 
-      chooseStripes: '''
-        That narrows things down quite a bit.
+      chooseSolid: '''
+        That narrows things down a bit.
 
-        It's got stripes running over most of its body,
-        so let's choose the stripes icon under the "Pattern" menu.
+        It's primarily one solid color over most of its body,
+        so let's choose the "solid" icon under the "Pattern" menu.
       '''
 
-      chooseZebra: '''
-        Great, that leaves us with two options, because there are two cow/horse-shaped animals with stripes.
-        This one looks like a zebra. Let's click "Zebra" to describe it and add it to the classification.
+      chooseBrown: '''
+        Now we can see photos representing the possible animals.
+
+        We can probably make a good match from these photos,
+        but let's narrow the list down one more time
+        by choosing "brown" from the "Color" menu.
+      '''
+
+      chooseWildebeest: '''
+        Great, that leaves us with two options.
+        This animal looks most like the wildebeest, so let's choose it and make sure.
+      '''
+
+      confirmWildebeest: '''
+        We can confirm that this is indeed a wildebeest by comparing it to to the photos here and reading the description below.
+        You can flip through the photos to see examples of the animal from multiple angles using the bullets on the right.
+      '''
+
+      identifyWildebeest: '''
+        Once you're confident that this is a wildebeest,
+        chooose "1" from the count menu and "Moving" from the behavior menu.
+        Then click "Identify."
+      '''
+
+      findZebras: '''
+        We want to try to identify all the animals in each capture.
+        Look closely and you'll notice that there are some zebras in the distance.
+
+        Let's look at another way of classifying when we already know which species we can see.
+      '''
+
+      typeZebra: '''
+        The seach field is a quick way to highlight animals
+        whose descriptions contain certain words.
+
+        Type "zebra" in the search field...
+      '''
+
+      clickZebra: '''
+        ...and click "Zebra," which is the only animal highlighted.
       '''
 
       confirmZebra: '''
-        We can confirm that this is indeed a zebra by comparing it to to the photos here
-        and reading the description below.
+        It's hard to make out the zebras in the distance, but we'll classify as best we can.
+        Each classification is compared with the classifications of other volunteers,
+        so do your best, even if you're not sure!
       '''
 
       identifyZebra: '''
-        Chooose "1" from the count menu and "Moving" from the behavior menu.
-        Then click "Identify" to move on to the next animal.
+        There are two zebras in the distance, and they appear to be grazing with their heads bowed.
+        Mark "2," "Standing," and "Eating," then click "Identify."
       '''
 
       finish: '''
-        Nice job! Now you\'re ready to classify some images on your own.
-        In each image, make your best effort to identify all the animals you can.
+        Nice job! Now you're ready to classify some images on your own.
+
+        In each image, make your best effort to identify all the animals you can, even if you can't see enough to be completely sure.
+        If there aren't any animals in an image, check "Nothing here" and then "Finish."
+
         Your observations will be combined with those of multiple volunteers,
         so even if you're not sure on something, your contribution is still very useful!
+
         Click "Finish" now to move on.
         Don't forget: you can discuss an image with professional and citizen scientists after classifying it.
       '''

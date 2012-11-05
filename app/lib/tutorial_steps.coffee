@@ -1,14 +1,14 @@
-translate = require 'lib/translate'
 {Tutorial} = require 'zootorial'
-{Step} = Tutorial
+translate = require 'lib/translate'
+
+class Step extends Tutorial.Step
+  defaultButton: translate 'classify.tutorial.continueButton'
 
 inline = (string) ->
   string = string.replace '\n\n', '_NEWLINE_', 'g'
   string = string.replace '\n', ' ', 'g'
   string = string.replace '_NEWLINE_', '\n', 'g'
   string
-
-Step::defaultButton = translate 'classify.tutorial.continueButton'
 
 # TODO: Drop all these strings into en_us.coffee.
 
@@ -31,22 +31,57 @@ module.exports = [
     className: 'arrow right'
 
   new Step
-    content: inline translate 'classify.tutorial.chooseHorse'
-    nextOn: click: 'button[value="likeCowHorse"]'
+    content: inline translate 'classify.tutorial.chooseAntelope'
+    nextOn: click: 'button[value="likeAntelopeDeer"]'
     attachment: x: 'right', to: 'button[name="characteristic"][value="like"]', at: x: 'left'
     className: 'arrow right'
 
   new Step
-    content: inline translate 'classify.tutorial.chooseStripes'
-    nextOn: click: 'button[value="patternVerticalStripe"]'
+    content: inline translate 'classify.tutorial.chooseSolid'
+    nextOn: click: 'button[value="patternSolid"]'
     attachment: x: 'right', to: 'button[name="characteristic"][value="pattern"]', at: x: 'left'
     className: 'arrow right'
 
   new Step
-    content: inline translate 'classify.tutorial.chooseZebra'
-    nextOn: click: '[data-animal="zebra"]'
-    attachment: y: 'top', to: '[data-animal="zebra"]', at: y: 'bottom'
+    content: inline translate 'classify.tutorial.chooseBrown'
+    nextOn: click: 'button[value="coatBrownBlack"]'
+    attachment: y: 'top', to: 'button[name="characteristic"][value="coat"]', at: y: 'bottom'
     className: 'arrow up'
+
+  new Step
+    content: inline translate 'classify.tutorial.chooseWildebeest'
+    nextOn: click: '[data-animal="wildebeest"]'
+    attachment: y: 'top', to: '[data-animal="wildebeest"]', at: y: 'bottom'
+    className: 'arrow up'
+
+  new Step
+    content: inline translate 'classify.tutorial.confirmWildebeest'
+    attachment: x: 'right', to: '.animal-details .image-changer', at: x: 'left'
+    className: 'arrow right'
+
+  new Step
+    content: inline translate 'classify.tutorial.identifyWildebeest'
+    attachment: x: 'right', to: '.animal-details .options', at: x: 'left'
+    className: 'arrow right'
+    nextOn: click: 'button[name="identify"]'
+
+  new Step
+    content: inline translate 'classify.tutorial.findZebras'
+    attachment: x: 'left', to: '.subject-viewer', at: x: 'right'
+    focus: '.subject-viewer'
+    block: 'button[name="finish"]'
+    className: 'arrow left'
+
+  new Step
+    content: inline translate 'classify.tutorial.typeZebra'
+    attachment: x: 'right', to: '.animal-selector .search', at: x: 'left'
+    className: 'arrow right'
+
+  new Step
+    content: inline translate 'classify.tutorial.clickZebra'
+    attachment: x: 'right', to: '[data-animal="zebra"]', at: x: 'left'
+    nextOn: click: '[data-animal="zebra"]'
+    className: 'arrow right'
 
   new Step
     content: inline translate 'classify.tutorial.confirmZebra'
@@ -54,10 +89,10 @@ module.exports = [
     className: 'arrow right'
 
   new Step
-    content: translate 'classify.tutorial.identifyZebra'
+    content: inline translate 'classify.tutorial.identifyZebra'
     attachment: x: 'right', to: '.animal-details .options', at: x: 'left'
-    className: 'arrow right'
     nextOn: click: 'button[name="identify"]'
+    className: 'arrow right'
 
   new Step
     content: inline translate 'classify.tutorial.finish'
@@ -65,3 +100,21 @@ module.exports = [
     className: 'arrow down'
     nextOn: click: 'button[name="finish"]'
 ]
+
+###
+  welcome
+  traps
+  task
+  chooseAntelope
+  chooseSolid
+  chooseBrown
+  chooseWildebeest
+  confirmWildebeest
+  identifyWildebeest
+  findZebras
+  typeZebra
+  clickZebra
+  confirmZebra
+  identifyZebra
+  finish
+###
