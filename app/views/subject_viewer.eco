@@ -13,7 +13,7 @@
     <img src="<%= @subject.satelliteImage 370, 400, 14 %>" class="landscape" />
     <img src="<%= @subject.satelliteImage 200, 200, 2, 'road' %>" class="continent" />
     <img src="//placehold.it/200x200.png" class="camera" />
-    <div class="timestamp"><%= new Date %></div>
+    <div class="timestamp"><%= new Date @subject.metadata.timestamps[0] %></div>
   </figure>
 
   <div class="annotations"></div>
