@@ -1,5 +1,6 @@
 {Controller} = require 'spine'
 template = require 'views/about_page'
+$ = require 'jqueryify'
 
 class AboutPage extends Controller
   className: 'about-page content-page'
@@ -16,6 +17,8 @@ class AboutPage extends Controller
 
     @navButtons.first().click()
 
+    $(window).on 'hashchange', @onPageChange
+
   onClickNavButton: ({currentTarget}) ->
     button = $(currentTarget)
     page = @el.find "[data-page='#{button.val()}']"
@@ -25,5 +28,18 @@ class AboutPage extends Controller
     page.prevAll('[data-page]').add(button.prevAll('[name="turn-page"]')).addClass 'before'
     page.add(button).addClass 'active'
     page.nextAll('[data-page]').add(button.nextAll('[name="turn-page"]')).addClass 'after'
+
+    @onPageChange()
+
+  onPageChange: =>
+    setTimeout =>
+      visibleProtoimages = @el.find 'img[data-src]:visible'
+      @log visibleProtoimages
+      @processProtoimage img for img in visibleProtoimages
+
+  processProtoimage: (img) ->
+    img = $(img)
+    img.attr src: img.attr 'data-src'
+    img.removeAttr 'data-src'
 
 module.exports = AboutPage

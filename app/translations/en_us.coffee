@@ -537,100 +537,100 @@ module.exports =
     organizations:
       tawiri:
         name: 'The Tanzania Wildlife Research Institute (TAWIRI)'
-        image: '//placehold.it/80x100.png'
+        image: 'images/about/organizations/tawiri.jpg'
         description: 'TAWIRI coordinates wildlife research in the United Republic of Tanzania to provide scientific information and advice to the Government and wildlife management authorities on the sustainable conservation of wildlife.'
 
       tanapa:
         name: 'Tanzania National Parks (TANAPA)'
-        image: '//placehold.it/80x100.png'
+        image: 'images/about/organizations/tanapa.jpg'
         description: 'Write-up?'
 
       nsf:
         name: 'National Science Foundation (NSF)'
-        image: '//placehold.it/80x100.png'
+        image: 'images/about/organizations/nsf.jpg'
         description: 'NSF has provided support for the Serengeti Lion Project since 1980 (?).'
 
       uom:
         name: 'University of Minnesota'
-        image: '//placehold.it/80x100.png'
+        image: 'images/about/organizations/umn.jpg'
         description: 'TODO'
 
       fzs:
         name: 'Frankfurt Zoological Society (FZS)'
-        image: '//placehold.it/80x100.png'
+        image: 'images/about/organizations/fzs.jpg'
         description: 'FZS has provided on-the-ground support for our field team for as long as we can remember.'
 
       adler:
         name: 'Adler Planetarium'
-        image: '//placehold.it/80x100.png'
+        image: '//placehold.it/40x50.png'
         description: 'Chicago, IL'
 
     teams:
       science:
         kosmala:
           name: 'Margaret Kosmala'
-          image: '//placehold.it/80x100.png'
+          image: 'images/about/team/margaret.jpg'
           description: 'Ph.D. Candidate'
 
         mwampeta:
           name: 'Stanslaus Mwampeta'
-          image: '//placehold.it/80x100.png'
+          image: '//placehold.it/40x50.png'
           description: 'Field Assistant'
 
         packer:
           name: 'Craig Packer'
-          image: '//placehold.it/80x100.png'
+          image: 'images/about/team/craig.jpg'
           description: 'Director of the Lion Research Center & Distinguished McKnight University Professor'
 
         rosengren:
           name: 'Daniel Rosengren'
-          image: '//placehold.it/80x100.png'
+          image: '//placehold.it/40x50.png'
           description: 'Field Assistant'
 
         swanson:
           name: 'Ali Swanson'
-          image: '//placehold.it/80x100.png'
+          image: 'images/about/team/ali.jpg'
           description: 'Ph.D. Candidate'
 
       development:
         borden:
           name: 'Kelly Borden'
-          image: '//placehold.it/80x100.png'
+          image: 'images/about/team/kelly.jpg'
           description: '''
             Kelly is an archaeologist by training but an educator by passion. While working at the Museum of Science and Industry and the Adler Planetarium she became an enthusiastic science educator eager to bring science to the masses. When not pondering the wonders of science, Kelly can often be found baking or spending time with her herd of cats – Murray, Ada, & Kepler.
           '''
 
         carstensen:
           name: 'Brian Carstensen'
-          image: '//placehold.it/80x100.png'
+          image: 'images/about/team/brian.jpg'
           description: '''
             Brian is a web developer working on the Zooniverse family of projects at the Adler Planearium. Brian has a degree in graphic design from Columbia College in Chicago, and worked in that field for a number of years before finding a niche in web development.
           '''
 
         lintott:
           name: 'Chris Lintott'
-          image: '//placehold.it/80x100.png'
+          image: 'images/about/team/chris.jpg'
           description: '''
             Chris Lintott leads the Zooniverse team, and is his copious spare time is a researcher at the University of Oxford specialising in galaxy formation and evolution. A keen popularizer of science, he is best known as co-presenter of the BBC's long running Sky at Night program. He's currently drinking a lot of sherry.
           '''
 
         miller:
           name: 'David Miller'
-          image: '//placehold.it/80x100.png'
+          image: 'images/about/team/david.jpg'
           description: '''
             As a visual communicator, David is passionate about tellings stories through clear, clean, and effective design. Before joining the Zooniverse team as Visual Designer, David worked for The Raindance Film Festival, the News 21 Initiative's Apart From War, Syracuse Magazine, and as a freelance designer for his small business, Miller Visual. David is a graduate of the S.I. Newhouse School of Public Communications at Syracuse University, where he studied Visual & Interactive Communications.
           '''
 
         parrish:
           name: 'Michael Parrish'
-          image: '//placehold.it/80x100.png'
+          image: 'images/about/team/michael.jpg'
           description: '''
             Michael has a degree in Computer Science and has been working with The Zooniverse for the past three years as a Software Developer. Aside from web development; new technologies, science, AI, reptiles, and coffee tend to occupy his attention.
           '''
 
         smith:
           name: 'Arfon Smith'
-          image: '//placehold.it/80x100.png'
+          image: 'images/about/team/arfon.jpg'
           description: '''
             As an undergraduate, Arfon studied Chemistry at the University of Sheffield before completing his Ph.D. in Astrochemistry at The University of Nottingham in 2006. He worked as a senior developer at the Wellcome Trust Sanger Institute (Human Genome Project) in Cambridge before joining the Galaxy Zoo team in Oxford. Over the past 3 years he has been responsible for leading the development of a platform for citizen science called Zooniverse. In August of 2011 he took up the position of Director of Citizen Science at the Adler Planetarium where he continues to lead the software and infrastructure development for the Zooniverse.
           '''

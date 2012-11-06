@@ -107,28 +107,39 @@
   }
 
   .member {
-    clearfix();
-    border-top: 1px solid rgba($black, 0.25);
-    clear: left;
-    font-size: 10px;
-    margin-top: 10px;
-    padding-top: 10px;
-
-    img {
-      border: 3px solid #fff;
-      box-shadow: 0 2px 3px -1px rgba($black, 0.5);
-      float: left;
-      height: 70px;
-      margin-right: 10px;
-      width: 50px;
-    }
-
     h3 {
       margin: 0;
     }
 
     p {
       margin: 0;
+    }
+
+    &.organization {
+      clearfix();
+      margin: 20px 0;
+
+      img {
+        float: left;
+        margin-right: 20px;
+        width: 80px;
+      }
+    }
+
+    &.team {
+      clearfix();
+      clear: left;
+      font-size: 10px;
+      margin: 20px 0;
+
+      img {
+        border: 3px solid #fff;
+        box-shadow: 0 2px 3px -1px rgba($black, 0.5);
+        float: left;
+        height: 50px;
+        margin-right: 10px;
+        width: 40px;
+      }
     }
   }
 }

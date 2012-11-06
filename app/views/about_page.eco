@@ -16,7 +16,7 @@
   <% for organization in ['tawiri', 'tanapa', 'nsf', 'uom', 'fzs', 'adler']: %>
     <% organization = translate 'about', 'organizations', organization %>
     <div class="member organization">
-      <img src="<%= organization.image %>" />
+      <img data-src="<%= organization.image %>" />
       <h3><%= organization.name %></h3>
       <p><%= organization.description %></p>
     </div>
@@ -29,7 +29,7 @@
     <% for member in ['swanson', 'kosmala', 'packer', 'rosengren', 'mwampeta']: %>
       <% member = translate 'about', 'teams', 'science', member %>
       <div class="science team member">
-        <img src="<%= member.image %>" />
+        <img data-src="<%= member.image %>" />
         <h3><%= member.name %></h3>
         <p><%= member.description %></p>
       </div>
@@ -41,7 +41,7 @@
     <% for member in ['borden', 'carstensen', 'lintott', 'miller', 'parrish', 'smith']: %>
       <% member = translate 'about', 'teams', 'development', member %>
       <div class="science team member">
-        <img src="<%= member.image %>" />
+        <img data-src="<%= member.image %>" />
         <h3><%= member.name %></h3>
         <p><%= member.description %></p>
       </div>
