@@ -15,6 +15,7 @@ module.exports =
       We need your help to classify all the different animals caught in millions of camera trap images.
     '''
     action: 'Start classifying'
+    currentStatus: '<span class="classification-count">0</span> classifications by <span class="user-count">0</span> volunteers'
 
   classify:
     deleteAnnotation: 'Delete'

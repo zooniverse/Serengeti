@@ -37,7 +37,7 @@ $(window).one 'translate-init', ->
     className: "main #{Stack::className}"
 
     controllers:
-      home: HomePage
+      home: class extends HomePage then totalSubjects: 1227
       about: AboutPage
       classify: Classifier
       profile: Profile

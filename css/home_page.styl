@@ -80,18 +80,19 @@
     .progress {
       margin: 10px 0;
 
+      p {
+        margin: 0;
+      }
+
       .label {
-        display: inline-block;
-        width: 25%;
+        font-weight: bold;
       }
 
       .track {
-        display: inline-block;
-        height: 5px;
-        margin-bottom: 2px;
-        outer-deboss: 3px;
+        height: 6px;
+        margin: 0.5em 0 1em;
+        outer-deboss: 2px;
         position: relative;
-        width: 70%;
 
         &:before {
           border-radius: 5px;
@@ -105,6 +106,7 @@
           position: absolute;
           left: 0;
           top: 0;
+          transition: width 0.5s ease-in;
         }
       }
     }

@@ -9,29 +9,18 @@
   <hr />
 
   <p><%= translate 'home.content' %></p>
-  <!--<hr />
+  <hr />
 
   <div class="progress">
-    <span class="label">Season 1</span>
-    <span class="track">
-      <span class="fill" style="width: 50%;"></span>
-    </span>
+    <p><strong>Season 1</strong> progress</p>
 
-    <span class="label">Season 2</span>
-    <span class="track">
-      <span class="fill" style="width: 0%;"></span>
-    </span>
+    <p class="current-status"><%- translate 'home.currentStatus' %></p>
 
-    <span class="label">Season 3</span>
-    <span class="track">
-      <span class="fill" style="width: 0%;"></span>
-    </span>
-
-    <span class="label">Season 4</span>
-    <span class="track">
-      <span class="fill" style="width: 0%;"></span>
-    </span>
-  </div>-->
+    <div class="track">
+      <div class="fill" style="width: 0%;"></div>
+    </div>
+  </div>
+  <hr />
 
   <p class="action">
     <a href="#/classify"><%= translate 'home.action' %></a>
