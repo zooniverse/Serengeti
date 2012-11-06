@@ -47,6 +47,7 @@ class AnimalSelector extends Controller
         characteristic: characteristic
 
   setClassification: (@classification) ->
+    @clearFilters()
     @classification.bind 'add-species', @clearFilters
 
   KEYS =

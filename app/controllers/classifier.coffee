@@ -45,7 +45,7 @@ class Classifier extends Controller
     User.bind 'sign-in', @onUserSignIn
 
     $(window).on 'hashchange', =>
-      setTimeout @afterHashChange
+      setTimeout @toggleTutorialVisibility
 
     $(document).on 'keydown', @onKeyDown
 
@@ -87,7 +87,7 @@ class Classifier extends Controller
       element.click()
 
   onSubjectSelect: (@subject) =>
-    @afterHashChange()
+    @toggleTutorialVisibility()
 
     for property in ['tutorial', 'empty']
       @el.toggleClass property, !!@subject.metadata[property]
@@ -111,9 +111,9 @@ class Classifier extends Controller
       Subject.next() if doingTutorial or not Subject.current
     else
       getTutorialSubject().select()
-      @afterHashChange()
+      @toggleTutorialVisibility()
 
-  afterHashChange: =>
+  toggleTutorialVisibility: =>
     return unless !!@subject.metadata.tutorial
 
     if @el.is ':visible'

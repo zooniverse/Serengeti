@@ -52,6 +52,7 @@ class SubjectViewer extends Controller
   #   doc.on 'mouseup', @onDocMouseUp
 
   setClassification: (classification) ->
+    @el.removeClass 'finished'
     @classification?.unbind 'change', @onClassificationChange
     @classification?.unbind 'add-species', @onClassificationAddSpecies
 
@@ -171,7 +172,6 @@ class SubjectViewer extends Controller
     @classification.send() unless @classification.subject.metadata.empty
 
   onClickNext: ->
-    @el.removeClass 'finished'
     Subject.next()
 
   play: ->
