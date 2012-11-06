@@ -32,9 +32,9 @@ class AboutPage extends Controller
     @onPageChange()
 
   onPageChange: =>
+    return unless @el.is ':visible'
     setTimeout =>
       visibleProtoimages = @el.find 'img[data-src]:visible'
-      @log visibleProtoimages
       @processProtoimage img for img in visibleProtoimages
 
   processProtoimage: (img) ->
