@@ -1,9 +1,9 @@
 {Tutorial} = require 'zootorial'
+{Step} = Tutorial
 translate = require 'lib/translate'
 $ = require 'jqueryify'
 
-class Step extends Tutorial.Step
-  defaultButton: translate 'classify.tutorial.continueButton'
+Step::defaultButton = translate 'classify.tutorial.continueButton'
 
 inline = (string) ->
   string = string.replace '\n\n', '_NEWLINE_', 'g'
@@ -17,14 +17,14 @@ module.exports = [
 
   new Step
     content: inline translate 'classify.tutorial.traps'
-    attachment: x: 'left', to: '.subject-viewer', at: x: 'right'
+    attachment: x: 'left', margin: -10, to: '.subject-viewer', at: x: 'right'
     focus: '.subject-viewer'
     block: 'button[name="finish"]'
     className: 'arrow left'
 
   new Step
     content: inline translate 'classify.tutorial.task'
-    attachment: x: 'right', to: '.animal-selector', at: x: 'left'
+    attachment: x: 'right', margin: -10, to: '.animal-selector', at: x: 'left'
     focus: '.animal-selector'
     block: '.animal-selector'
     className: 'arrow right'
@@ -32,19 +32,19 @@ module.exports = [
   new Step
     content: inline translate 'classify.tutorial.chooseAntelope'
     nextOn: click: 'button[value="likeAntelopeDeer"]'
-    attachment: x: 'right', to: 'button[name="characteristic"][value="like"]', at: x: 'left'
+    attachment: x: 'right', margin: 10, to: 'button[name="characteristic"][value="like"]', at: x: 'left'
     className: 'arrow right'
 
   new Step
     content: inline translate 'classify.tutorial.chooseSolid'
     nextOn: click: 'button[value="patternSolid"]'
-    attachment: x: 'right', to: 'button[name="characteristic"][value="pattern"]', at: x: 'left'
+    attachment: x: 'right', margin: 10, to: 'button[name="characteristic"][value="pattern"]', at: x: 'left'
     className: 'arrow right'
 
   new Step
     content: inline translate 'classify.tutorial.chooseBrown'
     nextOn: click: 'button[value="coatBrownBlack"]'
-    attachment: y: 'top', to: 'button[name="characteristic"][value="coat"]', at: y: 'bottom'
+    attachment: y: 'top', margin: 10, to: 'button[name="characteristic"][value="coat"]', at: y: 'bottom'
     className: 'arrow up'
 
   new Step
@@ -60,20 +60,20 @@ module.exports = [
 
   new Step
     content: inline translate 'classify.tutorial.identifyWildebeest'
-    attachment: x: 'right', to: '.animal-details .options', at: x: 'left'
+    attachment: x: 'right', margin: 10, to: '.animal-details .options', at: x: 'left'
     className: 'arrow right'
     nextOn: click: 'button[name="identify"]'
 
   new Step
     content: inline translate 'classify.tutorial.findZebras'
-    attachment: x: 'left', to: '.subject-viewer', at: x: 'right'
+    attachment: x: 'left', margin: -10, to: '.subject-viewer', at: x: 'right'
     focus: '.subject-viewer'
     block: 'button[name="finish"]'
     className: 'arrow left'
 
   new Step
     content: inline translate 'classify.tutorial.typeZebra'
-    attachment: x: 'right', to: '.animal-selector .search', at: x: 'left'
+    attachment: x: 'right', margin: 10, to: '.animal-selector .search', at: x: 'left'
     className: 'arrow right'
     nextOn: {} # This is handled by onEnter.
 
@@ -91,7 +91,7 @@ module.exports = [
 
   new Step
     content: inline translate 'classify.tutorial.clickZebra'
-    attachment: x: 'right', to: '[data-animal="zebra"]', at: x: 'left'
+    attachment: x: 'right', margin: 10, to: '[data-animal="zebra"]', at: x: 'left'
     nextOn: click: '[data-animal="zebra"]'
     className: 'arrow right'
 
@@ -102,13 +102,13 @@ module.exports = [
 
   new Step
     content: inline translate 'classify.tutorial.identifyZebra'
-    attachment: x: 'right', to: '.animal-details .options', at: x: 'left'
+    attachment: x: 'right', margin: 10, to: '.animal-details .options', at: x: 'left'
     nextOn: click: 'button[name="identify"]'
     className: 'arrow right'
 
   new Step
     content: inline translate 'classify.tutorial.finish'
-    attachment: y: 'bottom', to: 'button[name="finish"]', at: y: 'top'
+    attachment: y: 'bottom', margin: 10, to: 'button[name="finish"]', at: y: 'top'
     className: 'arrow down'
     nextOn: click: 'button[name="finish"]'
 ]
