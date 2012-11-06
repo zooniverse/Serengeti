@@ -61,7 +61,7 @@ class Classifier extends Controller
   textFieldSelector = 'input[type="text"], input[type="password"], input:not("[type]"), textarea, select'
 
   onKeyDown: (e) =>
-    @log 'Keydown', e, e.which
+    # @log 'Keydown', e, e.which
     return unless @el.is ':visible'
 
     target = $(e.target)
