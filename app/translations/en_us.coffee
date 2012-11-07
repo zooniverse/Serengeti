@@ -535,102 +535,250 @@ module.exports =
       '''
 
     organizations:
-      tawiri:
-        name: 'The Tanzania Wildlife Research Institute (TAWIRI)'
-        image: 'images/about/organizations/tawiri.jpg'
-        description: 'TAWIRI coordinates wildlife research in the United Republic of Tanzania to provide scientific information and advice to the Government and wildlife management authorities on the sustainable conservation of wildlife.'
+      umn:
+        name: 'University of Minnesota'
+        url: "http://www.cbs.umn.edu/eeb"
+        image: 'images/about/organizations/umn.jpg'
+        description: '''
+          The members of Snapshot Serengeti’s science team are ecologists at the University of Minnesota in the Department of Ecology, Evolution, and Behavior.
+          The University of Minnesota, founded in the belief that all people are enriched by understanding,
+          is dedicated to the advancement of learning and the search for truth;
+          to the sharing of this knowledge through education for a diverse community;
+          and to the application of this knowledge to benefit the people of the state, the nation, and the world.
+        '''
 
-      tanapa:
-        name: 'Tanzania National Parks (TANAPA)'
-        image: 'images/about/organizations/tanapa.jpg'
-        description: 'Write-up?'
+      mnZoo:
+        name: 'Minnesota Zoo'
+        url: 'http://www.mnzoo.com/'
+        image: ''
+        description: '''
+          The Minnesota Zoo has provided partial funding for the camera trap survey through a Ulysses S. Seal Conservation Grant
+          and has helped recruit volunteers who have assisted the development of Snapshot Serengeti.
+          The Minnesota Zoo connects people, animals, and the natural world.
+          It is dedicated to inspiring guests to act on behalf of wildlife and wild lands.
+          To accomplish this, the zoo provides award-winning recreational, educational, and conservation programs, locally, nationally, and internationally.
+        '''
 
       nsf:
-        name: 'National Science Foundation (NSF)'
+        name: 'National Science Foundation'
+        url: 'http://www.nsf.gov/'
         image: 'images/about/organizations/nsf.jpg'
-        description: 'NSF has provided support for the Serengeti Lion Project since 1980 (?).'
+        description: '''
+          The National Science Foundation (NSF) provides ongoing funding support for the long-term Serengeti Lion Project (grant DEB‐1020479)
+          that provides the underlying infrastructure for the camera trapping survey.
+          The mission of NSF is to promote the progress of science; to advance the national health, prosperity, and welfare; and to secure the national defense.
+          NSF envisions a nation that capitalizes on new concepts in science and engineering and provides global leadership in advancing research and education.
+        '''
 
-      uom:
-        name: 'University of Minnesota'
-        image: 'images/about/organizations/umn.jpg'
-        description: 'TODO'
+      gpsa:
+        name: 'The Global Programs and Strategy Alliance'
+        url: 'http://global.umn.edu/'
+        image: ''
+        description: '''
+          The Global Programs and Strategy Alliance provided the funding for the first 50 cameras of the camera trap survey, which were established in June 2010.
+          The mission of the Global Programs and Strategy Alliance is to be the driving force for the University of Minnesota in globalizing teaching, learning, research, and engagement.
+          The office sponsors many programs and strategies that promote and support international activities by students, faculty, and staff across the University system.
+        '''
 
-      fzs:
-        name: 'Frankfurt Zoological Society (FZS)'
-        image: 'images/about/organizations/fzs.jpg'
-        description: 'FZS has provided on-the-ground support for our field team for as long as we can remember.'
+      umnGradSChool:
+        name: 'University of Minnesota Graduate School'
+        url: 'http://www.grad.umn.edu/'
+        image: ''
+        description: '''
+          The University of Minnesota Graduate School provided funding for the initial camera trap survey in 2010 through a Thesis Research Grant.
+          As one of the world's most comprehensive public research universities, the University of Minnesota offers outstanding graduate and professional education
+          across a range of disciplines—agriculture, engineering, humanities, sciences, and social sciences.
+        '''
+
+      explorersClub:
+        name: 'Explorers Club'
+        url: 'http://www.explorers.org/'
+        image: ''
+        description: '''
+          The Explorers Club provided funding for the initial camera trap survey through its Exploration Fund.
+          The Explorers Club is an international multidisciplinary professional society dedicated to the advancement of field research and the ideal that it is vital to preserve the instinct to explore.
+          The Explorers Club promotes the scientific exploration of land, sea, air, and space by supporting research and education in the physical, natural and biological sciences.
+        '''
+      asm:
+        name: 'American Society of Mammalogists'
+        url: 'http://www.mammalsociety.org/'
+        image: ''
+        description: '''
+          The American Society of Mammalogists provided funding for the initial camera trap survey through its Grants-in-aid of Research program.
+          ASM was established in 1919 for the purpose of promoting interest in the study of mammals.
+          The ASM is currently composed of over 4,500 members, many of whom are professional scientists.
+          Members of the Society have always had a strong interest in the public good,
+          and this is reflected in their involvement in providing information for public policy, resources management, conservation, and education.
+        '''
+
+      bellMuseum:
+        name: 'James Ford Bell Museum of Natural History'
+        url: 'www.bellmuseum.org'
+        image: ''
+        description: '''
+          The James Ford Bell Museum of Natural History provided funding for 2009 pilot work that led to the camera survey through a Rothman Fellowship
+          and provided funding for the initial 2010 camera trap survey through a Dayton-Wilkie Fellowship.
+          The Bell Museum was established by Minnesota legislative mandate in 1872 to collect, preserve, skillfully prepare, display, and interpret
+          our state's diverse animal and plant life for scholarly research and teaching and for public appreciation, enrichment, and enjoyment.
+          Collecting, researching, and teaching serve to inform exhibits, exhibitions, and public outreach.
+        '''
+
+      trailCamPro:
+        name: 'TrailCamPro.com'
+        url: 'http://www.trailcampro.com/'
+        image: ''
+        description: '''
+          TrailCamPro has provided affordable camera traps for the survey and has shared invaluable personal expertise and advice on using them,
+          which has had a large impact on the survey’s success.
+          TrailCamPro specializes in selling trail cameras, camera traps, and security cameras.
+        '''
+
+      zgf:
+        name: 'Frankfurt Zoological Society'
+        url: 'http://www.zgf.de/?id=14&language=en'
+        image: ''
+        description: '''
+          The Frankfurt Zoological Society (FZS) provides logistical support for the field team in the Serengeti.
+          FZS is a non-profit, internationally operating, conservation organization based in Frankfurt/Main.
+          The Society is committed to conserving biological diversity.
+          FZS is therefore faced with one of the greatest challenges of the 21st century: the preservation of the world’s natural environments.
+        '''
+
+      tawiri:
+        name: 'Tanzania Wildlife Research Institute'
+        url: 'http://www.tawiri.or.tz/'
+        image: ''
+        description: '''
+          Tanzania Wildlife Research Institute (TAWIRI) provides permission and facilities for the camera trapping project.
+          TAWIRI is a parastatal organization under the Ministry of Natural Resources and Tourism responsible for conducting and coordinating wildlife research in the United Republic Tanzania.
+          TAWIRI’s overall objective is providing scientific information and advice to the Government and wildlife management authorities on the sustainable conservation of wildlife and natural resources.
+        '''
+
+      tanzaniaParks:
+        name: 'Tanzania National Parks'
+        url: 'http://www.tanzaniaparks.com/'
+        image: ''
+        description: '''
+          Tanzania National Parks (TANAPA) provides permission and facilities for the camera trapping project.
+          The mission of TANAPA is to manage and regulate National Parks to preserve the country’s heritage, encompassing natural and cultural resources.
+          TANAPA sustainably conserves and manages park resources and their aesthetic value, for the benefit of present and future generations of mankind, as well as efficiently provide high-class tourism products and services.
+        '''
 
       adler:
         name: 'Adler Planetarium'
-        image: '//placehold.it/40x50.png'
-        description: 'Chicago, IL'
+        url: 'http://www.adlerplanetarium.org/'
+        image: ''
+        description: '''
+          The Adler Planetarium - America's First Planetarium - was founded in 1930 by Chicago business leader Max Adler.
+          The Adler is a recognized leader in science education, with a focus on inspiring young people to pursue careers in science, technology, engineering and math.
+          Throughout 80 years, the Adler has inspired the next generation of explorers by sharing the personal stories of space exploration and America’s space heroes.
+        '''
 
     teams:
       science:
+        swanson:
+          name: 'Ali Swanson'
+          image: 'images/about/team/ali.jpg'
+          description: '''
+            Ali spent several years chasing mammals, fish, and birds around North America (scientifically, of course) before beginning her Ph.D. at the University of Minnesota.
+            She initiated the camera trapping survey in 2010 for her dissertation research on how Serengeti carnivores coexist.
+            She now spends about half the year in Serengeti devising ways to foil the relentless efforts of hyenas and elephants to munch and destroy the cameras.
+          '''
+
         kosmala:
           name: 'Margaret Kosmala'
           image: 'images/about/team/margaret.jpg'
-          description: 'Ph.D. Candidate'
-
-        mwampeta:
-          name: 'Stanslaus Mwampeta'
-          image: '//placehold.it/40x50.png'
-          description: 'Field Assistant'
+          description: '''
+            Margaret is an ecologist finishing her Ph.D. at the University of Minnesota.
+            She explores the complex interactions among species and is especially interested in understanding how humans impact species communities.
+            She is currently a fellow at the National Museum of Natural History in Washington, D.C.
+            where she is trying to figure out what might happen to insect communities as the planet warms.
+          '''
 
         packer:
           name: 'Craig Packer'
           image: 'images/about/team/craig.jpg'
-          description: 'Director of the Lion Research Center & Distinguished McKnight University Professor'
+          description: '''
+            Craig Packer is a Distinguished McKnight University Professor at the University of Minnesota
+            and a research scientist at the Tanzanian Wildlife Research Institute.
+            He has worked in Tanzania for 40 years and has two enduring passions: the Serengeti and photography.
+            But he no longer carries his own camera, preferring the dramatic and exciting photographs captured by Serengeti Snapshot.
+          '''
 
         rosengren:
           name: 'Daniel Rosengren'
           image: '//placehold.it/40x50.png'
-          description: 'Field Assistant'
+          description: '''
+            Daniel got his master’s degree in Sweden studying vole population dynamics.
+            After cycling from the Northern Cape of Europe to the southernmost point in Africa, Daniel left his bike for a Lion Project Land Rover.
+            He is now the senior Serengeti field assistant and is rarely seen without his camera in hand.
+          '''
 
-        swanson:
-          name: 'Ali Swanson'
-          image: 'images/about/team/ali.jpg'
-          description: 'Ph.D. Candidate'
+        mwampeta:
+          name: 'Stanslaus Mwampeta'
+          image: '//placehold.it/40x50.png'
+          description: '''
+            Stan joined the Lion Project after graduating from the University of Dar es Salaam, Tanzania.
+            When he’s not watching lions, he’s making the rounds on the camera trap survey to ensure that Snapshot Serengeti never runs out of footage.
+          '''
+
+        finlay:
+          name: 'Fred Finlay'
+          image: 'images/about/team/fred.jpg'
+          description: '''
+            Fred is an Associate Professor at University of Minnesota’s College of Education and Human Development.
+            He’s interested in how social and cultural context influence how people learn about science, and conducts much of his research in Thailand.
+          '''
 
       development:
         borden:
           name: 'Kelly Borden'
           image: 'images/about/team/kelly.jpg'
           description: '''
-            Kelly is an archaeologist by training but an educator by passion. While working at the Museum of Science and Industry and the Adler Planetarium she became an enthusiastic science educator eager to bring science to the masses. When not pondering the wonders of science, Kelly can often be found baking or spending time with her herd of cats – Murray, Ada, & Kepler.
+            Kelly is an archaeologist by training but an educator by passion.
+            While working at the Museum of Science and Industry and the Adler Planetarium she became an enthusiastic science educator eager to bring science to the masses.
+            When not pondering the wonders of science, Kelly can often be found baking or spending time with her herd of cats – Murray, Ada, & Kepler.
           '''
 
         carstensen:
           name: 'Brian Carstensen'
           image: 'images/about/team/brian.jpg'
           description: '''
-            Brian is a web developer working on the Zooniverse family of projects at the Adler Planearium. Brian has a degree in graphic design from Columbia College in Chicago, and worked in that field for a number of years before finding a niche in web development.
+            Brian is a web developer working on the Zooniverse family of projects at the Adler Planearium.
+            Brian has a degree in graphic design from Columbia College in Chicago, and worked in that field for a number of years before finding a niche in web development.
           '''
 
         lintott:
           name: 'Chris Lintott'
           image: 'images/about/team/chris.jpg'
           description: '''
-            Chris Lintott leads the Zooniverse team, and is his copious spare time is a researcher at the University of Oxford specialising in galaxy formation and evolution. A keen popularizer of science, he is best known as co-presenter of the BBC's long running Sky at Night program. He's currently drinking a lot of sherry.
+            Chris Lintott leads the Zooniverse team, and is his copious spare time is a researcher at the University of Oxford specialising in galaxy formation and evolution.
+            A keen popularizer of science, he is best known as co-presenter of the BBC's long running Sky at Night program. He's currently drinking a lot of sherry.
           '''
 
         miller:
           name: 'David Miller'
           image: 'images/about/team/david.jpg'
           description: '''
-            As a visual communicator, David is passionate about tellings stories through clear, clean, and effective design. Before joining the Zooniverse team as Visual Designer, David worked for The Raindance Film Festival, the News 21 Initiative's Apart From War, Syracuse Magazine, and as a freelance designer for his small business, Miller Visual. David is a graduate of the S.I. Newhouse School of Public Communications at Syracuse University, where he studied Visual & Interactive Communications.
+            As a visual communicator, David is passionate about tellings stories through clear, clean, and effective design.
+            Before joining the Zooniverse team as Visual Designer, David worked for The Raindance Film Festival, the News 21 Initiative's Apart From War, Syracuse Magazine, and as a freelance designer for his small business, Miller Visual.
+            David is a graduate of the S.I. Newhouse School of Public Communications at Syracuse University, where he studied Visual & Interactive Communications.
           '''
 
         parrish:
           name: 'Michael Parrish'
           image: 'images/about/team/michael.jpg'
           description: '''
-            Michael has a degree in Computer Science and has been working with The Zooniverse for the past three years as a Software Developer. Aside from web development; new technologies, science, AI, reptiles, and coffee tend to occupy his attention.
+            Michael has a degree in Computer Science and has been working with The Zooniverse for the past three years as a Software Developer.
+            Aside from web development; new technologies, science, AI, reptiles, and coffee tend to occupy his attention.
           '''
 
         smith:
           name: 'Arfon Smith'
           image: 'images/about/team/arfon.jpg'
           description: '''
-            As an undergraduate, Arfon studied Chemistry at the University of Sheffield before completing his Ph.D. in Astrochemistry at The University of Nottingham in 2006. He worked as a senior developer at the Wellcome Trust Sanger Institute (Human Genome Project) in Cambridge before joining the Galaxy Zoo team in Oxford. Over the past 3 years he has been responsible for leading the development of a platform for citizen science called Zooniverse. In August of 2011 he took up the position of Director of Citizen Science at the Adler Planetarium where he continues to lead the software and infrastructure development for the Zooniverse.
+            As an undergraduate, Arfon studied Chemistry at the University of Sheffield before completing his Ph.D. in Astrochemistry at The University of Nottingham in 2006.
+            He worked as a senior developer at the Wellcome Trust Sanger Institute (Human Genome Project) in Cambridge before joining the Galaxy Zoo team in Oxford.
+            Over the past 3 years he has been responsible for leading the development of a platform for citizen science called Zooniverse.
+            In August of 2011 he took up the position of Director of Citizen Science at the Adler Planetarium where he continues to lead the software and infrastructure development for the Zooniverse.
           '''
