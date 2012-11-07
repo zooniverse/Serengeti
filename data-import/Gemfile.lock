@@ -9,6 +9,15 @@ GEM
     bson (1.7.0)
     bson_ext (1.7.0)
       bson (~> 1.7.0)
+    coordinates_transformations (0.0.1)
+      geokit
+      georuby
+      geoutm
+      json
+    geokit (1.6.5)
+      multi_json
+    georuby (2.0.0)
+    geoutm (1.0.1)
     httparty (0.9.0)
       multi_json (~> 1.0)
       multi_xml
@@ -26,4 +35,5 @@ DEPENDENCIES
   aws-sdk
   bson
   bson_ext
+  coordinates_transformations
   mysql2

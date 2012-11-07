@@ -1,5 +1,6 @@
 require 'json'
 require_relative 'mysql_connection'
+require 'coordinates_transformations'
 
 class Site
   @instances = {}
@@ -26,8 +27,11 @@ class Site
     end
   end
 
-  def gps_to_lat_lng(lat, lng)
-    # Via http://www.gps-forums.net/strange-coordinates-t35858.html
-    [(lat * 180.0) / 33554432, (lng * 360.0) / 67108864]
+  def gps_to_lat_lng(x, y)
+    utm = GeoUtm::UTM.new '36M', x, y
+    lat_lng = utm.to_lat_lon
+    lat = lat_lng.lat
+    lng = lat_lng.lon
+    [lat, lng]
   end
 end
