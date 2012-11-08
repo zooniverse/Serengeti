@@ -550,7 +550,7 @@ module.exports =
       mnZoo:
         name: 'Minnesota Zoo'
         url: 'http://www.mnzoo.com/'
-        image: ''
+        image: 'images/about/organizations/mn-zoo.jpg'
         description: '''
           The Minnesota Zoo has provided partial funding for the camera trap survey through a Ulysses S. Seal Conservation Grant
           and has helped recruit volunteers who have assisted the development of Snapshot Serengeti.
@@ -573,7 +573,7 @@ module.exports =
       gpsa:
         name: 'The Global Programs and Strategy Alliance'
         url: 'http://global.umn.edu/'
-        image: ''
+        image: 'images/about/organizations/umn.jpg'
         description: '''
           The Global Programs and Strategy Alliance provided the funding for the first 50 cameras of the camera trap survey, which were established in June 2010.
           The mission of the Global Programs and Strategy Alliance is to be the driving force for the University of Minnesota in globalizing teaching, learning, research, and engagement.
@@ -583,7 +583,7 @@ module.exports =
       umnGradSChool:
         name: 'University of Minnesota Graduate School'
         url: 'http://www.grad.umn.edu/'
-        image: ''
+        image: 'images/about/organizations/umn.jpg'
         description: '''
           The University of Minnesota Graduate School provided funding for the initial camera trap survey in 2010 through a Thesis Research Grant.
           As one of the world's most comprehensive public research universities, the University of Minnesota offers outstanding graduate and professional education
@@ -593,16 +593,17 @@ module.exports =
       explorersClub:
         name: 'Explorers Club'
         url: 'http://www.explorers.org/'
-        image: ''
+        image: 'images/about/organizations/explorers-club.jpg'
         description: '''
           The Explorers Club provided funding for the initial camera trap survey through its Exploration Fund.
           The Explorers Club is an international multidisciplinary professional society dedicated to the advancement of field research and the ideal that it is vital to preserve the instinct to explore.
           The Explorers Club promotes the scientific exploration of land, sea, air, and space by supporting research and education in the physical, natural and biological sciences.
         '''
+
       asm:
         name: 'American Society of Mammalogists'
         url: 'http://www.mammalsociety.org/'
-        image: ''
+        image: 'images/about/organizations/asm.jpg'
         description: '''
           The American Society of Mammalogists provided funding for the initial camera trap survey through its Grants-in-aid of Research program.
           ASM was established in 1919 for the purpose of promoting interest in the study of mammals.
@@ -614,7 +615,7 @@ module.exports =
       bellMuseum:
         name: 'James Ford Bell Museum of Natural History'
         url: 'www.bellmuseum.org'
-        image: ''
+        image: 'images/about/organizations/bell-museum.jpg'
         description: '''
           The James Ford Bell Museum of Natural History provided funding for 2009 pilot work that led to the camera survey through a Rothman Fellowship
           and provided funding for the initial 2010 camera trap survey through a Dayton-Wilkie Fellowship.
@@ -626,7 +627,7 @@ module.exports =
       trailCamPro:
         name: 'TrailCamPro.com'
         url: 'http://www.trailcampro.com/'
-        image: ''
+        image: 'images/about/organizations/trailcampro.jpg'
         description: '''
           TrailCamPro has provided affordable camera traps for the survey and has shared invaluable personal expertise and advice on using them,
           which has had a large impact on the survey’s success.
@@ -636,7 +637,7 @@ module.exports =
       zgf:
         name: 'Frankfurt Zoological Society'
         url: 'http://www.zgf.de/?id=14&language=en'
-        image: ''
+        image: 'images/about/organizations/fzs.jpg'
         description: '''
           The Frankfurt Zoological Society (FZS) provides logistical support for the field team in the Serengeti.
           FZS is a non-profit, internationally operating, conservation organization based in Frankfurt/Main.
@@ -647,7 +648,7 @@ module.exports =
       tawiri:
         name: 'Tanzania Wildlife Research Institute'
         url: 'http://www.tawiri.or.tz/'
-        image: ''
+        image: 'images/about/organizations/tawiri.jpg'
         description: '''
           Tanzania Wildlife Research Institute (TAWIRI) provides permission and facilities for the camera trapping project.
           TAWIRI is a parastatal organization under the Ministry of Natural Resources and Tourism responsible for conducting and coordinating wildlife research in the United Republic Tanzania.
@@ -657,7 +658,7 @@ module.exports =
       tanzaniaParks:
         name: 'Tanzania National Parks'
         url: 'http://www.tanzaniaparks.com/'
-        image: ''
+        image: 'images/about/organizations/tanapa.jpg'
         description: '''
           Tanzania National Parks (TANAPA) provides permission and facilities for the camera trapping project.
           The mission of TANAPA is to manage and regulate National Parks to preserve the country’s heritage, encompassing natural and cultural resources.
@@ -667,7 +668,7 @@ module.exports =
       adler:
         name: 'Adler Planetarium'
         url: 'http://www.adlerplanetarium.org/'
-        image: ''
+        image: 'images/about/organizations/adler.jpg'
         description: '''
           The Adler Planetarium - America's First Planetarium - was founded in 1930 by Chicago business leader Max Adler.
           The Adler is a recognized leader in science education, with a focus on inspiring young people to pursue careers in science, technology, engineering and math.
@@ -707,7 +708,7 @@ module.exports =
 
         rosengren:
           name: 'Daniel Rosengren'
-          image: '//placehold.it/40x50.png'
+          image: 'images/about/team/daniel.jpg'
           description: '''
             Daniel got his master’s degree in Sweden studying vole population dynamics.
             After cycling from the Northern Cape of Europe to the southernmost point in Africa, Daniel left his bike for a Lion Project Land Rover.
@@ -716,7 +717,7 @@ module.exports =
 
         mwampeta:
           name: 'Stanslaus Mwampeta'
-          image: '//placehold.it/40x50.png'
+          image: 'images/about/team/stanslaus.jpg'
           description: '''
             Stan joined the Lion Project after graduating from the University of Dar es Salaam, Tanzania.
             When he’s not watching lions, he’s making the rounds on the camera trap survey to ensure that Snapshot Serengeti never runs out of footage.
