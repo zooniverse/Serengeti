@@ -12,4 +12,4 @@ module.exports = ->
 
     metadata:
       empty: true
-      timestamps: [(new Date).toString()]
+      DateTime: [(new Date).toString()]
