@@ -14,6 +14,7 @@
     "zooniverse/lib/models/user",
     "zooniverse/lib/models/recent",
     "zooniverse/lib/models/favorite",
+    "zooniverse/lib/google_analytics",
     "underscore/underscore",
 
     "zootorial"

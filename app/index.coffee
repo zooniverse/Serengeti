@@ -11,6 +11,7 @@ translate = require 'lib/translate'
 Api = require 'zooniverse/lib/api'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
+googleAnalytics = require 'zooniverse/lib/google_analytics'
 
 ContentPage = require 'controllers/content_page'
 feedbackContent = require 'views/feedback_page'
@@ -67,6 +68,10 @@ Api.init
     'https://api.zooniverse.org'
   else
     "#{location.protocol}//#{location.hostname}:3000"
+
+googleAnalytics.init
+  account: 'UA-1224199-36'
+  domain: 'snapshotserengeti.org'
 
 language = localStorage.language
 translate.init language
