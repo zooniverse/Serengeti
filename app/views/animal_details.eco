@@ -10,18 +10,22 @@
 <div class="content">
   <p class="label"><%= @label %></p>
   <p><%= @description %></p>
+
   <% unless @confusedWith.length is 0: %>
     <p><%= translate 'classify.oftenConfused' %>
       <% for animal in @confusedWith: %>
-        <button name="confusion" data-popup=".<%= animal.id %>.confusion-popup" data-popup-position="right bottom, center top, 10"><%= animal.label %></button>
+        <button name="confusion" data-popup=".<%= animal.id %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%= animal.label %></button>
       <% end %>
     </p>
   <% end %>
 
   <% for animal in @confusedWith: %>
     <div class="<%= animal.id %> confusion-popup">
-      <img src="<%= animal.images[0] %>" /><!-- TODO: Icon only -->
-      <p><%= animal.description %></p>
+      <div class="image"></div>
+      <div class="description">
+        <p class="label"><%= animal.label %></p>
+        <p><%= animal.description %></p>
+      </div>
     </div>
   <% end %>
 </div>

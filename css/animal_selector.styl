@@ -315,55 +315,200 @@
         .image {
           background: url("images/animal-thumbnails.jpg");
         }
+      }
 
-        &[data-animal="aardvark"]        .image {background-position: -2px -0px;}
-        &[data-animal="aardwolf"]        .image {background-position: -2px -72px;}
-        &[data-animal="baboon"]          .image {background-position: -2px -144px;}
-        &[data-animal="batEaredFox"]     .image {background-position: -2px -216px;}
-        &[data-animal="otherBird"]       .image {background-position: -2px -3312px;}
-        &[data-animal="buffalo"]         .image {background-position: -2px -288px;}
-        &[data-animal="bushbuck"]        .image {background-position: -2px -360px;}
-        &[data-animal="caracal"]         .image {background-position: -2px -432px;}
-        &[data-animal="cheetah"]         .image {background-position: -2px -504px;}
-        &[data-animal="civet"]           .image {background-position: -2px -576px;}
-        &[data-animal="dikDik"]          .image {background-position: -2px -648px;}
-        &[data-animal="eland"]           .image {background-position: -2px -720px;}
-        &[data-animal="elephant"]        .image {background-position: -2px -792px;}
-        &[data-animal="gazelleGrants"]   .image {background-position: -2px -864px;}
-        &[data-animal="gazelleThomsons"] .image {background-position: -2px -936px;}
-        &[data-animal="genet"]           .image {background-position: -2px -1008px;}
-        &[data-animal="giraffe"]         .image {background-position: -2px -1080px;}
-        &[data-animal="guineaFowl"]      .image {background-position: -2px -1152px;}
-        &[data-animal="hare"]            .image {background-position: -2px -1224px;}
-        &[data-animal="hartebeest"]      .image {background-position: -2px -1296px;}
-        &[data-animal="hippopotamus"]    .image {background-position: -2px -1368px;}
-        &[data-animal="honeyBadger"]     .image {background-position: -2px -1440px;}
-        &[data-animal="hyenaSpotted"]    .image {background-position: -2px -1512px;}
-        &[data-animal="hyenaStriped"]    .image {background-position: -2px -1584px;}
-        &[data-animal="impala"]          .image {background-position: -2px -1656px;}
-        &[data-animal="jackal"]          .image {background-position: -2px -1728px;}
-        &[data-animal="koriBustard"]     .image {background-position: -2px -1800px;}
-        &[data-animal="leopard"]         .image {background-position: -2px -1872px;}
-        &[data-animal="lionFemale"]      .image {background-position: -2px -1944px;}
-        &[data-animal="lionMale"]        .image {background-position: -2px -2016px;}
-        &[data-animal="mongoose"]        .image {background-position: -2px -2088px;}
-        &[data-animal="ostrich"]         .image {background-position: -2px -2160px;}
-        &[data-animal="porcupine"]       .image {background-position: -2px -2232px;}
-        &[data-animal="reedbuck"]        .image {background-position: -2px -2304px;}
-        &[data-animal="reptiles"]        .image {background-position: -2px -2376px;}
-        &[data-animal="rhinoceros"]      .image {background-position: -2px -2448px;}
-        &[data-animal="rodents"]         .image {background-position: -2px -2520px;}
-        &[data-animal="secretaryBird"]   .image {background-position: -2px -2592px;}
-        &[data-animal="serval"]          .image {background-position: -2px -2664px;}
-        &[data-animal="topi"]            .image {background-position: -2px -2736px;}
-        &[data-animal="vervetMonkey"]    .image {background-position: -2px -2808px;}
-        &[data-animal="warthog"]         .image {background-position: -2px -2880px;}
-        &[data-animal="waterbuck"]       .image {background-position: -2px -2952px;}
-        &[data-animal="wildcat"]         .image {background-position: -2px -3024px;}
-        &[data-animal="wildebeest"]      .image {background-position: -2px -3096px;}
-        &[data-animal="zebra"]           .image {background-position: -2px -3168px;}
-        &[data-animal="zorilla"]         .image {background-position: -2px -3240px;}
-        &[data-animal="human"]           .image {background-position: -2px -3384px;}
+      // NOTE: I totally hate this.
+
+      [data-animal="aardvark"] .image {
+        @extend #thumb-for-aardvark;
+      }
+
+      [data-animal="aardwolf"] .image {
+        @extend #thumb-for-aardwolf;
+      }
+
+      [data-animal="baboon"] .image {
+        @extend #thumb-for-baboon;
+      }
+
+      [data-animal="batEaredFox"] .image {
+        @extend #thumb-for-batEaredFox;
+      }
+
+      [data-animal="otherBird"] .image {
+        @extend #thumb-for-otherBird;
+      }
+
+      [data-animal="buffalo"] .image {
+        @extend #thumb-for-buffalo;
+      }
+
+      [data-animal="bushbuck"] .image {
+        @extend #thumb-for-bushbuck;
+      }
+
+      [data-animal="caracal"] .image {
+        @extend #thumb-for-caracal;
+      }
+
+      [data-animal="cheetah"] .image {
+        @extend #thumb-for-cheetah;
+      }
+
+      [data-animal="civet"] .image {
+        @extend #thumb-for-civet;
+      }
+
+      [data-animal="dikDik"] .image {
+        @extend #thumb-for-dikDik;
+      }
+
+      [data-animal="eland"] .image {
+        @extend #thumb-for-eland;
+      }
+
+      [data-animal="elephant"] .image {
+        @extend #thumb-for-elephant;
+      }
+
+      [data-animal="gazelleGrants"] .image {
+        @extend #thumb-for-gazelleGrants;
+      }
+
+      [data-animal="gazelleThomsons"] .image {
+        @extend #thumb-for-gazelleThomsons;
+      }
+
+      [data-animal="genet"] .image {
+        @extend #thumb-for-genet;
+      }
+
+      [data-animal="giraffe"] .image {
+        @extend #thumb-for-giraffe;
+      }
+
+      [data-animal="guineaFowl"] .image {
+        @extend #thumb-for-guineaFowl;
+      }
+
+      [data-animal="hare"] .image {
+        @extend #thumb-for-hare;
+      }
+
+      [data-animal="hartebeest"] .image {
+        @extend #thumb-for-hartebeest;
+      }
+
+      [data-animal="hippopotamus"] .image {
+        @extend #thumb-for-hippopotamus;
+      }
+
+      [data-animal="honeyBadger"] .image {
+        @extend #thumb-for-honeyBadger;
+      }
+
+      [data-animal="hyenaSpotted"] .image {
+        @extend #thumb-for-hyenaSpotted;
+      }
+
+      [data-animal="hyenaStriped"] .image {
+        @extend #thumb-for-hyenaStriped;
+      }
+
+      [data-animal="impala"] .image {
+        @extend #thumb-for-impala;
+      }
+
+      [data-animal="jackal"] .image {
+        @extend #thumb-for-jackal;
+      }
+
+      [data-animal="koriBustard"] .image {
+        @extend #thumb-for-koriBustard;
+      }
+
+      [data-animal="leopard"] .image {
+        @extend #thumb-for-leopard;
+      }
+
+      [data-animal="lionFemale"] .image {
+        @extend #thumb-for-lionFemale;
+      }
+
+      [data-animal="lionMale"] .image {
+        @extend #thumb-for-lionMale;
+      }
+
+      [data-animal="mongoose"] .image {
+        @extend #thumb-for-mongoose;
+      }
+
+      [data-animal="ostrich"] .image {
+        @extend #thumb-for-ostrich;
+      }
+
+      [data-animal="porcupine"] .image {
+        @extend #thumb-for-porcupine;
+      }
+
+      [data-animal="reedbuck"] .image {
+        @extend #thumb-for-reedbuck;
+      }
+
+      [data-animal="reptiles"] .image {
+        @extend #thumb-for-reptiles;
+      }
+
+      [data-animal="rhinoceros"] .image {
+        @extend #thumb-for-rhinoceros;
+      }
+
+      [data-animal="rodents"] .image {
+        @extend #thumb-for-rodents;
+      }
+
+      [data-animal="secretaryBird"] .image {
+        @extend #thumb-for-secretaryBird;
+      }
+
+      [data-animal="serval"] .image {
+        @extend #thumb-for-serval;
+      }
+
+      [data-animal="topi"] .image {
+        @extend #thumb-for-topi;
+      }
+
+      [data-animal="vervetMonkey"] .image {
+        @extend #thumb-for-vervetMonkey;
+      }
+
+      [data-animal="warthog"] .image {
+        @extend #thumb-for-warthog;
+      }
+
+      [data-animal="waterbuck"] .image {
+        @extend #thumb-for-waterbuck;
+      }
+
+      [data-animal="wildcat"] .image {
+        @extend #thumb-for-wildcat;
+      }
+
+      [data-animal="wildebeest"] .image {
+        @extend #thumb-for-wildebeest;
+      }
+
+      [data-animal="zebra"] .image {
+        @extend #thumb-for-zebra;
+      }
+
+      [data-animal="zorilla"] .image {
+        @extend #thumb-for-zorilla;
+      }
+
+      [data-animal="human"] .image {
+        @extend #thumb-for-human;
       }
 
       &[data-items="lots"] [data-animal] {
