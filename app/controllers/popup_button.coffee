@@ -3,13 +3,13 @@ $ = require 'jqueryify'
 
 log = -> console?.log? arguments...
 
-class Tooltipped
+class PopupButton
   @fromDOM: (el) ->
     el = $(el)
     popup = el.parents().last().find el.attr 'data-popup'
     log {el, popup}
-    position = el.attr('data-popup-position') || ''
-    [attachAt, attachTo] = position.split /\s*\,\s*/
+    position = el.attr 'data-popup-position'
+    [attachAt, attachTo] = position?.split /\s*\,\s*/
     attachAt ?= @::attachAt
     attachTo ?= @::attachTo
     new @ {el, popup, attachAt, attachTo}
@@ -51,4 +51,4 @@ class Tooltipped
     @popup.addClass 'hidden'
     setTimeout $.proxy(@popup, 'remove'), @classDelay
 
-module.exports = Tooltipped
+module.exports = PopupButton
