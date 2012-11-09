@@ -5,12 +5,14 @@ class FilteringSet
   Module.include.call @, Events
 
   items: null
+  searchProperties: null
   options: null
   searchString: ''
 
   constructor: (params = {}) ->
     @[property] = value for own property, value of params
     @items ?= []
+    @searchProperties ?= []
     @options ?= {}
 
     @filter @options
@@ -51,7 +53,7 @@ class FilteringSet
 
     matches = for item in @items
       match = false
-      for feature, value of item when feature of item.attributes()
+      for feature, value of item when feature in @searchProperties and feature of item.attributes()
         match = true if searchExpression.test value
 
       continue unless match

@@ -82,6 +82,7 @@ imagesFromId = (id) -> [
   ]
 
 animals = new FilteringSet
+  searchProperties: ['label', 'description']
   items: for item in animalCharacteristics
     for id, grid of item
       animal = new Animal

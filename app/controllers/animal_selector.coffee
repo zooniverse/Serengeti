@@ -124,7 +124,7 @@ class AnimalSelector extends Controller
 
   onAnimalItemClick: ({currentTarget}) ->
     animalId = $(currentTarget).attr 'data-animal'
-    animal = @set.find(id: animalId)[0]
+    animal = @set.find(id: animalId, true)[0]
     @select animal
 
   select: (animal) ->
