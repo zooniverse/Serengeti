@@ -27,7 +27,6 @@ class PopupButton
 
   constructor: (params = {}) ->
     @[key] = value for own key, value of params when key of @
-    @eventId = Math.random().toString(36)[2...]
 
     @el.on 'click', @onClick
 
@@ -54,7 +53,7 @@ class PopupButton
     setTimeout $.proxy(@popup, 'removeClass', 'hidden'), @classDelay
 
     @popup.on 'click', 'button[name="close"]', @onClickClose
-    $(document).on "click.#{@eventId}", @onDocumentClick
+    $(document).on 'click', @onDocumentClick
 
   close: ->
     @el.removeClass 'open'
@@ -62,6 +61,6 @@ class PopupButton
     setTimeout $.proxy(@popup, 'remove'), @classDelay
 
     @popup.off 'click'
-    $(document).off "click.#{@eventId}"
+    $(document).off 'click', @onDocumentClick
 
 module.exports = PopupButton

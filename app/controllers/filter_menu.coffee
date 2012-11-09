@@ -26,8 +26,6 @@ class FilterMenu extends Controller
     @html template @
     @close()
 
-    $(document).on 'click', @onDocumentClick
-
   onToggleClick: ->
     @toggle()
 
@@ -36,10 +34,14 @@ class FilterMenu extends Controller
     @menu.removeClass 'hidden'
     @trigger 'open'
 
+    $(document).on 'click', @onDocumentClick
+
   close: ->
     @el.removeClass 'open'
     @menu.addClass 'hidden'
     @trigger 'close'
+
+    $(document).off 'click', @onDocumentClick
 
   toggle: ->
     if @el.hasClass 'open' then @close() else @open()
