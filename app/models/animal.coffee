@@ -5,10 +5,12 @@ translate = require 'lib/translate'
 characteristicIds = (characteristic.id for characteristic in characteristics)
 
 class Animal extends Model
-  @configure 'Animal', 'label', 'images', 'description', characteristicIds...
+  @configure 'Animal', 'label', 'images', 'description', characteristicIds..., 'confusedWith'
 
   constructor: ->
     super
+    @confusedWith ?= []
+
     setTimeout @translateLabel
 
   translateLabel: =>

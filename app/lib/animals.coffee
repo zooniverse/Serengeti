@@ -98,4 +98,35 @@ animals = new FilteringSet
       animal.save()
     animal
 
+# Make "confusing" associations after all animals have been created.
+confusingSets =
+  aardwolf: ['hyenaStriped']
+  buffalo: ['wildebeest']
+  caracal: ['wildcat', 'lionFemale']
+  cheetah: ['leopard', 'serval']
+  civet: ['genet']
+  gazelleGrants: ['gazelleThomsons', 'impala']
+  gazelleThomsons: ['gazelleGrants', 'impala']
+  genet: ['civet']
+  hartebeest:  ['gazelleGrants', 'gazelleThomsons', 'topi']
+  hippopotamus: ['rhinoceros', 'warthog']
+  hyenaSpotted: ['hyenaStriped']
+  hyenaStriped: ['aardwolf', 'hyenaSpotted']
+  impala: ['gazelleGrants', 'gazelleThomsons']
+  mongoose: ['zorilla']
+  reedbuck: ['dikDik']
+  rhinoceros: ['hippopotamus', 'warthog']
+  secretaryBird:  ['koriBustard']
+  serval: ['cheetah']
+  topi: ['hartebeest']
+  warthog: ['hippopotamus', 'rhinoceros']
+  wildebeest: ['buffalo']
+  zorilla: ['mongoose']
+
+for animalId, set of confusingSets
+  animal = Animal.find animalId
+  for id, i in set
+    animal.confusedWith.push Animal.find id
+  animal.save()
+
 module.exports = animals

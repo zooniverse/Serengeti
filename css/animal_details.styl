@@ -86,6 +86,12 @@
       font-size: 24px;
       margin: 10px 0 -10px;
     }
+
+    button[name="confusion"] {
+      @extends #standard-button;
+      border-radius: 10px;
+      padding: 0 5px;
+    }
   }
 
   .options {
@@ -149,5 +155,33 @@
         background: $green-really;
       }
     }
+  }
+}
+
+.confusion-popup {
+  background: $black;
+  border: 2px solid $red;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px -3px $black;
+  color: $white;
+  font-size: 12px;
+  max-width: 500px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+
+  &:after {
+    border: 10px solid transparent;
+    border-top-color: $red;
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 0;
+  }
+
+  img {
+    margin-right: 10px;
+    max-height: 68px;
+    float: left;
   }
 }

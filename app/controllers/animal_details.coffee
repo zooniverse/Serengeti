@@ -1,5 +1,6 @@
 {Controller} = require 'spine'
 template = require 'views/animal_details'
+PopupButton = require './popup_button'
 ImageChanger = require './image_changer'
 
 class AnimalDetails extends Controller
@@ -27,6 +28,9 @@ class AnimalDetails extends Controller
     @html template @animal
     @el.attr tabindex: 0
     @el.addClass 'hidden'
+
+    for popupButton in @el.find '[data-popup]'
+      PopupButton.fromDOM popupButton
 
     @imageChanger = new ImageChanger
       el: @el.find '.image-changer'

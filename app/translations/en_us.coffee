@@ -36,6 +36,8 @@ module.exports =
     nothingToShow: 'There\'s nothing to show with these filters.'
     clearFilters: 'Clear filters'
 
+    oftenConfused: 'Often confused with:'
+
     count: 'How many'
 
     behavior: 'Behavior'
