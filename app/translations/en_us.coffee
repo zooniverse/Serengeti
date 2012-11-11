@@ -502,7 +502,7 @@ module.exports =
     warthog:
       label: 'Warthog'
       description: '''
-        This pig-like animal has a grey body covered sparsely with darker hairs, and aane of long, wiry hairs along its neck and back.
+        This pig-like animal has a grey body covered sparsely with darker hairs, and mane of long, wiry hairs along its neck and back.
         Its tail is think with a black tassel.  It has tusks that curve up around its snout.
       '''
 
@@ -549,6 +549,143 @@ module.exports =
       description: '''
         Vehicles and hot-air balloons are some of the signs you’ll see that people visit Serengeti.
         You might even catch a researcher checking the camera, or a curious tourist investigating over lunch.
+      '''
+
+  differences:
+    aardwolf:
+      hyenaStriped: '''
+        A striped hyena is larger than an aardwolf and typically has more than 3 stripes; its tail is bushy and grey with no black tip.
+      '''
+
+    buffalo:
+      wildebeest: '''
+        A wildebeest is skinnier than a buffalo, and more horse like than cow like. Its horns don't fuse together in the center.
+      '''
+
+    caracal:
+      wildcat: '''
+        A wildcat is smaller than a caracal and doesn't have prominent ears.
+      '''
+
+      lionFemale: '''
+        Lions are larger and more muscular than caracals. They don't have large pointed ears. Their tails are smooth with a tuft of dark fur at the end.
+      '''
+
+    cheetah:
+      leopard: '''
+        Leopards are covered with black rosettes, not spots. They don't have black facial lines like a cheetah.
+      '''
+
+      serval: '''
+        A serval's ears are much bigger than a cheetah's. Its spots often run into stripes.
+      '''
+
+    civet:
+      genet: '''
+        A genet looks more cat-like.
+      '''
+
+    gazelleGrants:
+      gazelleThomsons: '''
+        Thompson's gazelle has a horizontal black band across side, and dark fur running from their eyes to their nose. Its horns curve up and slightly back.
+      '''
+
+      impala: '''
+        Impalas are more reddish in color, with black bands on their rumps, and black tufts of hair above their heels. They have large S-shaped horns.
+      '''
+
+    gazelleThomsons:
+      gazelleGrants: '''
+        Grant's gazelles have a white belly, rump, and tail; males have horns that widen slightly toward their tips.
+      '''
+
+      impala: '''
+        Impalas are more reddish in color, with black bands on their rumps, and black tufts of hair above their heels. They have large S-shaped horns.
+      '''
+
+    genet:
+      civet: '''
+        A civet is more racoon-like.
+      '''
+
+    hartebeest:
+      gazelleGrants: '''
+        Grant's gazelles havea white belly, rump, and tail; males have horns that widen slightly toward their tips.
+      '''
+
+      impala: '''
+        Impalas are more reddish in color, with black bands on their rumps, and black tufts of hair above their heels. They have large S-shaped horns.
+      '''
+
+    hippopotamus:
+      rhinoceros: '''
+        Rinos have 2 horns and are a lighter grey color.
+      '''
+
+      warthog: '''
+        Warthogs are more pig-like; sparsely covered with dark hair mane of wiry hair along neck and back. They have tusks.
+      '''
+
+    hyenaStriped:
+      aardwolf: '''
+        An aardwolf is smaller than a hyena; tail has a black tip; usually only have 3 vertical stripes.
+      '''
+
+    impala:
+      gazelleThomsons: '''
+        Thompson's gazelle has a horizontal black band across side, and dark fur running from their eyes to their nose. Its horns curve up and slightly back.
+      '''
+
+      gazelleGrants: '''
+        Grant's gazelle has a White belly, rump, and tail; males have horns that widen slightly toward their tips.
+      '''
+
+    mongoose:
+      zorilla: '''
+        A aorilla, also known as a striped polecat, looks more like a skunk than a ferret.
+      '''
+
+    reedbuck:
+      dikDik: '''
+        A dik dik is smaller than a reedbuck. I thas larger eyes with an elongated upper lip and nose.
+      '''
+
+    rhinoceros:
+      hippopotamus: '''
+        Hippos are larger and often slimier looking. Darker grey or brown and pink color. No horn.
+      '''
+
+      warthog: '''
+        Warthogs have tusks, not horns. Darker skin color. Mane of long, wiry hair along neck and back.
+      '''
+
+    serval:
+      cheetah: '''
+        Cheetahs ears are small around, not large. Cheetahs are lankier than servals. Cheetahs have long dark lines running from corner of eyes down cheek.
+      '''
+
+    topi:
+      hartebeest: '''
+        The hartebeest is more yellow/tan in color. Horns curve sideways then inward.
+      '''
+
+    warthog:
+      hippopotamus: '''
+        Hippos are more massive, less hair, broader, rounder face and body.
+      '''
+
+      rhinoceros: '''
+        Rhinos have one large horn center of nose, with a smaller horn higher up. No tusks
+      '''
+
+    wildebeest:
+      buffalo: '''
+        The buffalo is larger and stockier. Horns tend to be more fused together at the center.
+      '''
+
+    zorilla:
+      mongoose: '''
+        The mongoose looks more ferret-like, not like a skunk
       '''
 
   characteristics:

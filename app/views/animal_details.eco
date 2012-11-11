@@ -1,4 +1,5 @@
 <% translate = require 'lib/translate' %>
+<% Animal = require 'models/animal' %>
 
 <div class="image-changer"></div>
 
@@ -11,22 +12,25 @@
   <p class="label"><%= @label %></p>
   <p><%= @description %></p>
 
-  <% unless @confusedWith.length is 0: %>
+  <% differences = try translate 'differences', @id %>
+  <% if differences?: %>
     <p><%= translate 'classify.oftenConfused' %>
-      <% for animal in @confusedWith: %>
+      <% for animal of differences: %>
+        <% animal = Animal.find animal %>
         <button name="confusion" data-popup=".<%= animal.id %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%= animal.label %></button>
       <% end %>
     </p>
-  <% end %>
 
-  <% for animal in @confusedWith: %>
-    <div class="<%= animal.id %> confusion-popup">
-      <div class="image"></div>
-      <div class="description">
-        <p class="label"><%= animal.label %></p>
-        <p><%= animal.description %></p>
+    <% for animal, difference of differences: %>
+      <% animal = Animal.find animal %>
+      <div class="<%= animal.id %> confusion-popup">
+        <div class="image"></div>
+        <div class="description">
+          <p class="label"><%= animal.label %></p>
+          <p><%= difference %></p>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 
