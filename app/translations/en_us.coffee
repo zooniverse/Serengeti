@@ -57,66 +57,72 @@ module.exports =
     tutorial:
       continueButton: 'Continue'
 
+      welcomeHeader: 'Welcome to Snapshot Serengeti!'
       welcome: '''
-        Welcome to Snapshot Serengeti!
-
-        This short tutorial will walk you through your first classification.
-
-        Let's get started!
+        This short tutorial will walk you through your first classification. Let's get started!
       '''
 
+      trapsHeader: 'Check out the Images'
       traps: '''
         All over the Serengeti, scientists have set up motion sensitive camera traps.
         The camera snaps a few shots anytime something moves in front of it.
-        Many of these photos come as a sequence of two or three.
-        Check out other snapshots in the sequence using the buttons below the image.
-        You can even play them like a flipbook by clicking the play button.
+
+        The photos often come as a sequence of 2 or 3, called a "capture".
+
+        Check out other snapshots in the sequence using the buttons below the image,
+        or play them like a flipbook by clicking the play button.
       '''
 
+      taskHeader: 'Identify the Animals'
       task: '''
         Your task is to identify all the different animals that appear in the photos.
-        The species that will appear are listed to the right.
-        That's a big list, and not all the species are familiar,
-        so let's take a look at some ways we can narrow that list down using
-        characteristics we can identify in the image.
+        The species that will appear are listed here.
+
+        It's a big list, and some species may be unfamiliar,
+        but there are a few ways to narrow that list down using the characteristics you see.
       '''
 
+      chooseAntelopeHeader: 'Looks like...'
       chooseAntelope: '''
         The animal in the foreground of this photo looks like a large antelope of some kind.
         Let's choose "Antelope/deer" from the "looks like" menu.
       '''
 
+      chooseSolidHeader: 'Characteristic: Pattern'
       chooseSolid: '''
         That narrows things down a bit.
-
-        It's primarily one solid color over most of its body,
+        This animal is a solid color over most of its body,
         so let's choose the "solid" icon under the "Pattern" menu.
       '''
 
+      chooseBrownHeader: 'Characteristic: Color'
       chooseBrown: '''
-        Now we can see photos representing the possible animals.
+        Look! We can now see photos representing the possible animals.
 
-        We can probably make a good match from these photos,
-        but let's narrow the list down one more time
-        by choosing "brown" from the "Color" menu.
+        We could probably make a good match from these photos,
+        but let's narrow the list down a bit more by choosing "brown" from the "Color" menu.
       '''
 
+      chooseWildebeestHeader: 'Make a choice'
       chooseWildebeest: '''
         Great, that leaves us with two options.
         This animal looks most like the wildebeest, so let's choose it and make sure.
       '''
 
+      confirmWildebeestHeader: 'Looks Good!'
       confirmWildebeest: '''
-        We can confirm that this is indeed a wildebeest by comparing it to to the photos here and reading the description below.
+        By comparing the animal to to the photos here and reading the description below, we can confirm that this is indeed a wildebeest.
         You can flip through the photos to see examples of the animal from multiple angles using the bullets on the right.
       '''
 
+      identifyWildebeestHeader: 'Count & Behavior'
       identifyWildebeest: '''
         Once you're confident that this is a wildebeest,
-        chooose "1" from the count menu and "Moving" from the behavior menu.
+        choose "1" from the count menu and "Moving" from the behavior menu.
         Then click "Identify."
       '''
 
+      findZebrasHeader: 'Identify another animal'
       findZebras: '''
         We want to try to identify all the animals in each capture.
         Look closely and you'll notice that there are some zebras in the distance.
@@ -124,39 +130,44 @@ module.exports =
         Let's look at another way of classifying when we already know which species we can see.
       '''
 
+      typeZebraHeader: 'Search'
       typeZebra: '''
-        The seach field is a quick way to highlight animals
-        whose descriptions contain certain words.
+        The seach field is a quick way to highlight animals whose descriptions contain certain words.
 
         Type "zebra" in the search field...
       '''
 
+      clickZebraHeader: 'Search'
       clickZebra: '''
         ...and click "Zebra," which is the only animal highlighted.
       '''
 
+      confirmZebraHeader: 'Just do your best!'
       confirmZebra: '''
-        It's hard to make out the zebras in the distance, but we'll classify as best we can.
-        Each classification is compared with the classifications of other volunteers,
-        so do your best, even if you're not sure!
+        It's hard to make out the zebras in the distance, so classify as best you can.
+        Each classification is compared with the classifications of other volunteers, so even if you're not sure, just try your best!
       '''
 
+      identifyZebraHeader: 'Count & Behavior'
       identifyZebra: '''
         There are two zebras in the distance, and they appear to be grazing with their heads bowed.
         Mark "2," "Standing," and "Eating," then click "Identify."
       '''
 
+      finishHeader: 'Nice Job!'
       finish: '''
-        Nice job! Now you're ready to classify some images on your own.
+        Now you're ready to classify some images on your own.
 
-        In each image, make your best effort to identify all the animals you can, even if you can't see enough to be completely sure.
+        In each image, do your best to identify all the animals you can,
+        even if you can't see enough to be completely sure.
         If there aren't any animals in an image, check "Nothing here" and then "Finish."
 
         Your observations will be combined with those of multiple volunteers,
         so even if you're not sure on something, your contribution is still very useful!
 
+        Don't forget: after classifying an image you can always discuss it with professional and citizen scientists or share it with friends.
+
         Click "Finish" now to move on.
-        Don't forget: you can discuss an image with professional and citizen scientists after classifying it.
       '''
 
     splits:
