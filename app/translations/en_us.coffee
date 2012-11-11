@@ -179,19 +179,25 @@ module.exports =
     aardvark:
       label: 'Aardvark'
       description: '''
-        The elusive aardvark has a long, tubular, pig-like snout with large, pointed ears.  It has short, stout legs with large digging claws and a very rounded back that tapers into a thick tail.  This animal has skin that appears gray to pinkish-brown and is only sparsely covered with bristly hair.
+        Long, tubular, pig-like snout with large, pointed ears;
+        short, stout legs with large claws and a very rounded back that tapers into a thick tail.
+        Skin is gray to pinkish-brown and sparsely covered with bristly hair.
       '''
 
     aardwolf:
       label: 'Aardwolf'
       description: '''
-        The aardwolf can be easily confused for its larger cousin, the striped hyena: it has the same downward sloping build, gray/tan coat color, vertical black stripes, and a crest of long hair along its neck.  However, aardwolves are smaller than striped hyenas, and their bushy tails are tipped with black.  They only have about 3, very vertical stripes along their sides, and their black snouts are shorter and narrower than those of hyenas.
+        Has a downward sloping build, gray/tan coat, about 3 black stripes,
+        and a crest of long hair along its neck.
+        Smaller than striped hyenas, and have bushy tails with a black tip.
+        Their black snouts are shorter and narrower than those of hyenas.
       '''
 
     baboon:
       label: 'Baboon'
       description: '''
-        This is the largest Serengeti primate.  Baboons are olive-brown in color, with grey/pink bare patches on their rump.  Adults have large, dog-like muzzles and close-set eyes, whereas young dark brown and have flat, pink faces.
+        This is the largest Serengeti primate. Baboons are olive-brown in color, with grey/pink bare patches on their rump.
+        Adults have large, dog-like muzzles and close-set eyes, whereas young dark brown and have flat, pink faces.
       '''
 
     batEaredFox:
@@ -209,31 +215,44 @@ module.exports =
     buffalo:
       label: 'Buffalo'
       description: '''
-        Buffalo are massive and cattle like.  They dark brown to black, with relatively long, tufted tails.  Both sexes have horns but those of males are more developed and join in the middle in what is called a ‘boss’. Their large, droopy ears stick out sideways under their horns
+        Massive and cattle-like. Dark brown to black, with long, tufted tails.
+        Both sexes have horns but those of males are more developed and join in the middle.
+        Large, droopy ears stick out sideways under their horns.
       '''
 
     bushbuck:
       label: 'Bushbuck'
       description: '''
-        Bushbucks have a chestnut to dark brown coat, with white spots and faint stripes on their flanks.  They also have a white patch under their chin, white stripe on their lower neck, and white patch under their bushy tail.  Males have backward-pointing horns with a single twist.
+        Chestnut to dark brown coat, with white spots and faint stripes on their flanks.
+        White patch under their chin, white stripe on their lower neck,
+        and white patch under their bushy tail.
+        Males have backward-pointing horns with a single twist.
+
       '''
 
     caracal:
       label: 'Caracal'
       description: '''
-        A medium to large cat, the caracal is uniformly reddish-brown/tawny in color with a pale white belly.  It is relatively muscular, with hind quarters rising slightly higher than its shoulders.  The caracal looks almost as though it is wearing makeup – with darkly lined eyes, and striking black markings above its eyes and around its whiskers.  Its large, pointed ears have prominent tufts of black hair.
+        Medium to large cat, red-brown with a pale belly.
+        Fairly muscular, with hind quarters slightly higher than shoulders.
+        Darkly lined eyes, and black markings around whiskers.
+        Large, pointed ears have prominent tufts of black hair.
       '''
 
     cheetah:
       label: 'Cheetah'
       description: '''
-        This is a lanky, slender cat with long legs, short rounded head, and very round ears.  The cheetah is pale tawny/yellow with black spots.  The tail long and also spotted with several black rings towards the tip.  “Tears ” refers to the distinctive black line that runs from the cheetah’s eyes down its cheeks.
+        Lanky and slender with long legs; very round ears. Pale yellow with black spots.
+        Tail long and spotted with several black rings towards the tip.
+        Distinctive black lines run from eyes down cheeks.
       '''
 
     civet:
       label: 'Civet'
       description: '''
-        Long, and heavy-set with short legs, the civet looks like a cross between a cat and a dog.  It has a racoon-like black band across its eyes and a white muzzle, its body is generally gray with black spots that darken to solid black on the legs and tail tip.
+        Long, heavy-set with short legs; looks like a cross between a cat and a dog.
+        Black band across its eyes and a white muzzle;
+        its body is usually gray with black spots that darken to black on the legs and tail tip.
       '''
 
     dikDik:
@@ -257,13 +276,18 @@ module.exports =
     gazelleGrants:
       label: 'Gazelle (Grant\'s)'
       description: '''
-        This pale fawn gazelle has distinctive white belly, white rump, and white tail, with vertical black stripes on either side of the rump.  Juveniles have a band of darker fur along their sides that can mimic a Thomson gazelle.  Long black lines extend from both corners of their eyes.  Adult males have long, ridged horns that widen slightly towards their tips.
+        Fawn has white belly, rump, and tail, with black stripes down rump.
+        Young have a band of darker fur along their sides that can mimic a Thomson's gazelle.
+        Long black lines extend from both corners of their eyes.
+        Adult males have long, ridged horns that widen towards their tips.
       '''
 
     gazelleThomsons:
       label: 'Gazelle (Thomson\'s)'
       description: '''
-        Locally referred to as a “tommy,” this small, fawn-colored gazelle has a horizontal dark black stripe that runs from their elbow to hip.  They have a white rump and underbelly, but black tail.  They have dark fur running from the inner corners of their eyes to their nose.  Both sexes have ridged horns that curve up and slightly backward.
+        Horizontal dark black band runs from their elbow to hip. White rump and belly; black tail.
+        Dark fur running from the inner corners of their eyes to their nose.
+        Both sexes have ridged horns that curve up and backward.
       '''
 
     genet:
@@ -293,13 +317,16 @@ module.exports =
     hartebeest:
       label: 'Hartebeest'
       description: '''
-        This large antelope is yellowish tan with pale lower rump.  Its body slopes distinctively from shoulders towards rump.  The hartebeest has a long nose and high-set eyes.  Both sexes have horns that curve out sideways and then inward.
+        Yellow or tan with pale rump.  Body slopes distinctively from shoulders towards rump.
+        Long nose and high-set eyes. Both sexes have horns that curve out sideways and then inward.
       '''
 
     hippopotamus:
       label: 'Hippopotamus'
       description: '''
-        Hippos are large, rounded animal with short legs and grey to pink skin.  They have small ears and a massive, wide mouth.  Their short, thick tail is trimmed with black bristles.  You mostly see them in the cameras at night when the leave the rivers to forage.
+        Large and round with short legs and grey to pink skin.
+        Small ears and a massive, wide mouth. Short, thick tail is trimmed with black bristles.
+        Mostly seen at night.
       '''
 
     honeyBadger:
@@ -311,7 +338,10 @@ module.exports =
     hyenaSpotted:
       label: 'Hyena (spotted)'
       description: '''
-        The spotted hyena looks typically dog-like.  Juveniles have dark gray fur with black spots; both spots and fur tend to fade to red/brown in adults. Their lower legs and muzzle are black.  Their heads are broad, they have large, rather pointed ears, and they slope dramatically from shoulder to hip.
+        Looks dog-like.  Young have dark gray fur with black spots;
+        both spots and fur tend to fade to red/brown in adults.
+        Lower legs and muzzle are black. Broad heads, with large pointed ears;
+        body slopes dramatically from shoulder to hip.
       '''
 
     hyenaStriped:
@@ -323,7 +353,10 @@ module.exports =
     impala:
       label: 'Impala'
       description: '''
-        Impalas are lightly built antelopes, reddish brown in color, with paler fur on sides.  They have white under their belly and chin, and around their eyes.  They have black tufts of hair between their ears, black lines on their rump, and black spots above their heels.  Males have large, S-shaped horns.
+        Lightly built; reddish brown in color, with pale fur on sides.
+        White belly and chin, and around their eyes.
+        Black tufts of hair between their ears, black lines on their rump, and black spots above their heels.
+        Males have large, S-shaped horns.
       '''
 
     jackal:
@@ -341,7 +374,10 @@ module.exports =
     leopard:
       label: 'Leopard'
       description: '''
-        These are powerfully built, golden brown cats with black rosettes.  Leopards have a spotted face - no black lines as cheetahs have – and small, round ears.  Their long, spotted tail has bright white fur underneath the tip, which is easy to see when they curl their tails upward.
+        Muscular, golden brown with black rosettes.
+        Spotted face, no black lines, with small, round ears.
+        Long, spotted tail has bright white fur underneath the tip,
+        which is easy to see when they curl their tails upward.
       '''
 
     lionFemale:
@@ -359,7 +395,9 @@ module.exports =
     mongoose:
       label: 'Mongoose'
       description: '''
-        With short legs and a humped back, mongooses appear very weasel- or ferret-like.  The mongooses you’ll see here range in size and color – from the tiny, brown dwarf mongoose to the larger banded mongoose, to the bushy tailed white-tailed mongoose.
+        Short legs and a humped back, appears weasel or ferret-like.
+        Range in size and color – from the tiny, brown dwarf mongoose
+        to the larger banded mongoose, to the bushy tailed white-tailed mongoose.
       '''
 
     ostrich:
@@ -377,7 +415,10 @@ module.exports =
     reedbuck:
       label: 'Reedbuck'
       description: '''
-        Reedbucks range in color from tan to reddish brown.  They have white bellies and a  short fluffy tail with a white underside.  The have a dark black nose, with white mouth and chin, and a black spot beneath their large ears.  Males have forward-curving ridged horns.
+        Range in color from tan to red brown.
+        White belly and a short fluffy tail with a white underside.
+        Black nose, white mouth and chin, and a black spot beneath their large ears.
+        Males have forward-curving ridged horns.
       '''
 
     reptiles:
@@ -389,19 +430,25 @@ module.exports =
     rhinoceros:
       label: 'Rhinoceros'
       description: '''
-        Despite its name, the black rhino is grey.  It is immediately recognizable by the large horn on its nose, which can get up to 60cm long.  It has another smaller horn higher on its nose as well.  These are massive, thick animals and are a rare find on our camera traps.
+        Massive and thick. Grey skin.
+        1 large horn and one smaller, slightly higher on the nose.
       '''
 
     rodents:
       label: 'Rodents'
       description: '''
-        Though the name is deceiving, spring hares are actually rodents and not hares.  (Hares are lagomorphs, not rodents, and have their own category here.)  The springhare looks like a rabbit-sized kangaroo, with long, powerful hind legs, short front legs, a long semi-bushy, black-tipped tail.  Mainly found on the open grassland, the spring hare grazes primarily at night.  Mice are seen infrequently in the cameras because they are so small, but you might get lucky.
+        Spring hares are actually rodents and not hares.
+        The springhare looks like a rabbit-sized kangaroo, with long, powerful hind legs, short front legs, a long bushy, black-tipped tail.
+        Mice are seen infrequently in the cameras because they are so small, but you might get lucky.
       '''
 
     secretaryBird:
       label: 'Secretary bird'
       description: '''
-        This is a tall bird with long legs and black feathered thighs.  It has a grey neck, body and tail plumes, with black feathers across its lower back and wings.  The bare skin on its face is red and yellow.  It has several long plumes on back of its head that sometimes stick out.
+        Tall bird with long legs and black feathered thighs.
+        Grey neck, body and tail plumes, with black feathers across its lower back and wings.
+        The bare skin on its face is red and yellow.
+        Has several long plumes on back of its head that sometimes stick out.
       '''
 
     serval:
@@ -413,7 +460,9 @@ module.exports =
     topi:
       label: 'Topi'
       description: '''
-        The topi is a tall hoofed animal that is recognizable for standing sentry on termite mounds.  It has a long nose with high set eyes and horns that curve up and back.  Like the hartebeest, its body slopes steeply down from their shoulder to rump, but topis are reddish brown in color with black patches on their shoulder and hip.
+        Tall hoofed animal; red brown with black patches on shoulders and hips.
+        Long nose with high set eyes and horns that curve up and back.
+        Body slopes steeply down from shoulder to rump.
       '''
 
     vervetMonkey:
@@ -431,7 +480,9 @@ module.exports =
     waterbuck:
       label: 'Waterbuck'
       description: '''
-        Waterbucks are large, bulky antelope with brown coarse hair and a white circle around their rumps.  They have white markings on their chin and nose, and a white band runs from ear to ear under their neck. Males have ridged horns that curve first backwards then forwards towards the tips.
+        Large, bulky antelope with brown coarse hair and a white circle around rump.
+        White markings on chin and nose, and a white band runs from ear to ear under neck.
+        Males have ridged horns that curve first backwards then forwards towards the tips.
       '''
 
     wildcat:
@@ -443,7 +494,10 @@ module.exports =
     wildebeest:
       label: 'Wildebeest'
       description: '''
-        This long-legged, migratory antelope has dark grey-brown fur with faint stripes of darker fur on its neck and flank.  It has a large head with a rounded black nose and white ‘beard’.  It stands higher at the shoulder than the rump.  Both sexes have horns that extend out sideways then curve sharply back towards head.
+        Long-legged, with dark grey-brown fur with faint stripes of darker fur on neck and flank.
+        Large head with a rounded black nose and white ‘beard’.
+        Stands higher at the shoulder than the rump.
+        Both sexes have horns that extend out sideways then curve sharply back towards head.
       '''
 
     zebra:
