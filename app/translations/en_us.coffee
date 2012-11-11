@@ -203,7 +203,8 @@ module.exports =
     batEaredFox:
       label: 'Bat-eared fox'
       description: '''
-        This silvery-gray/tan insectivore has short legs, a humped appearance, and a very busy black-tipped tail.  It has distinctively large ears and a pointy muzzle with pale band across its forehead.
+        This silvery-gray/tan insectivore has short legs, a humped appearance, and a very busy black-tipped tail.
+        It has distinctively large ears and a pointy muzzle with pale band across its forehead.
       '''
 
     otherBird:
@@ -258,19 +259,25 @@ module.exports =
     dikDik:
       label: 'Dik dik'
       description: '''
-        This is the smallest Serengeti antelope.  It has large eyes and an elongated upper lip and nose, with tufts of hair between its ears.  Males have short, spiky horns.
+        This is the smallest Serengeti antelope.
+        It has large eyes and an elongated upper lip and nose, with tufts of hair between its ears.
+        Males have short, spiky horns.
       '''
 
     eland:
       label: 'Eland'
       description: '''
-        Elands are large and vaguely ox-like in appearance.  They are tawny-grey with faint white vertical stripes.  Both sexes have straight horns with a single spiral.  Males develop a thick neck with a large, draping dewlap.
+        Elands are large and vaguely ox-like in appearance.
+        They are tawny-grey with faint white vertical stripes.
+        Both sexes have straight horns with a single spiral.
+        Males develop a thick neck with a large, draping dewlap.
       '''
 
     elephant:
       label: 'Elephant'
       description: '''
-        This massive, grey, thick skinned animal is famous for its very large ears, long trunk, and ivory tusks.  Because elephants are so tall, we frequently see only their legs or trunk in the camera trap photos.
+        This massive, grey, thick skinned animal is famous for its very large ears, long trunk, and ivory tusks.
+        Because elephants are so tall, we frequently see only their legs or trunk in the camera trap photos.
       '''
 
     gazelleGrants:
@@ -293,25 +300,31 @@ module.exports =
     genet:
       label: 'Genet'
       description: '''
-        This long, lithe animal appears a bit like a cross between a cat and a racoon.  Genets (also called “genet cats”) , have short legs, silvery grey fur with black spots, and a long bushy, ringed tail.
+        This long, lithe animal appears a bit like a cross between a cat and a racoon.
+        Genets (also called “genet cats”), have short legs, silvery grey fur with black spots, and a long bushy, ringed tail.
       '''
 
     giraffe:
       label: 'Giraffe'
       description: '''
-        The tallest animals in Serengeti, giraffes are immediately recognizable by their long necks, long legs, and sloping body.  Their reddish-orange blotches give every individual its own unique pattern.  Both sexes have two short horns, covered in hair, with black tufts on the end.  Their tails are tipped with long black tassels.
+        The tallest animals in Serengeti, giraffes are immediately recognizable by their long necks, long legs, and sloping body.
+        Their reddish-orange blotches give every individual its own unique pattern.
+        Both sexes have two short horns, covered in hair, with black tufts on the end.
+        Their tails are tipped with long black tassels.
       '''
 
     guineaFowl:
       label: 'Guinea fowl'
       description: '''
-        A chicken sized bird with dark blue-grey feathers and white spots.  These have large, rounded body with longish necks, and small heads with blue and red skin.
+        A chicken sized bird with dark blue-grey feathers and white spots.
+        These have large, rounded body with longish necks, and small heads with blue and red skin.
       '''
 
     hare:
       label: 'Hare'
       description: '''
-        The Cape hare looks a lot like the rabbits in your backyard.  It has large ears, a grizzled coat that ranges from gray to brown to red, and a short fluffy tail.
+        The Cape hare looks a lot like the rabbits in your backyard.
+        It has large ears, a grizzled coat that ranges from gray to brown to red, and a short fluffy tail.
       '''
 
     hartebeest:
@@ -332,7 +345,8 @@ module.exports =
     honeyBadger:
       label: 'Honey-badger'
       description: '''
-        This fierce creature is stocky with short legs, black fur with a white/grey band covering its head and back.  Its ears are very small and close to its head.
+        This fierce creature is stocky with short legs, black fur with a white/grey band covering its head and back.
+        Its ears are very small and close to its head.
       '''
 
     hyenaSpotted:
@@ -347,7 +361,8 @@ module.exports =
     hyenaStriped:
       label: 'Hyena (striped)'
       description: '''
-        Striped hyenas have the same sloping build as spotted hyenas, but their beige or grey coats have vertical black stripes.  They have a crest of long hair along their neck that sometimes rises, and a very bushy grey tail.
+        Striped hyenas have the same sloping build as spotted hyenas, but their beige or grey coats have vertical black stripes.
+        They have a crest of long hair along their neck that sometimes rises, and a very bushy grey tail.
       '''
 
     impala:
@@ -362,7 +377,9 @@ module.exports =
     jackal:
       label: 'Jackal'
       description: '''
-        Jackals look much like a small dog or coyote.  They have yellow-brown bodies and legs, with grizzled black grey back trimmed with a  black band.  Black-backed jackals have a predominantly black tail with black tip, whereas side-striped jackals have a white-tipped tail.
+        Jackals look much like a small dog or coyote.
+        They have yellow-brown bodies and legs, with grizzled black grey back trimmed with a  black band.
+        Black-backed jackals have a predominantly black tail with black tip, whereas side-striped jackals have a white-tipped tail.
       '''
 
     koriBustard:
@@ -383,13 +400,19 @@ module.exports =
     lionFemale:
       label: 'Lion (female or cub)'
       description: '''
-        These are massive, muscular cats.  They are tawny coloured with paler underparts; cubs show some spots, especially on their bellies and legs.  They have a long tail with smooth fur and a dark tuft on its tip.  Males have manes that get darker and thicker with age.
+        These are massive, muscular cats.
+        They are tawny coloured with paler underparts; cubs show some spots, especially on their bellies and legs.
+        They have a long tail with smooth fur and a dark tuft on its tip.
+        Males have manes that get darker and thicker with age.
       '''
 
     lionMale:
       label: 'Lion (male)'
       description: '''
-        These are massive, muscular cats.  They are tawny coloured with paler underparts; cubs show some spots, especially on their bellies and legs.  They have a long tail with smooth fur and a dark tuft on its tip.  Males have manes that get darker and thicker with age.
+        These are massive, muscular cats.
+        They are tawny coloured with paler underparts; cubs show some spots, especially on their bellies and legs.
+        They have a long tail with smooth fur and a dark tuft on its tip.
+        Males have manes that get darker and thicker with age.
       '''
 
     mongoose:
@@ -403,13 +426,16 @@ module.exports =
     ostrich:
       label: 'Ostrich'
       description: '''
-        This is a very large, tall bird with long, heavy legs.  Females are mainly brown with pale legs and necks.  Males have black fur with white tail and wing tips, and their legs and neck turn pink in mating season.
+        This is a very large, tall bird with long, heavy legs.
+        Females are mainly brown with pale legs and necks.
+        Males have black fur with white tail and wing tips, and their legs and neck turn pink in mating season.
       '''
 
     porcupine:
       label: 'Porcupine'
       description: '''
-        This short, rounded creature is covered from head to tail with long, black and white quills.  Porcupines have tiny black eyes set in gopher-like faces.
+        This short, rounded creature is covered from head to tail with long, black and white quills.
+        Porcupines have tiny black eyes set in gopher-like faces.
       '''
 
     reedbuck:
@@ -424,7 +450,8 @@ module.exports =
     reptiles:
       label: 'Reptiles'
       description: '''
-        You will occasionally see skinks, Agama lizards, snakes, and other reptiles sunning themselves in front of the camera.  This category includes any reptiles that you see.
+        You will occasionally see skinks, Agama lizards, snakes, and other reptiles sunning themselves in front of the camera.
+        This category includes any reptiles that you see.
       '''
 
     rhinoceros:
@@ -454,7 +481,8 @@ module.exports =
     serval:
       label: 'Serval'
       description: '''
-        This relatively small cat has long slender legs, a small head, and a yellowish coat which dotted with black spots that sometimes run into stripes. The serval’s enormous pointed ears and distinctive black nose help distinguish it from the cheetah.
+        This relatively small cat has long slender legs, a small head, and a yellowish coat which dotted with black spots that sometimes run into stripes.
+        The serval’s enormous pointed ears and distinctive black nose help distinguish it from the cheetah.
       '''
 
     topi:
@@ -474,7 +502,8 @@ module.exports =
     warthog:
       label: 'Warthog'
       description: '''
-        This pig-like animal has a grey body covered sparsely with darker hairs, and aane of long, wiry hairs along its neck and back.  Its tail is think with a black tassel.  It has tusks that curve up around its snout.
+        This pig-like animal has a grey body covered sparsely with darker hairs, and aane of long, wiry hairs along its neck and back.
+        Its tail is think with a black tassel.  It has tusks that curve up around its snout.
       '''
 
     waterbuck:
@@ -488,7 +517,8 @@ module.exports =
     wildcat:
       label: 'Wildcat'
       description: '''
-        Resembling a large, domestic cat, wildcats are sandy brown to grey with lighter underparts.  They have sometimes-visible dark stripes on their legs and tail.
+        Resembling a large, domestic cat, wildcats are sandy brown to grey with lighter underparts.
+        They have sometimes-visible dark stripes on their legs and tail.
       '''
 
     wildebeest:
@@ -503,19 +533,22 @@ module.exports =
     zebra:
       label: 'Zebra'
       description: '''
-        The Swahili word for zebra means “striped donkey” – and that’s exactly what this animal looks like.  Horse or donkey-like in appearance, zebras are white, with dark stripes, a thick, bristly mane, and a black-tasselled tail.
+        The Swahili word for zebra means “striped donkey” – and that’s exactly what this animal looks like.
+        Horse or donkey-like in appearance, zebras are white, with dark stripes, a thick, bristly mane, and a black-tasselled tail.
       '''
 
     zorilla:
       label: 'Zorilla'
       description: '''
-        Also known as the striped polecat, this member of the weasel family looks a lot like a skunk.  It has short legs and long white stripes down its back – and even emits a foul smell when threatened!
+        Also known as the striped polecat, this member of the weasel family looks a lot like a skunk.
+        It has short legs and long white stripes down its back – and even emits a foul smell when threatened!
       '''
 
     human:
       label: 'Human'
       description: '''
-        Vehicles and hot-air balloons are some of the signs you’ll see that people visit Serengeti.  You might even catch a researcher checking the camera, or a curious tourist investigating over lunch.
+        Vehicles and hot-air balloons are some of the signs you’ll see that people visit Serengeti.
+        You might even catch a researcher checking the camera, or a curious tourist investigating over lunch.
       '''
 
   characteristics:
