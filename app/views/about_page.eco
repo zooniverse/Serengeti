@@ -1,4 +1,4 @@
-<% translate = require 'lib/translate' %>
+  <% translate = require 'lib/translate' %>
 
 <nav>
   <button name="turn-page" value="information"><i rel="globe"><%= translate 'about.sections.information' %></i></button>
@@ -7,8 +7,14 @@
 </nav>
 
 <section data-page="information">
-  <div class="content column"><%- translate 'about.information.main' %></div>
-  <div class="sidebar column"><%- translate 'about.information.sidebar' %></div>
+  <div class="content column">
+    <img src="images/about/tanzania-map.png" />
+    <%- translate 'about.information.main' %>
+  </div>
+
+  <div class="sidebar column">
+    <%- translate 'about.information.sidebar' %>
+  </div>
 </section>
 
 <section data-page="organizations">
