@@ -10,6 +10,7 @@
   outer-deboss: 5px;
   padding: 10px;
   position: relative;
+  transition: opacity 0.5s ease-in-out;
   width: 405px;
 
   .general-filters {
@@ -598,5 +599,10 @@
       text-shadow: 0 1px 0 rgba($white, 0.25);
       width: 70px;
     }
+  }
+
+  .finished + & {
+    opacity: 0.75;
+    pointer-events: none;
   }
 }
