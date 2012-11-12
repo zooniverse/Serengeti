@@ -61,6 +61,8 @@ class Classifier extends Controller
   textFieldSelector = 'input[type="text"], input[type="password"], input:not("[type]"), textarea, select'
 
   onKeyDown: (e) =>
+    return if e.altKey or e.ctrlKey or e.metaKey
+
     # @log 'Keydown', e, e.which
     return unless @el.is ':visible'
 
