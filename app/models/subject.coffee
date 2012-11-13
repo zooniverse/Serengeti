@@ -9,21 +9,20 @@ class Subject extends Model
   @current: null
 
   @next: (callback) =>
-    @current.destroy() if @current
+    @current.destroy() if @current?
+    count = @count()
 
-    # Keep one "current" and fill the rest of the queue.
-    fetcher = @fetch (@queueLength - @count()) + 1
+    # Prepare one "current" and fill the rest of the queue.
+    toFetch = (@queueLength - count) + 1
+    fetcher = @fetch toFetch unless toFetch < 1
 
-    if @count() is 0
-
-      @trigger 'no-local-subjects'
+    if count is 0
       nexter = fetcher.pipe =>
-
         first = @first()
         first.destroy() if first.metadata.empty
 
         if @count() is 0
-          @trigger 'no-subjects-at-all'
+          @trigger 'no-subjects'
         else
           @first().select()
     else
@@ -45,7 +44,7 @@ class Subject extends Model
     getter.done (rawSubjects) =>
       fetcher.resolve (@fromJSON rawSubject for rawSubject in rawSubjects)
 
-    fetcher.promise()
+    fetcher.promise() # Resolves with all fetched subjects
 
   @fromJSON: (raw) =>
     subject = @create

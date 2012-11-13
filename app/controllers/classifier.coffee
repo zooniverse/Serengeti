@@ -14,8 +14,6 @@ getEmptySubject = require 'lib/get_empty_subject'
 Classification = require 'models/classification'
 
 class Classifier extends Controller
-  subject: null
-
   className: 'classifier'
 
   tutorial: null
@@ -41,15 +39,13 @@ class Classifier extends Controller
       steps: tutorialSteps
 
     Subject.bind 'select', @onSubjectSelect
-    Subject.bind 'no-local-subjects', @onNoLocalSubjects
+    Subject.bind 'no-subjects', @onNoLocalSubjects
     User.bind 'sign-in', @onUserSignIn
 
     $(window).on 'hashchange', =>
       setTimeout @toggleTutorialVisibility
 
     $(document).on 'keydown', @onKeyDown
-
-    @onUserSignIn()
 
   KEYS =
     13: 'ENTER', 27: 'ESC', 32: 'SPACE'
@@ -88,18 +84,18 @@ class Classifier extends Controller
     else
       element.click()
 
-  onSubjectSelect: (@subject) =>
-    @toggleTutorialVisibility()
-
+  onSubjectSelect: (subject) =>
     for property in ['tutorial', 'empty']
-      @el.toggleClass property, !!@subject.metadata[property]
+      @el.toggleClass property, !!subject.metadata[property]
 
-    @classification = new Classification {@subject}
+    @classification = new Classification {subject}
     @subjectViewer.setClassification @classification
     @animalSelector.setClassification @classification
 
-    if !!@subject.metadata.tutorial
+    if !!subject.metadata.tutorial
       @tutorial.start()
+    else
+      @tutorial.end()
 
   onNoLocalSubjects: =>
     getEmptySubject().select()
@@ -116,7 +112,7 @@ class Classifier extends Controller
       @toggleTutorialVisibility()
 
   toggleTutorialVisibility: =>
-    return unless !!@subject.metadata.tutorial
+    return unless !!@classification.subject.metadata.tutorial
 
     if @el.is ':visible'
       @tutorial.show()

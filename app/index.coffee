@@ -26,7 +26,7 @@ User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
 
 Api.init
-  host: if !!~location.href.indexOf('demo') or !!~location.href.indexOf('beta')
+  host: if !!~location.href.match /demo|beta/
     'https://dev.zooniverse.org'
   else if +location.port < 1024
     'https://api.zooniverse.org'
