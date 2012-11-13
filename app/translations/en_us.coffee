@@ -594,6 +594,12 @@ module.exports =
         Impalas are more reddish in color, with black bands on their rumps, and black tufts of hair above their heels. They have large S-shaped horns.
       '''
 
+      'Rumps': '''
+        <figure class="rump"><img src="images/rumps/grantsGazelle.jpg" /><figcaption>Grant's Gazelle</figcaption></figure>
+        <figure class="rump"><img src="images/rumps/thomsonsGazelle.jpg" /><figcaption>Thomson's Gazelle</figcaption></figure>
+        <figure class="rump"><img src="images/rumps/impala.jpg" /><figcaption>Impala</figcaption></figure>
+      '''
+
     gazelleThomsons:
       gazelleGrants: '''
         Grant's gazelles have a white belly, rump, and tail; males have horns that widen slightly toward their tips.
@@ -601,6 +607,12 @@ module.exports =
 
       impala: '''
         Impalas are more reddish in color, with black bands on their rumps, and black tufts of hair above their heels. They have large S-shaped horns.
+      '''
+
+      'Rumps': '''
+        <figure class="rump"><img src="images/rumps/grantsGazelle.jpg" /><figcaption>Grant's Gazelle</figcaption></figure>
+        <figure class="rump"><img src="images/rumps/thomsonsGazelle.jpg" /><figcaption>Thomson's Gazelle</figcaption></figure>
+        <figure class="rump"><img src="images/rumps/impala.jpg" /><figcaption>Impala</figcaption></figure>
       '''
 
     genet:
@@ -638,6 +650,12 @@ module.exports =
 
       gazelleGrants: '''
         Grant's gazelle has a White belly, rump, and tail; males have horns that widen slightly toward their tips.
+      '''
+
+      'Rumps': '''
+        <figure class="rump"><img src="images/rumps/grantsGazelle.jpg" /><figcaption>Grant's Gazelle</figcaption></figure>
+        <figure class="rump"><img src="images/rumps/thomsonsGazelle.jpg" /><figcaption>Thomson's Gazelle</figcaption></figure>
+        <figure class="rump"><img src="images/rumps/impala.jpg" /><figcaption>Impala</figcaption></figure>
       '''
 
     mongoose:

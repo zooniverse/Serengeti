@@ -15,20 +15,28 @@
   <% differences = try translate 'differences', @id %>
   <% if differences?: %>
     <p><%= translate 'classify.oftenConfused' %>
-      <% for animal of differences: %>
-        <% animal = Animal.find animal %>
-        <button name="confusion" data-popup=".<%= animal.id %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%= animal.label %></button>
+      <% for animalId of differences: %>
+        <% animal = try Animal.find animalId %>
+        <% if animal: %>
+          <button name="confusion" data-popup=".<%= animal.id %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%= animal.label %></button>
+        <% else: %>
+          <button name="confusion" data-popup=".<%= animalId.replace /\s/g, '' %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%= animalId %></button>
+        <% end %>
       <% end %>
     </p>
 
-    <% for animal, difference of differences: %>
-      <% animal = Animal.find animal %>
-      <div class="<%= animal.id %> confusion-popup">
-        <div class="image"></div>
-        <div class="description">
-          <p class="label"><%= animal.label %></p>
-          <p><%= difference %></p>
-        </div>
+    <% for animalId, difference of differences: %>
+      <% animal = try Animal.find animalId %>
+      <div class="<%= animalId.replace /\s/g, '' %> confusion-popup">
+        <% if animal: %>
+          <div class="image"></div>
+          <div class="description">
+            <p class="label"><%= animal.label %></p>
+            <p><%= difference %></p>
+          </div>
+        <% else: %>
+          <%- difference %>
+        <% end %>
       </div>
     <% end %>
   <% end %>
