@@ -37,21 +37,15 @@
         top: 0;
 
         img {
-          position: absolute;
           width: auto;
 
-          &.landscape {
-            right: 0;
-          }
-
           &.continent {
-            bottom: 0;
-            left: 0;
-          }
-
-          &.camera {
-            left: 0;
-            top: 0;
+            bottom: 1px;
+            box-shadow: 1px -1px 5px $black;
+            left: 1px;
+            height: 150px;
+            position: absolute;
+            width: 150px;
           }
         }
 
@@ -59,11 +53,11 @@
           background: rgba($black, 0.5);
           color: $white;
           position: absolute;
-          right: 0;
+          left: 0;
           text-align: center;
           text-shadow: 0 1px 1px $black;
           top: 0;
-          width: 370px;
+          width: 100%;
         }
       }
 
