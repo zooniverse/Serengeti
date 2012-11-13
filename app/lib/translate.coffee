@@ -21,19 +21,23 @@ deepMixin = (base, mixin) ->
 
   base
 
-translate.init = (language, translations) ->
-  if language and not translations
+translate.init = ([language]..., callback) ->
+  gotLanguage = new $.Deferred
+  gotLanguage.done ->
+    for element in $('[data-i18n]')
+      element = $(element)
+      key = element.attr 'data-i18n'
+      element.html translate key
+
+    $(window).trigger 'translate-init'
+
+    callback? strings
+
+  if language
     $.getJSON "translations/#{language}.json", (translations) ->
-      translate.init language, translations
-    return
-
-  deepMixin strings, translations
-
-  for element in $('[data-i18n]')
-    element = $(element)
-    key = element.attr 'data-i18n'
-    element.html translate key
-
-  $(window).trigger 'translate-init'
+      deepMixin strings, translations
+      gotLanguage.resolve strings
+  else
+    gotLanguage.resolve strings
 
 module.exports = translate

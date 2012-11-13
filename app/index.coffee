@@ -22,7 +22,23 @@ $(document).on 'click', 'a[href*="talk"]', (e) ->
 
 app = {}
 
-$(window).one 'translate-init', ->
+User.bind 'sign-in', ->
+  $('html').toggleClass 'signed-in', User.current?
+
+Api.init
+  host: if !!~location.href.indexOf('demo') or !!~location.href.indexOf('beta')
+    'https://dev.zooniverse.org'
+  else if +location.port < 1024
+    'https://api.zooniverse.org'
+  else
+    "#{location.protocol}//#{location.hostname}:3000"
+
+googleAnalytics.init
+  account: 'UA-1224199-36'
+  domain: 'snapshotserengeti.org'
+
+language = localStorage.language
+translate.init language, ->
   $('.before-load').remove()
 
   app.topBar = new TopBar
@@ -57,23 +73,5 @@ $(window).one 'translate-init', ->
 
   app.topBar.el.prependTo 'body'
   app.stack.el.appendTo 'body'
-
-User.bind 'sign-in', ->
-  $('html').toggleClass 'signed-in', User.current?
-
-Api.init
-  host: if !!~location.href.indexOf('demo') or !!~location.href.indexOf('beta')
-    'https://dev.zooniverse.org'
-  else if +location.port < 1024
-    'https://api.zooniverse.org'
-  else
-    "#{location.protocol}//#{location.hostname}:3000"
-
-googleAnalytics.init
-  account: 'UA-1224199-36'
-  domain: 'snapshotserengeti.org'
-
-language = localStorage.language
-translate.init language
 
 module.exports = app
