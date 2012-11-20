@@ -12,6 +12,9 @@
 
   <div class="favorites page">
     <p class="none"><%= translate 'profile.noFavorites' %></p>
+    <select class='filter' data-filter='species'></select>
+    <select class='filter' data-filter='behavior'></select>
+    <button name='clear-filters'>x</button>
     <ul></ul>
     <hr />
 

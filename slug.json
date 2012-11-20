@@ -21,6 +21,7 @@
   ],
 
   "libs": [
-    "node_modules/zooniverse/vendor/base64.js"
+    "node_modules/zooniverse/vendor/base64.js",
+    "public/js/vendor/crossfilter.js"
   ]
 }

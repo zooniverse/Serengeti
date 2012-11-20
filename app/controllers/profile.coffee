@@ -13,9 +13,11 @@ class Profile extends Controller
   itemPages: null
 
   events:
-    'click button[name="turn-page"]': 'onClickPageButton'
-    'click button[name="delete"]': 'onClickDelete'
-    'click button[name="load-more"]': 'onClickLoadMore'
+    'click button[name="turn-page"]'      : 'onClickPageButton'
+    'click button[name="delete"]'         : 'onClickDelete'
+    'click button[name="load-more"]'      : 'onClickLoadMore'
+    'change select.filter'                : 'filter'
+    'click button[name="clear-filters"]'  : 'clearFilters'
 
   elements:
     '.sign-in': 'signInContainer'
@@ -75,6 +77,7 @@ class Profile extends Controller
     if User.current
       @loadMore Favorite
       @loadMore Recent
+      @requestClassifications()
 
   onItemCreateDestroy: (item) =>
     ItemClass = item.constructor
@@ -107,5 +110,67 @@ class Profile extends Controller
 
   onFetchItems: (ItemClass) =>
     @onCreateItem item for item in ItemClass.all()
+
+  requestClassifications: =>
+    # Put Carto API key in Zooniverse lib
+    key = 'CARTO_API_KEY'
+    fields = [
+      'babies', 'behavior', 'captured_at', 'created_at', 'how_many', 'site_roll_code',
+      'species', 'the_geom', 'the_geom_webmercator', 'updated_at', 'subject_id'
+    ].join(',')
+    
+    # query = "SELECT #{fields} FROM serengeti WHERE user_id='#{User.current.id}'"
+    query = "SELECT #{fields} FROM serengeti"
+    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{key}"
+    
+    # $.ajax({url: "http://0.0.0.0:9294/mockdata.json"})
+    #   .done(@getClassifications)
+    #   .fail( (e) -> console.log 'fail', e)
+    
+    $.ajax({url: url})
+      .done(@getClassifications)
+      .fail( (e) -> console.log 'fail', e)
+
+  getClassifications: (e) =>
+    
+    # Set up crossfilter and initial dimension and group
+    @crossfilter = crossfilter(e.rows)
+    @dimensions = {}
+    @groups = {}
+    
+    # Create filter by species and behavior
+    @createFilter('species')
+    @createFilter('behavior')
+  
+  createFilter: (specifier) =>
+    @dimensions[specifier] = @crossfilter.dimension((d) -> d[specifier])
+    @groups[specifier] = @dimensions[specifier].group()
+    
+    all = @groups[specifier].all()
+    options = "<option value=''>filter by #{specifier}</option>"
+    for item in all
+      options += "<option value='#{item.key}'>#{item.key.replace(/([A-Z])/g, " $1")}</option>"
+    
+    @el.find("select.filter[data-filter='#{specifier}']").append(options)
+  
+  filter: (e) =>
+    target = e.target
+    key = target.dataset.filter
+    value = target.value
+    
+    dimension = @dimensions[key]
+    
+    # Remove the filter if no value passed
+    if value is ''
+      dimension.filterAll()
+      return
+    dimension.filter(value)
+    data = dimension.top(Infinity)
+    
+    # TODO: Do something cool with data
+    console.log data
+  
+  clearFilters: => @el.find('select.filter').val('').trigger('change')
+
 
 module.exports = Profile
