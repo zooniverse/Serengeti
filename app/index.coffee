@@ -12,6 +12,7 @@ Api = require 'zooniverse/lib/api'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
 googleAnalytics = require 'zooniverse/lib/google_analytics'
+Map = require 'zooniverse/lib/map'
 
 ContentPage = require 'controllers/content_page'
 feedbackContent = require 'views/feedback_page'
@@ -24,6 +25,9 @@ app = {}
 
 User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
+
+Map::tilesId = 53589
+Map::apiKey = '21a5504123984624a5e1a856fc00e238'
 
 Api.init
   host: if !!~location.href.match /demo|beta/

@@ -1,3 +1,25 @@
+.panel
+  background $white
+  border-radius 5px
+  box-shadow 0 5px 10px rgba($black, 0.33)
+  color $black
+  margin 5px 30px
+  padding 6px 10px
+  position absolute
+  top 0
+  right 0
+  z-index 2
+  
+  select.filter
+    text-transform capitalize
+  
+  button[name='clear-filters']
+    font-size 20px
+
+  button[name='clear-filters']:hover
+    font-size 20px
+    color: red
+
 .profile {
   margin: 0 auto;
   width: 1000px;
@@ -82,18 +104,6 @@
 
       &.active {
         display: block;
-      }
-      
-      select.filter {
-        text-transform capitalize
-      }
-      
-      button[name='clear-filters'] {
-        font-size 20px
-      }
-      button[name='clear-filters']:hover {
-        font-size 20px
-        color: red
       }
       
       p {

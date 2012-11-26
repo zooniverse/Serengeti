@@ -4,7 +4,18 @@
   <p>TODO: Sign-in form</p>
 </div>
 
+<div class='map-container'>
+  <div class='plot'></div>
+</div>
+
+<div class='panel'>
+  <select class='filter' data-filter='species'></select>
+  <select class='filter' data-filter='behavior'></select>
+  <button name='clear-filters'>x</button>
+</div>
+
 <div class="user-profile">
+  
   <nav>
     <button name="turn-page" value="favorites"><%= translate 'profile.favorites' %></button>
     <button name="turn-page" value="recents"><%= translate 'profile.recents' %></button>
@@ -12,15 +23,13 @@
 
   <div class="favorites page">
     <p class="none"><%= translate 'profile.noFavorites' %></p>
-    <select class='filter' data-filter='species'></select>
-    <select class='filter' data-filter='behavior'></select>
-    <button name='clear-filters'>x</button>
     <ul></ul>
     <hr />
 
     <p class="more">
       <button name="load-more" value="favorite" disabled="disabled" title="<%= translate 'profile.loadMore' %>">+</button>
     </p>
+    
   </div>
 
   <div class="recents page">
