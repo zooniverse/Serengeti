@@ -6,6 +6,7 @@ User = require 'zooniverse/lib/models/user'
 Favorite = require 'zooniverse/lib/models/favorite'
 Recent = require 'zooniverse/lib/models/recent'
 itemTemplate = require 'views/profile_item'
+Map = require 'zooniverse/lib/map'
 
 class Profile extends Controller
   className: 'profile'
@@ -44,6 +45,17 @@ class Profile extends Controller
 
     @navButtons.first().click()
     @onUserSignIn()
+    
+    @map ?= new Map
+      latitude: 2.33
+      longitude: 35
+      centerOffset: [0.25, 0.5]
+      zoom: 6
+      className: 'full-screen'
+
+    @map.el.appendTo @el.find('.map-container')
+    
+    @bind 'dataReady', @plotSiteRolls
 
   onClickPageButton: ({currentTarget}) ->
     @navButtons.add(@pages).removeClass 'active'
@@ -113,34 +125,54 @@ class Profile extends Controller
 
   requestClassifications: =>
     # Put Carto API key in Zooniverse lib
-    key = 'CARTO_API_KEY'
+    apiKey = 'CARTO_API_KEY'
     fields = [
       'babies', 'behavior', 'captured_at', 'created_at', 'how_many', 'site_roll_code',
-      'species', 'the_geom', 'the_geom_webmercator', 'updated_at', 'subject_id'
+      'species', 'ST_AsGeoJSON(the_geom) as the_geom', 'updated_at', 'subject_id'
     ].join(',')
     
     # query = "SELECT #{fields} FROM serengeti WHERE user_id='#{User.current.id}'"
     query = "SELECT #{fields} FROM serengeti"
-    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{key}"
+    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{apiKey}"
     
-    # $.ajax({url: "http://0.0.0.0:9294/mockdata.json"})
-    #   .done(@getClassifications)
-    #   .fail( (e) -> console.log 'fail', e)
-    
-    $.ajax({url: url})
+    # Mock data
+    $.ajax({url: "http://0.0.0.0:9294/mockdata.json"})
       .done(@getClassifications)
       .fail( (e) -> console.log 'fail', e)
+    
+    # Query CartoDB
+    # $.ajax({url: url})
+    #   .done(@getClassifications)
+    #   .fail( (e) -> console.log 'fail', e)
 
   getClassifications: (e) =>
     
+    # Parse GeoJSON
+    rows = e.rows
+    rows.map((d) ->
+      d.the_geom = JSON.parse(d.the_geom)
+      return d
+    )
+    
     # Set up crossfilter and initial dimension and group
-    @crossfilter = crossfilter(e.rows)
+    @crossfilter = crossfilter(rows)
     @dimensions = {}
     @groups = {}
+    
+    window.cross = @crossfilter
+    window.data = rows
+    window.dimensions = @dimensions
     
     # Create filter by species and behavior
     @createFilter('species')
     @createFilter('behavior')
+    @createFilter('site_roll_code')
+    
+    # Create dimension and group for coordinates
+    @dimensions['the_geom'] = @crossfilter.dimension((d) -> d.the_geom.coordinates)
+    @groups['the_geom'] = @dimensions['the_geom'].group()
+    
+    @trigger 'dataReady'
   
   createFilter: (specifier) =>
     @dimensions[specifier] = @crossfilter.dimension((d) -> d[specifier])
@@ -151,7 +183,64 @@ class Profile extends Controller
     for item in all
       options += "<option value='#{item.key}'>#{item.key.replace(/([A-Z])/g, " $1")}</option>"
     
-    @el.find("select.filter[data-filter='#{specifier}']").append(options)
+    el = @el.find("select.filter[data-filter='#{specifier}']")
+    el.append(options) unless el.length is 0
+  
+  setupHistogram: (data) ->
+    $('.map-container .plot').empty()
+    
+    margin = {top: 20, right: 20, bottom: 30, left: 40}
+    width = 900 - margin.left - margin.right
+    height = 350 - margin.top - margin.bottom
+    
+    
+    x = d3.scale.linear()
+          .range([0, width])
+    y = d3.scale.ordinal()
+          .rangeRoundBands([height, 0], .1, 1)
+
+    # x = d3.scale.ordinal()
+    #       .rangeRoundBands([0, width], .1, 1)
+    # y = d3.scale.linear()
+    #       .range([height, 0])
+    
+    xAxis = d3.svg.axis()
+              .scale(x)
+              .orient('bottom')
+    yAxis = d3.svg.axis()
+              .scale(y)
+              .orient('left')
+    svg = d3.select('.map-container .plot').append('svg')
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+          .append('g')
+            .attr('transform', "translate(#{margin.left}, #{margin.top})")
+    
+    x.domain([0, d3.max(data, (d) -> return d.value)])
+    y.domain(data.map((d) -> return d.key))
+    
+    svg.append('g')
+        .attr('class', 'x axis')
+        .attr('transform', "translate(0, #{height})")
+        .call(xAxis)
+    svg.append('g')
+        .attr('class', 'y axis')
+        .call(yAxis)
+      .append('text')
+        .attr('transform', 'rotate(-90)')
+        .attr('y', 6)
+        .attr('dy', '.71em')
+        .style('text-anchor', 'end')
+        .text('Count')
+    
+    svg.selectAll('.bar')
+        .data(data)
+      .enter().append('rect')
+        .attr('class', 'bar')
+        .attr('x', (d) -> return x(d.value))
+        .attr('width', (d) -> return width - x(d.value))
+        .attr('y', (d) -> return y(d.key))
+        .attr('height', (d) -> y.rangeBand())
   
   filter: (e) =>
     target = e.target
@@ -167,10 +256,35 @@ class Profile extends Controller
     dimension.filter(value)
     data = dimension.top(Infinity)
     
+    # TODO: Make histogram from these
+    @setupHistogram @groups[key].top(Infinity)
+    
     # TODO: Do something cool with data
     console.log data
   
   clearFilters: => @el.find('select.filter').val('').trigger('change')
 
+  plotSiteRolls: =>    
+    sites = @groups['the_geom'].top(Infinity)
+    for site in sites
+      [lng, lat] = site.key
+      label = @map.addLabel(lat, lng, "<p>#{site.value} classifications</p>", radius = 5)
+      label.on('click', @filterByLocation)
+
+  filterByLocation: (e) =>
+    coords = e.target._latlng
+    lat = coords.lat
+    lng = coords.lng
+    
+    # Clear filters
+    for key, dimension of @dimensions
+      dimension.filterAll()
+    
+    @dimensions['the_geom'].filterExact([lng, lat])
+    data = @groups.species.top(Infinity)
+    sortByKey = crossfilter.quicksort.by (d) -> return d.key
+    data = sortByKey(data, 0, data.length)
+    
+    @setupHistogram data
 
 module.exports = Profile
