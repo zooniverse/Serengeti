@@ -193,31 +193,25 @@ class Profile extends Controller
     width = 900 - margin.left - margin.right
     height = 350 - margin.top - margin.bottom
     
-    
     x = d3.scale.linear()
           .range([0, width])
+          .domain([0, d3.max(data, (d) -> return d.value)])
     y = d3.scale.ordinal()
-          .rangeRoundBands([height, 0], .1, 1)
+          .rangeBands([0, height])
+          .domain(data.map((d) -> return d.key))
 
-    # x = d3.scale.ordinal()
-    #       .rangeRoundBands([0, width], .1, 1)
-    # y = d3.scale.linear()
-    #       .range([height, 0])
-    
     xAxis = d3.svg.axis()
               .scale(x)
               .orient('bottom')
     yAxis = d3.svg.axis()
               .scale(y)
               .orient('left')
+    
     svg = d3.select('.map-container .plot').append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
           .append('g')
             .attr('transform', "translate(#{margin.left}, #{margin.top})")
-    
-    x.domain([0, d3.max(data, (d) -> return d.value)])
-    y.domain(data.map((d) -> return d.key))
     
     svg.append('g')
         .attr('class', 'x axis')
@@ -237,8 +231,7 @@ class Profile extends Controller
         .data(data)
       .enter().append('rect')
         .attr('class', 'bar')
-        .attr('x', (d) -> return x(d.value))
-        .attr('width', (d) -> return width - x(d.value))
+        .attr('width', (d) -> return x(d.value))
         .attr('y', (d) -> return y(d.key))
         .attr('height', (d) -> y.rangeBand())
   
