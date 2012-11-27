@@ -1,0 +1,192 @@
+$open-sans-condensed = "Open Sans Condensed", "Arial Narrow", sans-serif
+
+strong
+  font-weight bold
+
+// Button reset
+button
+  appearance(none)
+  background transparent
+  border 0
+  cursor pointer
+  margin 0
+  padding 0
+
+  &::-moz-focus-inner
+    border 0
+    padding 0
+
+  &:disabled
+    cursor default
+    pointer-events none
+
+standard-button()
+  // Note: .toggle, .toggle.selected, .default
+  box-sizing(border-box)
+  background $gray-light
+  border 1px solid #b2b2b2
+  border-radius 3px
+  box-shadow inset 0px 1px 0px #ffffff
+  color $black
+  display inline-block
+  font-family "Open Sans", sans-serif
+  font-weight 700
+  font-size 12px
+  line-height 11px
+  margin-left 0.75em
+  padding 0.5em 2em
+  position relative
+  text-decoration none
+  text-shadow 0 1px 0px $white
+  vertical-align middle
+
+  &:first-child
+    margin-left 0
+
+  &:hover
+    border-color rgba($black, 0.5)
+
+  &.toggle.selected
+    color $orange
+
+  &.default
+    background $blue
+    color $white
+    text-shadow 0 1px 0px #006084
+    box-shadow inset 0px 1px 0px #00a8e6
+    border 1px solid #016387
+
+    &:hover
+      border-color rgba($black, 0.75)
+
+  &.toggle.selected,
+  &:active
+    box-shadow 0 0.125ex 0.25ex rgba(#070e17, 0.5) inset
+
+  &:disabled
+    box-shadow none
+    opacity 0.5
+
+panel()
+  background $white
+  border-radius 5px
+  box-shadow 0 5px 10px rgba($black, 0.33)
+  color $black
+  margin 55px 30px 30px
+  position relative
+  z-index 2
+
+  h2
+    font 20px "Open Sans Condensed", sans-serif
+
+  h3
+    font 16px "Open Sans Condensed", sans-serif
+
+  h4
+    font-weight bold
+
+full-size()
+  bottom 0
+  left 0
+  position absolute
+  top 0
+  right 0
+
+
+.explore
+  min-height 720px
+  height auto
+  
+  .login-form
+    panel()
+    display none
+    float right
+    font-size 13px
+    padding 30px 20px
+    text-align center
+    width 400px
+
+    p
+      margin-bottom 1em
+
+    form
+      display inline-block
+
+      label
+        display block
+        margin-bottom 1em
+
+        > span
+          // There's a child input, which makes this kinda weird.
+          display inline-block
+          width 10em
+
+      button
+        standard-button()
+
+    .picker
+      margin-top 1em
+
+      button
+        border-bottom 1px solid $gray
+
+    &.signed-in
+      display none
+
+      & + .panel
+        display block
+
+  .panel
+    panel()
+    display block
+    float right
+    text-align center
+
+    header
+      padding 20px
+
+    .favorites
+      border-top 1px solid $gray
+      max-height 500px
+      overflow-y auto
+      padding 10px 20px 20px
+
+      .none
+        display none
+
+      ul
+        li
+          clearfix()
+          margin-top 10px
+          position relative
+          text-align left
+
+          button[name="remove-favorite"]
+            @standard-button()
+            border-radius 50%
+            display none
+            height 16px
+            padding 0
+            position absolute
+            left -5px
+            top -5px
+            width 16px
+
+          button[name="reveal"]
+            standardButton()
+
+          img
+            height 60px
+            float left
+            width 60px
+            margin-right 10px
+
+          .description
+            font-size 13px
+            float left
+
+          &:hover button[name="remove-favorite"]
+            display block
+
+    .recents
+      display none

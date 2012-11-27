@@ -1,0 +1,7 @@
+<% translate = require 'lib/translate' %>
+
+<div class="login-form"></div>
+
+<div class="panel">
+  <select class='filter' data-filter='species'></select>
+</div>

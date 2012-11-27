@@ -7,6 +7,7 @@ AboutPage = require 'controllers/about_page'
 HomePage = require 'controllers/home_page'
 Classifier = require 'controllers/classifier'
 Profile = require 'controllers/profile'
+Explore = require 'controllers/explore'
 translate = require 'lib/translate'
 Api = require 'zooniverse/lib/api'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
@@ -63,6 +64,7 @@ translate.init language, ->
       classify: Classifier
       profile: Profile
       feedback: class extends ContentPage then content: feedbackContent
+      explore: Explore
 
     routes:
       '/home': 'home'
@@ -70,6 +72,7 @@ translate.init language, ->
       '/classify': 'classify'
       '/profile': 'profile'
       '/feedback': 'feedback'
+      '/explore': 'explore'
 
     default: 'home'
 

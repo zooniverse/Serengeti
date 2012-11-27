@@ -190,8 +190,8 @@ class Profile extends Controller
     $('.map-container .plot').empty()
     
     margin = {top: 20, right: 20, bottom: 30, left: 40}
-    width = 900 - margin.left - margin.right
-    height = 350 - margin.top - margin.bottom
+    width = 400 - margin.left - margin.right
+    height = 600 - margin.top - margin.bottom
     
     x = d3.scale.linear()
           .range([0, width])
