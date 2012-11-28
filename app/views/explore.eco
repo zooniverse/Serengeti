@@ -4,4 +4,9 @@
 
 <div class="panel">
   <select class='filter' data-filter='species'></select>
+  <input type="range" min='1' max='10' step='1' value='1' />
+  <input type='radio' id='single' name='scope' value='single' />
+  <label for='single'>Your Classifications</label>
+  <input type='radio' id='all' name='scope' value='all' />
+  <label for='all'>All Classifications</label>
 </div>
