@@ -3,7 +3,56 @@
 <div class="login-form"></div>
 
 <div class="panel">
-  <select class='filter' data-filter='species'></select>
+  <select class='filter' data-filter='species'>
+    <option value='aardvark'>Aardvark</option>
+    <option value='aardwolf'>Aardwolf</option>
+    <option value='baboon'>Baboon</option>
+    <option value='batEaredFox'>Bat Eared Fox</option>
+    <option value='buffalo'>Buffalo</option>
+    <option value='bushbuck'>Bushbuck</option>
+    <option value='caracal'>Caracal</option>
+    <option value='cheetah'>Cheetah</option>
+    <option value='civet'>Civet</option>
+    <option value='dikDik'>Dik Dik</option>
+    <option value='eland'>Eland</option>
+    <option value='elephant'>Elephant</option>
+    <option value='gazelleGrants'>Gazelle Grants</option>
+    <option value='gazelleThomsons'>Gazelle Thomsons</option>
+    <option value='genet'>Genet</option>
+    <option value='giraffe'>Giraffe</option>
+    <option value='guineaFowl'>Guinea Fowl</option>
+    <option value='hare'>Hare</option>
+    <option value='hartebeest'>Hartebeest</option>
+    <option value='hippopotamus'>Hippopotamus</option>
+    <option value='honeyBadger'>Honey Badger</option>
+    <option value='human'>Human</option>
+    <option value='hyenaSpotted'>Hyena Spotted</option>
+    <option value='hyenaStriped'>Hyena Striped</option>
+    <option value='impala'>Impala</option>
+    <option value='jackal'>Jackal</option>
+    <option value='koriBustard'>Kori Bustard</option>
+    <option value='leopard'>Leopard</option>
+    <option value='lionFemale'>Lion Female</option>
+    <option value='lionMale'>Lion Male</option>
+    <option value='mongoose'>Mongoose</option>
+    <option value='ostrich'>Ostrich</option>
+    <option value='otherBird'>Other Bird</option>
+    <option value='porcupine'>Porcupine</option>
+    <option value='reedbuck'>Reedbuck</option>
+    <option value='reptiles'>Reptiles</option>
+    <option value='rhinoceros'>Rhinoceros</option>
+    <option value='rodents'>Rodents</option>
+    <option value='secretaryBird'>Secretary Bird</option>
+    <option value='serval'>Serval</option>
+    <option value='topi'>Topi</option>
+    <option value='vervetMonkey'>Vervet Monkey</option>
+    <option value='warthog'>Warthog</option>
+    <option value='waterbuck'>Waterbuck</option>
+    <option value='wildcat'>Wildcat</option>
+    <option value='wildebeest'>Wildebeest</option>
+    <option value='zebra'>Zebra</option>
+    <option value='zorilla'>Zorilla</option>
+  </select>
   <input type="range" min='1' max='10' step='1' value='1' />
   <input type='radio' id='single' name='scope' value='single' />
   <label for='single'>Your Classifications</label>
