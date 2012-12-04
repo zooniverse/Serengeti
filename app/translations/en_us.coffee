@@ -1026,9 +1026,9 @@ module.exports =
           name: 'David Miller'
           image: 'images/about/team/david.jpg'
           description: '''
-            As a visual communicator, David is passionate about tellings stories through clear, clean, and effective design.
-            Before joining the Zooniverse team as Visual Designer, David worked for The Raindance Film Festival, the News 21 Initiative's Apart From War, Syracuse Magazine, and as a freelance designer for his small business, Miller Visual.
-            David is a graduate of the S.I. Newhouse School of Public Communications at Syracuse University, where he studied Visual & Interactive Communications.
+            David is passionate about tellings stories through clear, clean, and effective design.
+            Before joining the Zooniverse team as Visual Designer, David worked for the Raindance Film Festival, the News 21 Initiative's Apart From War, and as a freelance designer for his small business, Miller Visual.
+            David is a graduate of the S.I. Newhouse School of Public Communications at Syracuse University.
           '''
 
         parrish:
@@ -1043,8 +1043,8 @@ module.exports =
           name: 'Arfon Smith'
           image: 'images/about/team/arfon.jpg'
           description: '''
-            As an undergraduate, Arfon studied Chemistry at the University of Sheffield before completing his Ph.D. in Astrochemistry at The University of Nottingham in 2006.
-            He worked as a senior developer at the Wellcome Trust Sanger Institute (Human Genome Project) in Cambridge before joining the Galaxy Zoo team in Oxford.
-            Over the past 3 years he has been responsible for leading the development of a platform for citizen science called Zooniverse.
-            In August of 2011 he took up the position of Director of Citizen Science at the Adler Planetarium where he continues to lead the software and infrastructure development for the Zooniverse.
+            Arfon is responsible for leading the development of the Zooniverse, a platform for online citizen science.
+            In August of 2011 he took up the position of Director of Citizen Science at the Adler Planetarium
+            where he continues to lead the software and infrastructure development for the Zooniverse.
+            He studied Chemistry at the University of Sheffield and completed his PhD in Astrochemistry at The University of Nottingham in 2006.
           '''
