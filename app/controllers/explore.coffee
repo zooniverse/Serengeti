@@ -9,14 +9,17 @@ class Explore extends Controller
   className: 'explore'
   apiKey: 'CARTO_API_KEY'
   dateGranularity: 10
+  cartoTable: 'serengeti_copy'
   
   events:
-    'change input[type="range"]'  : 'scrubTime'
+    'change select[data-filter="species"]' : 'onSpeciesSelect'
   
   elements:
-    '.sign-in'    : 'signInContainer'
-    'nav button'  : 'navButtons'
-    '.page'       : 'pages'
+    '.sign-in'                      : 'signInContainer'
+    'nav button'                    : 'navButtons'
+    '.page'                         : 'pages'
+    'select[data-filter="species"]' : 'chosenSpecies'
+    '.slider'                       : 'dateSlider'
 
   constructor: ->
     super
@@ -24,37 +27,45 @@ class Explore extends Controller
     @html template
     @loginForm = new LoginForm el: @signInContainer
 
-    User.bind 'sign-in', @onUserSignIn
+    # User.bind 'sign-in', @onUserSignIn
+    @requestSpeciesByDate(0, 1, @chosenSpecies.val())
 
-    @navButtons.first().click()
-    @onUserSignIn()
+    # Set up slider (using jQueryUI for now ...)
+    @dateSlider.slider({
+      min: 0
+      max: @dateGranularity - 1
+      step: 1
+      slide: @onDateRangeSelect
+    })
     
     @map ?= new Map
-      latitude: 2.33
-      longitude: 35
+      latitude: -2.332778
+      longitude: 34.566667
       centerOffset: [0.25, 0.5]
       zoom: 8
       className: 'full-screen'
-
-    @map.el.prependTo @el
     
-    # Fake coordinates for sites (lat, lng)
-    @mockCoordinates =
-      S1_P07_R1: [2, 35]
-      S1_D04_R6: [2.5, 35]
-      S1_L03_R1: [3, 35]
-      S1_D04_R1: [2, 35.5]
-      S1_D04_R4: [2.5, 35.5]
-      S1_D04_R2: [3, 35.5]
-      S1_D04_R5: [2, 36]
-      S1_D04_R3: [2.5, 36]
+    @map.el.appendTo @el.find('.map-container')
+
+    @navButtons.first().click()
+    @onUserSignIn()
 
   onUserSignIn: =>
     @el.toggleClass 'signed-in', !!User.current
-
+    
     if User.current
-      @requestSpeciesByDate(0, 1)
-      
+      @requestSpeciesByDate(0, 1, @chosenSpecies)
+  
+  onDateRangeSelect: (e, ui) =>
+    value = ui.value
+    species = @chosenSpecies.val()
+    @requestSpeciesByDate(value, value + 1, species)
+  
+  onSpeciesSelect: (e) =>
+    species = e.target.value
+    value = @dateSlider.slider('option', 'value')
+    @requestSpeciesByDate(value, value + 1, species)
+  
   getQueryUrl: (query) ->
     url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{@apiKey}"
     return url.replace(/\+/g, '%2B')  # Must manually escape plus character (maybe others too)
@@ -62,7 +73,9 @@ class Explore extends Controller
   requestQuery: (query, callback) =>
     if $('input[name="scope"]:checked').val() is 'single'
       query = @appendUserCondition(query)
-    console.log query, User.current.id
+      
+    console.log query
+    
     url = @getQueryUrl(query)
     $.ajax({url: url})
       .done(callback)
@@ -70,7 +83,7 @@ class Explore extends Controller
   
   # Add user condition to query
   appendUserCondition: (query) =>
-    from = 'FROM serengeti\nWHERE'
+    from = "FROM #{@cartoTable}\nWHERE"
     index = query.indexOf(from)
     index += from.length
     base = query.substring(0, index)
@@ -80,53 +93,36 @@ class Explore extends Controller
   
   # Query for species for a given date range.  Parameters are integers between 0 and @dateGranularity.
   # The range of captured_at dates is segmented into @dateGranularity bins.
-  requestSpeciesByDate: (lower, upper) =>
+  requestSpeciesByDate: (lower, upper, species) =>
     query = """
-      SELECT site_roll_code, species, AVG(how_many)
-      FROM serengeti
-      WHERE captured_at BETWEEN (
-        SELECT MIN(captured_at)
-        FROM serengeti) + #{lower} * (
-          SELECT (MAX(captured_at) - MIN(captured_at)) / 10
-          FROM serengeti) AND (SELECT MIN(captured_at) + #{upper} * (
-            SELECT (MAX(captured_at) - MIN(captured_at)) / 10 FROM serengeti)
-            FROM serengeti)
-      GROUP BY site_roll_code, species
+      SELECT ST_AsGeoJSON(the_geom) as the_geom, species, AVG(how_many), site_roll_code
+      FROM #{@cartoTable}
+      WHERE species = '#{species}'
+        AND captured_at BETWEEN (
+          SELECT MIN(captured_at)
+          FROM #{@cartoTable} ) + #{lower} * (
+            SELECT (MAX(captured_at) - MIN(captured_at)) / 10
+            FROM #{@cartoTable}) AND (SELECT MIN(captured_at) + #{upper} * (
+              SELECT (MAX(captured_at) - MIN(captured_at)) / 10 FROM #{@cartoTable})
+              FROM #{@cartoTable})
+      GROUP BY the_geom, species, site_roll_code;
     """
     @requestQuery(query, @getSpeciesByDate)
   
   getSpeciesByDate: (response) =>
+    console.log 'getSpeciesByDate', response
+    
+    rows = response.rows
+    rows.map((d) -> d.the_geom = JSON.parse(d.the_geom))
     
     # Remove labels from map
     for label in @map.labels
       @map.removeLayer label
-      
-    cross = crossfilter(response.rows)
     
-    dimBySite = cross.dimension((d) -> d.site_roll_code)
-    groupBySite = dimBySite.group()
-    dimBySpecies = cross.dimension((d) -> d.species)
-    groupBySpecies = dimBySpecies.group()
-    
-    # Get sorted list of sites and species for this query
-    siteList = groupBySite.top(Infinity).map((d) -> d.key).sort()
-    speciesList = groupBySpecies.top(Infinity).map((d) -> d.key).sort()
-    
-    currentSpecies = $("select[data-filter='species']").val() or 'gazelleThomsons'
-    
-    for site in siteList
-      dimBySite.filterExact(site)
-      species = dimBySite.top(Infinity)
-      
-      for critter in species
-        if critter.species is currentSpecies
-          [lat, lng] = @mockCoordinates[site]
-          label = @map.addLabel(lat, lng, "", 2 * critter.avg)
-  
-  scrubTime: (e) =>
-    upper = parseInt(e.target.value)
-    lower = upper - 1
-    @requestSpeciesByDate(lower, upper)
+    for row in rows
+      avg = row.avg
+      [lng, lat] = row.the_geom.coordinates
+      @map.addLabel(lat, lng, "", 4 * avg)
 
 
 module.exports = Explore
