@@ -559,7 +559,7 @@ module.exports =
 
     buffalo:
       wildebeest: '''
-        A wildebeest is skinnier than a buffalo, and more horse like than cow like. Its horns don't fuse together in the center.
+        A wildebeest is skinnier than a buffalo, with a large head and long beard.  Its horns don’t fuse together in the center.
       '''
 
     caracal:
@@ -577,12 +577,17 @@ module.exports =
       '''
 
       serval: '''
-        A serval's ears are much bigger than a cheetah's. Its spots often run into stripes.
+        A serval’s ears are bigger and more pointed than a cheetah’s. Its spots often run into stripes.
       '''
 
     civet:
       genet: '''
-        A genet looks more cat-like.
+        A genet has short legs and a longer, bushier tail than a civet.
+      '''
+
+    dikDik:
+      reedbuck: '''
+        A reedbuck is bigger than a dik dik. Their undersides are white, not gray, and they lack the ‘tear drop’ beneath the eye.
       '''
 
     gazelleGrants:
@@ -617,7 +622,7 @@ module.exports =
 
     genet:
       civet: '''
-        A civet is more racoon-like.
+        A civet has longer legs and has a raccoon-like “mask.”
       '''
 
     hartebeest:
@@ -658,6 +663,11 @@ module.exports =
         <figure class="rump"><img src="images/rumps/impala.jpg" /><figcaption>Impala</figcaption></figure>
       '''
 
+    leopard:
+      cheetah: '''
+        Cheetahs are lankier than leopards and have solid spots, not rosettes.
+      '''
+
     mongoose:
       zorilla: '''
         A aorilla, also known as a striped polecat, looks more like a skunk than a ferret.
@@ -665,7 +675,7 @@ module.exports =
 
     reedbuck:
       dikDik: '''
-        A dik dik is smaller than a reedbuck. I thas larger eyes with an elongated upper lip and nose.
+        A dik dik is smaller than a reedbuck.  It has larger eyes with an elongated upper lip and nose.
       '''
 
     rhinoceros:
@@ -680,6 +690,10 @@ module.exports =
     serval:
       cheetah: '''
         Cheetahs ears are small around, not large. Cheetahs are lankier than servals. Cheetahs have long dark lines running from corner of eyes down cheek.
+      '''
+
+      wildcat: '''
+        A wildcat is smaller than a serval and doesn’t have long tufts of hair on its ears.
       '''
 
     topi:
