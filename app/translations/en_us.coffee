@@ -869,14 +869,24 @@ module.exports =
 
       bellMuseum:
         name: 'James Ford Bell Museum of Natural History'
-        url: 'www.bellmuseum.org'
+        url: 'http://www.bellmuseum.org/'
         image: 'images/about/organizations/bell-museum.jpg'
         description: '''
-          The James Ford Bell Museum of Natural History provided funding for 2009 pilot work that led to the camera survey through a Rothman Fellowship
-          and provided funding for the initial 2010 camera trap survey through a Dayton-Wilkie Fellowship.
-          The Bell Museum was established by Minnesota legislative mandate in 1872 to collect, preserve, skillfully prepare, display, and interpret
-          our state's diverse animal and plant life for scholarly research and teaching and for public appreciation, enrichment, and enjoyment.
+          The James Ford Bell Museum of Natural History provided funding for the initial 2010 camera trap survey
+          through a James W. Wilkie Fellowship for Natural History. The Bell Museum was established by Minnesota legislative mandate in 1872
+          to collect, preserve, skillfully prepare, display, and interpret our state's diverse animal and plant life
+          for scholarly research and teaching and for public appreciation, enrichment, and enjoyment.
           Collecting, researching, and teaching serve to inform exhibits, exhibitions, and public outreach.
+        '''
+
+      umnCbs:
+        name: 'University of Minnesota College of Biological Sciences'
+        url: 'https://www.cbs.umn.edu/'
+        image: 'images/about/organizations/umn.jpg'
+        description: '''
+          The College of Biological Sciences provided funding for 2009 pilot work that led to the camera survey through a Rothman Fellowship.
+          CBS promotes research that will improve human welfare and global conditions by advancing the knowledge of the mechanisms of life.
+          With its exclusive focus on biology, CBS seeks to prepare today’s students to create the biology of tomorrow.
         '''
 
       trailCamPro:
