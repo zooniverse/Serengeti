@@ -11,6 +11,7 @@
     "spine": "~1.0.7",
     "underscore": "~1.4.2",
     "zooniverse": "git+ssh://git@github.com:zooniverse/Zooniverse.git#master",
-    "zootorial": "~0.0.4"
+    "zootorial": "~0.0.4",
+    "moment": "~1.7.2"
   }
 }
