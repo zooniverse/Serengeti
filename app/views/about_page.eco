@@ -8,7 +8,6 @@
 
 <section data-page="information">
   <div class="content column">
-    <img src="images/about/tanzania-map.png" />
     <%- translate 'about.information.main' %>
   </div>
 
@@ -23,8 +22,10 @@
     <% organization = translate 'about', 'organizations', organization %>
     <div class="member organization">
       <img data-src="<%= organization.image %>" />
-      <h3><%= organization.name %></h3>
-      <p><%= organization.description %></p>
+      <div class="description">
+        <h3><%= organization.name %></h3>
+        <p><%= organization.description %></p>
+      </div>
     </div>
   <% end %>
 </section>
@@ -36,8 +37,10 @@
       <% member = translate 'about', 'teams', 'science', member %>
       <div class="science team member">
         <img data-src="<%= member.image %>" />
-        <h3><%= member.name %></h3>
-        <p><%= member.description %></p>
+        <div class="description">
+          <h3><%= member.name %></h3>
+          <p><%= member.description %></p>
+        </div>
       </div>
     <% end %>
   </div>
@@ -46,10 +49,12 @@
     <h2><%= translate 'about.sections.developmentTeam' %></h2>
     <% for member in ['borden', 'carstensen', 'lintott', 'miller', 'parrish', 'smith']: %>
       <% member = translate 'about', 'teams', 'development', member %>
-      <div class="science team member">
+      <div class="development team member">
         <img data-src="<%= member.image %>" />
-        <h3><%= member.name %></h3>
-        <p><%= member.description %></p>
+        <div class="description">
+          <h3><%= member.name %></h3>
+          <p><%= member.description %></p>
+        </div>
       </div>
     <% end %>
   </div>

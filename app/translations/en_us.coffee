@@ -769,6 +769,8 @@ module.exports =
         <h2>Observing animals in the wild</h2>
         <p>Over the last 45 years, the University of Minnesota Lion Project has discovered a lot about lions – everything from why they have manes to why they live in groups. Now we’re turning our sights to understanding how an entire community of large animals interacts. We currently monitor 24 lion prides in Serengeti National Park, Tanzania, using radio-tracking.  To collect information about other species, we’ve set out a grid of 225 camera traps.  With photographs from these cameras, we’re able to study how over 30 species are distributed across the landscape – and how they interact with lions and one another.</p>
 
+        <p style="text-align: center;"><img src="images/about/tanzania-map.png" /></p>
+
         <h3>Our scientific questions</h3>
         <p>Understanding how competing species coexist is a fundamental theme in ecology, with important implications for food webs, biodiversity, and the sustainability of life on Earth.  Much of our current research focuses on how carnivores coexist with carnivores, herbivores with herbivores, and the joint dynamics of predators and their prey. These insights will guide strategies for species reintroduction, conservation, and ecosystem management around the world.</p>
         <ul>
