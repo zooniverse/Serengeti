@@ -3,7 +3,8 @@
 <div class="login-form"></div>
 
 <div class="tools">
-  <select class='filter tool' data-filter='species'>
+  <select class='filter tool' data-filter='species1'>
+    <option value=''>Pick a Species</option>
     <option value='aardvark'>Aardvark</option>
     <option value='aardwolf'>Aardwolf</option>
     <option value='baboon'>Baboon</option>
@@ -54,7 +55,8 @@
     <option value='zorilla'>Zorilla</option>
   </select>
   
-  <select class='filter tool' data-filter='species'>
+  <select class='filter tool' data-filter='species2'>
+    <option value=''>Pick a Species</option>
     <option value='aardvark'>Aardvark</option>
     <option value='aardwolf'>Aardwolf</option>
     <option value='baboon'>Baboon</option>
@@ -108,10 +110,10 @@
   <div class='slider tool'></div>
   
   <div class='classification-buttons'>
-    <input type='radio' id='single' name='scope' value='single' />
-    <label class='tool' for='single'>My Classifications</label>
     <input type='radio' checked='true' id='all' name='scope' value='all' />
     <label class='tool' for='all'>Community Classifications</label>
+    <input type='radio' id='single' name='scope' value='single' />
+    <label class='tool' for='single'>My Classifications</label>
   </div>
 </div>
 

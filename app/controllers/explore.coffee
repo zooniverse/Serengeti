@@ -4,6 +4,7 @@ template = require 'views/explore'
 LoginForm = require 'zooniverse/lib/controllers/login_form'
 User = require 'zooniverse/lib/models/user'
 Map = require 'zooniverse/lib/map'
+L = require 'zooniverse/vendor/leaflet/leaflet-src'
 
 class Explore extends Controller
   className: 'explore'
@@ -12,24 +13,25 @@ class Explore extends Controller
   cartoTable: 'serengeti_copy'
   
   events:
-    'change select[data-filter="species"]' : 'onSpeciesSelect'
+    'change select.filter' : 'onSpeciesSelect'
   
   elements:
-    '.sign-in'                      : 'signInContainer'
-    'nav button'                    : 'navButtons'
-    '.page'                         : 'pages'
-    'select[data-filter="species"]' : 'chosenSpecies'
-    '.slider'                       : 'dateSlider'
+    '.sign-in'                        : 'signInContainer'
+    'nav button'                      : 'navButtons'
+    '.page'                           : 'pages'
+    'select[data-filter="species1"]'  : 'species1'
+    'select[data-filter="species2"]'  : 'species2'
+    '.slider'                         : 'dateSlider'
 
   constructor: ->
     super
-
+    
     @html template
     @loginForm = new LoginForm el: @signInContainer
-
+    
     # User.bind 'sign-in', @onUserSignIn
-    @requestSpeciesByDate(0, 1, @chosenSpecies.val())
-
+    @requestSpeciesByDate(0, 1)
+    
     # Set up slider (using jQueryUI for now ...)
     @dateSlider.slider({
       min: 0
@@ -42,29 +44,27 @@ class Explore extends Controller
       latitude: -2.332778
       longitude: 34.566667
       centerOffset: [0.25, 0.5]
-      zoom: 8
+      zoom: 9
       className: 'full-screen'
     
     @map.el.appendTo @el.find('.map-container')
-
+    
     @navButtons.first().click()
     @onUserSignIn()
-
+  
   onUserSignIn: =>
     @el.toggleClass 'signed-in', !!User.current
     
     if User.current
-      @requestSpeciesByDate(0, 1, @chosenSpecies)
+      @requestSpeciesByDate(0, 1)
   
   onDateRangeSelect: (e, ui) =>
     value = ui.value
-    species = @chosenSpecies.val()
-    @requestSpeciesByDate(value, value + 1, species)
+    @requestSpeciesByDate(value, value + 1)
   
-  onSpeciesSelect: (e) =>
-    species = e.target.value
+  onSpeciesSelect: =>
     value = @dateSlider.slider('option', 'value')
-    @requestSpeciesByDate(value, value + 1, species)
+    @requestSpeciesByDate(value, value + 1)
   
   getQueryUrl: (query) ->
     url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{@apiKey}"
@@ -73,8 +73,6 @@ class Explore extends Controller
   requestQuery: (query, callback) =>
     if $('input[name="scope"]:checked').val() is 'single'
       query = @appendUserCondition(query)
-      
-    console.log query
     
     url = @getQueryUrl(query)
     $.ajax({url: url})
@@ -93,11 +91,14 @@ class Explore extends Controller
   
   # Query for species for a given date range.  Parameters are integers between 0 and @dateGranularity.
   # The range of captured_at dates is segmented into @dateGranularity bins.
-  requestSpeciesByDate: (lower, upper, species) =>
+  requestSpeciesByDate: (lower, upper) =>
+    species1 = @species1.val()
+    species2 = @species2.val()
+    
     query = """
       SELECT ST_AsGeoJSON(the_geom) as the_geom, species, AVG(how_many), site_roll_code
       FROM #{@cartoTable}
-      WHERE species = '#{species}'
+      WHERE species = '#{species1}' OR species = '#{species2}'
         AND captured_at BETWEEN (
           SELECT MIN(captured_at)
           FROM #{@cartoTable} ) + #{lower} * (
@@ -110,19 +111,38 @@ class Explore extends Controller
     @requestQuery(query, @getSpeciesByDate)
   
   getSpeciesByDate: (response) =>
-    console.log 'getSpeciesByDate', response
-    
     rows = response.rows
     rows.map((d) -> d.the_geom = JSON.parse(d.the_geom))
     
-    # Remove labels from map
-    for label in @map.labels
-      @map.removeLayer label
+    species1 = @species1.val()
+    species2 = @species2.val()
     
-    for row in rows
-      avg = row.avg
-      [lng, lat] = row.the_geom.coordinates
-      @map.addLabel(lat, lng, "", 4 * avg)
+    cross = crossfilter(response.rows)
+    dimensionOnSpecies = cross.dimension((d) -> return d.species)
+    
+    dimensionOnSpecies.filterExact(species1)
+    species1 = dimensionOnSpecies.top(Infinity)
+    
+    dimensionOnSpecies.filterExact(species2)
+    species2 = dimensionOnSpecies.top(Infinity)
+    
+    console.log species1, species2
+    
+    # Remove layers from map
+    for layer in @map.map._layers
+      @map.map.removeLayer(layer)
+    
+    for species, index in [species1, species2]
+      for row in species
+        avg = row.avg
+        [lng, lat] = row.the_geom.coordinates
+        
+        circle = L.circle([lat, lng], 4 * avg, {
+            color: if index is 0 then 'red' else 'blue',
+            fillColor: '#f03',
+            fillOpacity: 0.5
+        })
+        @map.map.addLayer(circle)
 
 
 module.exports = Explore

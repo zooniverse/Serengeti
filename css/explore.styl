@@ -9,31 +9,51 @@ $open-sans-condensed = "Open Sans Condensed", "Arial Narrow", sans-serif
     padding 0 20%
       
     select.filter
-      width 140px
-      margin 0 20px
+      outer-deboss(30px)
       
+    .slider
+      display inline-block
+      margin 0 10px
+    
+    .ui-slider
+      position: relative
+      height: 7px
+      width: 300px
+      opacity: .7
+      background: #2B2E27
+      color: #333333
+      border-radius: 5px
+    
+    .ui-slider-handle
+      background #676652
+      position absolute
+      z-index 2
+      width 14px
+      height 14px
+      border-radius 7px
+      top -.3em
+      margin-left -.6em
+      cursor default
+      border 1px solid $black
+    
     .classification-buttons
-      background rgba(20, 11, 3, 0.25)
-      -webkit-border-radius 5px
-      border-radius 5px
-      -webkit-box-shadow 0 1px 2px rgba(20, 11, 3, 0.50) inset, 0 -1px 0px rgba(249, 248, 243, 0.25) inset
-      box-shadow 0 1px 2px rgba(20, 11, 3, 0.50) inset, 0 -1px 0px rgba(249, 248, 243, 0.25) inset
+      outer-deboss(3px)
+      display inline-block
+      position relative
     
-    .tool
-      float left
-    
-    input[type='radio']
-      display none
+      input[type='radio']
+        display none
       
-      &:checked + label
-        box-shadow 0 1px 0 rgba($black, 0.25) inset
-        border-color $black;
-        background rgb(103, 102, 82)
-    label
-      @extend #standard-button
-      float right
-      font-size 12px
-      margin 0 6px
+        &:checked + label
+          box-shadow 0 1px 0 rgba($black, 0.25) inset
+          border-color $black;
+          background rgb(103, 102, 82)
+      label
+        @extend #standard-button
+        float right
+        font-size 10px
+      label:last-child
+        margin-right 4px
   
   .map-container
     clear both
