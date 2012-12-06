@@ -632,6 +632,11 @@ module.exports =
         Impalas are more reddish in color, with black bands on their rumps, and black tufts of hair above their heels. They have large S-shaped horns.
       '''
 
+      topi: '''
+        Although it has a similar body shape, the topi is darker brown than the hartebeest, with dark patches on its knees.
+        Horns curve up and then backwards, whereas hartebeest horns curve out and then inward.
+      '''
+
     hippopotamus:
       rhinoceros: '''
         Rinos have 2 horns and are a lighter grey color.
