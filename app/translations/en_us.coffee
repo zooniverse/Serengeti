@@ -779,7 +779,7 @@ module.exports =
     information:
       main: '''
         <h2>Observing animals in the wild</h2>
-        <p>Over the last 45 years, the University of Minnesota Lion Project has discovered a lot about lions – everything from why they have manes to why they live in groups. Now we’re turning our sights to understanding how an entire community of large animals interacts. We currently monitor 24 lion prides in Serengeti National Park, Tanzania, using radio-tracking.  To collect information about other species, we’ve set out a grid of 225 camera traps.  With photographs from these cameras, we’re able to study how over 30 species are distributed across the landscape – and how they interact with lions and one another.</p>
+        <p>Over the last 45 years, the <a href="http://www.cbs.umn.edu/lionresearch/" target="_blank">University of Minnesota Lion Project</a> has discovered a lot about lions – everything from why they have manes to why they live in groups. Now we’re turning our sights to understanding how an entire community of large animals interacts. We currently monitor 24 lion prides in Serengeti National Park, Tanzania, using radio-tracking.  To collect information about other species, we’ve set out a grid of 225 camera traps.  With photographs from these cameras, we’re able to study how over 30 species are distributed across the landscape – and how they interact with lions and one another.</p>
 
         <p style="text-align: center;"><img src="images/about/tanzania-map.png" /></p>
 
@@ -796,7 +796,7 @@ module.exports =
 
       sidebar: '''
         <h3>The Serengeti Lion Project</h3>
-        <p>The camera trapping survey is operated by the long-term Serengeti Lion Project.  The Lion Project has been studying African lions in Tanzania’s Serengeti National Park and the Ngorongoro Conservation Area since the 1960’s.  At any given time, our field teams keep track of about 330 lions in 24 prides in the Serengeti, and 50–60 lions in 5 prides on the floor of Ngorongoro Crater.  This daily monitoring has produced one of the most extensive datasets on any mammalian species anywhere in the world - over 5,000 lions have been included in the Serengeti and Crater studies over the past 40+ years, and genealogical data from these two populations extend over 12 generations. The daily records include information on the lions’ location, group size, diet, food intake, health and reproduction.  You can find out more about the Lion Project at <a href="http://www.cbs.umn.edu/lionresearch/" target="_blank">http://www.cbs.umn.edu/lionresearch/</a>.</p>
+        <p>The camera trapping survey is operated by the long-term <a href="http://www.cbs.umn.edu/lionresearch/" target="_blank">Serengeti Lion Project</a>.  The Lion Project has been studying African lions in Tanzania’s Serengeti National Park and the Ngorongoro Conservation Area since the 1960’s.  At any given time, our field teams keep track of about 330 lions in 24 prides in the Serengeti, and 50–60 lions in 5 prides on the floor of Ngorongoro Crater.  This daily monitoring has produced one of the most extensive datasets on any mammalian species anywhere in the world - over 5,000 lions have been included in the Serengeti and Crater studies over the past 40+ years, and genealogical data from these two populations extend over 12 generations. The daily records include information on the lions’ location, group size, diet, food intake, health and reproduction.  You can find out more on <a href="http://www.cbs.umn.edu/lionresearch/" target="_blank">the Lion Project website</a>.</p>
         <h3>What we do</h3>
         <p>We check on the camera traps in the course of daily lion monitoring.  We change batteries, exchange the SD cards, and cut tall grass in front of the camera so that grass waving in the wind doesn’t accidentally trigger the sensor.  225 cameras are a lot of work!  When things run smoothly, a camera can last about two months before needing maintenance.  But that’s not always the case – sometimes we return to a camera only to find it chewed on by hyenas or torn down by elephants, waterlogged from a heavy rain or infested by ants. </p>
         <h3>How the cameras work</h3>
@@ -896,7 +896,7 @@ module.exports =
         '''
 
       umnCbs:
-        name: 'University of Minnesota College of Biological Sciences'
+        name: 'University of Minnesota College of Biological Sciences (CBS)'
         url: 'https://www.cbs.umn.edu/'
         image: 'images/about/organizations/umn.jpg'
         description: '''
