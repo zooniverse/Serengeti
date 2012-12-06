@@ -85,28 +85,26 @@ module.exports =
       chooseAntelopeHeader: 'Looks like...'
       chooseAntelope: '''
         The animal in the foreground of this photo looks like a large antelope of some kind.
+
         Let's choose "Antelope/deer" from the "looks like" menu.
       '''
 
       chooseSolidHeader: 'Characteristic: Pattern'
       chooseSolid: '''
-        That narrows things down a bit.
-        This animal is a solid color over most of its body,
-        so let's choose the "solid" icon under the "Pattern" menu.
+        Let's narrow the list down a bit by choosing the solid swatch from the "Pattern" menu.
       '''
 
-      chooseBrownHeader: 'Characteristic: Color'
-      chooseBrown: '''
-        Look! We can now see photos representing the possible animals.
+      chooseCurlyHeader: 'Characteristic: Horns'
+      chooseCurly: '''
+        We've narrowed the list down enough to see thumbnail previews of the remaining animals.
 
-        We could probably make a good match from these photos,
-        but let's narrow the list down a bit more by choosing "brown" from the "Color" menu.
+        Choose the "Curly" icon from the "Horns" menu to narrow the list down further.
       '''
 
       chooseWildebeestHeader: 'Make a choice'
       chooseWildebeest: '''
-        Great, that leaves us with two options.
-        This animal looks most like the wildebeest, so let's choose it and make sure.
+        Great, that leaves us with just one option!
+        Let's choose "Wildebeest" it and make sure it's a match.
       '''
 
       confirmWildebeestHeader: 'Looks Good!'

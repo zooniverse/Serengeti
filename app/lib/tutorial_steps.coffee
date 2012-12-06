@@ -47,10 +47,10 @@ module.exports = [
     className: 'arrow right'
 
   new Step
-    header: inline translate 'classify.tutorial.chooseBrownHeader'
-    content: inline translate 'classify.tutorial.chooseBrown'
-    nextOn: click: 'button[value="coatBrownBlack"]'
-    attachment: y: 'top', margin: 10, to: 'button[name="characteristic"][value="coat"]', at: y: 'bottom'
+    header: inline translate 'classify.tutorial.chooseCurlyHeader'
+    content: inline translate 'classify.tutorial.chooseCurly'
+    nextOn: click: 'button[value="hornsCurly"]'
+    attachment: y: 'top', margin: 10, to: 'button[name="characteristic"][value="horns"]', at: y: 'bottom'
     className: 'arrow up'
 
   new Step
