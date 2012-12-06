@@ -5,12 +5,16 @@ LoginForm = require 'zooniverse/lib/controllers/login_form'
 User = require 'zooniverse/lib/models/user'
 Map = require 'zooniverse/lib/map'
 L = require 'zooniverse/vendor/leaflet/leaflet-src'
+moment = require('moment/moment')
 
 class Explore extends Controller
   className: 'explore'
   apiKey: 'CARTO_API_KEY'
   dateGranularity: 10
   cartoTable: 'serengeti_copy'
+  layers: []
+  styles: ['#A34E20', '#1F3036']
+  dateFmt: 'dddd, MMMM Do YYYY, h:mm:ss a'
   
   events:
     'change select.filter' : 'onSpeciesSelect'
@@ -29,8 +33,7 @@ class Explore extends Controller
     @html template
     @loginForm = new LoginForm el: @signInContainer
     
-    # User.bind 'sign-in', @onUserSignIn
-    @requestSpeciesByDate(0, 1)
+    User.bind 'sign-in', @onUserSignIn
     
     # Set up slider (using jQueryUI for now ...)
     @dateSlider.slider({
@@ -56,7 +59,7 @@ class Explore extends Controller
     @el.toggleClass 'signed-in', !!User.current
     
     if User.current
-      @requestSpeciesByDate(0, 1)
+      @requestDateRange()
   
   onDateRangeSelect: (e, ui) =>
     value = ui.value
@@ -66,18 +69,20 @@ class Explore extends Controller
     value = @dateSlider.slider('option', 'value')
     @requestSpeciesByDate(value, value + 1)
   
-  getQueryUrl: (query) ->
-    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{@apiKey}"
-    return url.replace(/\+/g, '%2B')  # Must manually escape plus character (maybe others too)
-  
   requestQuery: (query, callback) =>
     if $('input[name="scope"]:checked').val() is 'single'
       query = @appendUserCondition(query)
+    
+    console.log query
     
     url = @getQueryUrl(query)
     $.ajax({url: url})
       .done(callback)
       .fail( (e) -> alert 'Sorry, the query failed')  # TODO: Fail more gracefully ...
+  
+  getQueryUrl: (query) ->
+    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{@apiKey}"
+    return url.replace(/\+/g, '%2B')  # Must manually escape plus character (maybe others too)
   
   # Add user condition to query
   appendUserCondition: (query) =>
@@ -88,6 +93,28 @@ class Explore extends Controller
     condition = query.substring(index)
     
     return "#{base} user_id = '#{User.current.id}' AND #{condition}"
+  
+  #
+  # Methods for querying CartoDB
+  #
+  
+  requestDateRange: =>
+    console.log 'requestDateRange'
+    query = "SELECT MIN(captured_at), MAX(captured_at) FROM #{@cartoTable};"
+    @requestQuery(query, @getDateRange)
+  
+  #
+  # Methods for receiving query results from CartoDB
+  #
+  
+  getDateRange: (response) =>
+    console.log response
+    
+    result = response.rows[0]
+    @startDate  = moment(result.min)
+    @endDate    = moment(result.max)
+    console.log @startDate.format(@dateFmt), @endDate.format(@dateFmt)
+  
   
   # Query for species for a given date range.  Parameters are integers between 0 and @dateGranularity.
   # The range of captured_at dates is segmented into @dateGranularity bins.
@@ -126,22 +153,22 @@ class Explore extends Controller
     dimensionOnSpecies.filterExact(species2)
     species2 = dimensionOnSpecies.top(Infinity)
     
-    console.log species1, species2
-    
     # Remove layers from map
-    for layer in @map.map._layers
+    for layer in @layers
       @map.map.removeLayer(layer)
+    @layers = []
     
     for species, index in [species1, species2]
       for row in species
         avg = row.avg
         [lng, lat] = row.the_geom.coordinates
         
-        circle = L.circle([lat, lng], 4 * avg, {
-            color: if index is 0 then 'red' else 'blue',
-            fillColor: '#f03',
+        circle = L.circle([lat, lng], 500 * avg, {
+            color: @styles[index]
+            fillColor: @styles[index],
             fillOpacity: 0.5
         })
+        @layers.push circle
         @map.map.addLayer(circle)
 
 

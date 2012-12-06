@@ -3,38 +3,61 @@ $open-sans-condensed = "Open Sans Condensed", "Arial Narrow", sans-serif
 .explore
   height 100%
   
-  .tools
-    width 100%
-    height 30px
-    padding 0 20%
-      
-    select.filter
-      outer-deboss(30px)
-      
+  .controls
+    width 1000px
+    margin 0 auto
+    
+    .species-select
+      background rgba($black, 0.25)
+      border-radius 1px
+      box-shadow 0 1px 2px rgba($black, 0.5) inset, 0 -1px 0px rgba($white, 0.25) inset
+      left -1px
+      padding 1px 0px 3px
+      margin-right 24px
+      position relative
+      top -1px
+      z-index -1
+      width 280px
+      display inline-block
+      text-align center
+        
     .slider
       display inline-block
-      margin 0 10px
-    
+      margin-right 125px
+  
     .ui-slider
       position: relative
-      height: 7px
-      width: 300px
-      opacity: .7
-      background: #2B2E27
-      color: #333333
-      border-radius: 5px
-    
+      height 7px
+      width 300px
+      padding-right 7px
+      opacity .7
+      background $green-dark
+      border-radius 5px
+  
     .ui-slider-handle
-      background #676652
-      position absolute
-      z-index 2
+      background $green-light
+      border 1.5px solid $black
+      border-color rgba($black, 0.5)
       width 14px
       height 14px
+      bottom 7px
       border-radius 7px
-      top -.3em
-      margin-left -.6em
-      cursor default
-      border 1px solid $black
+      box-shadow 0px 1px 0px rgba($white, 0.125) inset, 0 1px 3px rgba($black, 0.75)
+      box-sizing border-box
+      color $gray
+      display inline-block
+      position relative
+      
+      // background #676652
+      // position absolute
+      // z-index 2
+      // width 14px
+      // height 14px
+      // border-radius 7px
+      // top -.3em
+      // margin-left -.6em
+      // cursor default
+      // border 1px solid $black
     
     .classification-buttons
       outer-deboss(3px)
@@ -50,13 +73,11 @@ $open-sans-condensed = "Open Sans Condensed", "Arial Narrow", sans-serif
           background rgb(103, 102, 82)
       label
         @extend #standard-button
-        float right
         font-size 10px
       label:last-child
         margin-right 4px
   
   .map-container
-    clear both
     width 100%
     height 100%
     margin 20px 0 0 0
