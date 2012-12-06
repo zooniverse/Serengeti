@@ -9,12 +9,14 @@ moment = require('moment/moment')
 
 class Explore extends Controller
   className: 'explore'
-  apiKey: 'CARTO_API_KEY'
   dateGranularity: 10
-  cartoTable: 'serengeti_copy'
+  cartoTable: 'serengeti_random'
   layers: []
   styles: ['#A34E20', '#1F3036']
   dateFmt: 'dddd, MMMM Do YYYY, h:mm:ss a'
+  
+  maxCache: 10
+  cache: []
   
   events:
     'change select.filter' : 'onSpeciesSelect'
@@ -40,14 +42,14 @@ class Explore extends Controller
       min: 0
       max: @dateGranularity - 1
       step: 1
-      slide: @onDateRangeSelect
+      change: @onDateRangeSelect
     })
     
     @map ?= new Map
-      latitude: -2.332778
-      longitude: 34.566667
-      centerOffset: [0.25, 0.5]
-      zoom: 9
+      latitude: -2.51
+      longitude: 34.93
+      centerOffset: [0, 0]
+      zoom: 11
       className: 'full-screen'
     
     @map.el.appendTo @el.find('.map-container')
@@ -59,7 +61,8 @@ class Explore extends Controller
     @el.toggleClass 'signed-in', !!User.current
     
     if User.current
-      @requestDateRange()
+      # @requestDateRange()
+      @requestSpeciesByDate(0, 1)
   
   onDateRangeSelect: (e, ui) =>
     value = ui.value
@@ -73,16 +76,47 @@ class Explore extends Controller
     if $('input[name="scope"]:checked').val() is 'single'
       query = @appendUserCondition(query)
     
-    console.log query
+    # Create a unique key for the query
+    species1  = @species1.val()
+    species2  = @species2.val()
+    date      = @dateSlider.slider('option', 'value')
+    scope     = $('input[name="scope"]:checked').val()
+    key = "#{species1}_#{species2}_#{date}_#{scope}"
     
-    url = @getQueryUrl(query)
-    $.ajax({url: url})
-      .done(callback)
-      .fail( (e) -> alert 'Sorry, the query failed')  # TODO: Fail more gracefully ...
+    # Check if query results are cached
+    cachedQuery = @getCachedQuery(key)
+    
+    if cachedQuery
+      callback(cachedQuery)
+    else
+      url = @getQueryUrl(query)
+      do (key) =>
+        $.ajax({url: url})
+          .pipe( (response) ->
+            rows = response.rows
+            rows.map((d) -> d.the_geom = JSON.parse(d.the_geom))
+            return rows
+          )
+          .pipe( (data) => @cacheResults(key, data))
+          .pipe( (data) -> callback(data))
+          .fail( (e) -> alert 'Sorry, the query failed')  # TODO: Fail more gracefully ...
   
   getQueryUrl: (query) ->
-    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{@apiKey}"
+    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}"
     return url.replace(/\+/g, '%2B')  # Must manually escape plus character (maybe others too)
+  
+  cacheResults: (key, response) ->
+    @cache.shift() if @cache.length is @maxCache
+    obj = {}
+    obj[key] = response
+    @cache.push obj
+    return response
+  
+  getCachedQuery: (key) ->
+    for result in @cache
+      if result.hasOwnProperty(key)
+        return result[key]
+    return false
   
   # Add user condition to query
   appendUserCondition: (query) =>
@@ -108,8 +142,6 @@ class Explore extends Controller
   #
   
   getDateRange: (response) =>
-    console.log response
-    
     result = response.rows[0]
     @startDate  = moment(result.min)
     @endDate    = moment(result.max)
@@ -137,14 +169,12 @@ class Explore extends Controller
     """
     @requestQuery(query, @getSpeciesByDate)
   
-  getSpeciesByDate: (response) =>
-    rows = response.rows
-    rows.map((d) -> d.the_geom = JSON.parse(d.the_geom))
+  getSpeciesByDate: (rows) =>
     
     species1 = @species1.val()
     species2 = @species2.val()
     
-    cross = crossfilter(response.rows)
+    cross = crossfilter(rows)
     dimensionOnSpecies = cross.dimension((d) -> return d.species)
     
     dimensionOnSpecies.filterExact(species1)
@@ -163,7 +193,7 @@ class Explore extends Controller
         avg = row.avg
         [lng, lat] = row.the_geom.coordinates
         
-        circle = L.circle([lat, lng], 500 * avg, {
+        circle = L.circle([lat, lng], 10 * avg, {
             color: @styles[index]
             fillColor: @styles[index],
             fillOpacity: 0.5

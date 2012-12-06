@@ -1,2 +1,4 @@
 node_modules
 public/mockdata.json
+.DS_Store
+*.csv

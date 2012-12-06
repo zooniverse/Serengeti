@@ -124,8 +124,6 @@ class Profile extends Controller
     @onCreateItem item for item in ItemClass.all()
 
   requestClassifications: =>
-    # Put Carto API key in Zooniverse lib
-    apiKey = 'CARTO_API_KEY'
     fields = [
       'babies', 'behavior', 'captured_at', 'created_at', 'how_many', 'site_roll_code',
       'species', 'ST_AsGeoJSON(the_geom) as the_geom', 'updated_at', 'subject_id'
@@ -133,7 +131,7 @@ class Profile extends Controller
     
     # query = "SELECT #{fields} FROM serengeti WHERE user_id='#{User.current.id}'"
     query = "SELECT #{fields} FROM serengeti"
-    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{apiKey}"
+    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}"
     
     # Mock data
     $.ajax({url: "http://0.0.0.0:9294/mockdata.json"})
