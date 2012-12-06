@@ -36,7 +36,7 @@ class Explore extends Controller
     @loginForm = new LoginForm el: @signInContainer
     
     User.bind 'sign-in', @onUserSignIn
-    
+
     # Set up slider (using jQueryUI for now ...)
     @dateSlider.slider({
       min: 0
@@ -56,12 +56,23 @@ class Explore extends Controller
     
     @navButtons.first().click()
     @onUserSignIn()
-  
+    
+    @map ?= new Map
+      latitude: -2.332778
+      longitude: 34.566667
+      centerOffset: [0.25, 0.5]
+      zoom: 8
+      className: 'full-screen'
+    
+    @map.el.appendTo @el.find('.map-container')
+
+    @navButtons.first().click()
+    @onUserSignIn()
+
   onUserSignIn: =>
     @el.toggleClass 'signed-in', !!User.current
     
     if User.current
-      # @requestDateRange()
       @requestSpeciesByDate(0, 1)
   
   onDateRangeSelect: (e, ui) =>
@@ -71,6 +82,10 @@ class Explore extends Controller
   onSpeciesSelect: =>
     value = @dateSlider.slider('option', 'value')
     @requestSpeciesByDate(value, value + 1)
+  
+  getQueryUrl: (query) ->
+    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{@apiKey}"
+    return url.replace(/\+/g, '%2B')  # Must manually escape plus character (maybe others too)
   
   requestQuery: (query, callback) =>
     if $('input[name="scope"]:checked').val() is 'single'
