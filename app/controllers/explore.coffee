@@ -9,17 +9,19 @@ moment = require('moment/moment')
 
 class Explore extends Controller
   className: 'explore'
+  
   dateGranularity: 10
   cartoTable: 'serengeti_random'
   layers: []
   styles: ['#A34E20', '#1F3036']
-  dateFmt: 'dddd, MMMM Do YYYY, h:mm:ss a'
+  dateFmt: 'ddd, MMM DD YYYY, hh:mm:ss A'
   
   maxCache: 10
   cache: []
   
   events:
-    'change select.filter' : 'onSpeciesSelect'
+    'change select.filter'      : 'onSpeciesSelect'
+    'click input[name="scope"]' : 'setUserScope'
   
   elements:
     '.sign-in'                        : 'signInContainer'
@@ -28,6 +30,8 @@ class Explore extends Controller
     'select[data-filter="species1"]'  : 'species1'
     'select[data-filter="species2"]'  : 'species2'
     '.slider'                         : 'dateSlider'
+    '#community'                      : 'community'
+    '#my'                             : 'my'
 
   constructor: ->
     super
@@ -35,78 +39,91 @@ class Explore extends Controller
     @html template
     @loginForm = new LoginForm el: @signInContainer
     
+    # Set default state for user scope buttons
     User.bind 'sign-in', @onUserSignIn
 
-    # Set up slider (using jQueryUI for now ...)
+    # Set up slider and map
     @dateSlider.slider({
       min: 0
       max: @dateGranularity - 1
       step: 1
-      change: @onDateRangeSelect
+      slide: @onDateRangeSelect
     })
     
     @map ?= new Map
       latitude: -2.51
       longitude: 34.93
       centerOffset: [0, 0]
-      zoom: 11
+      zoom: 9
       className: 'full-screen'
-    
     @map.el.appendTo @el.find('.map-container')
     
-    @navButtons.first().click()
-    @onUserSignIn()
+    # Append div for showing date range
+    @el.find('.map-container .map').prepend("<div class='dates'></div>")
+    @dateEl = @el.find('.map-container .map .dates')
     
-    @map ?= new Map
-      latitude: -2.332778
-      longitude: 34.566667
-      centerOffset: [0.25, 0.5]
-      zoom: 8
-      className: 'full-screen'
-    
-    @map.el.appendTo @el.find('.map-container')
-
     @navButtons.first().click()
     @onUserSignIn()
 
   onUserSignIn: =>
     @el.toggleClass 'signed-in', !!User.current
     
+    # Enable 'My Classifications'
+    @my.removeAttr('disabled')
     if User.current
-      @requestSpeciesByDate(0, 1)
+      @requestDateRange()
+      # @requestSpecies(0, 1)
+  
+  setUserScope: (e) -> @requestDateRange()
   
   onDateRangeSelect: (e, ui) =>
     value = ui.value
-    @requestSpeciesByDate(value, value + 1)
+    @requestSpecies(value, value + 1)
   
   onSpeciesSelect: =>
     value = @dateSlider.slider('option', 'value')
-    @requestSpeciesByDate(value, value + 1)
+    @requestSpecies(value, value + 1)
   
   getQueryUrl: (query) ->
-    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}&api_key=#{@apiKey}"
+    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}"
     return url.replace(/\+/g, '%2B')  # Must manually escape plus character (maybe others too)
   
+  #
+  # Methods for caching query results
+  #
+  
+  createCacheKey: =>
+    s1  = @species1.val()
+    s2  = @species2.val()
+    d   = @dateSlider.slider('option', 'value')
+    sc  = $('input[name="scope"]:checked').val()
+    return "#{s1}_#{s2}_#{d}_#{sc}"
+  
+  # Store results from a query
+  cacheResults: (key, response) ->
+    @cache.shift() if @cache.length is @maxCache
+    obj = {}
+    obj[key] = response
+    @cache.push obj
+    return response
+
+  # Get results from a cached query
+  getCachedResult: (key) ->
+    for result in @cache
+      if result.hasOwnProperty(key)
+        return result[key]
+    return false
+  
   requestQuery: (query, callback) =>
-    if $('input[name="scope"]:checked').val() is 'single'
-      query = @appendUserCondition(query)
-    
-    # Create a unique key for the query
-    species1  = @species1.val()
-    species2  = @species2.val()
-    date      = @dateSlider.slider('option', 'value')
-    scope     = $('input[name="scope"]:checked').val()
-    key = "#{species1}_#{species2}_#{date}_#{scope}"
-    
-    # Check if query results are cached
-    cachedQuery = @getCachedQuery(key)
+    cacheKey = @createCacheKey()
+    cachedResult = @getCachedResult(key)
     
     if cachedQuery
       callback(cachedQuery)
     else
       url = @getQueryUrl(query)
       do (key) =>
-        $.ajax({url: url})
+        $.ajax({url: url, beforeSend: @ajaxStart})
           .pipe( (response) ->
             rows = response.rows
             rows.map((d) -> d.the_geom = JSON.parse(d.the_geom))
@@ -114,43 +131,70 @@ class Explore extends Controller
           )
           .pipe( (data) => @cacheResults(key, data))
           .pipe( (data) -> callback(data))
+          .pipe( => @ajaxStop())
           .fail( (e) -> alert 'Sorry, the query failed')  # TODO: Fail more gracefully ...
   
-  getQueryUrl: (query) ->
-    url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}"
-    return url.replace(/\+/g, '%2B')  # Must manually escape plus character (maybe others too)
-  
-  cacheResults: (key, response) ->
-    @cache.shift() if @cache.length is @maxCache
-    obj = {}
-    obj[key] = response
-    @cache.push obj
-    return response
-  
-  getCachedQuery: (key) ->
-    for result in @cache
-      if result.hasOwnProperty(key)
-        return result[key]
-    return false
-  
-  # Add user condition to query
-  appendUserCondition: (query) =>
-    from = "FROM #{@cartoTable}\nWHERE"
-    index = query.indexOf(from)
-    index += from.length
-    base = query.substring(0, index)
-    condition = query.substring(index)
-    
-    return "#{base} user_id = '#{User.current.id}' AND #{condition}"
+  ajaxStart: ->
+    $(".map-container .map").append("<img src='images/spinner.gif' class='spinner'>")
+  ajaxStop: ->
+    $(".map-container .map img.spinner").remove()
   
   #
   # Methods for querying CartoDB
   #
   
+  # Request the minimum and maximum dates of image capture
   requestDateRange: =>
-    console.log 'requestDateRange'
-    query = "SELECT MIN(captured_at), MAX(captured_at) FROM #{@cartoTable};"
-    @requestQuery(query, @getDateRange)
+    query = "SELECT MIN(captured_at), MAX(captured_at) FROM #{@cartoTable}"
+    if $('input[name="scope"]:checked').val() is 'my'
+      query += " WHERE user_id = '#{User.current.id}'"
+    
+    url = @getQueryUrl(query)
+    $.ajax({url: url, beforeSend: @ajaxStart})
+      .done(@getDateRange)
+      .then(@ajaxStop)
+      .fail( (e) -> alert 'Sorry, the query failed')
+  
+  # Request species counts for all sites between a date interval
+  requestSpecies: (lower, upper) =>
+    start = @startDate.clone()
+    end   = @startDate.clone()
+    
+    start.add('ms', lower * @interval)
+    end.add('ms', upper * @interval)
+    @dateEl.html("#{start.format(@dateFmt)} &mdash; #{end.format(@dateFmt)} (East Africa Time)")
+    
+    species1 = @species1.val()
+    species2 = @species2.val()
+    
+    query = """SELECT ST_AsGeoJSON(the_geom) as the_geom, species, AVG(how_many), site_roll_code
+      FROM #{@cartoTable}
+      WHERE species = '#{species1}' OR species = '#{species2}'
+      AND captured_at BETWEEN '#{start.format(@dateFmt)}+02:00' AND '#{end.format(@dateFmt)}+02:00'
+    """
+    if $('input[name="scope"]:checked').val() is 'my'
+      query += "AND WHERE user_id = '#{User.current.id}'"
+    query += " GROUP BY the_geom, species, site_roll_code"
+    
+    url = @getQueryUrl(query)
+    cacheKey = @createCacheKey()
+    cachedResult = @getCachedResult(key)
+    
+    if cachedResult
+      @getSpecies(cachedQuery)
+    else
+      url = @getQueryUrl(query)
+      do (key) =>
+        $.ajax({url: url, beforeSend: @ajaxStart})
+          .pipe( (response) ->
+            rows = response.rows
+            rows.map((d) -> d.the_geom = JSON.parse(d.the_geom))
+            return rows
+          )
+          .pipe( (data) => @cacheResults(key, data))
+          .pipe( (data) -> @getSpecies(data))
+          .pipe( => @ajaxStop())
+          .fail( (e) -> alert 'Sorry, the query failed')  # TODO: Fail more gracefully ...
   
   #
   # Methods for receiving query results from CartoDB
@@ -158,33 +202,16 @@ class Explore extends Controller
   
   getDateRange: (response) =>
     result = response.rows[0]
-    @startDate  = moment(result.min)
-    @endDate    = moment(result.max)
-    console.log @startDate.format(@dateFmt), @endDate.format(@dateFmt)
-  
-  
-  # Query for species for a given date range.  Parameters are integers between 0 and @dateGranularity.
-  # The range of captured_at dates is segmented into @dateGranularity bins.
-  requestSpeciesByDate: (lower, upper) =>
-    species1 = @species1.val()
-    species2 = @species2.val()
     
-    query = """
-      SELECT ST_AsGeoJSON(the_geom) as the_geom, species, AVG(how_many), site_roll_code
-      FROM #{@cartoTable}
-      WHERE species = '#{species1}' OR species = '#{species2}'
-        AND captured_at BETWEEN (
-          SELECT MIN(captured_at)
-          FROM #{@cartoTable} ) + #{lower} * (
-            SELECT (MAX(captured_at) - MIN(captured_at)) / 10
-            FROM #{@cartoTable}) AND (SELECT MIN(captured_at) + #{upper} * (
-              SELECT (MAX(captured_at) - MIN(captured_at)) / 10 FROM #{@cartoTable})
-              FROM #{@cartoTable})
-      GROUP BY the_geom, species, site_roll_code;
-    """
-    @requestQuery(query, @getSpeciesByDate)
+    @startDate  = moment(result.min)
+    endDate     = moment(result.max)
+    @interval   = endDate.diff(@startDate) / @dateGranularity
+    
+    # Clone because object mutable
+    start = @startDate.clone()
+    $('.map-container .map .dates').html("#{start.format(@dateFmt)} &mdash; #{start.add('ms', @interval).format(@dateFmt)} (East Africa Time)")
   
-  getSpeciesByDate: (rows) =>
+  getSpecies: (rows) =>
     
     species1 = @species1.val()
     species2 = @species2.val()

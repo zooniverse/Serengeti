@@ -27,6 +27,22 @@ def random_count():
 def parse_sites():
     return genfromtxt('sites.csv', delimiter=',', dtype=[('site','a3'),('latitude','f4'), ('longitude', 'f4')])
     
+def random_user_id():
+    user_ids = [
+        '501953cf0454e244a10000b7',
+        '50801720d10d2408a60040b5',
+        '508c26ade735a243b6000150',
+        '50984b2ee735a26313000003',
+        '506a9db6ba40af2a450006ee',
+        '5076b726f6a3996f52000dfb',
+        '508c26ade735a243b6000150',
+        '50984b2ee735a26313000003',
+        '508c383de735a243a200023b',
+        '50984b2ee735a26313000003',
+        '508c383de735a243a200023b',
+        '50984b2ee735a26313000003'
+    ]
+    return choice(user_ids)
 
 def generate():
     tz = GMT3()
@@ -43,7 +59,8 @@ def generate():
         how_many = random_count()
         species = random_species()
         captured_at = random_date(start_date, end_date)
-        row = "%s_XXX_RX,%f,%f,%s,%s,%d\n" % (name, lat, lng, captured_at, species, how_many)
+        user_id = random_user_id()
+        row = "%s_XXX_RX,%f,%f,%s,%s,%d,%s\n" % (name, lat, lng, captured_at, species, how_many, user_id)
         f.write(row)
     f.close()
 

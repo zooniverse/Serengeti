@@ -113,10 +113,10 @@
   <div class='slider tool'></div>
   
   <div class='classification-buttons'>
-    <input type='radio' checked='true' id='all' name='scope' value='all' />
-    <label class='tool' for='all'>Community Classifications</label>
-    <input type='radio' id='single' name='scope' value='single' />
-    <label class='tool' for='single'>My Classifications</label>
+    <input type='radio' id='community' name='scope' value='community' checked='true' />
+    <label class='tool' for='community'>Community Classifications</label>
+    <input type='radio' id='my' name='scope' value='my' disabled='disabled'/>
+    <label class='tool' for='my'>My Classifications</label>
   </div>
 </div>
 
