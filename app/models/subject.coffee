@@ -1,6 +1,7 @@
 {Model} = require 'spine'
 $ = require 'jqueryify'
 Api = require 'zooniverse/lib/api'
+seasons = require 'lib/seasons'
 
 class Subject extends Model
   @configure 'Subject', 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata'
@@ -39,14 +40,18 @@ class Subject extends Model
   @fetch: (count) =>
     fetcher = new $.Deferred
 
-    getter = Api.get("/projects/serengeti/subjects?limit=#{count}").deferred
-
-    getter.done (rawSubjects) =>
-      fetcher.resolve (@fromJSON rawSubject for rawSubject in rawSubjects)
+    currentSeasonId = (season.id for season in seasons when season.complete < season.total)[0]
+    if currentSeasonId?
+      getter = Api.get("/projects/serengeti/groups/#{currentSeasonId}/subjects?limit=#{count}").deferred
+      getter.done (rawSubjects) =>
+        fetcher.resolve (@fromJSON rawSubject for rawSubject in rawSubjects)
+    else
+      fetcher.resolve []
 
     fetcher.promise() # Resolves with all fetched subjects
 
   @fromJSON: (raw) =>
+
     subject = @create
       id: raw.id
       zooniverseId: raw.zooniverse_id

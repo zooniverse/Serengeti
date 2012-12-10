@@ -9,6 +9,7 @@ Classifier = require 'controllers/classifier'
 Profile = require 'controllers/profile'
 translate = require 'lib/translate'
 Api = require 'zooniverse/lib/api'
+seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
 googleAnalytics = require 'zooniverse/lib/google_analytics'
@@ -20,58 +21,74 @@ feedbackContent = require 'views/feedback_page'
 $(document).on 'click', 'a[href*="talk"]', (e) ->
   e.preventDefault(); alert 'Talk is currently unavailable. Sorry!'
 
+googleAnalytics.init
+  account: 'UA-1224199-36'
+  domain: 'snapshotserengeti.org'
+
 app = {}
 
 User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
 
-Api.init
-  host: if !!location.href.match /demo|beta/
-    'https://dev.zooniverse.org'
-  else if +location.port < 1024
-    'https://api.zooniverse.org'
-  else
-    "#{location.protocol}//#{location.hostname}:3000"
-
-googleAnalytics.init
-  account: 'UA-1224199-36'
-  domain: 'snapshotserengeti.org'
+# TODO: Clean up callback hell.
 
 language = localStorage.language
 translate.init language, ->
-  $('.before-load').remove()
+  Api.init
+    host: if !!location.href.match /demo|beta/
+      'https://dev.zooniverse.org'
+    else if +location.port < 1024
+      'https://api.zooniverse.org'
+    else
+      "#{location.protocol}//#{location.hostname}:3000"
 
-  app.topBar = new TopBar
-    app: 'serengeti'
-    appName: 'Serengeti'
+  # TODO: Don't count on the proxy frame to have no loaded yet.
 
-  $(window).on 'request-login-dialog', ->
-    app.topBar.onClickSignUp()
-    app.topBar.loginForm.signInButton.click()
-    app.topBar.loginDialog.reattach()
+  Api.proxy.el().one 'load', ->
+    Api.get '/projects/serengeti', (project) ->
+      sortedSeasons = for season, {_id: id, total, complete} of project.seasons
+        total ?= 0
+        complete ?= 0
+        {season, id, total, complete}
 
-  app.stack = new Stack
-    className: "main #{Stack::className}"
+      sortedSeasons.sort (a, b) ->
+        a.season > b.season
 
-    controllers:
-      home: class extends HomePage then totalSubjects: 1227
-      about: AboutPage
-      classify: Classifier
-      profile: Profile
-      feedback: class extends ContentPage then content: feedbackContent
+      seasons.push sortedSeasons...
 
-    routes:
-      '/home': 'home'
-      '/about': 'about'
-      '/classify': 'classify'
-      '/profile': 'profile'
-      '/feedback': 'feedback'
+      $('.before-load').remove()
+      app.stack = new Stack
+        className: "main #{Stack::className}"
 
-    default: 'home'
+        controllers:
+          home: HomePage
+          about: AboutPage
+          classify: Classifier
+          profile: Profile
+          feedback: class extends ContentPage then content: feedbackContent
 
-  Route.setup()
+        routes:
+          '/home': 'home'
+          '/about': 'about'
+          '/classify': 'classify'
+          '/profile': 'profile'
+          '/feedback': 'feedback'
 
-  app.topBar.el.prependTo 'body'
-  app.stack.el.appendTo 'body'
+        default: 'home'
+
+      # Load the top bar last since it fetches the user.
+      app.topBar = new TopBar
+        app: 'serengeti'
+        appName: 'Snapshot Serengeti'
+
+      $(window).on 'request-login-dialog', ->
+        app.topBar.onClickSignUp()
+        app.topBar.loginForm.signInButton.click()
+        app.topBar.loginDialog.reattach()
+
+      app.stack.el.appendTo 'body'
+      app.topBar.el.prependTo 'body'
+
+      Route.setup()
 
 module.exports = app

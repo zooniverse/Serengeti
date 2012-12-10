@@ -1,4 +1,5 @@
 <% translate = require 'lib/translate' %>
+<% seasons = require 'lib/seasons' %>
 
 <div class="recents">
   <div class="image-changer"></div>
@@ -11,15 +12,18 @@
   <p><%= translate 'home.content' %></p>
   <hr />
 
-  <div class="progress">
-    <p><strong>Season 1</strong> progress</p>
+  <% for {season, total, complete}, i in seasons: %>
+    <% prev = seasons[i - 1] %>
+    <% continue if prev? and (prev.complete is 0 or prev.complete / prev.total < 0.75) %>
 
-    <p class="current-status"><%- translate 'home.currentStatus' %></p>
+    <div class="progress">
+      <p><strong>Season <%= season %></strong> progress</p>
 
-    <div class="track">
-      <div class="fill" style="width: 0%;"></div>
+      <div class="track">
+        <div class="fill" style="width: <%= (complete / total) * 100 %>%;"></div>
+      </div>
     </div>
-  </div>
+  <% end %>
   <hr />
 
   <p class="action">
