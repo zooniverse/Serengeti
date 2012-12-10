@@ -4,8 +4,87 @@ $open-sans-condensed = "Open Sans Condensed", "Arial Narrow", sans-serif
   height 100%
   
   .controls
-    width 1000px
-    margin 0 auto
+    width 100%
+    padding-left 225px
+    
+    .classification-buttons
+      outer-deboss(3px)
+      display inline-block
+      position relative
+      margin-right 260px
+    
+      input[type='radio']
+        display none
+      
+        &:checked + label
+          box-shadow 0 1px 0 rgba($black, 0.25) inset
+          border-color $black;
+          background rgb(103, 102, 82)
+      label
+        @extend #standard-button
+        font-size 10px
+      label:last-child
+        margin-right 4px
+    
+    .animals
+      width 400px
+      background $black
+      position absolute
+      top 26px
+      display none
+      z-index 3
+      left 745px
+      
+      &.active
+        display block
+        
+      &[data-position='right']
+        left 879px
+      
+      [data-animal]
+        background $green-dark
+        width 130px
+        border 1px solid $black
+        border-color rgba($black, 0.5)
+        box-sizing border-box
+        color $gray
+        display inline-block
+        font inherit
+        font-size 10px
+        padding 3px 8px 3px 8px
+        position relative
+        text-align center
+        text-decoration none
+        text-shadow 0 1px 1px $black
+        vertical-align middle
+        margin 0
+        cursor pointer
+
+        &:hover
+          background $green-light
+
+        &:active
+          box-shadow 0 1px 0 rgba($black, 0.25) inset
+          opacity 0.75
+        
+    button.species {
+      @extend #standard-button
+      font-size 10px
+      padding-right 20px
+      width 130px
+      
+      &:after {
+        border: 4px solid transparent;
+        border-top-color: $white;
+        content: "";
+        height: 0;
+        margin-top: -2px;
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        width: 0;
+      }
+    }
     
     .species-select
       background rgba($black, 0.25)
@@ -17,7 +96,8 @@ $open-sans-condensed = "Open Sans Condensed", "Arial Narrow", sans-serif
       position relative
       top -1px
       width 280px
-      display inline-block
+      // display inline-block
+      display none
       text-align center
         
     .slider
@@ -46,24 +126,6 @@ $open-sans-condensed = "Open Sans Condensed", "Arial Narrow", sans-serif
       color $gray
       display inline-block
       position relative
-    
-    .classification-buttons
-      outer-deboss(3px)
-      display inline-block
-      position relative
-    
-      input[type='radio']
-        display none
-      
-        &:checked + label
-          box-shadow 0 1px 0 rgba($black, 0.25) inset
-          border-color $black;
-          background rgb(103, 102, 82)
-      label
-        @extend #standard-button
-        font-size 10px
-      label:last-child
-        margin-right 4px
   
   .map-container
     width 100%
@@ -72,22 +134,20 @@ $open-sans-condensed = "Open Sans Condensed", "Arial Narrow", sans-serif
     min-height 700px
     
     .dates
-      background $green-dark
-      border 1px solid $black
-      border-color rgba($black, 0.5)
-      border-radius 2px
-      box-shadow 0px 1px 0px rgba($white, 0.125) inset, 0 1px 3px rgba($black, 0.75)
-      box-sizing border-box
-      color $gray
+      background rgba(0, 0, 0, .1)
+      width 400px
+      border-radius 3px
+      color $black
       font inherit
-      padding 3px 8px 3px 8px
+      font-weight 700
+      padding 8px 0
       position relative
+      top 20px
+      right -500px
       text-align center
       text-decoration none
-      text-shadow 0 1px 1px $black
       vertical-align middle
       display block
-      width 600px
       margin 0 auto
       font-size 12px
       z-index 4
