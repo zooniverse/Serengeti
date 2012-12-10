@@ -51,7 +51,6 @@ class Classification extends Model
   send: ->
     unless @subject.metadata.tutorial or @subject.metadata.empty
       @constructor.sentThisSession += 1
-      console.log 'Sent this session', @constructor.sentThisSession
 
     @trigger 'send'
     Api.post @url(), @toJSON(), arguments...
