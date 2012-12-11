@@ -67,7 +67,7 @@
   </span>
 
   <span class="continue group">
-    <a href="<%= @subject.talkHref() %>" target="_blank"><i rel="chat">Talk</i> <%= translate 'classify.discuss' %></a>
+    <a href="<%= @subject.talkHref() %>"><i rel="chat">Talk</i> <%= translate 'classify.discuss' %></a>
     <button name="next" data-shortcut="ENTER"><i rel="camera"></i> <%= translate 'classify.next' %></button>
   </span>
 </div>
