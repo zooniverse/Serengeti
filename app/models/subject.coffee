@@ -20,7 +20,7 @@ class Subject extends Model
     if count is 0
       nexter = fetcher.pipe =>
         first = @first()
-        first.destroy() if first.metadata.empty
+        first?.destroy() if first?.metadata.empty
 
         if @count() is 0
           @trigger 'no-subjects'
@@ -40,18 +40,15 @@ class Subject extends Model
   @fetch: (count) =>
     fetcher = new $.Deferred
 
-    currentSeasonId = (season.id for season in seasons when season.complete < season.total)[0]
-    if currentSeasonId?
-      getter = Api.get("/projects/serengeti/groups/#{currentSeasonId}/subjects?limit=#{count}").deferred
-      getter.done (rawSubjects) =>
-        fetcher.resolve (@fromJSON rawSubject for rawSubject in rawSubjects)
-    else
-      fetcher.resolve []
+    randomSeasonId = (season.id for season in seasons)[Math.floor Math.random() * seasons.length]
+    getter = Api.get("/projects/serengeti/groups/#{randomSeasonId}/subjects?limit=#{count}").deferred
+    getter.done (rawSubjects) =>
+      # TODO: Skip a season when its subjects are retired.
+      fetcher.resolve (@fromJSON rawSubject for rawSubject in rawSubjects)
 
     fetcher.promise() # Resolves with all fetched subjects
 
   @fromJSON: (raw) =>
-
     subject = @create
       id: raw.id
       zooniverseId: raw.zooniverse_id

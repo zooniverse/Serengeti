@@ -13,9 +13,6 @@
   <hr />
 
   <% for {season, total, complete}, i in seasons: %>
-    <% prev = seasons[i - 1] %>
-    <% continue if prev? and (prev.complete is 0 or prev.complete / prev.total < 0.75) %>
-
     <div class="progress">
       <p><strong>Season <%= season %></strong> progress</p>
 
