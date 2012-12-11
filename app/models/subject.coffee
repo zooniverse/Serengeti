@@ -90,17 +90,24 @@ class Subject extends Model
     """
       https://www.facebook.com/sharer/sharer.php
       ?s=100
-      &p[url]=#{@talkHref()}
+      &p[url]=#{encodeURIComponent @talkHref()}
       &p[title]=#{encodeURIComponent title}
       &p[summary]=#{encodeURIComponent summary}
       &p[images][0]=#{image}
-    """
+    """.replace '\n', '', 'g'
 
   twitterHref: ->
     message = "Classifying animals in the Serengeti! #{@talkHref()} #zooniverse"
     "http://twitter.com/home?status=#{encodeURIComponent message}"
 
   pinterestHref: ->
-    "http://pinterest.com/pin/create/button/?url=#{@talkHref()}"
+    image = $("<a href='#{@location.standard[0]}'></a>").get(0).href
+    summary = 'I just classified this image on Snapshot Serengeti!'
+    """
+      http://pinterest.com/pin/create/button/
+      ?url=#{encodeURIComponent @talkHref()}
+      &media=#{encodeURIComponent image}
+      &description=#{encodeURIComponent summary}
+    """.replace '\n', '', 'g'
 
 module.exports = Subject
