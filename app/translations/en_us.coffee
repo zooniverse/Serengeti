@@ -951,6 +951,18 @@ module.exports =
           TANAPA sustainably conserves and manages park resources and their aesthetic value, for the benefit of present and future generations of mankind, as well as efficiently provide high-class tourism products and services.
         '''
 
+      oxford:
+        name: 'University of Oxford'
+        url: 'http://www.ox.ac.uk/'
+        image: 'images/about/organizations/oxford.png'
+        description: '''
+          The University of Oxford is the oldest in the English-speaking world having been founded in the 11th or 12th centuries.
+          Today, it combines research in the humanities with major effort in the natural sciences and medicine.
+          Citizen science is supported by the <a href="http://www.physics.ox.ac.uk/" target="_blank">Department of Physics</a>,
+          the <a href="http://www.mpls.ox.ac.uk/" target="_blank">Division of Mathematics, Physical and Life Sciences</a>,
+          and the <a href="http://www.oxfordmartin.ox.ac.uk/" target="_blank">Oxford Martin Schools</a>.
+        '''
+
       adler:
         name: 'Adler Planetarium'
         url: 'http://www.adlerplanetarium.org/'

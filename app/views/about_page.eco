@@ -18,13 +18,13 @@
 
 <section data-page="organizations">
   <h2><%= translate 'about.sections.organizations' %></h2>
-  <% for organization in ['umn', 'mnZoo', 'nsf', 'gpsa', 'umnGradSChool', 'explorersClub', 'asm', 'bellMuseum', 'umnCbs', 'trailCamPro', 'zgf', 'tawiri', 'tanzaniaParks', 'adler']: %>
+  <% for organization in ['umn', 'mnZoo', 'nsf', 'gpsa', 'umnGradSChool', 'explorersClub', 'asm', 'bellMuseum', 'umnCbs', 'trailCamPro', 'zgf', 'tawiri', 'tanzaniaParks', 'oxford', 'adler']: %>
     <% organization = translate 'about', 'organizations', organization %>
     <div class="member organization">
       <img data-src="<%= organization.image %>" />
       <div class="description">
-        <h3><%= organization.name %></h3>
-        <p><%= organization.description %></p>
+        <h3><a href="<%= organization.url %>" target="_blank"><%= organization.name %></a></h3>
+        <p><%- organization.description %></p>
       </div>
     </div>
   <% end %>
