@@ -84,7 +84,7 @@ class Subject extends Model
     """.replace '\n', '', 'g'
 
   talkHref: ->
-    "http://talk.snapshotserengeti.org/objects/#{@zooniverseId}"
+    "http://talk.snapshotserengeti.org/subjects/#{@zooniverseId}"
 
   facebookHref: ->
     title = 'Snapshot Serengeti'

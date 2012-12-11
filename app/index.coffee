@@ -17,10 +17,6 @@ googleAnalytics = require 'zooniverse/lib/google_analytics'
 ContentPage = require 'controllers/content_page'
 feedbackContent = require 'views/feedback_page'
 
-# Temporarily disable Talk links
-$(document).on 'click', 'a[href*="talk"]', (e) ->
-  e.preventDefault(); alert 'Talk is currently unavailable. Sorry!'
-
 googleAnalytics.init
   account: 'UA-1224199-36'
   domain: 'snapshotserengeti.org'
