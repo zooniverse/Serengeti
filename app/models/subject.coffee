@@ -97,7 +97,7 @@ class Subject extends Model
     """.replace '\n', '', 'g'
 
   twitterHref: ->
-    message = "Classifying animals in the Serengeti! #{@talkHref()} #zooniverse"
+    message = "Classifying animals in the Serengeti! #{@talkHref()} via @snapserengeti"
     "http://twitter.com/home?status=#{encodeURIComponent message}"
 
   pinterestHref: ->
