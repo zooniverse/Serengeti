@@ -170,8 +170,8 @@ module.exports =
 
     splits:
       social: 'Good job! You and ### other Zooniverse volunteers have contributed to Snapshot Serengeti.'
-      task: 'Good job! You just successfully finished classifying an image taken in Serengeti National Park.'
-      science: 'Good job! Your work is directly helping scientists understand how competing animal species coexist in the Serengeti.'
+      task: 'Good job! The image you successfully classified was taken by one of over 200 motion triggered cameras set-up around Serengeti National Park.'
+      science: 'Good job! Our science team needs your classifications to understand how different animals coexist in the Serengeti.'
 
   animals:
     aardvark:

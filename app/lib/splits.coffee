@@ -10,7 +10,7 @@ science = -> translate 'classify.splits.science'
 
 countClassifications = ->
   return 0 unless User.current?
-  count = User.current?.classification_count
+  count = User.current?.project?.classification_count || 0
   count += Classification.sentThisSession
 
 oneClassification = -> countClassifications() is 1
