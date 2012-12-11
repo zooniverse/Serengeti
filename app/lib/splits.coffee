@@ -18,12 +18,14 @@ lessThanThreeClassifications = -> countClassifications() <= 3
 
 splits =
   classifier_messaging:
-    a: body: social,  isShown: oneClassification
-    b: body: social,  isShown: lessThanThreeClassifications
-    c: body: task,    isShown: oneClassification
-    d: body: task,    isShown: lessThanThreeClassifications
-    e: body: science, isShown: oneClassification
-    f: body: science, isShown: lessThanThreeClassifications
+    a: body: '',      isShown: oneClassification
+    b: body: '',      isShown: lessThanThreeClassifications
+    c: body: social,  isShown: oneClassification
+    d: body: social,  isShown: lessThanThreeClassifications
+    e: body: task,    isShown: oneClassification
+    f: body: task,    isShown: lessThanThreeClassifications
+    g: body: science, isShown: oneClassification
+    h: body: science, isShown: lessThanThreeClassifications
 
 get = (key) ->
   body = ''
