@@ -62,7 +62,7 @@ to_upload.each.with_index do |file, index|
   end
   
   puts "#{ '%2d' % (index + 1) } / #{ '%2d' % total }: Uploading #{ file } as #{ content_type }"
-  bucket.objects["beta/#{file}"].write file: file, acl: :public_read, content_type: content_type
+  bucket.objects["#{file}"].write file: file, acl: :public_read, content_type: content_type
 end
 
 Dir.chdir working_directory
