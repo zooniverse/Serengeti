@@ -2,7 +2,7 @@ translate = require 'lib/translate'
 Classification = require 'models/classification'
 User = require 'zooniverse/lib/models/user'
 
-userCount = -> User.current?.project.user_count or 0
+userCount = -> User.count or 0
 
 none = -> ''
 social = -> translate('classify.splits.social').replace '###', userCount()

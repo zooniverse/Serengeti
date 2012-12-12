@@ -57,6 +57,8 @@ translate.init language, ->
 
       seasons.push sortedSeasons...
 
+      User.count = project.user_count
+
       $('.before-load').remove()
       app.stack = new Stack
         className: "main #{Stack::className}"
