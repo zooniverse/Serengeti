@@ -4,6 +4,7 @@ User = require 'zooniverse/lib/models/user'
 
 userCount = -> User.current?.project.user_count or 0
 
+none = -> ''
 social = -> translate('classify.splits.social').replace '###', userCount()
 task = -> translate 'classify.splits.task'
 science = -> translate 'classify.splits.science'
@@ -18,8 +19,8 @@ lessThanThreeClassifications = -> countClassifications() <= 3
 
 splits =
   classifier_messaging:
-    a: body: '',      isShown: oneClassification
-    b: body: '',      isShown: lessThanThreeClassifications
+    a: body: none,    isShown: oneClassification
+    b: body: none,    isShown: lessThanThreeClassifications
     c: body: social,  isShown: oneClassification
     d: body: social,  isShown: lessThanThreeClassifications
     e: body: task,    isShown: oneClassification
@@ -33,7 +34,7 @@ get = (key) ->
   if User.current?.project?.splits?[key]?
     splitId = User.current.project.splits[key]
     message = splits[key][splitId]
-    body = message.body {userCount} if message.isShown()
+    body = message.body() if message.isShown()
 
   body
 
