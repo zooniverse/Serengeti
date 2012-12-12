@@ -89,8 +89,6 @@ module.exports = [
     nextOn: {} # This is handled by onEnter.
 
     onEnter: (tutorial, step) ->
-      console.log 'onEnter called', @
-
       doc = $(document)
       search = $('.animal-selector input[name="search"]')
 
