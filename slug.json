@@ -9,6 +9,7 @@
     "spine/lib/route",
     "spine/lib/manager",
 
+    "zooniverse/lib/controllers/browser_check",
     "zooniverse/lib/api",
     "zooniverse/lib/controllers/top_bar",
     "zooniverse/lib/models/user",

@@ -17,6 +17,11 @@ googleAnalytics = require 'zooniverse/lib/google_analytics'
 ContentPage = require 'controllers/content_page'
 feedbackContent = require 'views/feedback_page'
 
+BrowserCheck = require 'zooniverse/lib/controllers/browser_check'
+bc = new BrowserCheck
+bc.support.opera = 12
+bc.check()
+
 googleAnalytics.init
   account: 'UA-1224199-36'
   domain: 'snapshotserengeti.org'
