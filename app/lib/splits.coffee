@@ -15,7 +15,7 @@ countClassifications = ->
   count += Classification.sentThisSession
 
 oneClassification = -> countClassifications() is 1
-lessThanThreeClassifications = -> countClassifications() <= 3
+lessThanThreeClassifications = -> countClassifications() <= 4 # That's 3 + tutorial
 
 splits =
   classifier_messaging:
