@@ -164,7 +164,7 @@ class SubjectViewer extends Controller
     @classification.annotate {nothing}, true
 
   onClickFinish: ->
-    message = splits.get 'classifier_messaging'
+    message = splits.get 'classifier_messaging' unless @classification.subject.metadata.tutorial
     @extraMessageContainer.html message
     @extraMessageContainer.hide() unless message
 
