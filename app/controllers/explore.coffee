@@ -8,24 +8,25 @@ L = require 'zooniverse/vendor/leaflet/leaflet-src'
 moment = require('moment/moment')
 animals = require('lib/animals')
 
+
 class Explore extends Controller
   className: 'explore'
   
   dateGranularity: 10
-  cartoTable: 'serengeti_random'
+  cartoTable: 'serengeti'
   layers: []
   styles: ['#d32323', '#525b46']
-  dateFmt: 'DD MMM YYYY, hh:mm A'
+  dateFmt: 'DD MMM YYYY'
   
   maxCache: 10
   cache: []
   
   events:
-    'change select.filter'      : 'onSpeciesSelect'
     'click input[name="scope"]' : 'setUserScope'
-    'click button.species'      : 'onPickSpecies'
+    'click button.species'      : 'showAnimalMenu'
+    'click div[data-animal]'    : 'setSpecies'
     'mouseleave .animals'       : 'hideAnimalMenu'
-    'click div[data-animal]'    : 'onSpeciesSelect'
+    'change .legend input'      : 'toggleLayer'
   
   elements:
     '.sign-in'    : 'signInContainer'
@@ -59,33 +60,121 @@ class Explore extends Controller
       centerOffset: [0, 0]
       zoom: 11
       className: 'full-screen'
+    
+    # Set bounds for the map
+    southWest = new L.LatLng(-3, 34)
+    northEast = new L.LatLng(-2, 36)
+    bounds = new L.LatLngBounds(southWest, northEast)
+    @map.map.setMaxBounds(bounds)
     @map.el.appendTo @el.find('.map-container')
+    
+    # Create a custom layer
+    @terrainLayer = L.tileLayer("/tiles/{z}/{x}/{y}.png",
+      minZoom: 7
+      maxZoom: 12
+      attribution: 'Natural Earth (http://www.naturalearthdata.com/)'
+      noWrap: true
+    )
+    @terrainLayer.addTo @map.map
     
     # Append div for showing date range
     @el.find('.map-container .map').prepend("<div class='dates'></div>")
     @dateEl = @el.find('.map-container .map .dates')
     
+    # Create legend
+    @el.find('.map-container .map').prepend("<div class='legend'></div>")
+    @legendEl = @el.find('.map-container .map .legend')
+    @legendEl.append("<span class='animal-name' data-index='1'></span><input type='checkbox' checked='true' id='layer1' data-index='1' /><label for='layer1'></label><br/>")
+    @legendEl.append("<span class='animal-name' data-index='2'></span><input type='checkbox' checked='true' id='layer2' data-index='2' /><label for='layer2'></label>")
+    
+    # Set date range
+    @startDate  = moment('01 Jul 2010, 00:00 PM+02:00')
+    endDate     = moment('01 Apr 2012, 00:00 PM+02:00')
+    @interval   = endDate.diff(@startDate) / @dateGranularity
+    
+    @initCartoDBLayer()
+    
     @navButtons.first().click()
     @onUserSignIn()
-
+  
   onUserSignIn: =>
     @el.toggleClass 'signed-in', !!User.current
+    @my.removeAttr('disabled')  # enable 'My Classifications'
+  
+  initCartoDBLayer: =>
+    query1 = "WITH hgrid AS (SELECT CDB_HexagonGrid(ST_Expand(CDB_XYZ_Extent({x},{y},{z}),CDB_XYZ_Resolution({z}) * 15),CDB_XYZ_Resolution({z}) * 15 ) as cell) SELECT hgrid.cell as the_geom_webmercator, avg(i.how_many) as prop_count FROM hgrid, serengeti i WHERE i.species = 'zebra' AND ST_Intersects(i.the_geom_webmercator, hgrid.cell) GROUP BY hgrid.cell"
+    query2 = "WITH hgrid AS (SELECT CDB_HexagonGrid(ST_Expand(CDB_XYZ_Extent({x},{y},{z}),CDB_XYZ_Resolution({z}) * 15),CDB_XYZ_Resolution({z}) * 15 ) as cell) SELECT hgrid.cell as the_geom_webmercator, avg(i.how_many) as prop_count FROM hgrid, serengeti i WHERE i.species = 'lionFemale' AND ST_Intersects(i.the_geom_webmercator, hgrid.cell) GROUP BY hgrid.cell"
     
-    # Enable 'My Classifications'
-    @my.removeAttr('disabled')
-    if User.current
-      @requestDateRange()
-      # @requestSpecies(0, 1)
+    style1 = '''
+      #serengeti {
+        polygon-opacity:0.6;
+        line-color: #FFF;
+        line-opacity: 0.7;
+        line-width: 1;
+        [prop_count < 1.5] {polygon-fill:#FFF7F3;}
+        [prop_count < 2.0] {polygon-fill:#FDE0DD;}
+        [prop_count < 2.5] {polygon-fill:#FCC5C0;}
+        [prop_count < 3.0] {polygon-fill:#FA9FB5;}
+        [prop_count < 3.5] {polygon-fill:#F768A1;}
+        [prop_count < 4.0] {polygon-fill:#DD3497;}
+        [prop_count < 4.5] {polygon-fill:#AE017E;}
+        [prop_count < 5.0] {polygon-fill:#7A0177;}
+        [prop_count > 5.0] {polygon-fill:#49006A;}
+      }
+    '''
+    
+    style2 = '''
+      #serengeti {
+        polygon-opacity:0.4;
+        line-color: #FFF;
+        line-opacity: 0.7;
+        line-width: 1;
+        [prop_count<1.5] {polygon-fill:#F0F9E8;}
+        [prop_count<3.0] {polygon-fill:#BAE4BC;}
+        [prop_count<4.5] {polygon-fill:#7BCCC4;}
+        [prop_count<6.0] {polygon-fill:#43A2CA;}
+        [prop_count>6.0] {polygon-fill:#0868AC;}
+      }
+    '''
+    
+    @cartoLayer1 = new L.CartoDBLayer({
+      map: @map.map
+      user_name: 'the-zooniverse'
+      table_name: @cartoTable
+      infowindow: false
+      tile_style: style1
+      query: query1
+      interactivity: false
+      auto_bound: false
+      debug: false
+    })
+    @cartoLayer2 = new L.CartoDBLayer({
+      map: @map.map
+      user_name: 'the-zooniverse'
+      table_name: @cartoTable
+      infowindow: false
+      tile_style: style2
+      query: query2
+      interactivity: false
+      auto_bound: false
+      debug: false
+    })
+    @map.map.addLayer(@cartoLayer1)
+    @map.map.addLayer(@cartoLayer2)
   
-  setUserScope: (e) ->
-    @requestDateRange()
-    @onSpeciesSelect()
+  setUserScope: -> @setSpecies()
   
-  onPickSpecies: (e) =>
-    @speciesIndex = e.target.dataset.index
+  toggleLayer: (e) =>
+    index = e.target.dataset.index
+    if @el.find("#layer#{index}:checked").length is 0
+      @["cartoLayer#{index}"].hide()
+    else
+      @["cartoLayer#{index}"].show()
+  
+  showAnimalMenu: (e) =>
+    index = e.target.dataset.index
+    @animalMenu.attr('data-index', index)
     @animalMenu.addClass('active')
-    position = if @speciesIndex is '1' then 'left' else 'right'
-    @animalMenu.attr('data-position', position)
   
   hideAnimalMenu: =>
     @animalMenu.removeClass('active')
@@ -95,24 +184,34 @@ class Explore extends Controller
     value = ui.value
     @requestSpecies(value, value + 1)
   
-  onSpeciesSelect: (e) =>
+  setSpecies: (e) =>
     if e?
-      species = e.target.innerText
-      @["species#{@speciesIndex}"] = e.target.dataset.animal or ''
-      # Swap text in button
-      $("button.species[data-index='#{@speciesIndex}']").text(species)
+      console.log "animal = ", e.target.dataset.animal or e.target.parentElement.dataset.animal
+      
       @hideAnimalMenu()
-    
+      
+      target = e.target
+      species = e.target.innerText
+      index = target.parentElement.dataset.index or target.parentElement.parentElement.dataset.index
+      
+      @["species#{index}"] = target.dataset.animal or target.parentElement.dataset.animal
+      
+      # Swap text in button
+      $("button.species[data-index='#{index}']").text(species)
+      $("span.animal-name[data-index='#{index}']").text(species)
+      @el.find('.legend').css('opacity', 1)
+      
     value = @dateSlider.slider('option', 'value')
-    @requestSpecies(value, value + 1)
+    @updateCartoQuery(index, @["species#{index}"], value)
   
   updateDateRange: =>
     n = @dateSlider.slider('option', 'value')
     start = @startDate.clone().add('ms', n * @interval).format(@dateFmt)
     end = @startDate.clone().add('ms', (n + 1) * @interval).format(@dateFmt)
-    $('.map-container .map .dates').html("#{start} &mdash; #{end} (East Africa Time)")
+    $('.map-container .map .dates').html("#{start} &mdash; #{end}")
   
   getQueryUrl: (query) ->
+    console.log query
     url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}"
     return url.replace(/\+/g, '%2B')  # Must manually escape plus character (maybe others too)
   
@@ -150,41 +249,32 @@ class Explore extends Controller
   # Methods for querying CartoDB
   #
   
-  # Request the minimum and maximum dates of image capture
-  requestDateRange: =>
-    query = "SELECT MIN(captured_at), MAX(captured_at) FROM #{@cartoTable}"
-    if $('input[name="scope"]:checked').val() is 'my'
-      query += " WHERE user_id = '#{User.current.id}'"
+  updateCartoQuery: (index, species, startTimeIndex) =>
+    query = "WITH hgrid AS (SELECT CDB_HexagonGrid(ST_Expand(CDB_XYZ_Extent({x},{y},{z}),CDB_XYZ_Resolution({z}) * 15),CDB_XYZ_Resolution({z}) * 15 ) as cell) SELECT hgrid.cell as the_geom_webmercator, avg(i.how_many) as prop_count FROM hgrid, serengeti i WHERE i.species = '#{species}' AND ST_Intersects(i.the_geom_webmercator, hgrid.cell) GROUP BY hgrid.cell"
     
-    url = @getQueryUrl(query)
-    $.ajax({url: url, beforeSend: @ajaxStart})
-      .done(@getDateRange)
-      .then(@ajaxStop)
-      # .then(@requestSpecies)
-      .fail( (e) -> alert 'Sorry, the query failed')
+    @["cartoLayer#{index}"].setQuery(query)
   
   # Request species counts for all sites between a date interval
-  requestSpecies: =>
+  requestSpecies: (n1, n2) =>
     start = @startDate.clone()
     end   = @startDate.clone()
     
     # Get start and end date and update ui
-    n = @dateSlider.slider('option', 'value')
-    start = @startDate.clone().add('ms', n * @interval).format(@dateFmt)
-    end = @startDate.clone().add('ms', (n + 1) * @interval).format(@dateFmt)
-    $('.map-container .map .dates').html("#{start} &mdash; #{end} (East Africa Time)")
+    start = @startDate.clone().add('ms', n1 * @interval).format(@dateFmt)
+    end = @startDate.clone().add('ms', n2 * @interval).format(@dateFmt)
+    $('.map-container .map .dates').html("#{start} &mdash; #{end}")
     
     query = """
-      SELECT ST_AsGeoJSON(the_geom) as the_geom, species, AVG(how_many), site_roll_code
-      FROM serengeti_random
+      SELECT cartodb_id, ST_AsGeoJSON(the_geom_webmercator) as the_geom_webmercator, species, AVG(how_many), site_roll_code
+      FROM #{@cartoTable}
       WHERE (species = '#{@species1}' OR species = '#{@species2}')
       """
     if $('input[name="scope"]:checked').val() is 'my'
       query += " AND (user_id = '#{User.current.id}') "
     query +=
       """
-      AND (captured_at BETWEEN '#{start}+02:00' AND '#{end}+02:00')
-      GROUP BY the_geom, species, site_roll_code
+       AND (captured_at BETWEEN '#{start}+02:00' AND '#{end}+02:00')
+      GROUP BY the_geom_webmercator, species, site_roll_code
       """
     
     url = @getQueryUrl(query)
@@ -211,18 +301,6 @@ class Explore extends Controller
   # Methods for receiving query results from CartoDB
   #
   
-  getDateRange: (response) =>
-    result = response.rows[0]
-    
-    @startDate  = moment(result.min)
-    endDate     = moment(result.max)
-    @interval   = endDate.diff(@startDate) / @dateGranularity
-    
-    n = @dateSlider.slider('option', 'value')
-    start = @startDate.clone().add('ms', n * @interval).format(@dateFmt)
-    end = @startDate.clone().add('ms', (n + 1) * @interval).format(@dateFmt)
-    $('.map-container .map .dates').html("#{start} &mdash; #{end} (East Africa Time)")
-  
   getSpecies: (rows) =>
     
     cross = crossfilter(rows)
@@ -240,39 +318,26 @@ class Explore extends Controller
     @layers = []
     
     for species, index in [species1, species2]
+      # heatmap = []
       for row in species
         avg = row.avg
         [lng, lat] = row.the_geom.coordinates
+        # heatmap.push {lat: lat, lon: lng, value: avg}
         
         # Create two circles over each other
-        outerCircle = L.circle([lat, lng], 200 * avg, {
+        circle = L.circle([lat, lng], @getRadius(avg), {
           fillColor: @styles[index]
-          fillOpacity: 0.01 * Math.exp(avg / 4)
-          stroke: false
+          fillOpacity: @getOpacity(avg)
+          color: @styles[index]
+          stroke: true
+          opacity: 0.7
+          weight: 0
         })
-        # innerCircle = L.circle([lat, lng], 100 * avg, {
-        #   fillColor: @styles[index]
-        #   fillOpacity: 0.25
-        #   stroke: false
-        # })
         
-        @layers.push outerCircle
-        # @layers.push innerCircle
-        @map.map.addLayer(outerCircle)
-        # @map.map.addLayer(innerCircle)
-        
-    # for species, index in [species1, species2]
-    #   for row in species
-    #     avg = row.avg
-    #     [lng, lat] = row.the_geom.coordinates
-    #     
-    #     circle = L.circle([lat, lng], 10 * avg, {
-    #         color: @styles[index]
-    #         fillColor: @styles[index],
-    #         fillOpacity: 0.5
-    #     })
-    #     @layers.push circle
-    #     @map.map.addLayer(circle)
-
-
+        @layers.push circle
+        @map.map.addLayer(circle)
+    
+  getRadius: (x) -> return 1600 * (-1 + 2 / (1 + Math.exp(-2 * 0.25 * x)))
+  getOpacity: (x) -> return 0.5 * (-1 + 2 / (1 + Math.exp(-2 * x)))
+  
 module.exports = Explore
