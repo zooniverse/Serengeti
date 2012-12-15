@@ -40,10 +40,9 @@ class Subject extends Model
   @fetch: (count) =>
     fetcher = new $.Deferred
 
-    randomSeasonId = (season.id for season in seasons)[Math.floor Math.random() * seasons.length]
-    getter = Api.get("/projects/serengeti/groups/#{randomSeasonId}/subjects?limit=#{count}").deferred
+    # Grab subjects randomly.
+    getter = Api.get("/projects/serengeti/groups/subjects?limit=#{count}").deferred
     getter.done (rawSubjects) =>
-      # TODO: Skip a season when its subjects are retired.
       fetcher.resolve (@fromJSON rawSubject for rawSubject in rawSubjects)
 
     fetcher.promise() # Resolves with all fetched subjects
