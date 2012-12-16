@@ -5,7 +5,7 @@ module.exports = ->
     id: 'EMPTY_SUBJECT'
 
     location: standard: [
-      '//placehold.it/570x400.png&text=No more subjects!' # TODO
+      'images/no-more-subjects.jpg'
     ]
 
     coords: [2.3308, 34.8333]
