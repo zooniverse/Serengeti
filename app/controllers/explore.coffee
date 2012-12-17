@@ -12,13 +12,13 @@ animals = require('lib/animals')
 class Explore extends Controller
   className: 'explore'
   
-  dateGranularity: 10
+  dateGranularity: 100
   cartoTable: 'serengeti'
   layers: []
-  styles: ['#d32323', '#525b46']
+  styles: ['#D32323', '#525B46']
   dateFmt: 'DD MMM YYYY'
   
-  maxCache: 10
+  maxCache: 100
   cache: []
   
   events:
@@ -45,8 +45,26 @@ class Explore extends Controller
     
     # Set default state for user scope buttons
     User.bind 'sign-in', @onUserSignIn
-
-    # Set up slider and map
+    
+    # Set date range
+    @startDate  = moment('01 Jun 2010, 00:00 PM+02:00')
+    endDate     = moment('01 Jan 2012, 00:00 PM+02:00')
+    @interval   = endDate.diff(@startDate) / @dateGranularity
+    
+    # Important to set empty strings for species
+    @species1 = @species2 = ''
+    
+    @initUI()
+    # @initCartoDBLayer()
+    
+    @navButtons.first().click()
+    @onUserSignIn()
+  
+  onUserSignIn: =>
+    @el.toggleClass 'signed-in', !!User.current
+    @my.removeAttr('disabled')  # enable 'My Classifications'
+  
+  initUI: =>
     @dateSlider.slider({
       min: 0
       max: @dateGranularity - 1
@@ -77,6 +95,13 @@ class Explore extends Controller
     )
     @terrainLayer.addTo @map.map
     
+    # Containers for plot points
+    @markerLayer1 = new L.LayerGroup()
+    @markerLayer2 = new L.LayerGroup()
+    
+    @markerLayer1.addTo(@map.map)
+    @markerLayer2.addTo(@map.map)
+    
     # Append div for showing date range
     @el.find('.map-container .map').prepend("<div class='dates'></div>")
     @dateEl = @el.find('.map-container .map .dates')
@@ -86,20 +111,6 @@ class Explore extends Controller
     @legendEl = @el.find('.map-container .map .legend')
     @legendEl.append("<span class='animal-name' data-index='1'></span><input type='checkbox' checked='true' id='layer1' data-index='1' /><label for='layer1'></label><br/>")
     @legendEl.append("<span class='animal-name' data-index='2'></span><input type='checkbox' checked='true' id='layer2' data-index='2' /><label for='layer2'></label>")
-    
-    # Set date range
-    @startDate  = moment('01 Jul 2010, 00:00 PM+02:00')
-    endDate     = moment('01 Apr 2012, 00:00 PM+02:00')
-    @interval   = endDate.diff(@startDate) / @dateGranularity
-    
-    @initCartoDBLayer()
-    
-    @navButtons.first().click()
-    @onUserSignIn()
-  
-  onUserSignIn: =>
-    @el.toggleClass 'signed-in', !!User.current
-    @my.removeAttr('disabled')  # enable 'My Classifications'
   
   initCartoDBLayer: =>
     query1 = "WITH hgrid AS (SELECT CDB_HexagonGrid(ST_Expand(CDB_XYZ_Extent({x},{y},{z}),CDB_XYZ_Resolution({z}) * 15),CDB_XYZ_Resolution({z}) * 15 ) as cell) SELECT hgrid.cell as the_geom_webmercator, avg(i.how_many) as prop_count FROM hgrid, serengeti i WHERE i.species = 'zebra' AND ST_Intersects(i.the_geom_webmercator, hgrid.cell) GROUP BY hgrid.cell"
@@ -165,11 +176,13 @@ class Explore extends Controller
   setUserScope: -> @setSpecies()
   
   toggleLayer: (e) =>
-    index = e.target.dataset.index
-    if @el.find("#layer#{index}:checked").length is 0
-      @["cartoLayer#{index}"].hide()
-    else
-      @["cartoLayer#{index}"].show()
+    index = e.target?.dataset.index or e
+    fill = @styles[index - 1]
+    items = @el[0].querySelectorAll("svg g path[fill='#{fill}']")
+    state = if @el.find("#layer#{index}:checked").length is 0 then 'none' else 'block'
+    
+    for item in items
+      item.style.display = state
   
   showAnimalMenu: (e) =>
     index = e.target.dataset.index
@@ -186,8 +199,6 @@ class Explore extends Controller
   
   setSpecies: (e) =>
     if e?
-      console.log "animal = ", e.target.dataset.animal or e.target.parentElement.dataset.animal
-      
       @hideAnimalMenu()
       
       target = e.target
@@ -202,7 +213,8 @@ class Explore extends Controller
       @el.find('.legend').css('opacity', 1)
       
     value = @dateSlider.slider('option', 'value')
-    @updateCartoQuery(index, @["species#{index}"], value)
+    @requestSpecies(value, value + 1)
+    # @updateCartoQuery(index, @["species#{index}"], value)
   
   updateDateRange: =>
     n = @dateSlider.slider('option', 'value')
@@ -211,7 +223,6 @@ class Explore extends Controller
     $('.map-container .map .dates').html("#{start} &mdash; #{end}")
   
   getQueryUrl: (query) ->
-    console.log query
     url = encodeURI "http://the-zooniverse.cartodb.com/api/v2/sql?q=#{query}"
     return url.replace(/\+/g, '%2B')  # Must manually escape plus character (maybe others too)
   
@@ -265,7 +276,7 @@ class Explore extends Controller
     $('.map-container .map .dates').html("#{start} &mdash; #{end}")
     
     query = """
-      SELECT cartodb_id, ST_AsGeoJSON(the_geom_webmercator) as the_geom_webmercator, species, AVG(how_many), site_roll_code
+      SELECT ST_AsGeoJSON(the_geom) as the_geom, species, AVG(how_many)
       FROM #{@cartoTable}
       WHERE (species = '#{@species1}' OR species = '#{@species2}')
       """
@@ -274,7 +285,7 @@ class Explore extends Controller
     query +=
       """
        AND (captured_at BETWEEN '#{start}+02:00' AND '#{end}+02:00')
-      GROUP BY the_geom_webmercator, species, site_roll_code
+      GROUP BY the_geom, species
       """
     
     url = @getQueryUrl(query)
@@ -302,7 +313,6 @@ class Explore extends Controller
   #
   
   getSpecies: (rows) =>
-    
     cross = crossfilter(rows)
     dimensionOnSpecies = cross.dimension((d) -> return d.species)
     
@@ -313,31 +323,25 @@ class Explore extends Controller
     species2 = dimensionOnSpecies.top(Infinity)
     
     # Remove layers from map
-    for layer in @layers
-      @map.map.removeLayer(layer)
-    @layers = []
+    @markerLayer1.clearLayers()
+    @markerLayer2.clearLayers()
     
     for species, index in [species1, species2]
-      # heatmap = []
       for row in species
         avg = row.avg
         [lng, lat] = row.the_geom.coordinates
-        # heatmap.push {lat: lat, lon: lng, value: avg}
         
-        # Create two circles over each other
         circle = L.circle([lat, lng], @getRadius(avg), {
           fillColor: @styles[index]
           fillOpacity: @getOpacity(avg)
-          color: @styles[index]
-          stroke: true
-          opacity: 0.7
-          weight: 0
+          stroke: false
         })
         
-        @layers.push circle
-        @map.map.addLayer(circle)
+        @["markerLayer#{index + 1}"].addLayer(circle)
+      
+      @toggleLayer(index)
     
-  getRadius: (x) -> return 1600 * (-1 + 2 / (1 + Math.exp(-2 * 0.25 * x)))
-  getOpacity: (x) -> return 0.5 * (-1 + 2 / (1 + Math.exp(-2 * x)))
+  getRadius: (x) -> return 1400 * x / Math.sqrt(30 + x * x)
+  getOpacity: (x) -> return (0.7 * x / Math.sqrt(5 + x * x))
   
 module.exports = Explore
