@@ -1,4 +1,5 @@
 /* wax - 6.4.0 - v6.0.4-28-g4d63117 */
+L = require('zooniverse/vendor/leaflet/leaflet-src');
 
 !function (name, context, definition) {
   if (typeof module !== 'undefined') module.exports = definition(name, context);

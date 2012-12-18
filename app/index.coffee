@@ -73,6 +73,7 @@ translate.init language, ->
           about: AboutPage
           classify: Classifier
           profile: Profile
+          explore: Explore
           feedback: class extends ContentPage then content: feedbackContent
 
         routes:
@@ -80,7 +81,9 @@ translate.init language, ->
           '/about': 'about'
           '/classify': 'classify'
           '/profile': 'profile'
+          '/explore': 'explore'
           '/feedback': 'feedback'
+          
 
         default: 'home'
 
