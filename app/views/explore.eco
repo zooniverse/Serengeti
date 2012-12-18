@@ -1,0 +1,29 @@
+<% translate = require 'lib/translate' %>
+
+<div class="login-form"></div>
+
+<div class="controls">
+  
+  <div class='classification-buttons'>
+    <input type='radio' id='community' name='scope' value='community' checked='true' />
+    <label class='tool' for='community'>Community Classifications</label>
+    <input type='radio' id='my' name='scope' value='my' disabled='disabled'/>
+    <label class='tool' for='my'>My Classifications</label>
+  </div>
+  
+  <button class='species' data-index='1'>Pick A Species</button>
+  <button class='species' data-index='2'>Pick A Species</button>
+  
+  <div class='animals'>
+  <% for animal in @items: %>
+    <div data-animal="<%= animal.id %>">
+      <span class="label"><%= animal.label %></span>
+    </div>
+  <% end %>
+  </div>
+  
+  <div class='slider tool'></div>
+  
+</div>
+
+<div class='map-container'></div>

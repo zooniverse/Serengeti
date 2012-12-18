@@ -16,6 +16,7 @@
     "zooniverse/lib/models/recent",
     "zooniverse/lib/models/favorite",
     "zooniverse/lib/google_analytics",
+    "zooniverse/lib/map",
     "underscore/underscore",
 
     "zootorial",
@@ -23,6 +24,8 @@
   ],
 
   "libs": [
-    "node_modules/zooniverse/vendor/base64.js"
+    "node_modules/zooniverse/vendor/base64.js",
+    "public/js/vendor/crossfilter.js",
+    "public/js/vendor/reqwest.js"
   ]
 }
