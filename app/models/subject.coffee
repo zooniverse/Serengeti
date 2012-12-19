@@ -42,8 +42,12 @@ class Subject extends Model
 
     # Grab subjects randomly.
     getter = Api.get("/projects/serengeti/groups/subjects?limit=#{count}").deferred
+
     getter.done (rawSubjects) =>
       fetcher.resolve (@fromJSON rawSubject for rawSubject in rawSubjects)
+
+    getter.fail =>
+      fetcher.resolve []
 
     fetcher.promise() # Resolves with all fetched subjects
 
