@@ -32,7 +32,8 @@ class HomePage extends Controller
       recents.sort (a, b) -> a.favorited < b.favorited
 
       mostRecent = for recent, i in recents when i < 3
-        locations = recent.subjects[0].location.standard
+        locations = recent.subjects[0]?.location.standard
+        continue unless locations
         locations[Math.floor locations.length / 2]
 
       @imageChanger.setSources mostRecent

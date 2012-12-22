@@ -14,6 +14,20 @@ module.exports =
       are providing a powerful new window into the dynamics of Africa’s most elusive wildlife species.
       We need your help to classify all the different animals caught in millions of camera trap images.
     '''
+    allSeasonsComplete: '''
+      <p>With your help, we've classified all the data we have so far. Great work!</p>
+      <p>
+        We're leaving some images up for further classification, but we have more projects
+        (like <a href="https://www.zooniverse.org/project/cyclonecenter">Cyclone Center</a>
+        and <a href="https://www.zooniverse.org/project/batdetective">Bat Detective</a>) that need your help.
+        Visit <a href="https://www.zooniverse.org/">zooniverse.org</a> to see them all.
+      </p>
+      <p>
+        Keep an eye on <a href="http://blog.snapshotserengeti.org/">the blog</a>
+        to learn what happens with the data the project has generated
+        and to find out when more images from the Serengeti are available.
+      </p>
+    '''
     action: 'Start classifying'
     currentStatus: '<span class="classification-count">0</span> classifications by <span class="user-count">0</span> volunteers'
 
