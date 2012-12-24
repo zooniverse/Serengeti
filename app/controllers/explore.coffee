@@ -207,7 +207,7 @@ class Explore extends Controller
       @hideAnimalMenu()
       
       target = e.target
-      species = e.target.innerText
+      species = target.textContent or target.innerText
       index = target.parentElement.dataset.index or target.parentElement.parentElement.dataset.index
       
       @["species#{index}"] = target.dataset.animal or target.parentElement.dataset.animal
@@ -304,6 +304,7 @@ class Explore extends Controller
       do (cacheKey) =>
         $.ajax({url: url, beforeSend: @ajaxStart})
           .pipe( (response) ->
+            response = JSON.parse(response) # Need to parse the JSON for FF to work
             rows = response.rows
             rows.map((d) -> d.the_geom = JSON.parse(d.the_geom))
             return rows
