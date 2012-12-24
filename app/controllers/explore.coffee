@@ -47,8 +47,8 @@ class Explore extends Controller
     User.bind 'sign-in', @onUserSignIn
     
     # Set date range
-    @startDate  = moment('01 Jun 2010, 00:00 PM+02:00')
-    endDate     = moment('01 Jan 2012, 00:00 PM+02:00')
+    @startDate  = moment('01 Jun 2010, 00:00 PM')
+    endDate     = moment('01 Jan 2012, 00:00 PM')
     @interval   = endDate.diff(@startDate) / @dateGranularity
     
     # Important to set empty strings for species
@@ -62,8 +62,13 @@ class Explore extends Controller
   
   onUserSignIn: =>
     @el.toggleClass 'signed-in', !!User.current
-    @my.removeAttr('disabled')  # enable 'My Classifications'
-  
+    
+    if User.current
+      @my.removeAttr('disabled')
+    else
+      @community.attr('checked', 'checked')
+      @my.attr('disabled', 'disabled')
+      
   initUI: =>
     @dateSlider.slider({
       min: 0
@@ -252,7 +257,7 @@ class Explore extends Controller
   
   # Show spinner while waiting for response
   ajaxStart: ->
-    $(".map-container .map").append("<img src='images/spinner.gif' class='spinner'>")
+    $(".map-container .map").append("<img src='/images/spinner.gif' class='spinner'>")
   ajaxStop: ->
     $(".map-container .map img.spinner").remove()
   
