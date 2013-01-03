@@ -2,7 +2,7 @@
 <% seasons = require 'lib/seasons' %>
 
 <% # NOTE: This must be set manually. %>
-<% ALL_DONE = true %>
+<% ALL_DONE = false %>
 
 <div class="recents">
   <div class="image-changer"></div>
