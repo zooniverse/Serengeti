@@ -1,7 +1,6 @@
 <% translate = require 'lib/translate' %>
 <% seasons = require 'lib/seasons' %>
 
-<% # NOTE: This must be set manually. %>
 <% allSeasonsComplete = true %>
 <% (allSeasonsComplete = false if complete / total < 0.99) for {complete, total}, i in seasons %>
 
