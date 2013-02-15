@@ -1,6 +1,9 @@
 <% translate = require 'lib/translate' %>
 <% seasons = require 'lib/seasons' %>
 
+<% allSeasonsComplete = true %>
+<% (allSeasonsComplete = false if complete / total < 0.99) for {complete, total}, i in seasons %>
+
 <div class="recents">
   <div class="image-changer"></div>
 </div>
@@ -10,18 +13,24 @@
   <hr />
 
   <p><%= translate 'home.content' %></p>
-  <hr />
+  <% if not allSeasonsComplete: %><hr /><% end %>
 
-  <% for {season, total, complete}, i in seasons: %>
-    <div class="progress">
-      <p><strong>Season <%= season %></strong> progress</p>
-
-      <div class="track">
-        <div class="fill" style="width: <%= (complete / total) * 100 %>%;"></div>
-      </div>
+  <% if allSeasonsComplete: %>
+    <div class="all-seasons-complete">
+      <%- translate 'home.allSeasonsComplete' %>
     </div>
+  <% else: %>
+    <% for {season, total, complete}, i in seasons: %>
+      <div class="progress">
+        <p><strong>Season <%= season %></strong> progress</p>
+
+        <div class="track">
+          <div class="fill" style="width: <%= (complete / total) * 100 %>%;"></div>
+        </div>
+      </div>
+    <% end %>
+    <hr />
   <% end %>
-  <hr />
 
   <p class="action">
     <a href="#/classify"><%= translate 'home.action' %></a>
