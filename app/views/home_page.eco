@@ -2,7 +2,8 @@
 <% seasons = require 'lib/seasons' %>
 
 <% # NOTE: This must be set manually. %>
-<% ALL_DONE = false %>
+<% allSeasonsComplete = true %>
+<% (allSeasonsComplete = false if complete / total < 0.99) for {complete, total}, i in seasons %>
 
 <div class="recents">
   <div class="image-changer"></div>
@@ -13,9 +14,9 @@
   <hr />
 
   <p><%= translate 'home.content' %></p>
-  <% if not ALL_DONE: %><hr /><% end %>
+  <% if not allSeasonsComplete: %><hr /><% end %>
 
-  <% if ALL_DONE: %>
+  <% if allSeasonsComplete: %>
     <div class="all-seasons-complete">
       <%- translate 'home.allSeasonsComplete' %>
     </div>
