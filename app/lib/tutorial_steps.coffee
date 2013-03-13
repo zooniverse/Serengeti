@@ -39,6 +39,13 @@ module.exports = [
     attachment: x: 'right', margin: 10, to: 'button[name="characteristic"][value="like"]', at: x: 'left'
     className: 'arrow right'
 
+    onEnter: ->
+      @toHighlight = $('button[value="like"][name="characteristic"], [button[value="likeAntelopeDeer"][name="characteristic-value"]')
+      @toHighlight.css 'background-color': '#490'
+
+    onExit: ->
+      @toHighlight.css 'background-color': ''
+
   new Step
     header: inline translate 'classify.tutorial.chooseSolidHeader'
     content: inline translate 'classify.tutorial.chooseSolid'
