@@ -1,6 +1,6 @@
 FilteringSet = require 'models/filtering_set'
 Animal = require 'models/animal'
-translate = require 'lib/translate'
+translate = require 't7e'
 
 # The master list of animals is generated from this spreadsheet that the science team put together.
 # https://docs.google.com/spreadsheet/ccc?key=0AlwCBXG5ae-wdGo5b3hRcnU1RDZsYlV2YVpjMWtNU0E
@@ -72,54 +72,6 @@ animalCharacteristics = [
   {human:           [0,0,0,0,1,0,1,1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0]}
 ]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 dashedFromId = (id) ->
   id.replace /[A-Z]/g, (cap) -> "-#{cap.toLowerCase()}"
 
@@ -135,9 +87,10 @@ animals = new FilteringSet
     for id, grid of item
       animal = new Animal
         id: id
-        label: translate 'animals', id, 'label'
-        description: translate 'animals', id, 'description'
+        label: translate {span: "animals.#{id}.label"}
+        description: translate {span: "animals.#{id}.description"}
         images: imagesFromId id
+
 
       for char in characteristics
         animal[char] = (value for value, i in values when value[0...char.length] is char and grid[i] is 1)

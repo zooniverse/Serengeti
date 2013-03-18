@@ -1,6 +1,6 @@
 <% Subject = require 'models/subject' %>
 <% Favorite = require 'zooniverse/lib/models/favorite' %>
-<% translate = require 'lib/translate' %>
+<% translate = require 't7e' %>
 
 <li data-item="<%= @id %>">
   <a href="<%= Subject::talkHref.call zooniverseId: @subjects.zooniverseId || @subjects.zooniverse_id %>">

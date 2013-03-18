@@ -1,5 +1,5 @@
 {Controller} = require 'spine'
-translate = require 'lib/translate'
+translate = require 't7e'
 
 class ContentPage extends Controller
   content: ''
@@ -11,7 +11,7 @@ class ContentPage extends Controller
     super
 
     @el.append try
-      translate @content
+      translate div: @content
     catch e
       @content
 

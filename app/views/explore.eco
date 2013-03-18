@@ -1,4 +1,4 @@
-<% translate = require 'lib/translate' %>
+<% translate = require 't7e' %>
 
 <div class="login-form"></div>
 

@@ -1,4 +1,4 @@
-<% translate = require 'lib/translate' %>
+<% translate = require 't7e' %>
 
 <div class="general-filters">
   <div class="like filter-menu"></div>
@@ -22,14 +22,14 @@
     <% for animal in @set.items: %>
       <div data-animal="<%= animal.id %>" tabindex="0">
         <div class="image"><!--Space for sprite--></div>
-        <span class="label"><%= animal.label %></span>
+        <span class="label"><%- animal.label %></span>
       </div>
     <% end %>
 
     <div class="none">
       <p>
-        <%= translate 'classify.nothingToShow' %>
-        <button name="clear-filters"><%= translate 'classify.clearFilters' %></button>
+        <%- translate 'classify.nothingToShow' %>
+        <button name="clear-filters"><%- translate 'classify.clearFilters' %></button>
       </p>
     </div>
   </div>
@@ -37,5 +37,5 @@
 
 <div class="aux">
   <button name="start-tutorial">Tutorial</button>
-  <button name="clear-filters"><%= translate 'classify.clearFilters' %></button>
+  <button name="clear-filters"><%- translate 'classify.clearFilters' %></button>
 </div>

@@ -5,6 +5,8 @@
 
     "jqueryify",
 
+    "t7e",
+
     "spine",
     "spine/lib/route",
     "spine/lib/manager",

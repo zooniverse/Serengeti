@@ -1,4 +1,4 @@
 <figure>
-  <img src="<%= @model.image %>" />
-  <figcaption><%= @model.label %></figcaption>
+  <img src="<%- @model.image %>" />
+  <figcaption><%- @model.label %></figcaption>
 </figure>

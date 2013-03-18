@@ -1,13 +1,13 @@
-translate = require 'lib/translate'
+translate = require 't7e'
 Classification = require 'models/classification'
 User = require 'zooniverse/lib/models/user'
 
 userCount = -> User.count or 0
 
 none = -> ''
-social = -> translate('classify.splits.social').replace '###', userCount()
-task = -> translate 'classify.splits.task'
-science = -> translate 'classify.splits.science'
+social = -> translate({span: 'classify.splits.social'}).replace '###', userCount()
+task = -> translate {span: 'classify.splits.task'}
+science = -> translate {span: 'classify.splits.science'}
 
 countClassifications = ->
   return 0 unless User.current?

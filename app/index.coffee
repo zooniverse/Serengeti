@@ -8,7 +8,6 @@ HomePage = require 'controllers/home_page'
 Classifier = require 'controllers/classifier'
 Profile = require 'controllers/profile'
 Explore = require 'controllers/explore'
-translate = require 'lib/translate'
 Api = require 'zooniverse/lib/api'
 seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
@@ -36,70 +35,65 @@ app = {}
 User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
 
-# TODO: Clean up callback hell.
+Api.init
+  host: if !!location.href.match /demo|beta/
+    'https://dev.zooniverse.org'
+  else if +location.port < 1024
+    'https://api.zooniverse.org'
+  else
+    "#{location.protocol}//#{location.hostname}:3000"
 
-language = localStorage.language
-translate.init language, ->
-  Api.init
-    host: if !!location.href.match /demo|beta/
-      'https://dev.zooniverse.org'
-    else if +location.port < 1024
-      'https://api.zooniverse.org'
-    else
-      "#{location.protocol}//#{location.hostname}:3000"
+# TODO: Don't count on the proxy frame to have no loaded yet.
 
-  # TODO: Don't count on the proxy frame to have no loaded yet.
+Api.proxy.el().one 'load', ->
+  Api.get '/projects/serengeti', (project) ->
+    sortedSeasons = for season, {_id: id, total, complete} of project.seasons
+      total ?= 0
+      complete ?= 0
+      {season, id, total, complete}
 
-  Api.proxy.el().one 'load', ->
-    Api.get '/projects/serengeti', (project) ->
-      sortedSeasons = for season, {_id: id, total, complete} of project.seasons
-        total ?= 0
-        complete ?= 0
-        {season, id, total, complete}
+    sortedSeasons.sort (a, b) ->
+      a.season > b.season
 
-      sortedSeasons.sort (a, b) ->
-        a.season > b.season
+    seasons.push sortedSeasons...
 
-      seasons.push sortedSeasons...
+    User.count = project.user_count
 
-      User.count = project.user_count
+    $('.before-load').remove()
+    app.stack = new Stack
+      className: "main #{Stack::className}"
 
-      $('.before-load').remove()
-      app.stack = new Stack
-        className: "main #{Stack::className}"
+      controllers:
+        home: HomePage
+        about: AboutPage
+        classify: Classifier
+        profile: Profile
+        explore: Explore
+        feedback: class extends ContentPage then content: feedbackContent
 
-        controllers:
-          home: HomePage
-          about: AboutPage
-          classify: Classifier
-          profile: Profile
-          explore: Explore
-          feedback: class extends ContentPage then content: feedbackContent
+      routes:
+        '/home': 'home'
+        '/about': 'about'
+        '/classify': 'classify'
+        '/profile': 'profile'
+        '/explore': 'explore'
+        '/feedback': 'feedback'
 
-        routes:
-          '/home': 'home'
-          '/about': 'about'
-          '/classify': 'classify'
-          '/profile': 'profile'
-          '/explore': 'explore'
-          '/feedback': 'feedback'
-          
+      default: 'home'
 
-        default: 'home'
+    # Load the top bar last since it fetches the user.
+    app.topBar = new TopBar
+      app: 'serengeti'
+      appName: 'Snapshot Serengeti'
 
-      # Load the top bar last since it fetches the user.
-      app.topBar = new TopBar
-        app: 'serengeti'
-        appName: 'Snapshot Serengeti'
+    $(window).on 'request-login-dialog', ->
+      app.topBar.onClickSignUp()
+      app.topBar.loginForm.signInButton.click()
+      app.topBar.loginDialog.reattach()
 
-      $(window).on 'request-login-dialog', ->
-        app.topBar.onClickSignUp()
-        app.topBar.loginForm.signInButton.click()
-        app.topBar.loginDialog.reattach()
+    app.stack.el.appendTo 'body'
+    app.topBar.el.prependTo 'body'
 
-      app.stack.el.appendTo 'body'
-      app.topBar.el.prependTo 'body'
-
-      Route.setup()
+    Route.setup()
 
 module.exports = app

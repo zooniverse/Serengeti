@@ -1,4 +1,4 @@
-<% translate = require 'lib/translate' %>
+<% translate = require 't7e' %>
 <% seasons = require 'lib/seasons' %>
 
 <% allSeasonsComplete = true %>
@@ -9,10 +9,10 @@
 </div>
 
 <div class="introduction">
-  <h1><%= translate 'home.heading' %></h1>
+  <h1><%- translate 'home.heading' %></h1>
   <hr />
 
-  <p><%= translate 'home.content' %></p>
+  <p><%- translate 'home.content' %></p>
   <% if not allSeasonsComplete: %><hr /><% end %>
 
   <% if allSeasonsComplete: %>
@@ -33,6 +33,6 @@
   <% end %>
 
   <p class="action">
-    <a href="#/classify"><%= translate 'home.action' %></a>
+    <a href="#/classify"><%- translate 'home.action' %></a>
   </p>
 </div>

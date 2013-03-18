@@ -1,6 +1,6 @@
 characteristics = require 'lib/characteristics'
 {Model} = require 'spine'
-translate = require 'lib/translate'
+translate = require 't7e'
 
 characteristicIds = (characteristic.id for characteristic in characteristics)
 
@@ -13,7 +13,7 @@ class Animal extends Model
     setTimeout @translateLabel
 
   translateLabel: =>
-    @updateAttribute 'label', translate 'animals', @id, 'label'
+    @updateAttribute 'label', translate span: "animals.#{@id}.label"
 
   toJSON: -> @id
 
