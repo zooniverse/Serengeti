@@ -40,6 +40,8 @@ class Classification extends Model
       annotation[key] = value
       annotation
 
+    metaAnnotations.push language: $(document.body.parentNode).attr 'data-language'
+
     classification:
       subject_ids: [@subject.id]
       annotations: @annotations.concat metaAnnotations
