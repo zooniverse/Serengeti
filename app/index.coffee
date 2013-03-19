@@ -1,5 +1,6 @@
 require 'lib/setup'
 
+Navigation = require 'controllers/navigation'
 $ = require 'jqueryify'
 {Stack} = require 'spine/lib/manager'
 Route = require 'spine/lib/route'
@@ -25,6 +26,9 @@ bc.check()
 
 Map::tilesId = 53589
 Map::apiKey = '21a5504123984624a5e1a856fc00e238'
+
+navigation = new Navigation
+navigation.el.appendTo document.body
 
 LanguagePicker = require 'controllers/language_picker'
 
