@@ -9,8 +9,8 @@
 </div>
 
 <div class="content">
-  <p class="label"><%= @label %></p>
-  <p><%= @description %></p>
+  <p class="label"><%- @label %></p>
+  <p><%- @description %></p>
 
   <% differences = try translate "differences.#{@id}" %>
   <% if differences?: %>
@@ -18,9 +18,9 @@
       <% for animalId of differences: %>
         <% animal = try Animal.find animalId %>
         <% if animal: %>
-          <button name="confusion" data-popup=".<%= animal.id %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%= animal.label %></button>
+          <button name="confusion" data-popup=".<%- animal.id %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%- animal.label %></button>
         <% else: %>
-          <button name="confusion" data-popup=".<%= animalId.replace /\s/g, '' %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%= animalId %></button>
+          <button name="confusion" data-popup=".<%- animalId.replace /\s/g, '' %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%- animalId %></button>
         <% end %>
       <% end %>
     </p>
@@ -31,8 +31,8 @@
         <% if animal: %>
           <div class="image"></div>
           <div class="description">
-            <p class="label"><%= animal.label %></p>
-            <p><%= difference %></p>
+            <p class="label"><%- animal.label %></p>
+            <p><%- difference %></p>
           </div>
         <% else: %>
           <%- difference %>
@@ -44,7 +44,7 @@
 
 <div class="options">
   <div class="count group">
-    <span class="title"><%- translate 'classify.count' %>:</span>
+    <span class="title"><%- translate span: 'classify.count' %>:</span>
     <% countKeys = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, '-', '='] %>
     <% for count, i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, '11-50', '51+']: %>
       <label>
@@ -55,12 +55,12 @@
   </div>
 
   <div class="behavior group">
-    <span class="title"><%- translate 'classify.behavior' %>:</span>
+    <span class="title"><%- translate span: 'classify.behavior' %>:</span>
     <% behaviorKeys = ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'] %>
     <% for behavior, i in ['standing', 'resting', 'moving', 'eating', 'interacting']: %>
       <label>
         <input type="checkbox" name="behavior" value="<%= behavior %>" data-shortcut="<%= behaviorKeys[i] %>" />
-        <span class="label" title="[<%= behaviorKeys[i] %>]"><%- translate "classify.behaviors.#{behavior}" %></span>
+        <span class="label" title="[<%= behaviorKeys[i] %>]"><%- translate span: "classify.behaviors.#{behavior}" %></span>
       </label>
     <% end %>
   </div>
@@ -68,12 +68,12 @@
   <div class="babies group">
     <label title="[Y]">
       <input type="checkbox" name="babies" data-shortcut="Y" />
-      <span class="label"><%- translate 'classify.babies' %></span>
+      <span class="label"><%- translate span: 'classify.babies' %></span>
     </label>
   </div>
 </div>
 
 <div class="action">
-  <label><button name="cancel" data-shortcut="ESC" title="[ESC]"><%- translate 'classify.cancel' %></button></label>
-  <label><button name="identify" disabled="disabled" data-shortcut="ENTER" title="[ENTER]"><%- translate 'classify.identify' %></button></label>
+  <label><button name="cancel" data-shortcut="ESC" title="[ESC]"><%- translate span: 'classify.cancel' %></button></label>
+  <label><button name="identify" disabled="disabled" data-shortcut="ENTER" title="[ENTER]"><%- translate span: 'classify.identify' %></button></label>
 </div>

@@ -3,9 +3,13 @@
 <% translate = require 't7e' %>
 
 <li data-item="<%= @id %>">
-  <a href="<%= Subject::talkHref.call zooniverseId: @subjects.zooniverseId || @subjects.zooniverse_id %>">
-    <figure><img src="<%= @subjects.location?.standard[0] %>" /></figure>
-  </a>
+  <% if @subjects?: %>
+    <a href="<%= Subject::talkHref.call zooniverseId: @subjects.zooniverseId || @subjects.zooniverse_id %>">
+      <figure><img src="<%= @subjects.location?.standard[0] %>" /></figure>
+    </a>
+  <% else: %>
+    <strong>Error</strong>
+  <% end %>
 
   <% if @ instanceof Favorite: %>
     <button name="delete" value="<%= @id %>">&times;</button>

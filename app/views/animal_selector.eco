@@ -28,8 +28,8 @@
 
     <div class="none">
       <p>
-        <%- translate 'classify.nothingToShow' %>
-        <button name="clear-filters"><%- translate 'classify.clearFilters' %></button>
+        <%- translate span: 'classify.nothingToShow' %>
+        <button name="clear-filters"><%- translate span: 'classify.clearFilters' %></button>
       </p>
     </div>
   </div>
@@ -37,5 +37,5 @@
 
 <div class="aux">
   <button name="start-tutorial">Tutorial</button>
-  <button name="clear-filters"><%- translate 'classify.clearFilters' %></button>
+  <button name="clear-filters"><%- translate span: 'classify.clearFilters' %></button>
 </div>

@@ -21,7 +21,7 @@ class LanguagePicker
 
     for language, code of @languages
       option = $("<option value='#{code}'>#{language}</option>")
-      option.attr 'selected', true if language is preferredLanguage
+      option.attr 'selected', 'selected' if code is preferredLanguage
       @el.append option
 
     @el.on 'change', => @onChange arguments...
@@ -30,6 +30,7 @@ class LanguagePicker
 
   onChange: ->
     preferredLanguage = @el.val()
+    localStorage.preferredLanguage = preferredLanguage
 
     if preferredLanguage is DEFAULT
       translate.load enUs

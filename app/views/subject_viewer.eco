@@ -22,19 +22,19 @@
   <div class="extra-message"></div>
 
   <span class="sign-in">
-    <button name="sign-in"><%- translate 'classify.notSignedIn' %></button>
+    <button name="sign-in"><%- translate span: 'classify.notSignedIn' %></button>
   </span>
 
   <span class="favorite">
-    <button name="favorite" title="<%- translate 'classify.favorite' %> [F]" data-shortcut="F"><i rel="heart-empty"><%- translate 'classify.favorite' %></i></button>
-    <button name="unfavorite" title="<%- translate 'classify.unfavorite' %> [F]" data-shortcut="F"><i rel="heart"><%- translate 'classify.unfavorite' %></i></button>
+    <button name="favorite" title="<%- translate 'classify.favorite' %> [F]" data-shortcut="F"><i rel="heart-empty"><%- translate span: 'classify.favorite' %></i></button>
+    <button name="unfavorite" title="<%- translate 'classify.unfavorite' %> [F]" data-shortcut="F"><i rel="heart"><%- translate span: 'classify.unfavorite' %></i></button>
   </span>
 </div>
 
 <div class="controls">
   <span class="play group">
-    <button name="play" title="<%- translate 'classify.play' %> [SPACE]" data-shortcut="SPACE"><i rel="play"><%- translate 'classify.play' %></i></button>
-    <button name="pause" title="<%- translate 'classify.pause' %> [SPACE]" data-shortcut="SPACE"><i rel="stop"><%- translate 'classify.pause' %></i></button>
+    <button name="play" title="<%- translate 'classify.play' %> [SPACE]" data-shortcut="SPACE"><i rel="play"><%- translate span: 'classify.play' %></i></button>
+    <button name="pause" title="<%- translate 'classify.pause' %> [SPACE]" data-shortcut="SPACE"><i rel="stop"><%- translate span: 'classify.pause' %></i></button>
   </span>
 
   <span class="toggles group">
@@ -44,30 +44,30 @@
   </span>
 
   <span class="satellite group">
-    <button name="satellite" title="<%- translate 'classify.satellite' %> [M]" data-shortcut="M"><i rel="location"><%- translate 'classify.satellite' %></i></button>
+    <button name="satellite" title="<%- translate 'classify.satellite' %> [M]" data-shortcut="M"><i rel="location"><%- translate span: 'classify.satellite' %></i></button>
   </span>
 
   <span class="finished group">
     <label class="nothing-label" title="[X]">
       <input type="checkbox" name="nothing" data-shortcut="X" />
-      <span><%- translate 'classify.nothingLabel' %></span>
+      <%- translate span: 'classify.nothingLabel' %>
     </label>
 
     <label>
-      <button name="finish"><%- translate 'classify.nextSubjectButton' %></button>
+      <button name="finish"><%- translate span: 'classify.nextSubjectButton' %></button>
     </label>
   </span>
 </div>
 
 <div class="followup">
   <span class="social group">
-    <a href="<%= @subject.facebookHref() %>" target="_blank"><i rel="facebook">Facebook</i> <%- translate 'classify.share' %></a>
-    <a href="<%= @subject.twitterHref() %>" target="_blank"><i rel="twitter">Twitter</i><%- translate 'classify.tweet' %></a>
-    <a href="<%= @subject.pinterestHref() %>" target="_blank"><i rel="pin">Pinterest</i><%- translate 'classify.pin' %></a>
+    <a href="<%= @subject.facebookHref() %>" target="_blank"><i rel="facebook">Facebook</i><%- translate span: 'classify.share' %></a>
+    <a href="<%= @subject.twitterHref() %>" target="_blank"><i rel="twitter">Twitter</i><%- translate span: 'classify.tweet' %></a>
+    <a href="<%= @subject.pinterestHref() %>" target="_blank"><i rel="pin">Pinterest</i><%- translate span: 'classify.pin' %></a>
   </span>
 
   <span class="continue group">
-    <a href="<%= @subject.talkHref() %>"><i rel="chat">Talk</i> <%- translate 'classify.discuss' %></a>
-    <button name="next" data-shortcut="ENTER"><i rel="camera"></i> <%- translate 'classify.next' %></button>
+    <a href="<%= @subject.talkHref() %>"><i rel="chat">Talk</i> <%- translate span: 'classify.discuss' %></a>
+    <button name="next" data-shortcut="ENTER"><i rel="camera"></i> <%- translate span: 'classify.next' %></button>
   </span>
 </div>
