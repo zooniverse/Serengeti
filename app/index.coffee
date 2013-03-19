@@ -26,6 +26,11 @@ bc.check()
 Map::tilesId = 53589
 Map::apiKey = '21a5504123984624a5e1a856fc00e238'
 
+LanguagePicker = require 'controllers/language_picker'
+
+languagePicker = new LanguagePicker
+languagePicker.el.appendTo document.body
+
 googleAnalytics.init
   account: 'UA-1224199-36'
   domain: 'snapshotserengeti.org'

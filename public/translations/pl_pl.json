@@ -9,10 +9,10 @@
   },
   "home": {
     "heading": "Witaj w Snapshot Serengeti",
-    "content": "Setki ukrytych kamer rozmieszczonych w Parku Narodowym Serengeti w Tanzanii\nzapewniają wgląd w dynamikę najbardziej nieuchwytnych\ndzikich gatunków zwierząt w Afryce.\nPotrzebujemy Twojej pomocy w klasyfikowaniu różnych zwierząt uchwyconych\nna milionach zdjęć z ukrytych kamer."
+    "content": "Setki ukrytych kamer rozmieszczonych w Parku Narodowym Serengeti w Tanzanii\nzapewniają wgląd w dynamikę najbardziej nieuchwytnych\ndzikich gatunków zwierząt w Afryce.\nPotrzebujemy Twojej pomocy w klasyfikowaniu różnych zwierząt uchwyconych\nna milionach zdjęć z ukrytych kamer.",
+    "currentStatus": "<span class=\"classification-count\">0</span> klasyfikacji dokonało <span class=\"user-count\">0</span> ochotników",
+    "action": "Rozpocznij klasyfikowanie"
   },
-  "action": "Rozpocznij klasyfikowanie",
-  "currentStatus": "<span class=\"classification-count\">0</span> klasyfikacji dokonało <span class=\"user-count\">0</span> ochotników",
   "classify": {
     "deleteAnnotation": "Usuń",
     "notSignedIn": "Zaloguj się!",
