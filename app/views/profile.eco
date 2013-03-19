@@ -1,17 +1,17 @@
 <% translate = require 't7e' %>
 
-<div class="sign-in">
-  <p>TODO: Sign-in form</p>
-</div>
+<!-- TODO: "Load more" button titles need to be translated. -->
+
+<div class="sign-in"></div>
 
 <div class="user-profile">
   <nav>
-    <button name="turn-page" value="favorites"><%- translate 'profile.favorites' %></button>
-    <button name="turn-page" value="recents"><%- translate 'profile.recents' %></button>
+    <button name="turn-page" value="favorites"><%- translate span: 'profile.favorites' %></button>
+    <button name="turn-page" value="recents"><%- translate span: 'profile.recents' %></button>
   </nav>
 
   <div class="favorites page">
-    <p class="none"><%- translate 'profile.noFavorites' %></p>
+    <p class="none"><%- translate span: 'profile.noFavorites' %></p>
     <ul></ul>
     <hr />
 
@@ -21,7 +21,7 @@
   </div>
 
   <div class="recents page">
-    <p class="none"><%- translate 'profile.noRecents' %></p>
+    <p class="none"><%- translate span: 'profile.noRecents' %></p>
     <ul></ul>
     <hr />
 

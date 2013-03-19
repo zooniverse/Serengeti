@@ -11,7 +11,7 @@
   <%- translate div: 'about.information.sidebar', class: 'sidebar column' %>
 </section>
 
-<!-- NOTE: The static properties here could ideally be translated somehow. -->
+<!-- TODO: The static properties here could ideally be translated somehow. -->
 
 <section data-page="organizations">
   <%- translate h2: 'about.sections.organizations' %>
