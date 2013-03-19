@@ -2,8 +2,6 @@ Characteristic = require 'models/characteristic'
 Value = Characteristic.Value
 translate = require 't7e'
 
-# TODO: These should be a sprite.
-
 module.exports = [
   new Characteristic
     id: 'like'
