@@ -2,6 +2,8 @@ $ = require 'jqueryify'
 translate = require 't7e'
 enUs = require '../translations/en_us'
 
+HTML = $(document.body.parentNode)
+
 DEFAULT = '$DEFAULT'
 
 class LanguagePicker
@@ -16,6 +18,7 @@ class LanguagePicker
 
   constructor: ->
     preferredLanguage = localStorage.preferredLanguage || DEFAULT
+    HTML.attr 'data-language', preferredLanguage
 
     @el = $("<select class='#{@className}'></select>")
 
@@ -30,6 +33,8 @@ class LanguagePicker
 
   onChange: ->
     preferredLanguage = @el.val()
+    HTML.attr 'data-language', preferredLanguage
+
     localStorage.preferredLanguage = preferredLanguage
 
     if preferredLanguage is DEFAULT
