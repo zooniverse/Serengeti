@@ -9,8 +9,8 @@
 </div>
 
 <div class="content">
-  <p class="label"><%- @label %></p>
-  <p><%- @description %></p>
+  <p class="label"><%- translate span: "animals.#{@id}.label" %></p>
+  <p><%- translate span: "animals.#{@id}.description" %></p>
 
   <% differences = try translate "differences.#{@id}" %>
   <% if differences?: %>
@@ -18,12 +18,14 @@
       <% for animalId of differences: %>
         <% animal = try Animal.find animalId %>
         <% if animal: %>
-          <button name="confusion" data-popup=".<%- animal.id %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%- animal.label %></button>
+          <button name="confusion" data-popup=".<%- animal.id %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%- translate span: "animals.#{animal.id}.label" %></button>
         <% else: %>
           <button name="confusion" data-popup=".<%- animalId.replace /\s/g, '' %>.confusion-popup" data-popup-position="center bottom, center top, 10"><%- animalId %></button>
         <% end %>
       <% end %>
     </p>
+
+    <!-- TODO: Differences still don't change languages right. -->
 
     <% for animalId, difference of differences: %>
       <% animal = try Animal.find animalId %>
@@ -31,8 +33,8 @@
         <% if animal: %>
           <div class="image"></div>
           <div class="description">
-            <p class="label"><%- animal.label %></p>
-            <p><%- difference %></p>
+            <p class="label"><%- translate "animals.#{animal.id}.label" %></p>
+            <p><%- translate span: "differences.#{@id}.#{animal.id}" %></p>
           </div>
         <% else: %>
           <%- difference %>

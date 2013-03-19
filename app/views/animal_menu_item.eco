@@ -1,4 +1,6 @@
+<% translate = require 't7e' %>
+
 <figure>
   <img src="<%- @model.image %>" />
-  <figcaption><%- @model.label %></figcaption>
+  <figcaption><%- translate span: "animals.#{@model.id}.label" %></figcaption>
 </figure>

@@ -12,12 +12,6 @@ class AnimalMenuItem extends Controller
 
   constructor: ->
     super
-
     @html template @
-
-    @model.bind 'change', @onModelChange
-
-  onModelChange: =>
-    @caption.html @model.label
 
 module.exports = AnimalMenuItem

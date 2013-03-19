@@ -22,7 +22,7 @@
     <% for animal in @set.items: %>
       <div data-animal="<%= animal.id %>" tabindex="0">
         <div class="image"><!--Space for sprite--></div>
-        <span class="label"><%- animal.label %></span>
+        <span class="label"><%- translate span: "animals.#{animal.id}.label" %></span>
       </div>
     <% end %>
 
