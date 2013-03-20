@@ -298,12 +298,12 @@
     "gazelleGrants": {
       "gazelleThomsons": "Gazela Thompsona ma poziome czarne pasy wzdłuż boków oraz ciemną sierść biegnącą od oczu do nosa. Jej poroże zagięte jest do góry i nieco do tyłu.",
       "impala": "Impala jest bardziej czerwonawa, z czarnymi pasami na zadzie oraz czarnymi kepkami sierści nad kopytami. Rogi ma esowato wygięte.",
-      "Zady": "<figure class=\"rump\"><img src=\"images/rumps/grantsGazelle.jpg\" /><figcaption>Gazela Granta</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/thomsonsGazelle.jpg\" /><figcaption>Gazela Thomsona</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/impala.jpg\" /><figcaption>Impala</figcaption></figure>"
+      "Rumps": "<figure class=\"rump\"><img src=\"images/rumps/grantsGazelle.jpg\" /><figcaption>Gazela Granta</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/thomsonsGazelle.jpg\" /><figcaption>Gazela Thomsona</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/impala.jpg\" /><figcaption>Impala</figcaption></figure>"
     },
     "gazelleThomsons": {
       "gazelleGrants": "Gazele Granta mają białe podbrzusze, zad i ogon; samce mają rogi, które nieznacznie rozszerzają się ku końcowi.",
       "impala": "Impala jest bardziej czerwonawa, z czarnymi pasami na zadzie oraz czarnymi kępkami sierści nad kopytami. Rogi ma esowato wygięte.",
-      "Zady": "<figure class=\"rump\"><img src=\"images/rumps/grantsGazelle.jpg\" /><figcaption>Gazela Granta</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/thomsonsGazelle.jpg\" /><figcaption>Gazela Thomsona</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/impala.jpg\" /><figcaption>Impala</figcaption></figure>"
+      "Rumps": "<figure class=\"rump\"><img src=\"images/rumps/grantsGazelle.jpg\" /><figcaption>Gazela Granta</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/thomsonsGazelle.jpg\" /><figcaption>Gazela Thomsona</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/impala.jpg\" /><figcaption>Impala</figcaption></figure>"
     },
     "genet": {
       "civet": "Cyweta bardziej przypomina szopa."
@@ -322,7 +322,7 @@
     "impala": {
       "gazelleThomsons": "Gazela Thompsona ma poziome czarne pasy wzdłuż boków oraz ciemną sierść biegnącą od oczu do nosa. Jej poroże zagięte jest do góry i nieco do tyłu.",
       "gazelleGrants": "Gazela Granta ma białe podbrzusze, zad i ogon; samce mają rogi, które nieznacznie rozszerzają się ku końcowi.",
-      "Zady": "<figure class=\"rump\"><img src=\"images/rumps/grantsGazelle.jpg\" /><figcaption>Gazela Granta</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/thomsonsGazelle.jpg\" /><figcaption>Gazela Thomsona</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/impala.jpg\" /><figcaption>Impala</figcaption></figure>"
+      "Rumps": "<figure class=\"rump\"><img src=\"images/rumps/grantsGazelle.jpg\" /><figcaption>Gazela Granta</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/thomsonsGazelle.jpg\" /><figcaption>Gazela Thomsona</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/impala.jpg\" /><figcaption>Impala</figcaption></figure>"
     },
     "mongoose": {
       "zorilla": "Zorilla przypomina bardziej skunksa niż fretkę."
