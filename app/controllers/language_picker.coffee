@@ -17,7 +17,9 @@ class LanguagePicker
   className: 'language-picker'
 
   constructor: ->
-    preferredLanguage = localStorage.preferredLanguage || DEFAULT
+    preferredLanguage = try location.search.match(/lang=([\$|\w]+)/)[1]
+    preferredLanguage ||= localStorage.preferredLanguage
+    preferredLanguage ||= DEFAULT
     HTML.attr 'data-language', preferredLanguage
 
     @el = $("<select class='#{@className}'></select>")
