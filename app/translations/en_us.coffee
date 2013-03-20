@@ -811,6 +811,8 @@ module.exports =
         </ul>
 
         <p>Images are licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</p>
+
+        <p>Help us translate this project into your language! <a href="https://github.com/zooniverse/Serengeti/tree/master/public/translations">Check out our GitHub repo to find out how.</a></p>
       '''
 
       sidebar: '''
