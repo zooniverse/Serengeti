@@ -22,19 +22,20 @@ class LanguagePicker
     preferredLanguage ||= DEFAULT
     HTML.attr 'data-language', preferredLanguage
 
-    @el = $("<select class='#{@className}'></select>")
+    @el = $("<div class='#{@className}'><select></select></div>")
+    @select = @el.find 'select'
 
     for language, code of @languages
       option = $("<option value='#{code}'>#{language}</option>")
       option.attr 'selected', 'selected' if code is preferredLanguage
-      @el.append option
+      @select.append option
 
-    @el.on 'change', => @onChange arguments...
+    @select.on 'change', => @onChange arguments...
 
-    @el.trigger 'change' unless @el.val() is DEFAULT
+    @select.trigger 'change' unless @select.val() is DEFAULT
 
   onChange: ->
-    preferredLanguage = @el.val()
+    preferredLanguage = @select.val()
     HTML.attr 'data-language', preferredLanguage
 
     localStorage.preferredLanguage = preferredLanguage

@@ -33,7 +33,7 @@ navigation.el.appendTo document.body
 LanguagePicker = require 'controllers/language_picker'
 
 languagePicker = new LanguagePicker
-languagePicker.el.appendTo document.body
+languagePicker.el.prependTo document.body
 
 googleAnalytics.init
   account: 'UA-1224199-36'
