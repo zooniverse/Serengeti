@@ -1,4 +1,4 @@
-attach = require 'zootorial/lib/attach'
+{attach} = require 'zootorial'
 $ = require 'jqueryify'
 
 class PopupButton

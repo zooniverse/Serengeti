@@ -115,8 +115,8 @@ class Classifier extends Controller
     return unless !!@classification.subject.metadata.tutorial
 
     if @el.is ':visible'
-      @tutorial.show()
+      @tutorial.dialog.open()
     else
-      @tutorial.hide()
+      @tutorial.dialog.close()
 
 module.exports = Classifier
