@@ -37,13 +37,11 @@ class Classifier extends Controller
 
     @tutorial = new Tutorial
       steps: tutorialSteps
+      parent: @el
 
     Subject.bind 'select', @onSubjectSelect
     Subject.bind 'no-subjects', @onNoLocalSubjects
     User.bind 'sign-in', @onUserSignIn
-
-    $(window).on 'hashchange', =>
-      setTimeout @toggleTutorialVisibility
 
     $(document).on 'keydown', @onKeyDown
 
@@ -109,14 +107,9 @@ class Classifier extends Controller
       Subject.next() if doingTutorial or not Subject.current
     else
       getTutorialSubject().select()
-      @toggleTutorialVisibility()
 
-  toggleTutorialVisibility: =>
-    return unless !!@classification.subject.metadata.tutorial
-
-    if @el.is ':visible'
-      @tutorial.dialog.open()
-    else
-      @tutorial.dialog.close()
+  activate: ->
+    super
+    setTimeout => @tutorial.dialog.attach()
 
 module.exports = Classifier
