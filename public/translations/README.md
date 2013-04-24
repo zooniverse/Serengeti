@@ -3,6 +3,6 @@ Developers: Help us translate this project into your language!
 
 Just fork this repo and send a pull request with your new strings.
 
-The default (US English) strings are at:
+An example (US English) can be found at:
 
-https://github.com/zooniverse/Serengeti/blob/master/app/translations/en_us.coffee
+https://github.com/zooniverse/Serengeti/blob/master/public/translations/en_us_example.json
