@@ -1,0 +1,584 @@
+{
+  "navigation": {
+    "home": "Etusivu",
+    "about": "Tietoa hankkeesta",
+    "classify": "Luokittele",
+    "profile": "Profiilisi",
+    "discuss": "Keskustele",
+    "blog": "Blogi"
+  },
+  "home": {
+    "heading": "Tervetuloa Snapshot Serengetiin!",
+    "content": "Sadat riistakamerat Serengetin kansallispuistossa Tansaniassa\ntarjoavat tehokkaan uuden ikkunan Afrikan harvimmin nähtyjen villieläinten liikehdintään.\nTarvitsemme sinun apuasi kameroiden eri eläimistä ottamien miljoonien kuvien luokittelussa.",
+    "allSeasonsComplete": "<p>Olemme sinun avullasi luokitelleet kaiken tähän mennessä keräämämme aineiston. Hyvää työtä!</p>\n<p>\n  Jätämme vielä joitain kuvia edelleen luokiteltaviksi, mutta meillä on toisiakin hankkeita\n  (kuten <a href=\"https://www.zooniverse.org/project/cyclonecenter\">Cyclone Center</a>\n  ja <a href=\"https://www.zooniverse.org/project/batdetective\">Bat Detective</a>), jotka tarvitsevat apuasi.\n  Vieraile osoitteessa <a href=\"https://www.zooniverse.org/\">zooniverse.org</a> nähdäksesi ne kaikki.\n</p>\n<p>\n  Pidä silmällä <a href=\"http://blog.snapshotserengeti.org/\">blogia</a>\n  saadaksesi tietää mitä kaikella hankkeessa kerätyllä tiedolla tehdään\n  ja milloin lisää kuvia Serengetiltä on saatavilla.\n</p>",
+    "action": "Aloita luokittelu",
+    "currentStatus": "<span class=\"classification-count\">0</span> luokittelua <span class=\"user-count\">0</span> vapaaehtoiselta"
+  },
+  "classify": {
+    "deleteAnnotation": "Poista",
+    "notSignedIn": "Et ole kirjautunut!",
+    "favorite": "Lisää suosikkeihin",
+    "unfavorite": "Poista suosikeista",
+    "play": "Pyöritä kuvasarjana",
+    "pause": "Pysäytä",
+    "satellite": "Satelliittinäkymä",
+    "nothingLabel": "Tässä ei näy mitään",
+    "nextSubjectButton": "Valmis",
+    "share": "Jaa",
+    "tweet": "Tviittaa",
+    "pin": "Pinnitä",
+    "discuss": "Keskustele",
+    "next": "Seuraava näkymä",
+    "nothingToShow": "Mikään ei vastaa näitä suodatusasetuksia.",
+    "clearFilters": "Poista suodatukset",
+    "oftenConfused": "Sekoittuu usein näihin:",
+    "count": "Kuinka monta",
+    "behavior": "Käyttäytyminen",
+    "behaviors": {
+      "resting": "Lepää",
+      "standing": "Seisoo",
+      "moving": "Liikkuu",
+      "eating": "Syö",
+      "interacting": "Vuorovaikutusta"
+    },
+    "babies": "Poikasia mukana",
+    "rain": "Sataa",
+    "cancel": "Peru",
+    "identify": "Tunnista",
+    "tutorial": {
+      "continueButton": "Jatka",
+      "welcomeHeader": "Tervetuloa Snapshot Serengetiin!",
+      "welcome": "Tämä pieni perehdytys opastaa sinua ensimmäisessä luokittelussasi. Aloitetaanpa!",
+      "trapsHeader": "Vilkaise kuvia",
+      "traps": "Tutkijat ovat asentaneet liiketunnistimilla toimivia riistakameroita eri puolille Serengetiä.\nKamerat räpsivät kuvia aina kun jotain liikkuu niiden edessä.\n\nKuvia on usein kahden–kolmen sarja, jollaista nimitämme \"näkymäksi\".\n\nVoit katsoa sarjan muita kuvia kuvan alla olevilla napeilla,\ntai näyttää ne peräjälkeen animaationa napsauttamalla toistonappia.",
+      "taskHeader": "Tunnista eläimet",
+      "task": "Tehtävänäsi on tunnistaa kaikki eri eläimet joita kuvissa esiintyy.\nLajit on lueteltu tässä.\n\nLuettelo on pitkä ja jotkin lajit voivat olla sinulle vieraita,\nmutta voit rajata lajien määrää kuvassa näkemiesi piirteiden avulla.",
+      "chooseAntelopeHeader": "Se näyttää...",
+      "chooseAntelope": "Eläin tämän kuvan etualalla näyttää joltain suurelta antiloopilta.\n\nValitaanpa siis \"Näyttää\"-valikosta \"Antiloopilta/hirvieläimeltä\".",
+      "chooseSolidHeader": "Ominaispiirre: kuviointi",
+      "chooseSolid": "Rajataanpa luetteloa hieman valitsemalla yksivärinen läiskä \"Kuviointi\"-valikosta.",
+      "chooseCurlyHeader": "Ominaispiirre: sarvet",
+      "chooseCurly": "Olemme jo rajanneet luetteloa sen verran, että näemme pienet esikatselukuvat jäljellä olevista eläimistä.\n\nValitse \"Sarvet\"-valikosta \"Kihartuvat\"-kuvake luettelon rajaamiseksi vielä enemmän.",
+      "chooseWildebeestHeader": "Tee valinta",
+      "chooseWildebeest": "Hyvä, näin jäljellä onkin enää yksi vaihtoehto!\nValitaanpa \"Gnuu\" ja varmistetaan, että se vastaa kuvaamme.",
+      "confirmWildebeestHeader": "Hyvältä näyttää!",
+      "confirmWildebeest": "Vertaamalla näkymän eläintä näihin kuviin ja alla olevaan kuvaukseen voimme varmistua siitä, että tämä tosiaankin on gnuu.\nOikealla olevien nappuloiden avulla voit selailla eläimestä eri kuvakulmista otettuja esimerkkikuvia.",
+      "identifyWildebeestHeader": "Lukumäärä ja käyttäytyminen",
+      "identifyWildebeest": "Kun olet varma että tämä on gnuu,\nvalitse lukumäärävalikoimasta \"1\" ja käyttäytymisvalikoimasta \"Liikkuu\".\nValitse sitten \"Tunnista\".",
+      "findZebrasHeader": "Tunnista toinen eläin",
+      "findZebras": "Haluamme tunnistaa kaikki näkymän eläimet.\nKatso tarkkaan, niin huomaat hieman kauempana seeproja.\n\nTehdäänpä luokittelu hieman eri tavalla nyt kun tiedämme valmiiksi mistä lajista on kyse.",
+      "typeZebraHeader": "Haku",
+      "typeZebra": "Hakukenttä on nopea tapa hakea siihen syötettyjä sanoja kuvauksiltaan vastaavat eläimet.\n\nKirjoita hakukenttään \"seepra\"...",
+      "clickZebraHeader": "Haku",
+      "clickZebra": "...ja napsauta \"Seepra\", joka on ainut korostettu eläimennimi.",
+      "confirmZebraHeader": "Tee minkä voit!",
+      "confirmZebra": "Kaukana olevia seeproja on vaikea erottaa, joten voit vain yrittää luokitella ne parhaasi mukaan.\nKaikki luokittelut vertaillaan muiden tekemien luokittelujen kanssa, joten vaikka et olisikaan varma, tee vain voitavasi!",
+      "identifyZebraHeader": "Lukumäärä ja käyttäytyminen",
+      "identifyZebra": "Kaukaisuudessa näkyy kaksi seepraa, ja ne näyttäisivät laiduntavan pää kumarassa.\nValitse \"2\", \"Seisoo\", \"Syö\" ja lopuksi \"Tunnista\".",
+      "finishHeader": "Hyvää työtä!",
+      "finish": "Nyt olet valmis luokittelemaan kuvia itseksesi.\n\nYritä kunkin kuvan kohdalla tunnistaa kaikki näkemäsi eläimet parhaasi mukaan,\nvaikka niistä ei näkyisikään tarpeeksi ollaksesi täysin varma.\nJos taas kuvassa ei ole eläimiä lainkaan, valitse \"Tässä ei näy mitään\" ja sitten \"Valmis\".\n\nHavaintosi yhdistetään muiden vapaaehtoisten havaintoihin,\njoten panoksesi on erittäin hyödyllinen, vaikket olisikaan jostain täysin varma!\n\nMuista myös, että luokiteltuasi kuvan voit aina keskustella siitä ammattilais- ja harrastelijatieteilijöiden kanssa, tai vaikka jakaa sen ystävillesi.\n\nValitse nyt \"Valmis\" päästäksesi eteenpäin."
+    },
+    "splits": {
+      "social": "Hyvää työtä! Sinä ja ### muuta Zooniverse-vapaaehtoista olette avustaneet Snapshot Serengetiä.",
+      "task": "Hyvää työtä! Luokittelemasi kuvan on ottanut yksi liiketunnistinkameroista, joita on asennettu yli 200 Serengetin kansallispuistoon.",
+      "science": "Hyvää työtä! Tiederyhmämme tarvitsee luokittelujasi ymmärtääkseen Serengetin eri eläinten rinnakkaiseloa."
+    }
+  },
+  "animals": {
+    "aardvark": {
+      "label": "Maasika (termiittikaivaja)",
+      "description": "Sian kuonoa muistuttava pitkä, putkimainen kuono ja suuret, kärkevät korvat;\nlyhyet tanakat raajat, joissa isot kynnet sekä hyvin kaareva selkä, joka takana kapenee paksuksi hännäksi.\nIhonväri vaihtelee harmaasta vaaleanpuna-ruskeaan ja on sieltä täältä harjaksien peitossa."
+    },
+    "aardwolf": {
+      "label": "Maasusi (termiittihyeena)",
+      "description": "Köyryselkäinen, harmaa/keltaisenruskea turkki, suunnilleen kolme mustaa raitaa,\npitkien karvojen muodostama harja.\nKooltaan juovahyeenaa pienempi, tuuheahäntäinen, hännässä musta kärki.\nMusta kuono on sekin lyhyempi ja kapeampi kuin hyeenalla."
+    },
+    "baboon": {
+      "label": "Paviaani (savannipaviaani)",
+      "description": "Serengetin suurin kädellinen. Paviaanit ovat oliivinruskeita, niiden paljas takapuoli on harmaa tai vaaleanpunainen.\nTäysikasvuisilla on suuri koiramainen kuono ja silmät lähellä toisiaan, tummanruskeilla poikasilla on vaaleanpunainen, litteä naama."
+    },
+    "batEaredFox": {
+      "label": "Korvakoira",
+      "description": "Tällä hopeanharmaalla/kellanruskealla hyönteissyöjällä on lyhyet jalat, kyttyräinen olemus ja vilkasliikkeinen mustakärkinen häntä.\nSillä on silmiinpistävän suuret korvat, terävä kuono sekä vaalea juova otsallaan."
+    },
+    "otherBird": {
+      "label": "Lintu (muu)",
+      "description": "Näetkö linnun, jolle ei ole luokittelua? Kirjaa se tällä!"
+    },
+    "buffalo": {
+      "label": "Kafferipuhveli (afrikanpuhveli)",
+      "description": "Valtava, nautamainen. Väri tummanruskeasta mustaan, häntä pitkä ja tupsullinen.\nMolemmat sukupuolet sarvekkaita, urosten sarvet kehittyneemmät ja keskeltä yhteenliittyneet.\nSuuret riippukorvat törröttävät sarvien alta sivuille."
+    },
+    "bushbuck": {
+      "label": "Kirjoantilooppi",
+      "description": "Kastanjanvärinen tai tummanruskea turkki, kyljissä valkeita pilkkuja ja hienoisia raitoja.\nLeuanalus valkoinen, toinen valkoinen raita alempana kaulalla,\nvalkoinen läikkä tuuhean hännän alla.\nUroksilla taaksepäin sojottavat sarvet, joissa yksi kierre.\n"
+    },
+    "caracal": {
+      "label": "Aavikkoilves (karakali)",
+      "description": "Keskikokoinen tai suuri kissaeläin, punaruskean värinen, valkoinen vatsapuoli.\nSuhteellisen lihaksikas, peräpää hieman säkää korkeammalla.\nTummat silmänympärykset, musta kuviointi viiksikarvojen liepeillä.\nSuuret, kärkevät korvat, joiden kärjissä selkeät mustat tupsut."
+    },
+    "cheetah": {
+      "label": "Gepardi",
+      "description": "Hontelo ja hoikka, pitkäjalkainen; erittäin pyöreäkorvainen. Väri vaaleankeltainen, mustia pilkkuja. \nHäntä pitkä ja pilkukas, kärkeä kohden mustarenkainen.\nSelvästi erottuvat mustat juovat silmistä poskia pitkin alas."
+    },
+    "civet": {
+      "label": "Afrikansivettikissa (afrikansivetti)",
+      "description": "Pitkä, raskastekoinen ja lyhytjalkainen; näyttää kissan ja koiran risteytykseltä.\nMusta rosvonaamio ja valkoinen kuono;\nvartalo useimmiten harmaa ja mustapilkkuinen, mustenee jalkoja ja hännänpäätä kohden."
+    },
+    "dikDik": {
+      "label": "Dikdik",
+      "description": "Serengetin antiloopeista pienin.\nSuuret silmät, pitkä ylähuuli ja kuono, töyhtöjä korvien välillä.\nUroksilla lyhyet, piikkimäiset sarvet."
+    },
+    "eland": {
+      "label": "Hirviantilooppi (elandi)",
+      "description": "Hirviantiloopit ovat kookkaita ja etäisesti härkää muistuttavia.\nVäritys kellanruskea–harmaa, valkeita pystyraitoja.\nMolemmilla sukupuolilla suorat sarvet joissa yksi kierre.\nUroksilla roteva kaula ja suuri, poimuisa helluvainen."
+    },
+    "elephant": {
+      "label": "Norsu",
+      "description": "Tämä valtaisa, harmaa, paksunahkainen eläin tunnetaan suurista korvistaan, pitkästä kärsästään ja syöksyhampaistaan.\nNorsut ovat korkeita eläimiä, ja siksi niistä näkyy riistakamerakuvissa usein vain jalat tai kärsä."
+    },
+    "gazelleGrants": {
+      "label": "Grantingaselli (isogaselli)",
+      "description": "Poikasilla on valkea vatsa, perä ja häntä, perässä mustia alassuuntaisia juovia.\nNuorilla yksilöillä on kyljissä tummemman karvan muodostama kaistale, jonka takia ne muistuttavat thomsoningaselleja.\nSilmien molemmista kulmista lähtee pitkät mustat juovat.\nAikuisilla uroksilla on pitkät harjanteiset sarvet, jotka loittonevat toisistaan kärkiään kohden."
+    },
+    "gazelleThomsons": {
+      "label": "Thomsoningaselli (savannigaselli)",
+      "description": "Musta vaakasuuntainen juova kyynärvarresta lonkan seudulle. Valkoinen perä ja vatsa; musta häntä.\nTummaa karvaa silmien sisäkulmasta kuonon kärkeen.\nMolemmilla sukupuolilla harjanteiset sarvet, jotka kaartuvat ylös- ja taaksepäin."
+    },
+    "genet": {
+      "label": "Genetti",
+      "description": "Tämä pitkulainen, notkea eläin on kuin kissan ja pesukarhun risteymä.\nGenetit (jotka kuuluvat sivettikissoihin) ovat lyhytjalkaisia ja niillä on hopeanharmaa, mustapilkukas turkki sekä pitkä, tuuhea, rengaskuvioinen häntä."
+    },
+    "giraffe": {
+      "label": "Kirahvi",
+      "description": "Kirahvit on Serengetin korkeimpina eläiminä helppo tunnistaa pitkästä kaulastaan ja pitkistä koivistaan sekä kaltevasta ruumiinmuodostaan.\nNiiden punaoranssit läiskät muodostavat jokaisella eläimellä yksilöllisen kuvion.\nMolemmilla sukupuolilla on kaksi lyhyttä karvapeitteistä sarvea, jonka kärjessä on musta töyhtö.\nHännänpäässä on pitkä musta tupsu."
+    },
+    "guineaFowl": {
+      "label": "Helmikana",
+      "description": "Kanan kokoinen lintu, jolla tumman siniharmaat sulat ja valkoisia täpliä.\nSuuri, pyöreähkö vartalo ja pitkähkö kaula sekä pieni pää, jossa punaista ja sinistä ihoa."
+    },
+    "hare": {
+      "label": "Rusakko",
+      "description": "Kapinrusakko (eli afrikanrusakko) näyttää paljolti samanlaiselta kuin lähiympäristösi jänikset.\nSillä on pitkät korvat ja harmahtava turkki, jonka väri vaihtelee harmaasta ruskeaan tai punaiseen, sekä lyhyt pörröinen häntä."
+    },
+    "hartebeest": {
+      "label": "Punalehmäantilooppi (kongoni)",
+      "description": "Keltainen tai kellanruskea, vaalea perä. Vartalo kallistuu hartiaseudulta perää kohden selkeästi alas.\nPitkä turpa, silmät korkealla. Molemmilla sukupuolilla sarvet, jotka kaartuvat ensin ulos- ja sitten sisäänpäin."
+    },
+    "hippopotamus": {
+      "label": "Virtahepo",
+      "description": "Iso ja pyöreä, lyhyet jalat, väri harmaasta vaaleanpunaiseen.\nPienet korvat ja valtaisa, ammolleen avautuva kita. Lyhyt paksu häntä, jossa mustia harjaksia.\nNähdään useimmiten öisin."
+    },
+    "honeyBadger": {
+      "label": "Mesimäyrä",
+      "description": "Tämä hurja otus on tanakka ja lyhytjalkainen. Sillä on musta turkki, ja sen päätä ja selkää peittää valkea/harmaa kaistale.\nSen korvat ovat hyvin pienet ja tiiviisti päässä."
+    },
+    "hyenaSpotted": {
+      "label": "Täplähyeena",
+      "description": "Näyttää koiramaiselta. Poikasilla on tummanharmaa turkki, jossa mustia täpliä;\naikuisilla turkki täplineen tapaa haalistua kohti punertavaa/ruskeaa.\nTassut ja kuono ovat mustat. Leveä pää ja suuret, kärkevät korvat;\nvartalo kallistuu hartiaseudulta perää kohden näyttävästi alaspäin."
+    },
+    "hyenaStriped": {
+      "label": "Juovahyeena",
+      "description": "Juovahyeenan ruumiinmuoto kallistuu kuten täplähyeenalla, mutta juovahyeenan beesi tai harmaa turkki on mustien juovien kuvioima.\nJuovahyeenalla on niskassaan pitkien karvojen muodostama harja, joka on toisinaan koholla, sekä hyvin tuuhea harmaa häntä."
+    },
+    "impala": {
+      "label": "Impala",
+      "description": "Kevytrakenteinen; punertavanruskea, vaaleat kyljet.\nValkoinen vatsa, leuka ja silmänympärykset.\nKorvien välillä mustia töyhtöjä, mustia juovia perässä, mustat täplät kantapäiden yllä.\nUroksilla suuret, S-kirjaimen muotoiset sarvet."
+    },
+    "jackal": {
+      "label": "Sakaali",
+      "description": "Sakaalit muistuttavat paljolti pientä koiraa tai kojoottia.\nNiillä on keltaisenruskea vartalo ja raajat sekä harmahtava, mustaharmaa selkä, jota rajaa musta juova.\nMustaselkäisillä sakaaleilla on pääosin musta häntä, jonka pääkin on musta, kun taas juovakylkisillä sakaaleilla on hännänpää on valkoinen."
+    },
+    "koriBustard": {
+      "label": "Kuningastrappi",
+      "description": "Suurikokoinen, raskastekoinen lintu jolla paksu vaaleanharmaa kaula, ruskea selkämys ja valkoinen vatsapuoli sekä pitkät keltaiset jalat."
+    },
+    "leopard": {
+      "label": "Leopardi",
+      "description": "Lihaksikas, kullanruskea, mustien ruusukkeiden kuvioima.\nTäplikäs naama ilman mustia juovia, pienet pyöreät korvat.\nPitkä täplikäs häntä, jossa kärkipään alapinta kirkkaanvalkoinen,\nmikä on helppo nähdä kun eläin kohottaa hännänpäätä."
+    },
+    "lionFemale": {
+      "label": "Leijona (naaras tai pentu)",
+      "description": "Valtaisa lihaksikas kissaeläin.\nKellanruskea, alaosastaan vaalea; pennuilla joitakin täpliä etenkin vatsapuolella ja raajoissa.\nPitkä, sileäkarvainen häntä jonka päässä tumma tupsu.\nUroksilla harja, joka tummuu ja sakenee iän myötä."
+    },
+    "lionMale": {
+      "label": "Leijona (uros)",
+      "description": "Valtaisa lihaksikas kissaeläin.\nKellanruskea, alaosastaan vaalea; pennuilla joitakin täpliä etenkin vatsapuolella ja raajoissa.\nPitkä, sileäkarvainen häntä jonka päässä tumma tupsu.\nUroksilla harja, joka tummuu ja sakenee iän myötä."
+    },
+    "mongoose": {
+      "label": "Mangusti",
+      "description": "Lyhytjalkainen ja kyttyräselkäinen, vaikuttaa näädältä tai fretiltä.\nVaihtelee kooltaan ja väritykseltään pienistä ruskeista kääpiömangusteista\naina isompiin seepramangusteihin ja tuuheahäntäisiin valkohäntämangusteihin."
+    },
+    "ostrich": {
+      "label": "Strutsi",
+      "description": "Erittäin kookas, korkea lintu, jolla pitkät raskastekoiset koivet.\nNaaraat enimmäkseen ruskeita, jalat ja kaula vaaleat.\nKoirailla musta peite, valkea pyrstö ja siivenkärjet, pariutumiskaudella vaaleanpunaiset jalat ja kaula."
+    },
+    "porcupine": {
+      "label": "Piikkisika (piikikäs)",
+      "description": "Tämä lyhyt, pyöreätekoinen otus on päästä häntään pitkien mustien ja valkoisten piikkien peitossa.\nMurmelimaisessa naamassaan sillä on pikkuruiset mustat silmät."
+    },
+    "reedbuck": {
+      "label": "Ruokoantilooppi",
+      "description": "Vaihtelevanvärinen, kellanruskeasta punaruskeaan.\nValkoinen vatsa ja lyhyt tupsuhäntä, jonka alapuoli valkoinen.\nMusta kuono, valkoinen suu ja leuka, suurten korvien alla mustat täplät.\nUroksilla eteenpäin kaartuvat harjanteiset sarvet."
+    },
+    "reptiles": {
+      "label": "Matelijat",
+      "description": "Toisinaan voit nähdä kuvissa skinkkejä, agamoita, käärmeitä ja muita matelijoita paistattelemassa päivää.\nTähän luokkaan voit sisällyttää kaikki näkemäsi matelijat."
+    },
+    "rhinoceros": {
+      "label": "Sarvikuono",
+      "description": "Valtaisan kokoinen ja tanakka. Harmaa iho.\nKuonossa yksi iso sarvi ja hieman taaempana toinen, pienempi."
+    },
+    "rodents": {
+      "label": "Jyrsijät",
+      "description": "Hyppyjänikset eivät todellisuudessa ole jäniksiä, vaan jyrsijöitä.\nHyppyjänis näyttää jäniksen kokoiselta kengurulta: sillä on pitkät vahvat takaraajat, lyhyet eturaajat ja pitkä, tuuhea, mustakärkinen häntä.\nKuvissa näkyy harvoin hiiriä, koska ne ovat niin pieniä, mutta toisinaan saattaa käydä tuuri."
+    },
+    "secretaryBird": {
+      "label": "Sihteeri",
+      "description": "Korkea ja pitkäjalkainen lintu, reidet mustien sulkien peittämät.\nHarmaa kaula, vartalo ja pyrstötöyhtö, mustia sulkia alaselässä ja siivissä.\nNaaman paljas iho punaista ja keltaista.\nNiskassa useita toisinaan törröttäviä pitkiä sulkia."
+    },
+    "serval": {
+      "label": "Servaali",
+      "description": "Suhteellisen pieni kissaeläin, jolla pitkät hoikat koivet, pieni pää ja kellertävä turkki, jossa mustia täpliä, jotka toisinaan muodostavat juovia.\nServaalin erottaa sen valtavien korvien ja mustan kuonon avulla gepardista."
+    },
+    "topi": {
+      "label": "Topiantilooppi",
+      "description": "Korkea sorkkaeläin; punaruskea, mustat läikät olilla ja lonkan seudulla.\nPitkä turpa, silmät korkealla, ylös- ja taaksepäin kaartuvat sarvet.\nVartalo kallistuu hartiaseudulta perää kohden jyrkästi alaspäin."
+    },
+    "vervetMonkey": {
+      "label": "Vihermarakatti",
+      "description": "Tämä pieni apina on Serengetin vakionaamoja. Sillä on vaaleanharmaa/-ruskea turkki, pieni musta naama ja hyvin, hyvin pitkä harmaa häntä."
+    },
+    "warthog": {
+      "label": "Pahkasika",
+      "description": "Sian kaltainen eläin, jonka harmaa vartalo on harvakseltaan tummempien karvojen peitossa. Niskaa ja selkää peittää pitkien harjasten muodostama harja.\nOhuen hännän päässä on musta tupsu. Kärsän ympärille kiertyvät syöksyhampaat."
+    },
+    "waterbuck": {
+      "label": "Vesiantilooppi",
+      "description": "Kookas, tanakka antilooppi, jolla ruokoton ruskea turkki; valkoinen ympäröi peräpäätä.\nValkoisia kuvioita leualla ja kuonossa, valkoinen juova kaulan alitse korvasta korvaan.\nUroksilla harjanteiset sarvet, jotka kaartuvat taakse ja sitten kärkiä kohden eteen."
+    },
+    "wildcat": {
+      "label": "Metsäkissa (villikissa)",
+      "description": "Suurta kotikissaa muistuttava metsäkissa vaihtelee väritykseltään hiekanruskeasta harmaaseen, alaosastaan eläin on vaaleampi.\nRaajoissa ja hännässä näkyy toisinaan mustia juovia."
+    },
+    "wildebeest": {
+      "label": "Gnuuantilooppi (gnu)",
+      "description": "Pitkäkoipinen, tummanharmaa–ruskea turkki, niskassa ja kyljissä hienoisia tummempia juovia.\nIso pää, pyöreä musta kuono ja valkoinen “parta“.\nSäkäkorkeus perää ylempänä.\nMolemmilla sukupuolilla sarvet, jotka ojentuvat sivuille ja kaartuvat sitten jyrkästi takaisin päätä kohden."
+    },
+    "zebra": {
+      "label": "Seepra",
+      "description": "Seepran swahilinkielinen nimi tarkoittaa “juovikasta aasia” – ja juuri siltä eläin näyttääkin.\nSeeprat muistuttavat rakenteeltaan hevosta tai aasia, väriltään ne ovat valkoisia ja mustaraitaisia, ja niillä on paksu törröttävä harja sekä mustatupsuinen häntä."
+    },
+    "zorilla": {
+      "label": "Tsorilla (zorilla)",
+      "description": "Haisuhilleriksikin kutsuttu näätäeläin, joka näyttää hyvin paljon haisunäädältä.\nSillä on lyhyet jalat ja pitkiä valkoisia juovia selässään – ja uhattuna se jopa erittää pahaa hajua!"
+    },
+    "human": {
+      "label": "Ihminen",
+      "description": "Esimerkiksi ajoneuvot ja kuumailmapallot ovat merkkejä ihmisten vierailuista Serengetillä.\nSaatatpa nähdä kameraa tarkistavan tutkijankin, tai uteliaan turistin tölläilemässä ruokailunsa lomassa."
+    }
+  },
+  "differences": {
+    "aardwolf": {
+      "hyenaStriped": "Juovahyeena on maasutta kookkaampi, ja useimmiten sillä on enemmän kuin kolme raitaa; sen häntä on tuuhea ja harmaa, eikä hännänpää ole musta."
+    },
+    "buffalo": {
+      "wildebeest": "Gnuu on kafferipuhvelia hoikempi, ja sillä on iso pää sekä pitkä parta. Gnuun sarvet eivät ole keskeltä yhteensulautuneet."
+    },
+    "caracal": {
+      "wildcat": "Villikissa on aavikkoilvestä pienempi eikä sillä ole yhtä näyttävät korvat.",
+      "lionFemale": "Leijonat ovat aavikkoilvestä kookkaampia ja lihaksikkaampia. Niillä ei ole suuria teräväkärkisiä korvia. Niiden häntä on sileä, ja hännänpäässä on tumma tupsu."
+    },
+    "cheetah": {
+      "leopard": "Leopardin kuviointina on mustia ruusukkeita, ei täpliä. Leopardilla ei ole naamassaan mustia juovia kuten gepardilla.",
+      "serval": "Servaalin korvat ovat gepardin korvia isommat ja terävämmät. Sen pilkut muodostavat usein juovia."
+    },
+    "civet": {
+      "genet": "Genetillä on lyhyet raajat sekä pidempi, tuuheampi häntä kuin afrikansivettikissalla."
+    },
+    "dikDik": {
+      "reedbuck": "Ruokoantilooppi on dikdikiä kookkaampi. Ruokoantiloopin alapuoli on valkoinen, ei harmaa, eikä sillä ole silmän alla kyynelkuviota."
+    },
+    "gazelleGrants": {
+      "gazelleThomsons": "Thomsoningasellilla on vaakasuuntainen musta juova kyljessä, ja sen silmästä kuonoon kulkee tumma juova. Sen sarvet kaartuvat ylös ja hieman taakse.",
+      "impala": "Impalat ovat punertavampia, niillä on perässä mustia juovia sekä musta tupsu kantapäiden yllä. Niillä on suuret, S-kirjaimen muotoiset sarvet.",
+      "Takapuolet": "<figure class=\"rump\"><img src=\"images/rumps/grantsGazelle.jpg\" /><figcaption>Grantingaselli</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/thomsonsGazelle.jpg\" /><figcaption>Thomsoningaselli</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/impala.jpg\" /><figcaption>Impala</figcaption></figure>"
+    },
+    "gazelleThomsons": {
+      "gazelleGrants": "Grantingasellilla on valkoinen vatsa, perä ja häntä; uroksella on sarvet, jotka etääntyvät hieman toisistaan kärkiä kohden.",
+      "impala": "Impalat ovat punertavampia, niillä on perässä mustia juovia sekä musta tupsu kantapäiden yllä. Niillä on suuret, S-kirjaimen muotoiset sarvet.",
+      "Takapuolet": "<figure class=\"rump\"><img src=\"images/rumps/grantsGazelle.jpg\" /><figcaption>Grantingaselli</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/thomsonsGazelle.jpg\" /><figcaption>Thomsoningaselli</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/impala.jpg\" /><figcaption>Impala</figcaption></figure>"
+    },
+    "genet": {
+      "civet": "Afrikansivettikissalla on pidemmät raajat ja pesukarhun tavoin  “rosvonaamio”."
+    },
+    "hartebeest": {
+      "gazelleGrants": "Grantingasellilla on valkoinen vatsa, perä ja häntä; uroksella on sarvet, jotka etääntyvät hieman toisistaan kärkiä kohden.",
+      "impala": "Impalat ovat punertavampia, niillä on perässä mustia juovia sekä musta tupsu kantapäiden yllä. Niillä on suuret, S-kirjaimen muotoiset sarvet.",
+      "topi": "Vaikka topiantiloopilla on samanmuotoinen vartalo, topiantilooppi on lehmäantilooppia tummemman ruskea, ja sillä on tummat laikut polvissaan.\nSarvet kaartuvat ylös ja sitten taaksepäin, kun taas lehmäantiloopin sarvet kaartuvat ulos- ja sitten sisäänpäin."
+    },
+    "hippopotamus": {
+      "rhinoceros": "Sarvikuonot ovat väriltään vaaleamman harmaita, ja niillä on kaksi sarvea.",
+      "warthog": "Pahkasiat ovat enemmän siankaltaisia; niillä on harvakseltaan tummia karvoja, sekä tummien harjasten muodostama harja niskassa ja selässä. Niillä on myös torahampaat."
+    },
+    "hyenaStriped": {
+      "aardwolf": "Maasusi on hyeenaa pienempi, sen hännänpää on musta ja sillä on yleensä vain kolme pystyjuovaa."
+    },
+    "impala": {
+      "gazelleThomsons": "Thomsoningasellilla on vaakasuuntainen musta juova kyljessä, ja sen silmästä kuonoon kulkee tumma juova. Sen sarvet kaartuvat ylös ja hieman taakse.",
+      "gazelleGrants": "Grantingasellilla on valkoinen vatsa, perä ja häntä; uroksella on sarvet, jotka etääntyvät hieman toisistaan kärkiä kohden.",
+      "Takapuolet": "<figure class=\"rump\"><img src=\"images/rumps/grantsGazelle.jpg\" /><figcaption>Grantingaselli</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/thomsonsGazelle.jpg\" /><figcaption>Thomsoningaselli</figcaption></figure>\n<figure class=\"rump\"><img src=\"images/rumps/impala.jpg\" /><figcaption>Impala</figcaption></figure>"
+    },
+    "leopard": {
+      "cheetah": "Gepardi on leopardia hoikempi ja sillä on tasaiset pilkut, ei ruusukkeita."
+    },
+    "mongoose": {
+      "zorilla": "Tsorilla eli haisuhilleri muistuttaa enemmän haisunäätää kuin frettiä."
+    },
+    "reedbuck": {
+      "dikDik": "Dikdik on ruokoantilooppia pienempi. Sillä on suuremmat silmät, sekä pitkä ylähuuli ja kuono."
+    },
+    "rhinoceros": {
+      "hippopotamus": "Virtahevot ovat kookkaampia ja näyttävät usein niljakkaammilta. Ne ovat tummemman harmaita tai vaaleanpunaisia. Niillä ei ole sarvea.",
+      "warthog": "Pahkasioilla on torahampaat, ei sarvia. Ne ovat tummemman värisiä. Niillä on tummien harjasten muodostama harja niskassa ja selässä."
+    },
+    "serval": {
+      "cheetah": "Gepardilla ei ole isoja korvia, vaan pienet ja pyöreät. Gepardi on servaalia hoikempi, ja sillä on pitkät tummat juovat silmäkulmista poskia pitkin alas.",
+      "wildcat": "Metsäkissa on servaalia pienempi, eikä sillä ole korvien päissä pitkiä tupsuja."
+    },
+    "topi": {
+      "hartebeest": "Lehmäantilooppi on väriltään enemmän keltainen tai kellanruskea. Sen sarvet kaartuvat sivuille ja sitten sisäänpäin."
+    },
+    "warthog": {
+      "hippopotamus": "Virtahevot ovat kookkaampia, vähemmän karvaisia, leveämpiä ja niillä on pyöreämpi naama ja vartalo.",
+      "rhinoceros": "Sarvikuonoilla on kuonon päässä iso sarvi ja taaempana toinen, pienempi sarvi. Niillä ei ole torahampaita."
+    },
+    "wildebeest": {
+      "buffalo": "Kafferipuhveli on kookkaampi ja tanakampi. Sen sarvet ovat keskeltä enemmän yhteensulautuneet."
+    },
+    "zorilla": {
+      "mongoose": "Mangusti on enemmän frettimäinen, se ei muistuta haisunäätää."
+    }
+  },
+  "characteristics": {
+    "like": "Näyttää",
+    "pattern": "Kuviointi",
+    "coat": "Väritys",
+    "horns": "Sarvet",
+    "tail": "Häntä",
+    "build": "Ruumiinrakenne"
+  },
+  "characteristicValues": {
+    "likeCatDog": "Kissalta/koiralta",
+    "likeCowHorse": "Lehmältä/hevoselta",
+    "likeAntelopeDeer": "Antiloopilta/hirvieläimeltä",
+    "likeBird": "Linnulta",
+    "likeWeasel": "Näädältä",
+    "likeOther": "Joltain muulta",
+    "patternVerticalStripe": "Raitoja",
+    "patternHorizontalStripe": "Kaistaleita",
+    "patternSpots": "Täpliä",
+    "patternSolid": "Tasavärinen",
+    "coatTanYellow": "Kellanruskea/keltainen",
+    "coatRedBrown": "Punertava",
+    "coatBrownBlack": "Ruskea",
+    "coatWhite": "Valkoinen",
+    "coatGray": "Harmaa",
+    "coatBlack": "Musta",
+    "hornsNone": "Ei ole",
+    "hornsStraight": "Suorat",
+    "hornsSimpleCurve": "Käyrät",
+    "hornsLyrate": "Lyyramaiset",
+    "hornsCurly": "Kihartuvat",
+    "tailBushy": "Tuuhea",
+    "tailSmooth": "Sileä",
+    "tailTufted": "Tupsullinen",
+    "tailLong": "Pitkä",
+    "tailShort": "Lyhyt",
+    "buildStocky": "Tanakka",
+    "buildLanky": "Hoikka",
+    "buildTall": "Korkea",
+    "buildSmall": "Pieni",
+    "buildLowSlung": "Matala",
+    "buildSloped": "Kalteva"
+  },
+  "profile": {
+    "favorites": "Suosikit",
+    "recents": "Viimeisimmät",
+    "noFavorites": "Sinulla ei ole suosikkeja!",
+    "noRecents": "Sinulla ei ole viimeisimpiä luokitteluja!",
+    "showing": "Näytetään",
+    "loadMore": "Lataa lisää"
+  },
+  "about": {
+    "sections": {
+      "information": "Tietoa hankkeesta",
+      "organizations": "Järjestöt",
+      "teams": "Ryhmät",
+      "scienceTeam": "Tiederyhmä",
+      "developmentTeam": "Kehitystyöryhmä"
+    },
+    "information": {
+      "main": "<h2>Eläinten tarkkailua luonnossa</h2>\n<p>Viimeisten 45 vuoden aikana <a href=\"http://www.cbs.umn.edu/lionresearch/\" target=\"_blank\">Minnesotan yliopiston leijonahanke</a> on saanut selville paljon uutta leijonista – miksi niillä on harja, miksi ne elävät ryhmissä ja kaikkea siltä väliltä. Olemme nyt kääntämässä katseemme kohti suurten eläinten muodostamien yhdyskuntien keskinäisiä vuorovaikutuksia. Tarkkailemme parhaillaan radiojäljityksellä 24:ää eri leijonalaumaa Serengetin kansallispuistossa, Tansaniassa. Muista lajeista tietoa saadaksemme olemme asentaneet 225 riistakameran verkoston. Näillä kameroilla otetuista kuvista voimme tutkia sitä kuinka alueen yli 30 eri lajia ovat sinne jakautuneet – ja kuinka ne ovat tekemisissä leijonien ja toistensa kanssa.</p>\n\n<p style=\"text-align: center;\"><img src=\"images/about/tanzania-map.png\" /></p>\n\n<h3>Tieteelliset kysymyksemme</h3>\n<p>Keskenään kilpailevien lajien rinnakkaiselon ymmärtäminen on perustavanlaatuinen aihe ekologiassa, ja sillä on tärkeä merkitys ravintoketjuille, monimuotoisuudelle ja elämän selviytymiselle maapallolla. Suuri osa meneillään olevasta tutkimuksesta kohdistuu lihansyöjälajien rinnakkaiseloon, kasvinsyöjälajien rinnakkaiseloon sekä saallistajien ja saaliseläinten keskinäiseen dynamiikkaan. Näin saatua tietoa käytetään, kun laaditaan strategioita lajien palauttamiseen ja suojeluun sekä ekosysteemien hallinnointiin eri puolilla maailmaa.</p>\n<ul>\n  <li>Lihansyöjälajien rinnakkaiselo: Karnivorit syövät lihaa. Jos kaksi lihansyöjälajia saalistaa samoja saaliseläimiä, toinen saalistaja saattaa kukistaa toisen kilpailussa, eivätkä lajit voi enää elää samalla alueella. Silloinkin, kun lihansyöjälajit eivät suoraan keskenään kilpaile samasta saaliista, aggressiivinen vuorovaikutus kuten saaliinrosvous ja toisen lajin yksilöiden tappaminen voi estää rinnakkaiselon. Muualla maailmassa tehty tutkimus viittaa siihen, että jos toinen lajeista väistää toista, lajit voivat elää rinnakkain, mutta se saattaa riippua elinympäristön rakenteesta ja monimutkaisuudesta. Kameramme paljastavat välttelevätkö leijonat, leopardit, gepardit ja hyeenat toisiaan paikoissa ja ajallisesti, ja missä määrin tämä alueella vaihtelee.</li>\n  <li>Kasvinsyöjien rinnakkaiselo: herbivorit syövät kasveja. Serengetin alueella elää kuusitoista kasveja syövää kavio- tai sorkkaeläinlajia. Vaikka nämä lajit eivät tapa toisiaan tai rosvoa ruokaa toisiltaan, emme vieläkään täysin ymmärrä kuinka ne kaikki pystyvät elämään rinnakkain tässä järjestelmässä. Kaikkein tehokkaimmat kasvinsyöjälajit saattavat joutua muita todennäköisemmin petojen saaliiksi, mikä voi selittää osan rinnakkaiselosta. Toinen mahdollisuus on, että eri kasvinsyöjät erikoistuvat eri kasvupaikkoihin. Tutkimme näitä mahdollisuuksia riistakameroiden avulla samalla kun tutkimme, kuinka vuosittainen 1,5 miljoonan gnuun ja seepran vaellus tutkimusalueen halki muuttaa tätä dynamiikkaa.</li>\n  <li>Saalistaja–saalis -suhteet: Ekologian viimeaikaiset löydökset viittaavat siihen, että kasvinsyöjille voi koitua petojen karttamisesta kuluja. Jos esimerkiksi pedot saalistavat parhailla kasvupaikoilla, kasvinsyöjät saattavat välttää noita alueita ja joutuvat näin ollen syömään huonompia kasveja. Riistakamerakuvien eläinjakaumista antamien tietojen avulla voimme tutkia, ovatko kasvinsyöjät siellä missä parhaat ruokailualueet ovat, vai siellä missä petojen saaliiksi joutumisen riski on pienin.</li>\n</ul>\n\n<p>Kuvien käyttöä koskee <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/deed.fi_FI\">Creative Commons Nimeä-Epäkaupallinen-JaaSamoin 3.0 Muokkaamaton -lisenssi</a>.</p>\n\n<p>Auta meitä kääntämään tämä hanke omalle kielellesi! <a href=\"https://github.com/zooniverse/Serengeti/tree/master/public/translations\">Saat lisätietoja lataamalla Github-hakemistomme</a>.</p>",
+      "sidebar": "<h3>Serengetin leijonahanke</h3>\n<p>Riistakameratutkimusta pyörittää pitempiaikainen <a href=\"http://www.cbs.umn.edu/lionresearch/\" target=\"_blank\">Serengetin leijonahanke</a>. Leijonahanke on tutkinut Afrikan leijonia Serengetin kansallispuistossa ja Ngorongoron suojelualueella 1960-luvulta saakka. Pidämme jatkuvasti kirjaa noin 330 leijonasta 24 eri laumassa Serengetin alueella, ja lisäksi 50–60 leijonasta viidessä eri laumassa Ngorongoron kraatterissa. Tämä päivittäistarkkailu on tähän mennessä tuottanut yhden kaikkein kattavimmista tietopankeista mitä mistään nisäkäslajista maailmassa on – kaikkiaan yli 5000 leijonaa on ollut mukana Serengetin ja Ngorongoron tutkimuksissa kuluneiden yli 40 vuoden aikana, ja näiden kahden populaation sukupuista kerätty tieto kattaa yli 12 sukupolvea. Päivittäin kirjataan muun muassa leijonien sijainti, ryhmän koko, syömiset, ravinnonsaanti, terveys ja lisääntyminen. Lisätietoja löydät <a href=\"http://www.cbs.umn.edu/lionresearch/\" target=\"_blank\">leijonahankkeen verkkosivuilta</a>.</p>\n<h3>Mitä me teemme</h3>\n<p>Tarkistamme riiskamerat päivittäisen leijonatarkkailun yhteydessä. Vaihdamme paristot ja muistikortit, ja niitämme kameran edestä heinää jottei se tuulen huojuttaessa laukaisisi kameraa. 225 kamerassa on paljon tekemistä! Kun asiat sujuvat, kamera pärjää yksinään parikin kuukautta. Mutta useinkaan niin ei ole – toisinaan saavumme kameralle vain huomataksemme, että hyeenat ovat järsineet sen, norsut ovat repineet sen maahan, sade on kastellut sen tai muurahaiset vallanneet sen.</p>\n<h3>Kuinka kamerat toimivat</h3>\n<p>Kameroissa on passiivi-infrapunasensorit, jotka käynnistyvät kun ulkolämpötilaa lämpimämpi kohde kulkeutuu sensorin eteen. Yleensä se on eläin… mutta pitkäksi kasvanut, auringon lämmittämä heinäkin saattaa laukaista kameran tuulessa liikehtiessään. Käytämme Scoutguard 565- ja DLC Covert Reveal -kameroita, joissa on valkoinen salamavalo. Jotkut ovat olleet huolissaan siitä, että valkoinen salamavalo säikyttää eläimet, mutta tutkimusalueellamme samat eläinyksilöt tulevat useinkin takaisin kameran sijaintipaikalle yö toisensa jälkeen!</p>\n<h3>Missä me asumme</h3>\n<p>Serengetillä ollessamme asustamme kaukaisessa Serengetin villieläintutkimuskeskuksessa – se on pieni talojen ja tutkijatoimistotilojen yhdyskunta puiston päämajan lähettyvillä, keskellä puistoa.  Talomme on vaatimaton, mutta ulkohuussi tarjoaa sentään osan kaikkein jännittävimmistä yöllisistä kohtaamisistamme villieläinten kanssa. Viime vuosina vierailijoilta ja tukijoiltamme saamiemme lahjoituksien avulla olemme hankkineet aurinkokennojärjestelmän, jolla saamme öisinkin sähköä, sekä kaikkein innostavimman viimeaikaisista hankinnoistamme – jääkaapin!</p>"
+    },
+    "organizations": {
+      "umn": {
+        "name": "Minnesotan yliopisto",
+        "url": "http://www.cbs.umn.edu/eeb",
+        "image": "images/about/organizations/umn.jpg",
+        "description": "Snapshot Serengetin tiederyhmän jäsenet ovat Minnesotan yliopiston ekologian, evoluution ja käyttäytymisen tutkimuslaitoksen ekologeja.\nMinnesotan yliopisto, joka perustettiin siinä uskossa, että ymmärtäminen rikastuttaa kaikkia,\npyrkii edistämään oppimista ja totuuden etsintää, \njakamaan tätä tietämystä monimuotoiselle yhteisölle tarjotun opetuksen välityksellä\nsekä soveltamaan tietoa koko osavaltion, kansan ja koko maailman hyväksi."
+      },
+      "mnZoo": {
+        "name": "Minnesotan eläintarha",
+        "url": "http://www.mnzoo.com/",
+        "image": "images/about/organizations/mn-zoo.jpg",
+        "description": "Minnesotan eläintarha on osaltaan rahoittanut riistakameratutkimusta Ulysses S. Sealin luonnonsuojelurahaston välityksellä\nja on lisäksi auttanut Snapshot Serengetin kehitystyössä mukana olleiden vapaaehtoisten värväyksessä.\nMinnesotan eläintarha yhdistää ihmisiä, eläimiä ja luontoa.\nSen pyrkimyksenä on innoittaa kävijöitään toimimaan luonnon ja luonnonympäristöjen hyväksi.\nOsana tätä pyrkimystä eläintarha tarjoaa palkittuja virkistys-, opetus- ja luonnonsuojeluohjelmia paikallisella, kansallisella ja kansainvälisellä tasolla."
+      },
+      "nsf": {
+        "name": "Kansallinen tiedesäätiö",
+        "url": "http://www.nsf.gov/",
+        "image": "images/about/organizations/nsf.jpg",
+        "description": "Kansallinen tiedesäätiö (NSF) tukee rahallisesti pitkäaikaista Serengetin leijonahanketta (apurahanro. DEB‐1020479),\njonka pohjustaman infrastruktuurin puitteissa riistakameratutkimusta tehdään.\nNSF:n tehtävänä on tukea tieteen edistystä, edesauttaa kansallista terveyttä, varakkuutta ja hyvinvointia sekä turvata kansallista puolustusta.\nNSF:n visiona on kansakunta, joka hyödyntää tieteen ja teknologian löytöjä ja on tutkimuksen ja koulutuksen edelläkävijä maailmanlaajuisesti."
+      },
+      "gpsa": {
+        "name": "Globaalien ohjelmien ja strategiain liitto",
+        "url": "http://global.umn.edu/",
+        "image": "images/about/organizations/umn.jpg",
+        "description": "Globaalien ohjelmien ja strategiain liitto rahoitti ensimmäiset 50 riistakameraa, jotka asennettiin kesäkuussa 2010.\nGlobaalien ohjelmien ja strategiain liiton tehtävänä on edesauttaa Minnesotan yliopiston opetuksen, oppimisen, tutkimuksen ja värväyksen globalisointia.\nLiitto tukee rahallisesti useita ohjelmia ja strategioita, jotka edistävät opiskelijoiden, tiedekuntien ja henkilöstön kansainvälisiä toimia kautta koko yliopistojärjestelmän."
+      },
+      "umnGradSChool": {
+        "name": "Minnesotan yliopiston tutkijakoulu",
+        "url": "http://www.grad.umn.edu/",
+        "image": "images/about/organizations/umn.jpg",
+        "description": "Minnesotan yliopiston tutkijakoulu tuki opinnäytetyöapurahalla ensimmäistä riistakameratutkimusta vuonna 2010.\nYhtenä maailman kattavimmista julkisista tutkimuslaitoksista Minnesotan yliopisto tarjoaa erinomaista jatko- ja ammattikoulutusta\nlaajalti eri aloilla – maataloudessa, insinööritaidoissa, humanistisissa tieteissä, luonnontieteissä sekä yhteiskuntatieteissä."
+      },
+      "explorersClub": {
+        "name": "Explorers Club",
+        "url": "http://www.explorers.org/",
+        "image": "images/about/organizations/explorers-club.jpg",
+        "description": "Explorers Club tuki Exploration-rahastolla ensimmäistä riistakameratutkimusta.\nExplorers Club on kansainvälinen, monialainen ammattilaisten seura, jonka pyrkimyksenä on kannattaa kenttätutkimusta sekä aatetta, että tutkimusmatkoille meitä ajavan vaiston vaaliminen on elintärkeää.\nExplorers Club edistää tieteellistä tutkimusta maalla, meressä, ilmassa ja avaruudessa tukemalla fysikaalisten, luonnon-, sekä biotieteden tutkimustyötä."
+      },
+      "asm": {
+        "name": "American Society of Mammalogists",
+        "url": "http://www.mammalsociety.org/",
+        "image": "images/about/organizations/asm.jpg",
+        "description": "American Society of Mammalogists tuki tutkimusapurahasto-ohjelmallaan ensimmäistä riistakameratutkimusta.\nASM perustettiin vuonna 1919 edistämään kiinnostusta nisäkästutkimukseen.\nASM:llä on nykyisin yli 4500 jäsentä, monet heistä tieteen ammattilaisia.\nJäsenet ovat aina olleet kiinnostuneita yleisestä edusta,\nja siksi he tarjoavat tietoa käytettäväksi julkisessa menettelyssä, resurssien hallinnoinnissa, luonnonsuojelussa sekä opetustyössä."
+      },
+      "bellMuseum": {
+        "name": "James Ford Bellin luonnonhistoriallinen museo",
+        "url": "http://www.bellmuseum.org/",
+        "image": "images/about/organizations/bell-museum.jpg",
+        "description": "James Ford Bellin luonnonhistoriallisen museon James W. Wilkien luonnonhistorian stipendillä rahoitettiin ensimmäistä riistakameratutkimusta vuonna 2010.\nMuseo perustettiin Minnesotan lainsäätäjän toimesta vuonna 1872\nkeräämään, säilyttämään, taidokkaasti preparoimaan, näytteilleasettamaan ja tulkitsemaan osavaltiomme monimuotoista eläin- ja kasvilajistoa\ntutkimus- ja opetuskäyttöön sekä julkisesti nautittavaksi, rikastuttavaksi ja arvostettavaksi.\nKeräily, tutkimus ja opetus on valjastettu näytteillepanojen, näyttelyiden ja yleisön palveluun."
+      },
+      "umnCbs": {
+        "name": "Minnesotan yliopiston biotieteellinen korkeakoulu (CBS)",
+        "url": "https://www.cbs.umn.edu/",
+        "image": "images/about/organizations/umn.jpg",
+        "description": "Biotieteellisen korkeakoulun Rothman-stipendillä rahoitettiin riistakameratutkimuksen kokeiluhanketta vuonna 2009.\nCBS tukee inhimillisen hyvinvoinnin ja globaalien olojen parantamiseen johtavaa tutkimusta edistämällä tietämystä elämän mekanismeista.\nBiologiaan erikoistuneena CBS pyrkii valmentamaan tämän päivän opiskelijoita huomispäivän biologian luomiseen."
+      },
+      "trailCamPro": {
+        "name": "TrailCamPro.com",
+        "url": "http://www.trailcampro.com/",
+        "image": "images/about/organizations/trailcampro.jpg",
+        "description": "TrailCamPro on tarjonnut tutkimuksen käyttöön edullisia riistakameroita ja jakanut myös korvaamattoman arvokasta kokemustietoaan niiden käytöstä,\nmillä on ollut tutkimuksen onnistumisen kannalta iso merkitys.\nTrailCamPro on erikoistunut jälkikameroiden, riistakameroiden ja turvakameroiden myyntiin."
+      },
+      "zgf": {
+        "name": "Frankfurtin eläintieteellinen yhdistys",
+        "url": "http://www.zgf.de/?id=14&language=en",
+        "image": "images/about/organizations/fzs.jpg",
+        "description": "Frankfurtin eläintieteellinen yhdistys (FZS) tarjoaa Serengetin kenttätyöryhmälle logistista taustatukea.\nFZS on voittoa tuottamaton, kansainvälinen luonnonsuojelujärjestö Frankfurt am Mainista.\nJärjestön päämääränä on biologisen monimuotoisuuden suojelu.\nFZS:llä on siksi edessään yksi 2000-luvun suurimmista haasteista: maailman luonnonympäristöjen varjeleminen."
+      },
+      "tawiri": {
+        "name": "Tansanian luonnontutkimuslaitos",
+        "url": "http://www.tawiri.or.tz/",
+        "image": "images/about/organizations/tawiri.jpg",
+        "description": "Tansanian luonnontutkimuslaitos (TAWIRI) tarjoaa riistakamerahankkeen tarvitsemat luvat ja toimintatilat.\nTAWIRI on luonnonvara- ja turismiministeriön alainen puolijulkinen järjestö, jonka vastuulla on Tansanian yhdistyneen tasavallan luonnontutkimuksen koordinointi ja ohjailu.\nTAWIRIn laajempi tarkoitus on toimittaa valtiovallan ja ympäristöviranomaisten käyttöön tieteellistä tietoa ja ohjeistusta luonnon ja luonnonvarojen kestävästä suojelusta."
+      },
+      "tanzaniaParks": {
+        "name": "Tansanian kansallispuistot",
+        "url": "http://www.tanzaniaparks.com/",
+        "image": "images/about/organizations/tanapa.jpg",
+        "description": "Tansanian kansallispuistot (TANAPA) tarjoaa riistakamerahankkeen tarvitsemat luvat ja toimintatilat.\nTANAPAn tehtävänä on hallinnoida ja säännellä kansallispuistoja maan luonnonvarat ja kulttuurivarannot käsittävän luonnonperinnön varjelemiseksi.\nTANAPA suojelee ja hallinnoi puiston luonnonvaroja ja niiden kauneusarvoa kestävästi nykyisten ja tulevien ihmissukupolvien hyväksi, ja tarjoaa samalla tehokkaasti korkealuokkaisia turismituotteita ja -palveluita."
+      },
+      "oxford": {
+        "name": "Oxfordin yliopisto",
+        "url": "http://www.ox.ac.uk/",
+        "image": "images/about/organizations/oxford.png",
+        "description": "Maailman vanhin englanninkielinen yliopisto perustettiin Oxfordissa 1000- tai 1100-luvulla.\nNykyisin sen humanististen tieteiden tutkimukseen yhdistyy vankka luonnon- ja lääketieteen tutkimus.\nTalkoistiedettä tukevat <a href=\"http://www.physics.ox.ac.uk/\" target=\"_blank\">fysiikan laitos</a>,\n<a href=\"http://www.mpls.ox.ac.uk/\" target=\"_blank\">matematiikan-, fysikaalisten ja biotieteiden osasto</a>,\nsekä <a href=\"http://www.oxfordmartin.ox.ac.uk/\" target=\"_blank\">Oxford Martin Schools</a>."
+      },
+      "adler": {
+        "name": "Adler-planetaario",
+        "url": "http://www.adlerplanetarium.org/",
+        "image": "images/about/organizations/adler.jpg",
+        "description": "Chicagolainen yritysjohtaja Max Adler perusti Adler-planetaarion – Amerikan ensimmäisen planetaarion – vuonna 1930.\nAdler-planetaario on tunnustusta saanut tiedevalistuksen edelläkävijä, jonka päämääränä on kannustaa nuoria tieteen, teknologian, insinöörityön ja matematiikan aloille.\nJo 80 vuoden ajan Adler on kannustanut seuraavan sukupolven tutkimusmatkailijoita avaruustutkimuksen sankareiden henkilökohtaisten tarinoiden avulla."
+      }
+    },
+    "teams": {
+      "science": {
+        "swanson": {
+          "name": "Ali Swanson",
+          "image": "images/about/team/ali.jpg",
+          "description": "Ali jahtasi (tieteellisin tarkoituksin, totta kai) vuosien ajan nisäkkäitä, kaloja ja lintuja eri puolilla Pohjois-Amerikkaa ennen kuin aloitti tohtorintutkintonsa Minnesotan yliopistossa.\nHän käynnisti riistakameratutkimuksen Serengetin petojen rinnakkaiseloa käsittelevää väitöskirjaansa varten vuonna 2010.\nNykyisin hän viettää suunnilleen puolet vuodesta Serengetillä kehitellen keinoja tehdä tyhjiksi hyeenoiden ja norsujen yritykset natustella ja tuhota kamerat."
+        },
+        "kosmala": {
+          "name": "Margaret Kosmala",
+          "image": "images/about/team/margaret.jpg",
+          "description": "Margaret on tohtorinväitöstään viimeistelevä ekologi Minnesotan yliopistosta.\nHänen tutkimuksensa kohteena ovat monimutkaiset lajienväliset vuorovaikutussuhteet, ja häntä kiinnostaa erityisti ihmisten vaikutus lajiyhdyskuntiin.\nParhaillaan hän on Washingtonin Kansallisen luonnonhistoriallisen museon stipendiaattina\nselvittelemässä mitä hyönteisyhteisöille tapahtuu planeetan lämmetessä."
+        },
+        "packer": {
+          "name": "Craig Packer",
+          "image": "images/about/team/craig.jpg",
+          "description": "Craig Packerin titteli Minnesotan yliopistossa on Distinguished McKnight University Professor,\nja hän toimii Tansanian luonnontutkimuslaitoksen tutkijana.\nHän on työskennellyt Tansaniassa 40 vuotta ja hänellä on kaksi pysyvää intohimon kohdetta: Serengeti ja valokuvaus.\nEnää hän ei kuitenkaan kanna kameraa mukanaan, vaan pitää nykyisin enemmän Snapshot Serengetin kameroiden räpsimistä jännittävistä kuvista."
+        },
+        "rosengren": {
+          "name": "Daniel Rosengren",
+          "image": "images/about/team/daniel.jpg",
+          "description": "Daniel suoritti maisterintutkintonsa Ruotsissa myyrien populaatiodynamiikkaa tutkien.\nPyöräiltyään Euroopan pohjoisimman niemen nokasta Afrikan eteläisimpään kärkeen Daniel vaihtoi pyöränsä leijonahankkeen Land Roveriin.\nNykyisin hän on Serengetin vanhempi kenttäassistentti, eikä juurikaan malta laskea kameraa kädestään."
+        },
+        "mwampeta": {
+          "name": "Stanslaus Mwampeta",
+          "image": "images/about/team/stanslaus.jpg",
+          "description": "Stan liittyi leijonahankkeeseen valmistuttuaan Tansanian Dar es Salaamin yliopistosta.\nLeijonien tarkkailulta ehtiessään hän kiertelee riistakameroilla huolehtimassa siitä, ettei Snapshot Serengetiltä lopu kuvamateriaali kesken."
+        },
+        "finlay": {
+          "name": "Fred Finlay",
+          "image": "images/about/team/fred.jpg",
+          "description": "Fred on Minnesotan yliopiston opetus- ja kasvatustieteen korkeakoulun apulaisprofessori.\nHäntä kiinnostaa sosiaalisen ja kulttuurisen taustan vaikutus ihmisten tiedeoppimiseen, ja hän tekee ison osan tutkimustyöstään Thaimaassa."
+        }
+      },
+      "development": {
+        "borden": {
+          "name": "Kelly Borden",
+          "image": "images/about/team/kelly.jpg",
+          "description": "Kelly on koulutukseltaan arkeologi, mutta hänen kutsumuksensa on opettaminen.\nKellystä tuli Adler-planetaarion Tiede- ja teollisuusmuseossa työskennellessään innokas tiedevalistaja, ja hän välittääkin hanakasti tiedettä kansanjoukoille.\nTieteen ihmeiden pohdinnalta malttaessaan Kelly yleensä joko leipoo tai sitten viettää aikaa kissojensa Murrayn, Adan ja Keplerin parissa."
+        },
+        "carstensen": {
+          "name": "Brian Carstensen",
+          "image": "images/about/team/brian.jpg",
+          "description": "Brian työskentelee webohjelmoijana Adler-planetaarion Zooniverse-hankeperheen parissa.\nBrianilla on graafisen suunnittelijan tutkinto Chicagon Columbia Collegesta, ja hän työskenteli niissä hommissa useampia vuosia ennen kuin löysi markkinaraon webkehittäjänä."
+        },
+        "lintott": {
+          "name": "Chris Lintott",
+          "image": "images/about/team/chris.jpg",
+          "description": "Chris Lintott on Zooniverse-ryhmä johtaja ja hän viettää runsaan vapaa-aikansa tutkimustöissä Oxfordin yliopistossa, missä hän on erikoistunut galaksien syntyyn ja kehitykseen.\nHän on innokas tieteen popularisoija, ja hänet tunnetaan parhaiten toisena BBC:n pitkäikäisen Sky at Night -ohjelman juontajista. Parhaillaan hän naukkailee rutkasti sherryä."
+        },
+        "miller": {
+          "name": "David Miller",
+          "image": "images/about/team/david.jpg",
+          "description": "Davidin kutsumuksena on kertoa tarinoita selkeän, tyylipuhtaan ja tehokkaan designin välityksellä.\nEnnen liittymistään Zooniverse-ryhmään visuaalisena suunnittelijana David työskenteli Raindance-filmijuhlilla, News 21 Initiativen Apart From Warissa, sekä oman pienyrityksensä Miller Visualin freelance-suunnittelijana.\nDavid valmistui S.I. Newhousen joukkoviestinnän opistosta Syracusen yliopistossa."
+        },
+        "parrish": {
+          "name": "Michael Parrish",
+          "image": "images/about/team/michael.jpg",
+          "description": "Michaelilla on tietojenkäsittelytieteen tutkinto, ja hän on ollut Zooniversen ohjelmistokehittäjänä viimeiset kolme vuotta.\nWebohjelmoinnin ohella hänen mielenkiintonsa kohteita ovat uusi teknologia, tiede, tekoäly, matelijat ja kahvi."
+        },
+        "smith": {
+          "name": "Arfon Smith",
+          "image": "images/about/team/arfon.jpg",
+          "description": "Arfon vastaa talkoistieteen alustamme Zooniversen kehitystyön johdosta.\nHän aloitti Adler-planetaarion talkoistieteen johtajana elokuussa 2011,\nja siinä ominaisuudessa jatkaa Zooniversen ohjelmisto- ja infrastruktuurikehitystyötä.\nHän opiskeli kemiaa Sheffieldin yliopistossa ja suoritti tohtorintutkinnon astrokemiasta Nottinghamin yliopistossa 2006."
+        }
+      }
+    }
+  }
+}
