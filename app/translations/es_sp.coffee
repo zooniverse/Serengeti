@@ -1,185 +1,185 @@
 module.exports =
   navigation:
-    home: 'Home'
-    about: 'About'
-    classify: 'Classify'
-    profile: 'Profile'
-    discuss: 'Discuss'
+    home: 'Inicio'
+    about: 'Información'
+    classify: 'Clasificar'
+    profile: 'Perfil'
+    discuss: 'Discusión'
     blog: 'Blog'
 
   home:
-    heading: 'Welcome to Snapshot Serengeti'
+    heading: 'Bienvenido a Snapshot Serengeti'
     content: '''
-      Hundreds of camera traps in Serengeti National Park, Tanzania,
-      are providing a powerful new window into the dynamics of Africa’s most elusive wildlife species.
-      We need your help to classify all the different animals caught in millions of camera trap images.
+      Cientos de camaras distribuidas en el parque nacional del Serengeti (Tanzania)
+      están abriendo un nuevo camino en el estudio de las actividades de las especies salvajes más escurridizas.
+      Necesitamos tu ayuda para clasificar los animales fotografiados en millones de imágenes que hemos obtenido de esas cámaras.
     '''
     allSeasonsComplete: '''
-      <p>With your help, we've classified all the data we have so far. Great work!</p>
+      <p>Con tu ayuda hemos clasificado todas las imágenes que tenemos por ahora.  ¡Bien hecho!</p>
       <p>
-        We're leaving some images up for further classification, but we have more projects
-        (like <a href="https://www.zooniverse.org/project/cyclonecenter">Cyclone Center</a>
-        and <a href="https://www.zooniverse.org/project/batdetective">Bat Detective</a>) that need your help.
-        Visit <a href="https://www.zooniverse.org/">zooniverse.org</a> to see them all.
+        Hemos dejado algunas imágenes para futuras clasificaciones, pero hay otros proyectos
+	(como <a href="https://www.zooniverse.org/project/cyclonecenter">El Centro del Ciclón</a>
+	y <a href="https://www.zooniverse.org/project/batdetective">Detective de Murciélagos</a>) que necesitan tu ayuda.
+	Accede a <a href="https://www.zooniverse.org/">zooniverse.org</a> para verlos todos.
       </p>
       <p>
-        Keep an eye on <a href="http://blog.snapshotserengeti.org/">the blog</a>
-        to learn what happens with the data the project has generated
-        and to find out when more images from the Serengeti are available.
+        En nuestro <a href="http://blog.snapshotserengeti.org/">blog</a> 
+	(en inglés) puedes seguir el estado de nuestro proyecto y apreder
+	como procesamos los datos obtenidos.  También encontrarás información
+	de cuando hay nuevas imágenes esperándote para ser catalogadas.
       </p>
     '''
-    action: 'Start classifying'
-    currentStatus: '<span class="classification-count">0</span> classifications by <span class="user-count">0</span> volunteers'
+    action: 'Empezar a clasificar'
+    currentStatus: '<span class="classification-count">0</span> clasificaciones por <span class="user-count">0</span> voluntarios'
 
   classify:
-    deleteAnnotation: 'Delete'
-    notSignedIn: 'You\'re not signed in!'
-    favorite: 'Favorite'
-    unfavorite: 'Unfavorite'
-    play: 'View series'
-    pause: 'Stop'
-    satellite: 'Satellite view'
-    nothingLabel: 'Nothing here'
-    nextSubjectButton: 'Finish'
-    share: 'Share'
+    deleteAnnotation: 'Suprimir'
+    notSignedIn: '¡No estás regsitrado!'
+    favorite: 'Añadir'
+    unfavorite: 'Quitar'
+    play: 'Reproducir'
+    pause: 'Parar'
+    satellite: 'Vista de Satélite'
+    nothingLabel: 'Nada por Aquí'
+    nextSubjectButton: 'Terminar'
+    share: 'Compartir'
     tweet: 'Tweet'
     pin: 'Pin it'
-    discuss: 'Discuss'
-    next: 'Next capture'
+    discuss: 'Discutir'
+    next: 'Siguiente captura'
 
-    nothingToShow: 'There\'s nothing to show with these filters.'
-    clearFilters: 'Clear filters'
+    nothingToShow: 'No hay nada con los filtros seleccionados.' 
+    clearFilters: 'Quitar filtros'
 
-    oftenConfused: 'Often confused with:'
+    oftenConfused: 'Normalmente confundido con:'
 
-    count: 'How many'
+    count: '¿Cuántos?'
 
-    behavior: 'Behavior'
+    behavior: 'Actividad'
     behaviors:
-      resting: 'Resting'
-      standing: 'Standing'
-      moving: 'Moving'
-      eating: 'Eating'
-      interacting: 'Interacting'
+      resting: 'Descansando'
+      standing: 'En pie'
+      moving: 'En movimiento'
+      eating: 'Comiendo'
+      interacting: 'Interactuando'
 
-    babies: 'Young present'
-    rain: 'Raining'
+    babies: 'Crias presente'
+    rain: 'Lloviendo'
 
-    cancel: 'Cancel'
-    identify: 'Identify'
+    cancel: 'Cancelar'
+    identify: 'Identificar'
 
     tutorial:
-      continueButton: 'Continue'
+      continueButton: 'Continuar'
 
-      welcomeHeader: 'Welcome to Snapshot Serengeti!'
+      welcomeHeader: 'Bienvenido a Snapshot Serengeti!'
       welcome: '''
-        This short tutorial will walk you through your first classification. Let's get started!
+        Este breve introducción te explicará paso a paso como hacer tu primera clasificación. ¡Empezemos!
       '''
 
-      trapsHeader: 'Check out the Images'
+      trapsHeader: 'Revisa las Imágenes'
       traps: '''
-        All over the Serengeti, scientists have set up motion sensitive camera traps.
-        The camera snaps a few shots anytime something moves in front of it.
+        Científicos han distribuido cámaras con detectores de movimiento por todo lo ancho y largo del Serengeti.
+	Las camaras echan varias fotos siempre que algo se mueve delante de ellas.
 
-        The photos often come as a sequence of 2 or 3, called a "capture".
+	Las fotos normalmente vienen en grupos de 2 o 3, dichos grupos les llamamos "captura".
 
-        Check out other snapshots in the sequence using the buttons below the image,
-        or play them like a flipbook by clicking the play button.
+	Revisa las otras imágenes de la sequencia usando los botones de debajo de ellas,
+	o reproducelas automáticamen pulsando el botón reproducir.
       '''
 
-      taskHeader: 'Identify the Animals'
+      taskHeader: 'Identifica los Animales'
       task: '''
-        Your task is to identify all the different animals that appear in the photos.
-        The species that will appear are listed here.
+        Tu misión es identificar todos los animales que aparezcan en las fotos.
+	Las especies que aprecerán estan en esta lista.
 
-        It's a big list, and some species may be unfamiliar,
-        but there are a few ways to narrow that list down using the characteristics you see.
+	La lista es larga y algunas de las especies serán nuevas para ti,
+	pero hay varias maneras de reducir la lista usando las características de lo que veas.
       '''
 
-      chooseAntelopeHeader: 'Looks like...'
+      chooseAntelopeHeader: 'Parece un...'
       chooseAntelope: '''
-        The animal in the foreground of this photo looks like a large antelope of some kind.
-
-        Let's choose "Antelope/deer" from the "looks like" menu.
+        El animal en el primer plano de esta foto se parece a un tipo de antílope grande.
+ 
+	Elegimos "Antílope/Ciervo" del menú "Parece".
       '''
 
-      chooseSolidHeader: 'Characteristic: Pattern'
+      chooseSolidHeader: 'Característica: Patrón'
       chooseSolid: '''
-        Let's narrow the list down a bit by choosing the solid swatch from the "Pattern" menu.
+        Filtramos un poco más la lista eligiendo el patrón liso del menú "Patrón".
       '''
 
-      chooseCurlyHeader: 'Characteristic: Horns'
+      chooseCurlyHeader: 'Característica: Cuernos'
       chooseCurly: '''
-        We've narrowed the list down enough to see thumbnail previews of the remaining animals.
+        Hemos reducido la lista lo suficiente tal que ahora podemos ver fotos de los posibles animales restantes.
 
-        Choose the "Curly" icon from the "Horns" menu to narrow the list down further.
+	Elige en el menú "Cuernos" el icono "Rizado" para reducir un poco más la lista.
       '''
 
-      chooseWildebeestHeader: 'Make a choice'
+      chooseWildebeestHeader: 'Elige'
       chooseWildebeest: '''
-        Great, that leaves us with just one option!
-        Let's choose "Wildebeest" it and make sure it's a match.
+        Perfecto, nos hemos quedado con sólo una opción!
+	Elegimos "Ñu" y asegúrate está correcto.
       '''
 
-      confirmWildebeestHeader: 'Looks Good!'
+      confirmWildebeestHeader: '¡Parece Correcto!'
       confirmWildebeest: '''
-        By comparing the animal to to the photos here and reading the description below, we can confirm that this is indeed a wildebeest.
-        You can flip through the photos to see examples of the animal from multiple angles using the bullets on the right.
+        Comparando el animal en cuestión con las fotos de aquí y leyendo la descripción de abajo, podemos confirmar que es un Ñu.
+        Usando los puntos en la derecha puedes ver otras fotos con ejemplos de dicho animal desde distintos puntos de vista.
       '''
 
-      identifyWildebeestHeader: 'Count & Behavior'
+      identifyWildebeestHeader: 'Número y Comportamiento'
       identifyWildebeest: '''
-        Once you're confident that this is a wildebeest,
-        choose "1" from the count menu and "Moving" from the behavior menu.
-        Then click "Identify."
+        Una vez que estás seguro que es un ñu,
+	elige "1" del menú "¿Cuántos?" y "En movimiento" del menú "Actividad".
+	Entonces pulsa en "Identificar".
       '''
 
-      findZebrasHeader: 'Identify another animal'
+      findZebrasHeader: 'Identifica otro animal'
       findZebras: '''
-        We want to try to identify all the animals in each capture.
-        Look closely and you'll notice that there are some zebras in the distance.
+        Queremos identificar todos los animales en cada foto.
+	Mira detenidamente y verás que también hay unas cebras a lo lejos.
 
-        Let's look at another way of classifying when we already know which species we can see.
+	Veamos una manera distinta de clasificar cuando sabemos que especies podemos ver.
       '''
 
-      typeZebraHeader: 'Search'
+      typeZebraHeader: 'Busca'
       typeZebra: '''
-        The seach field is a quick way to highlight animals whose descriptions contain certain words.
+        El campo de búsqueda ofrece una manera rápida de destacar los animales cuya descripción contiene ciertas palabras.
 
-        Type "zebra" in the search field...
+	Escribe "cebra" en el campo de búsqueda...
       '''
 
-      clickZebraHeader: 'Search'
+      clickZebraHeader: 'Busca'
       clickZebra: '''
-        ...and click "Zebra," which is the only animal highlighted.
+        ...y pulsa "Cebra", que es el único animal destacado.
       '''
 
-      confirmZebraHeader: 'Just do your best!'
+      confirmZebraHeader: '¡Haz lo mejor que puedas!'
       confirmZebra: '''
-        It's hard to make out the zebras in the distance, so classify as best you can.
-        Each classification is compared with the classifications of other volunteers, so even if you're not sure, just try your best!
+        Es dificil saber el número de cebras que se ven a lo lejos, así que clasificalas lo mejor que puedas.
+	Cada clasificación se compara con la clasificaciones echa por otros voluntarios, pero no dejes de intentarlo aunque no estés seguro.
       '''
 
-      identifyZebraHeader: 'Count & Behavior'
+      identifyZebraHeader: 'Número y Comportamiento'
       identifyZebra: '''
-        There are two zebras in the distance, and they appear to be grazing with their heads bowed.
-        Mark "2," "Standing," and "Eating," then click "Identify."
+        Hay dos cebras a lo lejos, y parecen estar pastando con sus cabezas inclinads hacia abajo.
+	Marca "2", "En pie" y "Comiendo", por último pulsa en "Identificar".
       '''
 
-      finishHeader: 'Nice Job!'
+      finishHeader: '¡Buen trabajo!'
       finish: '''
-        Now you're ready to classify some images on your own.
+        Ahora estás capacitado para clasificar algunas imágenes por tu cuenta.
 
-        In each image, do your best to identify all the animals you can,
-        even if you can't see enough to be completely sure.
-        If there aren't any animals in an image, check "Nothing here" and then "Finish."
+	Has lo mejor que puedas para clasificar todos los animales que aparezcan en cada imagen, incluso si no puedes verlos suficientemente bien para estar completamente seguro.
+	Pulsa en "Nada por aquí" si no hay ningún animal en la imagen, seguido de "Terminar".
 
-        Your observations will be combined with those of multiple volunteers,
-        so even if you're not sure on something, your contribution is still very useful!
+	Tus resultados se combinarán con los conseguidos por varios otros volunarios,
+	así que incluseo cuando no estás completamente seguro de algo, ¡tu contribución nos es muy útil!
 
-        Don't forget: after classifying an image you can always discuss it with professional and citizen scientists or share it with friends.
+	No te olvides, después de clasificar cada imagen puedes discutirla con profesionales y ciudadano científicos o compartirla con tus amigos.
 
-        Click "Finish" now to move on.
+        Pulsa "Terminar" ahora para seguir.
       '''
 
     splits:
@@ -534,7 +534,7 @@ module.exports =
       '''
 
     wildebeest:
-      label: 'Wildebeest'
+      label: 'Ñu'
       description: '''
         Long-legged, with dark grey-brown fur with faint stripes of darker fur on neck and flank.
         Large head with a rounded black nose and white ‘beard’.
@@ -571,6 +571,7 @@ module.exports =
 
     buffalo:
       wildebeest: '''
+        Un ñu es ..
         A wildebeest is skinnier than a buffalo, with a large head and long beard.  Its horns don’t fuse together in the center.
       '''
 
@@ -738,35 +739,35 @@ module.exports =
       '''
 
   characteristics:
-    like: 'Looks like'
-    pattern: 'Pattern'
+    like: 'Parece'
+    pattern: 'Patrón'
     coat: 'Color'
-    horns: 'Horns'
-    tail: 'Tail'
+    horns: 'Cuernos'
+    tail: 'Cola'
     build: 'Build'
 
   characteristicValues:
-    likeCatDog: 'Cat/dog'
-    likeCowHorse: 'Cow/horse'
-    likeAntelopeDeer: 'Antelope/deer'
-    likeBird: 'Bird'
-    likeWeasel: 'Weasel'
-    likeOther: 'Other'
-    patternVerticalStripe: 'Stripes'
-    patternHorizontalStripe: 'Bands'
-    patternSpots: 'Spots'
-    patternSolid: 'Solid'
-    coatTanYellow: 'Tan/yellow'
-    coatRedBrown: 'Red'
-    coatBrownBlack: 'Brown'
-    coatWhite: 'White'
-    coatGray: 'Gray'
-    coatBlack: 'Black'
-    hornsNone: 'None'
-    hornsStraight: 'Straight'
-    hornsSimpleCurve: 'Curved'
-    hornsLyrate: 'Lyrate'
-    hornsCurly: 'Curly'
+    likeCatDog: 'Gato/Perro'
+    likeCowHorse: 'Vaca/Caballo'
+    likeAntelopeDeer: 'Antílope/Ciervo'
+    likeBird: 'Pájaro'
+    likeWeasel: 'Comadreja'
+    likeOther: 'Otro'
+    patternVerticalStripe: 'Líneas'
+    patternHorizontalStripe: 'Líneas'
+    patternSpots: 'Manchas'
+    patternSolid: 'Liso'
+    coatTanYellow: 'Ocre/Amarillo'
+    coatRedBrown: 'Rojo'
+    coatBrownBlack: 'Marrón'
+    coatWhite: 'Blanco'
+    coatGray: 'Gris'
+    coatBlack: 'Negro'
+    hornsNone: 'Ninguno'
+    hornsStraight: 'Recto'
+    hornsSimpleCurve: 'Curvado'
+    hornsLyrate: 'Lira'
+    hornsCurly: 'Rizado'
     tailBushy: 'Bushy'
     tailSmooth: 'Smooth'
     tailTufted: 'Tufted'
@@ -780,20 +781,20 @@ module.exports =
     buildSloped: 'Sloped'
 
   profile:
-    favorites: 'Favorites'
-    recents: 'Recents'
-    noFavorites: 'You have no favorites!'
-    noRecents: 'You have no recent classifications!'
-    showing: 'Showing'
-    loadMore: 'Load more'
+    favorites: 'Favoritos'
+    recents: 'Recientes'
+    noFavorites: 'No tienes favoritos aún!'
+    noRecents: 'No tienes clasificaciones recietes!'
+    showing: 'Mostrando'
+    loadMore: 'Cargar más'
 
   about:
     sections:
-      information: 'Information'
-      organizations: 'Organizations'
-      teams: 'Teams'
-      scienceTeam: 'Science team'
-      developmentTeam: 'Development team'
+      information: 'Información'
+      organizations: 'Organizaciones'
+      teams: 'Equipos'
+      scienceTeam: 'Equipo científico'
+      developmentTeam: 'Equipo de desarrollo'
 
     information:
       main: '''
@@ -810,9 +811,9 @@ module.exports =
           <li>Predator Prey Relationships: Recent advances in ecology have suggested that there may be costs to herbivores when they avoid predators. For example, if predators hunt in areas with the best plants, herbivores may avoid those areas and only be able to eat plants that aren’t as good. We are using the camera trap data on herbivore distributions to study whether herbivores are found where the best food is or where the risk of being killed by predators is lowest.</li>
         </ul>
 
-        <p>Images are licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</p>
+        <p>Images are licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/deed.es">Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License</a>.</p>
 
-        <p>Help us translate this project into your language! <a href="https://github.com/zooniverse/Serengeti/tree/master/public/translations">Check out our GitHub repo to find out how.</a></p>
+        <p>Ayúdanos a traducir este proyecto en tu idioma! <a href="https://github.com/zooniverse/Serengeti/tree/master/public/translations">Visita nuestro repositorio en GitHub para saber como.</a></p>
       '''
 
       sidebar: '''
