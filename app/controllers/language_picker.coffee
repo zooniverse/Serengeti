@@ -11,7 +11,8 @@ class LanguagePicker
 
   languages:
     'English': DEFAULT
-    'Polski (beta)': 'pl_pl'
+    'Polski': 'pl_pl'
+    'Suomen kieli (beta)': 'fi_fi'
 
   el: null
   className: 'language-picker'

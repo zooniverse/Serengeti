@@ -139,7 +139,8 @@
       margin-left: 7px;
       width: 71px;
 
-      [data-language="pl_pl"] & {
+      [data-language="pl_pl"] &,
+      [data-language="fi_fi"] & {
         font-size: 13px;
         letter-spacing: -1px;
       }
@@ -306,6 +307,11 @@
         [data-language="pl_pl"] & {
           font-size: 11px;
           letter-spacing: -1px;
+        }
+
+        [data-language="fi_fi"] & {
+          font-size: 10px;
+          letter-spacing: -1px
         }
 
         &:hover {
@@ -532,6 +538,10 @@
 
         .image {
           display: none;
+        }
+
+        [data-language="fi_fi"] & {
+          font-size: 10px;
         }
       }
 
