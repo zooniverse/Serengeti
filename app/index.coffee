@@ -50,7 +50,8 @@ Api.init
   else if +location.port < 1024
     'https://api.zooniverse.org'
   else
-    "#{location.protocol}//#{location.hostname}:3000"
+    'https://dev.zooniverse.org'
+    #"#{location.protocol}//#{location.hostname}:3000"
 
 # TODO: Don't count on the proxy frame to have no loaded yet.
 
