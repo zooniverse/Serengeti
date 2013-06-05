@@ -4,6 +4,7 @@ module.exports = ->
   Subject.create
     id: '5077375154558fabd7000003'
     zooniverseId: 'TUTORIAL_SUBJECT'
+    workflowId: '5077375154558fabd7000002'
 
     location: standard: [
       'images/tutorial-subject/PICT0500.JPG'
