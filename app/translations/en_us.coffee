@@ -521,7 +521,7 @@ module.exports =
     waterbuck:
       label: 'Waterbuck'
       description: '''
-        Large, bulky antelope with brown coarse hair and a white circle around rump.
+        Large, bulky antelope with brown coarse hair and a white rump patch with dark tail.
         White markings on chin and nose, and a white band runs from ear to ear under neck.
         Males have ridged horns that curve first backwards then forwards towards the tips.
       '''
