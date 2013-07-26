@@ -17,6 +17,8 @@ class HomePage extends Controller
   constructor: ->
     super
     @html template
+    $(document.body).addClass 'lift-banner'
+    setTimeout (=> $(document.body).removeClass 'lift-banner'), 2000
 
     @imageChanger = new ImageChanger
       el: @el.find '.recents .image-changer'

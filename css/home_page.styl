@@ -16,6 +16,7 @@
       position: relative;
 
       figure {
+        background: gray
         border: 5px solid $white;
         box-shadow: 0 2px 5px $black;
         box-sizing: border-box;
@@ -135,3 +136,42 @@
     }
   }
 }
+
+.save-snapshot-serengeti-banner
+  font-size: 14px
+  perspective: 500
+  position: absolute
+  text-align: center
+  text-shadow: none
+  transform: translate(-7px, 0) rotate(-5deg)
+  transform-style: preserve-3d
+  z-index: 2
+
+
+  .fold
+    background: darken($red, 15%)
+    border-top-left-radius: 10px 50px
+    bottom: -5px
+    height: 45px
+    margin-right: -2px
+    position: absolute
+    right: 100%
+    width: 25px
+
+  a
+    background: linear-gradient(top, $red, darken($red, 10%))
+    border-bottom-right-radius: 10px 50px
+    box-shadow: 0 1px 3px rgba(#000, 0.25)
+    color: #fff
+    display: block
+    padding: 5px 80px 5px 50px
+    position: relative
+    text-decoration: none
+    transition: box-shadow 0.25s ease-in-out, transform 0.25s ease-in-out
+    transform-origin: left center
+    z-index: 1
+
+    .lift-banner &
+    &:hover
+      box-shadow: 3px 5px 10px rgba(#000, 0.25)
+      transform: rotateY(-5deg)
