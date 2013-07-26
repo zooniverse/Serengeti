@@ -24,11 +24,12 @@
       <!-- TODO: Translate these! -->
 
       <div class="progress">
-        <p><strong>Season <%= season %></strong> progress</p>
-
-        <div class="track">
-          <div class="fill" style="width: <%= (complete / total) * 100 %>%;"></div>
-        </div>
+        <p>
+          <span class="season"><strong>Season <%= season %></strong></span>
+          <span class="track">
+            <span class="fill" style="width: <%= (complete / total) * 100 %>%;"></span>
+          </span>
+        </p>
       </div>
     <% end %>
 
