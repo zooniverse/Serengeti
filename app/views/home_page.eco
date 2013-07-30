@@ -3,16 +3,23 @@
 
 <% allSeasonsComplete = false %>
 
-<div class="save-snapshot-serengeti-banner">
-  <span class="fold"></span>
-  <a href="http://www.indiegogo.com/projects/save-snapshot-serengeti" target="_blank">
-    Snapshot Serengeti's funding will run out in September.<br />
-    <strong>Click here to help us raise funds to carry us to 2014!</strong>
-  </a>
-</div>
-
 <div class="recents">
   <div class="image-changer"></div>
+
+  <div class="save-snapshot-serengeti banner">
+    <span class="fold"></span>
+    <a href="http://www.indiegogo.com/projects/save-snapshot-serengeti" target="_blank">
+      Snapshot Serengeti's funding will run out in September.<br />
+      <strong>Click here to help us raise funds to carry us to 2014!</strong>
+    </a>
+  </div>
+
+  <div class="save-the-memes banner">
+    <span class="fold"></span>
+    <a href="http://www.savethememes.org/" target="_blank">
+      <strong>Save the memes!</strong>
+    </a>
+  </div>
 </div>
 
 <div class="introduction">
