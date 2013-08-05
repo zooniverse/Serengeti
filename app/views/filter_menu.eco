@@ -5,7 +5,7 @@
 <div class="menu">
   <% for value in @characteristic.values: %>
     <button name="characteristic-value" value="<%= value.id %>">
-      <span class="label"><%- translate span: "characteristicValues.#{value.id}" %></span>
+      <span class="label"><%- translate 'span', "characteristicValues.#{value.id}" %></span>
     </button>
   <% end %>
 

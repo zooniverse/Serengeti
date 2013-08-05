@@ -1,10 +1,10 @@
 <% translate = require 't7e' %>
 
 <ul>
-  <li><%- translate a: 'navigation.home', href: '#/home' %></li>
-  <li><%- translate a: 'navigation.about', href: '#/about' %></li>
-  <li><%- translate a: 'navigation.classify', href: '#/classify' %></li>
-  <li><%- translate a: 'navigation.profile', href: '#/profile' %></li>
-  <li><%- translate a: 'navigation.discuss', href: 'http://talk.snapshotserengeti.org/' %></li>
-  <li><%- translate a: 'navigation.blog', href: 'http://blog.snapshotserengeti.org/' %></li>
+  <li><%- translate 'a', 'navigation.home', href: '#/home' %></li>
+  <li><%- translate 'a', 'navigation.about', href: '#/about' %></li>
+  <li><%- translate 'a', 'navigation.classify', href: '#/classify' %></li>
+  <li><%- translate 'a', 'navigation.profile', href: '#/profile' %></li>
+  <li><%- translate 'a', 'navigation.discuss', href: 'http://talk.snapshotserengeti.org/' %></li>
+  <li><%- translate 'a', 'navigation.blog', href: 'http://blog.snapshotserengeti.org/' %></li>
 </ul>

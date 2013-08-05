@@ -62,7 +62,7 @@ class FilterMenu extends Controller
 
   onSetFilter: =>
     @el.removeClass 'in-use'
-    @toggleButton.html translate span: "characteristics.#{@characteristic.id}"
+    @toggleButton.html translate 'span', "characteristics.#{@characteristic.id}"
     @menu.children().removeClass 'selected'
 
     selectedValue = @set.options[@characteristic.id]
@@ -70,7 +70,7 @@ class FilterMenu extends Controller
     if selectedValue?
       value = (value for value in @characteristic.values when value.id is selectedValue)[0]
       @el.addClass 'in-use'
-      @toggleButton.html translate span: "characteristicValues.#{value.id}"
+      @toggleButton.html translate 'span', "characteristicValues.#{value.id}"
       @menu.children("[value='#{value.id}']").addClass 'selected'
 
   onDocumentClick: ({target}) =>

@@ -23,14 +23,14 @@
 </div>
 
 <div class="introduction">
-  <%- translate h1: 'home.heading' %>
+  <%- translate 'h1', 'home.heading' %>
 
   <hr />
 
-  <%- translate p: 'home.content' %>
+  <%- translate 'p', 'home.content' %>
 
   <% if allSeasonsComplete: %>
-    <%- translate div: 'home.allSeasonsComplete', class: 'all-seasons-complete' %>
+    <%- translate 'div', 'home.allSeasonsComplete', class: 'all-seasons-complete' %>
 
   <% else: %>
     <hr />
@@ -52,6 +52,6 @@
   <% end %>
 
   <p class="action">
-    <%- translate a: 'home.action', href: '#/classify' %>
+    <%- translate 'a', 'home.action', href: '#/classify' %>
   </p>
 </div>

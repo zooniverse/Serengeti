@@ -1,6 +1,5 @@
 <% Subject = require 'models/subject' %>
 <% Favorite = require 'zooniverse/lib/models/favorite' %>
-<% translate = require 't7e' %>
 
 <li data-item="<%= @id %>">
   <% if @subjects?: %>

@@ -1,5 +1,3 @@
-<% translate = require 't7e' %>
-
 <div class="login-form"></div>
 
 <div class="controls">

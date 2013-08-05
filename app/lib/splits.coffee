@@ -5,9 +5,9 @@ User = require 'zooniverse/lib/models/user'
 userCount = -> User.count or 0
 
 none = -> ''
-social = -> translate({span: 'classify.splits.social'}).replace '###', userCount()
-task = -> translate {span: 'classify.splits.task'}
-science = -> translate {span: 'classify.splits.science'}
+social = -> translate('span', 'classify.splits.social').replace '###', userCount()
+task = -> translate 'span', 'classify.splits.task'
+science = -> translate 'span', 'classify.splits.science'
 
 countClassifications = ->
   return 0 unless User.current?

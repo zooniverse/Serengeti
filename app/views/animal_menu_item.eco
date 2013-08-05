@@ -2,5 +2,5 @@
 
 <figure>
   <img src="<%- @model.image %>" />
-  <figcaption><%- translate span: "animals.#{@model.id}.label" %></figcaption>
+  <figcaption><%- translate 'span', "animals.#{@model.id}.label" %></figcaption>
 </figure>

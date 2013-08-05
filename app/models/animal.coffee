@@ -13,7 +13,7 @@ class Animal extends Model
     setTimeout @translateLabel
 
   translateLabel: =>
-    @updateAttribute 'label', translate span: "animals.#{@id}.label"
+    @updateAttribute 'label', translate 'span', "animals.#{@id}.label"
 
   toJSON: -> @id
 

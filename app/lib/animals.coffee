@@ -87,10 +87,9 @@ animals = new FilteringSet
     for id, grid of item
       animal = new Animal
         id: id
-        label: translate {span: "animals.#{id}.label"}
-        description: translate {span: "animals.#{id}.description"}
+        label: translate('span', "animals.#{id}.label")
+        description: translate('span', "animals.#{id}.description")
         images: imagesFromId id
-
 
       for char in characteristics
         animal[char] = (value for value, i in values when value[0...char.length] is char and grid[i] is 1)

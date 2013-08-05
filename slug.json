@@ -6,6 +6,7 @@
     "jqueryify",
 
     "t7e",
+    "t7e/editor",
 
     "spine",
     "spine/lib/route",

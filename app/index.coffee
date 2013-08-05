@@ -106,4 +106,7 @@ Api.proxy.el().one 'load', ->
 
     Route.setup()
 
+    TranslationEditor = require 't7e/editor'
+    TranslationEditor.init() if !!~location.search.indexOf 'translate=1'
+
 module.exports = app

@@ -6,12 +6,12 @@
 
 <div class="user-profile">
   <nav>
-    <button name="turn-page" value="favorites"><%- translate span: 'profile.favorites' %></button>
-    <button name="turn-page" value="recents"><%- translate span: 'profile.recents' %></button>
+    <button name="turn-page" value="favorites"><%- translate 'span', 'profile.favorites' %></button>
+    <button name="turn-page" value="recents"><%- translate 'span', 'profile.recents' %></button>
   </nav>
 
   <div class="favorites page">
-    <p class="none"><%- translate span: 'profile.noFavorites' %></p>
+    <p class="none"><%- translate 'span', 'profile.noFavorites' %></p>
     <ul></ul>
     <hr />
 
@@ -21,7 +21,7 @@
   </div>
 
   <div class="recents page">
-    <p class="none"><%- translate span: 'profile.noRecents' %></p>
+    <p class="none"><%- translate 'span', 'profile.noRecents' %></p>
     <ul></ul>
     <hr />
 

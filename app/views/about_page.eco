@@ -1,28 +1,28 @@
 <% translate = require 't7e' %>
 
 <nav>
-  <button name="turn-page" value="information"><i rel="globe"><%- translate span: 'about.sections.information' %></i></button>
-  <button name="turn-page" value="organizations"><i rel="home"><%- translate span: 'about.sections.organizations' %></i></button>
-  <button name="turn-page" value="teams"><i rel="users"><%- translate span: 'about.sections.teams' %></i></button>
+  <button name="turn-page" value="information"><i rel="globe"><%- translate 'span', 'about.sections.information' %></i></button>
+  <button name="turn-page" value="organizations"><i rel="home"><%- translate 'span', 'about.sections.organizations' %></i></button>
+  <button name="turn-page" value="teams"><i rel="users"><%- translate 'span', 'about.sections.teams' %></i></button>
 </nav>
 
 <section data-page="information">
-  <%- translate div: 'about.information.main', class: 'content column' %>
-  <%- translate div: 'about.information.sidebar', class: 'sidebar column' %>
+  <%- translate 'div', 'about.information.main', class: 'content column' %>
+  <%- translate 'div', 'about.information.sidebar', class: 'sidebar column' %>
 </section>
 
 <!-- TODO: The static properties here could ideally be translated somehow. -->
 
 <section data-page="organizations">
-  <%- translate h2: 'about.sections.organizations' %>
+  <%- translate 'h2', 'about.sections.organizations' %>
 
   <% for organization in ['umn', 'mnZoo', 'nsf', 'gpsa', 'umnGradSChool', 'explorersClub', 'asm', 'bellMuseum', 'umnCbs', 'trailCamPro', 'zgf', 'tawiri', 'tanzaniaParks', 'oxford', 'adler']: %>
     <% staticProperties = translate "about.organizations.#{organization}" %>
     <div class="member organization">
       <img data-src="<%= staticProperties.image %>" />
       <div class="description">
-        <h3><%- translate a: "about.organizations.#{organization}.name", href: staticProperties.url, target: '_blank' %></h3>
-        <%- translate p: "about.organizations.#{organization}.description" %>
+        <h3><%- translate 'a', "about.organizations.#{organization}.name", href: staticProperties.url, target: '_blank' %></h3>
+        <%- translate 'p', "about.organizations.#{organization}.description" %>
       </div>
     </div>
   <% end %>
@@ -30,28 +30,28 @@
 
 <section data-page="teams">
   <div class="science team column">
-    <h2><%- translate 'about.sections.scienceTeam' %></h2>
+    <h2><%- translate 'span', 'about.sections.scienceTeam' %></h2>
     <% for member in ['swanson', 'kosmala', 'packer', 'rosengren', 'mwampeta', 'finlay']: %>
       <% staticProperties = translate "about.teams.science.#{member}" %>
       <div class="science team member">
         <img data-src="<%= staticProperties.image %>" />
         <div class="description">
-          <%- translate h3: "about.teams.science.#{member}.name" %>
-          <%- translate p: "about.teams.science.#{member}.description" %>
+          <%- translate 'h3', "about.teams.science.#{member}.name" %>
+          <%- translate 'p', "about.teams.science.#{member}.description" %>
         </div>
       </div>
     <% end %>
   </div>
 
   <div class="development team column">
-    <h2><%- translate 'about.sections.developmentTeam' %></h2>
+    <h2><%- translate 'span', 'about.sections.developmentTeam' %></h2>
     <% for member in ['borden', 'carstensen', 'lintott', 'miller', 'parrish', 'smith']: %>
       <% staticProperties = translate "about.teams.development.#{member}" %>
       <div class="development team member">
         <img data-src="<%= staticProperties.image %>" />
         <div class="description">
-          <%- translate h3: "about.teams.development.#{member}.name" %>
-          <%- translate p: "about.teams.development.#{member}.description" %>
+          <%- translate 'h3', "about.teams.development.#{member}.name" %>
+          <%- translate 'p', "about.teams.development.#{member}.description" %>
         </div>
       </div>
     <% end %>

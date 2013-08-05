@@ -11,7 +11,7 @@ class ContentPage extends Controller
     super
 
     @el.append try
-      translate div: @content
+      translate 'div', @content
     catch e
       @content
 
