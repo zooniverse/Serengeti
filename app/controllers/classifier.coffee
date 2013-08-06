@@ -52,7 +52,7 @@ class Classifier extends Controller
     83: 'S', 84: 'T', 85: 'U', 87: 'W', 88: 'X', 89: 'Y'
     61: '=', 173: '-', 188: '<', 190: '>', 219: '[', 221: ']'
 
-  textFieldSelector = 'input[type="text"], input[type="password"], input:not("[type]"), textarea, select'
+  textFieldSelector = 'input[type="text"], input[type="password"], input:not("[type]"), textarea, select, [contenteditable]'
 
   onKeyDown: (e) =>
     return if e.altKey or e.ctrlKey or e.metaKey
