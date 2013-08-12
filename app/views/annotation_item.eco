@@ -3,4 +3,4 @@
 <span class="species"><%- translate 'span', "animals.#{@species.id}.label" %></span>
 <span class="count">(<%= @count %>)</span>
 
-<button name="delete" title="<%- translate 'span', 'classify.deleteAnnotation' %>">&times;</button>
+<%- translate 'button', '&times;', name: 'delete', title: 'classify.deleteAnnotation' %>
