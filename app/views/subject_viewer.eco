@@ -1,5 +1,6 @@
 <% translate = require 't7e' %>
 <% moment = require 'moment/moment' %>
+<% sponsoredCameraTraps = window.SERENGETI_SPONSORED_CAMERA_TRAPS || {} %>
 
 <div class="images">
   <!--<button name="zoom" style="margin-left: -20px;">+/-</button>-->
@@ -14,7 +15,13 @@
     <img src="<%= @subject.satelliteImage 570, 400, 14 %>" class="landscape" />
     <img src="<%= @subject.satelliteImage 200, 200, 2, 'road' %>" class="continent" />
     <% date = new Date @subject.metadata.DateTime || @subject.metadata.timestamps[0] %>
-    <div class="timestamp"><%= moment.utc(date).add('h', 3).format 'LLL' %></div>
+    <div class="timestamp">
+      <%= moment.utc(date).add('h', 3).format 'LLL' %><br />
+      <% site = @subject.metadata.site_roll_code?.split('_')[1] %>
+      <% if site of sponsoredCameraTraps: %>
+        Camera trap sponsored by <%= sponsoredCameraTraps[site] %>
+      <% end %>
+    </div>
   </figure>
 
   <div class="annotations"></div>
