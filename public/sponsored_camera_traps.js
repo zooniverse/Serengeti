@@ -1,4 +1,5 @@
 window.SERENGETI_SPONSORED_CAMERA_TRAPS = {
+  'D05': 'Daniela F. Sieff',
   'E06': 'Rafael P. Bedia',
   'F05': 'McCrea family',
   'F06': 'Turner Glynn',
@@ -10,6 +11,5 @@ window.SERENGETI_SPONSORED_CAMERA_TRAPS = {
   'H06': 'Kevin Boyd',
   'S09': 'Lorrne Gates',
   'I04': 'Bushtracks Expeditions (Bushtracks.com)',
-  'O06': 'Hannelore Schmidt',
-  'S09': 'Daniela F. Sieff'
+  'O06': 'Hannelore Schmidt'
 };
