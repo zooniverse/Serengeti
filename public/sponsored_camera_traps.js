@@ -5,7 +5,7 @@ window.SERENGETI_SPONSORED_CAMERA_TRAPS = {
   'F06': 'Turner Glynn',
   'F12': 'El_Lion',
   'G03': 'Libby Kerr',
-  'G04': 'Adam Wolkon',
+  'G04': 'Bobbie and Adam',
   'G05': 'Kristine and Bart',
   'H05': 'the Anderson Family',
   'H06': 'Kevin Boyd',
