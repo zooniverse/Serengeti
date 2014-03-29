@@ -8,13 +8,13 @@ AboutPage = require 'controllers/about_page'
 HomePage = require 'controllers/home_page'
 Classifier = require 'controllers/classifier'
 Profile = require 'controllers/profile'
-Explore = require 'controllers/explore'
+# Explore = require 'controllers/explore'
 Api = require 'zooniverse/lib/api'
 seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
 googleAnalytics = require 'zooniverse/lib/google_analytics'
-Map = require 'zooniverse/lib/map'
+# Map = require 'zooniverse/lib/map'
 
 ContentPage = require 'controllers/content_page'
 feedbackContent = require 'views/feedback_page'
@@ -24,8 +24,8 @@ bc = new BrowserCheck
 bc.support.opera = 12
 bc.check()
 
-Map::tilesId = 53589
-Map::apiKey = '21a5504123984624a5e1a856fc00e238'
+# Map::tilesId = 53589
+# Map::apiKey = '21a5504123984624a5e1a856fc00e238'
 
 navigation = new Navigation
 navigation.el.appendTo document.body
@@ -78,16 +78,14 @@ Api.proxy.el().one 'load', ->
         about: AboutPage
         classify: Classifier
         profile: Profile
-        explore: Explore
-        feedback: class extends ContentPage then content: feedbackContent
+        # explore: Explore
 
       routes:
         '/home': 'home'
         '/about': 'about'
         '/classify': 'classify'
         '/profile': 'profile'
-        '/explore': 'explore'
-        '/feedback': 'feedback'
+        # '/explore': 'explore'
 
       default: 'home'
 
