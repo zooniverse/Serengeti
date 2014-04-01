@@ -16,4 +16,4 @@ module.exports = ->
 
     metadata:
       tutorial: true
-      DateTime: [(new Date).toString()]
+      timestamps: [(new Date).toString()]
