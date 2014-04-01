@@ -14,7 +14,9 @@
   <figure class="satellite">
     <img src="<%= @subject.satelliteImage 570, 400, 14 %>" class="landscape" />
     <img src="<%= @subject.satelliteImage 200, 200, 2, 'road' %>" class="continent" />
-    <% date = new Date @subject.metadata.DateTime || @subject.metadata.timestamps[0] %>
+    <% date = @subject.metadata.DateTime || @subject.metadata.timestamps[0] %>
+    <% date = date.replace /\s/, 'T' %>
+    <% date = new Date date %>
     <div class="timestamp">
       <%= moment.utc(date).add('h', 3).format 'LLL' %><br />
       <% site = @subject.metadata.site_roll_code?.split('_')[1] %>
