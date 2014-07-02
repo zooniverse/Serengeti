@@ -19,6 +19,6 @@
   "scripts": {
     "start": "hem server --port 6371",
     "deploy-to-staging": "hem build && publisssh ./public zooniverse-demo/serengeti && trash ./public/application.*",
-    "deploy-to-production": "hem build && publisssh ./public www.snapshotserengeti.org && trash ./public/application.*"
+    "deploy-to-production": "hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org && trash ./public/application.*"
   }
 }
