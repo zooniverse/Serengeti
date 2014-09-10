@@ -24,6 +24,7 @@ class SubjectViewer extends Controller
     'click button[name="sign-in"]': 'onClickSignIn'
     'click button[name="favorite"]': 'onClickFavorite'
     'click button[name="unfavorite"]': 'onClickUnfavorite'
+    'change input[name="fire"]': 'onChangeFireCheckbox'
     'change input[name="nothing"]': 'onChangeNothingCheckbox'
     'click button[name="finish"]': 'onClickFinish'
     'click button[name="next"]': 'onClickNext'
@@ -35,6 +36,7 @@ class SubjectViewer extends Controller
     '.extra-message': 'extraMessageContainer'
     '.toggles button': 'toggles'
     'button[name="satellite"]': 'satelliteToggle'
+    'input[name="fire"]': 'fireCheckbox'
     'input[name="nothing"]': 'nothingCheckbox'
     'button[name="finish"]': 'finishButton'
     'a.talk-link': 'talkLink'
@@ -159,6 +161,10 @@ class SubjectViewer extends Controller
   onClickUnfavorite: ->
     @classification.updateAttribute 'favorite', false
 
+  onChangeFireCheckbox: ->
+    fire = !!@fireCheckbox.attr 'checked'
+    @classification.annotate {fire}, true
+
   onChangeNothingCheckbox: ->
     nothing = !!@nothingCheckbox.attr 'checked'
     @classification.annotate {nothing}, true
@@ -169,6 +175,7 @@ class SubjectViewer extends Controller
     @extraMessageContainer.hide() unless message
 
     @el.addClass 'finished'
+    console?.log JSON.stringify @classification
     @classification.send() unless @classification.subject.metadata.empty
 
   onClickNext: ->
