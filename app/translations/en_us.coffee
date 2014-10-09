@@ -6,6 +6,7 @@ module.exports =
     profile: 'Profile'
     discuss: 'Discuss'
     blog: 'Blog'
+    authors: 'Authors'
 
   home:
     heading: 'Welcome to Snapshot Serengeti'
@@ -786,6 +787,38 @@ module.exports =
     noRecents: 'You have no recent classifications!'
     showing: 'Showing'
     loadMore: 'Load more'
+
+  authors:
+    sections:
+      swanson14: 'Swanson et. al., 2014'
+      hines14: 'Hines et. al., 2014'
+      title: '''<h2>Publications and Contributors</h2>'''
+    swanson14:
+      main: '''
+        <h3>Thank You to the following volunteers, whose clicks contributed to this publication:</h3>
+        <p>
+          all, the, names, go ,here
+        </p>
+      '''
+      sidebar: '''
+        <h3>Paper title for Swanson+14 goes here</h3>
+        <h4>Swanson, Kosmala, ...</h4>
+        <p>This is a description of the paper and what it was about - in layman terms for all to see.</p>
+        <p><a href="#">View this publication online</a></p>
+      '''
+    hines14:
+      main: '''
+        <h3>Thank You to the following volunteers, whose clicks contributed to this publication:</h3>
+        <p>
+          all, the, names, go ,here
+        </p>
+      '''
+      sidebar: '''
+        <h3>Paper title for Hines+14 gitgoes here</h3>
+        <h4>Hines, Swanson, Kosmala, ...</h4>
+        <p>This is a description of the paper and what it was about - in layman terms for all to see.</p>
+        <p><a href="#">View this publication online</a></p>
+      '''
 
   about:
     sections:

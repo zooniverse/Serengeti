@@ -5,6 +5,7 @@ $ = require 'jqueryify'
 {Stack} = require 'spine/lib/manager'
 Route = require 'spine/lib/route'
 AboutPage = require 'controllers/about_page'
+AuthorsPage = require 'controllers/authors_page'
 HomePage = require 'controllers/home_page'
 Classifier = require 'controllers/classifier'
 Profile = require 'controllers/profile'
@@ -78,13 +79,15 @@ Api.proxy.el().one 'load', ->
         about: AboutPage
         classify: Classifier
         profile: Profile
+        authors: AuthorsPage
         # explore: Explore
 
       routes:
         '/home': 'home'
         '/about': 'about'
         '/classify': 'classify'
-        '/profile': 'profile'
+        '/profile': 'profile',
+        '/authors': 'authors'
         # '/explore': 'explore'
 
       default: 'home'

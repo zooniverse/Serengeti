@@ -1,0 +1,18 @@
+<% translate = require 't7e' %>
+
+<nav>
+  <button name="turn-page" value="swanson14"><%- translate 'span', 'authors.sections.swanson14' %></button>
+  <button name="turn-page" value="hines14"><%- translate 'span', 'authors.sections.hines14' %></button>
+</nav>
+
+<section data-page="swanson14">
+  <%- translate 'div', 'authors.sections.title', class: 'content' %>
+  <%- translate 'div', 'authors.swanson14.main', class: 'content column' %>
+  <%- translate 'div', 'authors.swanson14.sidebar', class: 'sidebar column' %>
+</section>
+
+<section data-page="hines14">
+  <%- translate 'div', 'authors.sections.title', class: 'content' %>
+  <%- translate 'div', 'authors.hines14.main', class: 'content column' %>
+  <%- translate 'div', 'authors.hines14.sidebar', class: 'sidebar column' %>
+</section>
