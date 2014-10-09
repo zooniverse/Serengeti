@@ -7,12 +7,18 @@
 
 <section data-page="swanson14">
   <%- translate 'div', 'authors.sections.title', class: 'content' %>
-  <%- translate 'div', 'authors.swanson14.main', class: 'content column' %>
+  <div class="content column">
+    <%- translate 'h3', 'authors.swanson14.main' %>
+    <p>all, the, names, go ,here</p>
+  </div>
   <%- translate 'div', 'authors.swanson14.sidebar', class: 'sidebar column' %>
 </section>
 
 <section data-page="hines14">
   <%- translate 'div', 'authors.sections.title', class: 'content' %>
-  <%- translate 'div', 'authors.hines14.main', class: 'content column' %>
+  <div class="content column">
+    <%- translate 'h3', 'authors.hines14.main' %>
+    <p>all, the, names, go ,here</p>
+  </div>
   <%- translate 'div', 'authors.hines14.sidebar', class: 'sidebar column' %>
 </section>
