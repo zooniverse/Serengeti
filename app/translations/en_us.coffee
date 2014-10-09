@@ -795,10 +795,7 @@ module.exports =
       title: '''<h2>Publications and Contributors</h2>'''
     swanson14:
       main: '''
-        <h3>Thank You to the following volunteers, whose clicks contributed to this publication:</h3>
-        <p>
-          all, the, names, go ,here
-        </p>
+        Thank You to the following volunteers, whose clicks contributed to this publication:
       '''
       sidebar: '''
         <h3>Paper title for Swanson+14 goes here</h3>
@@ -808,10 +805,7 @@ module.exports =
       '''
     hines14:
       main: '''
-        <h3>Thank You to the following volunteers, whose clicks contributed to this publication:</h3>
-        <p>
-          all, the, names, go ,here
-        </p>
+        Thank You to the following volunteers, whose clicks contributed to this publication:
       '''
       sidebar: '''
         <h3>Paper title for Hines+14 gitgoes here</h3>
