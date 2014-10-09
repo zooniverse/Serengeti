@@ -7,4 +7,5 @@
   <li><%- translate 'a', 'navigation.profile', href: '#/profile' %></li>
   <li><%- translate 'a', 'navigation.discuss', href: 'http://talk.snapshotserengeti.org/' %></li>
   <li><%- translate 'a', 'navigation.blog', href: 'http://blog.snapshotserengeti.org/' %></li>
+  <li><%- translate 'a', 'navigation.authors', href: '#/authors' %></li>
 </ul>
