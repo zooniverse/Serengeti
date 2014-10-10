@@ -790,26 +790,24 @@ module.exports =
 
   authors:
     sections:
-      season1_6: 'Seasons 1 to 6'
-      season7: 'Season 7'
-      title: '''<h2>Our Voltneers are our Co-Authors</h2>'''
-    season1_6:
+      seasons1_6: 'Seasons 1-6'
+      hines14: 'All Seasons'
+      title: '''<h2>Publications and Contributors</h2>'''
+    seasons1_6:
       main: '''
-        Thank You to the following volunteers, whose clicks contributed to this dataset:
+        Thank You to the following volunteers, whose clicks contributed to these publications:
       '''
       sidebar: '''
-        <h3>Seasons 1 to 6</h3>
-        <h4>Jan 1992 to March 1996</h4>
-        <p>This is a description of the data and highlights of this season - in layman terms for all to see.</p>
-      '''
-    season7:
-      main: '''
-        Thank You to the following volunteers, whose clicks contributed to this dataset:
-      '''
-      sidebar: '''
-        <h3>Season 7</h3>
-        <h4>Feb 2016 to Sep 2016</h4>
-        <p>This is a description of the data and highlights of this season - in layman terms for all to see.</p>
+        <h3>Data from Seasons 1-6 have resulted in the following publications:</h3>
+        <h4>Swanson, A. 2014. Living with lions: spatiotemporal aspects of coexistence in savanna carnivores. </h4>
+        <p>Ali's Dissertation used camera traps to explore how lions, hyenas, cheetahs, and African wild dogs manage to coexist.</p>
+        <p><a href="#">View this publication online</a></p>
+        
+        <h4> Cusack, J., Swanson, A., Coulson, C., Packer, C., Carbone, C., Dickman, A., Kosmala, M., Lintott, C., Rowcliffe, M. In Review. Applying a random encounter model to estimate lion density from camera traps in Serengeti National Park, Tanzania </h4>
+        <p>Currently in review, this paper uses the camera trap photo rates to estimate lion densities. The aim is to test this in Serengeti, where we know the actual lion numbers, and eventually apply this as a conservation method elsewhere.</p>
+
+        <h4>Hines, G., Swanson A., Kosmala, M., Lintott, C. In Review. Aggregating User Input in Ecology Citizen Science Projects </h4>
+        <p>Currently in review, Greg explores statistical approaches to produce the best possible "final answers" from everyone's classifications on Snapshot Serengeti.</p>
       '''
 
   about:
