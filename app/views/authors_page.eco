@@ -1,24 +1,24 @@
 <% translate = require 't7e' %>
 
 <nav>
-  <button name="turn-page" value="swanson14"><%- translate 'span', 'authors.sections.swanson14' %></button>
-  <button name="turn-page" value="hines14"><%- translate 'span', 'authors.sections.hines14' %></button>
+  <button name="turn-page" value="season1_6"><%- translate 'span', 'authors.sections.season1_6' %></button>
+  <button name="turn-page" value="season7"><%- translate 'span', 'authors.sections.season7' %></button>
 </nav>
 
-<section data-page="swanson14">
+<section data-page="season1_6">
   <%- translate 'div', 'authors.sections.title', class: 'content' %>
   <div class="content column">
-    <%- translate 'h3', 'authors.swanson14.main' %>
+    <%- translate 'h3', 'authors.season1_6.main' %>
     <p>all, the, names, go ,here</p>
   </div>
-  <%- translate 'div', 'authors.swanson14.sidebar', class: 'sidebar column' %>
+  <%- translate 'div', 'authors.season1_6.sidebar', class: 'sidebar column' %>
 </section>
 
-<section data-page="hines14">
+<section data-page="season7">
   <%- translate 'div', 'authors.sections.title', class: 'content' %>
   <div class="content column">
-    <%- translate 'h3', 'authors.hines14.main' %>
+    <%- translate 'h3', 'authors.season7.main' %>
     <p>all, the, names, go ,here</p>
   </div>
-  <%- translate 'div', 'authors.hines14.sidebar', class: 'sidebar column' %>
+  <%- translate 'div', 'authors.season7.sidebar', class: 'sidebar column' %>
 </section>
