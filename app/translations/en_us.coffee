@@ -790,28 +790,26 @@ module.exports =
 
   authors:
     sections:
-      swanson14: 'Swanson et. al., 2014'
-      hines14: 'Hines et. al., 2014'
-      title: '''<h2>Publications and Contributors</h2>'''
-    swanson14:
+      season1_6: 'Seasons 1 to 6'
+      season7: 'Season 7'
+      title: '''<h2>Our Voltneers are our Co-Authors</h2>'''
+    season1_6:
       main: '''
-        Thank You to the following volunteers, whose clicks contributed to this publication:
+        Thank You to the following volunteers, whose clicks contributed to this dataset:
       '''
       sidebar: '''
-        <h3>Paper title for Swanson+14 goes here</h3>
-        <h4>Swanson, Kosmala, ...</h4>
-        <p>This is a description of the paper and what it was about - in layman terms for all to see.</p>
-        <p><a href="#">View this publication online</a></p>
+        <h3>Seasons 1 to 6</h3>
+        <h4>Jan 1992 to March 1996</h4>
+        <p>This is a description of the data and highlights of this season - in layman terms for all to see.</p>
       '''
-    hines14:
+    season7:
       main: '''
-        Thank You to the following volunteers, whose clicks contributed to this publication:
+        Thank You to the following volunteers, whose clicks contributed to this dataset:
       '''
       sidebar: '''
-        <h3>Paper title for Hines+14 gitgoes here</h3>
-        <h4>Hines, Swanson, Kosmala, ...</h4>
-        <p>This is a description of the paper and what it was about - in layman terms for all to see.</p>
-        <p><a href="#">View this publication online</a></p>
+        <h3>Season 7</h3>
+        <h4>Feb 2016 to Sep 2016</h4>
+        <p>This is a description of the data and highlights of this season - in layman terms for all to see.</p>
       '''
 
   about:
