@@ -4,6 +4,7 @@ $ = require 'jqueryify'
 
 class AboutPage extends Controller
   className: 'about-page content-page'
+  template: template
 
   events:
     'click nav button[name="turn-page"]': 'onClickNavButton'
@@ -13,7 +14,7 @@ class AboutPage extends Controller
 
   constructor: ->
     super
-    @html template
+    @html @template
 
     @navButtons.first().click()
 

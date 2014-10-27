@@ -1,45 +1,9 @@
-{Controller} = require 'spine'
+AboutPage = require './about_page'
 template = require 'views/authors_page'
 $ = require 'jqueryify'
 
-class AuthorsPage extends Controller
-  className: 'authors-page content-page'
-
-  events:
-    'click nav button[name="turn-page"]': 'onClickNavButton'
-
-  elements:
-    'nav button[name="turn-page"]': 'navButtons'
-
-  constructor: ->
-    super
-    @html template
-
-    @navButtons.first().click()
-
-    $(window).on 'hashchange', @onPageChange
-
-  onClickNavButton: ({currentTarget}) ->
-    button = $(currentTarget)
-    page = @el.find "[data-page='#{button.val()}']"
-
-    page.add(page.siblings('[data-page]')).add(button).add(button.siblings('[name="turn-page"]')).removeClass 'before active after'
-
-    page.prevAll('[data-page]').add(button.prevAll('[name="turn-page"]')).addClass 'before'
-    page.add(button).addClass 'active'
-    page.nextAll('[data-page]').add(button.nextAll('[name="turn-page"]')).addClass 'after'
-
-    @onPageChange()
-
-  onPageChange: =>
-    return unless @el.is ':visible'
-    setTimeout =>
-      visibleProtoimages = @el.find 'img[data-src]:visible'
-      @processProtoimage img for img in visibleProtoimages
-
-  processProtoimage: (img) ->
-    img = $(img)
-    img.attr src: img.attr 'data-src'
-    img.removeAttr 'data-src'
+class AuthorsPage extends AboutPage
+  className: ['authors-page', AboutPage::className].join ' '
+  template: template
 
 module.exports = AuthorsPage
