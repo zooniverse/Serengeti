@@ -10,6 +10,7 @@ HomePage = require 'controllers/home_page'
 Classifier = require 'controllers/classifier'
 Profile = require 'controllers/profile'
 # Explore = require 'controllers/explore'
+DataPage = require 'controllers/data_page'
 Api = require 'zooniverse/lib/api'
 seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
@@ -81,6 +82,7 @@ Api.proxy.el().one 'load', ->
         profile: Profile
         authors: AuthorsPage
         # explore: Explore
+        data: DataPage
 
       routes:
         '/home': 'home'
@@ -89,6 +91,7 @@ Api.proxy.el().one 'load', ->
         '/profile': 'profile',
         '/authors': 'authors'
         # '/explore': 'explore'
+        '/data': 'data'
 
       default: 'home'
 
