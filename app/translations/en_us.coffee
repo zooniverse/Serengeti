@@ -1120,3 +1120,12 @@ module.exports =
             where he continues to lead the software and infrastructure development for the Zooniverse.
             He studied Chemistry at the University of Sheffield and completed his PhD in Astrochemistry at The University of Nottingham in 2006.
           '''
+
+  data: '''
+    <h2>Welcome to the Snapshot Serengeti Data Page.</h2>
+    <p>Datasets containing classifications made through the Snapshot Serengeti interface are available at Dryad.</p>
+    <p>Images from Snapshot Serengeti can be accessed in two ways. An image set contains 1-3 images taken in a single capture event and has a unique CaptureEventId, listed in the classification data. Additionally, each image within that set has a unique identifier, ImageID.</p>
+    <p>Specific image sets can be accessed by appending the CaptureEventId after “http://talk.snapshotserengeti.org/#/subjects/”. For example: “<a href="http://talk.snapshotserengeti.org/#/subjects/ASG0012y3d">http://talk.snapshotserengeti.org/#/subjects/ASG0012y3d</a>” links to a webpage with the 3 images in the ASG0012y3d image set.</p>
+    <p>Specific images can be accessed by appending the ImageID after “http://static.zooniverse.org/www.snapshotserengeti.org/subjects/standard/”.</p>
+    <p>Bulk image downloads from Snapshot Serengeti are available upon request by emailing <a href="mailto:ali@zooniverse.org">ali@zooniverse.org</a>.</p>
+  '''
