@@ -19,9 +19,9 @@ module.exports =
       <p>With your help, we've classified all the data we have so far. Great work!</p>
       <p>
         We're leaving some images up for further classification, but we have more projects
-        (like <a href="https://www.zooniverse.org/project/cyclonecenter">Cyclone Center</a>
-        and <a href="https://www.zooniverse.org/project/batdetective">Bat Detective</a>) that need your help.
-        Visit <a href="https://www.zooniverse.org/">zooniverse.org</a> to see them all.
+        (like <a href="http://www.cyclonecenter.org/?utm_source=Redirect&utm_medium=Link&utm_campaign=Serengeti">Cyclone Center</a>
+        and <a href="http://www.batdetective.org/?utm_source=Redirect&utm_medium=Link&utm_campaign=Serengeti">Bat Detective</a>) that need your help.
+        Visit <a href="http://www.zooniverse.org/?utm_source=Redirect&utm_medium=Link&utm_campaign=Serengeti">zooniverse.org</a> to see them all.
       </p>
       <p>
         Keep an eye on <a href="http://blog.snapshotserengeti.org/">the blog</a>
