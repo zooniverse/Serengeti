@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=1024, maximum-scale=1.0" />
+    <meta name="viewport" content="width=device-width">
 
     <title>Snapshot Serengeti</title>
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" />
@@ -14,18 +14,25 @@
   </head>
 
   <body>
-    <h1><a href="/"><img src="images/wordmark.png" alt="Snapshot Serengeti" /></a></h1>
+    <div id="navigation">
+      <h1>
+        <a href="/">
+          <img src="images/wordmark.png" alt="Snapshot Serengeti" />
+        </a>
+        <button class="nav-button">
+          <img src="images/hamburger-icon.svg" class="nav-button" />
+        </button>
+      </h1>
+    </div>
 
     <div class="before-load">
       <p>Just a moment, please...</p>
     </div>
 
     <script src="./application.js"></script>
-
     <script type="text/javascript" src="./sponsored_camera_traps.js"></script>
     <script type="text/javascript">
       window.app = require('index');
     </script>
-
  </body>
 </html>

@@ -3,3 +3,4 @@ public/mockdata.json
 .DS_Store
 *.csv
 public/tiles
+npm-debug.log

@@ -22,7 +22,7 @@
       overflow: hidden;
       position: absolute;
       top: 0;
-      width: 580px;
+      max-width: 580px;
 
       &.active {
         box-shadow: 0 3px 5px rgba($black, 0.33);
@@ -37,7 +37,7 @@
         top: 0;
 
         img {
-          width: auto;
+          width: 100%;
 
           &.continent {
             bottom: 1px;
@@ -380,5 +380,15 @@
 
   .favorite {
     display: inline;
+  }
+
+}
+
+@media screen and (max-width: 1000px) {
+  .subject-viewer {
+    display: block;
+    margin: 0 auto;
+    max-width: 580px;
+    float: none;
   }
 }
