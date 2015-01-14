@@ -1,11 +1,11 @@
 <div class="images">
-  <% for src, i in @sources: %>
+  <% for src, i in @sources when src: %>
     <figure><img src="<%= src %>" /></figure>
   <% end %>
 </div>
 
 <div class="toggles">
-  <% for src, i in @sources: %>
+  <% for src, i in @sources when src: %>
     <button name="toggle" value="<%= i %>"><%= i + 1 %></button>
   <% end %>
 </div>
