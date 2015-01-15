@@ -213,6 +213,12 @@ module.exports =
         Adults have large, dog-like muzzles and close-set eyes, whereas young dark brown and have flat, pink faces.
       '''
 
+    bat:
+      label: 'Bat'
+      description: '''
+        On the rare occasion, bats are sometimes captured at night flying in front of the camera traps.  
+      '''
+
     batEaredFox:
       label: 'Bat-eared fox'
       description: '''
@@ -253,6 +259,12 @@ module.exports =
         Large, pointed ears have prominent tufts of black hair.
       '''
 
+    cattle:
+      label: 'Cattle'
+      description: '''
+        Maasai occasionally bring their cattle inside the Park to graze -- an activity which is not allowed!
+      '''
+
     cheetah:
       label: 'Cheetah'
       description: '''
@@ -275,6 +287,12 @@ module.exports =
         This is the smallest Serengeti antelope.
         It has large eyes and an elongated upper lip and nose, with tufts of hair between its ears.
         Males have short, spiky horns.
+      '''
+
+    duiker:
+      label: 'Duiker'
+      description: '''
+        A small antelope whose body coloration can vary enormously, ranging from chestnut brown to gray. Duikers have a dark muzzle, nose, and forelegs, while their undersides are fluffy and white. Males have sharply pointed upright horns.
       '''
 
     eland:
@@ -385,6 +403,12 @@ module.exports =
         White belly and chin, and around their eyes.
         Black tufts of hair between their ears, black lines on their rump, and black spots above their heels.
         Males have large, S-shaped horns.
+      '''
+
+    insectSpider:
+      label: 'Insect/Spider'
+      description: '''
+        Insects and spiders sometimes make themselves at home in front of, or even on, the cameras. This category includes any type of "bug" that you see.
       '''
 
     jackal:
@@ -498,6 +522,12 @@ module.exports =
         The serval’s enormous pointed ears and distinctive black nose help distinguish it from the cheetah.
       '''
 
+    steenbok:
+      label: 'Steenbok'
+      description: '''
+        This is a petite antelope with extremely large rounded ears and dark eyes. The coat color ranges from tan to red, with white underparts. Steenbok have white rings surrounding their eyes and black facial glands which start at the nose and taper upward. Males have sharp, upright horns.
+      '''
+
     topi:
       label: 'Topi'
       description: '''
@@ -510,6 +540,12 @@ module.exports =
       label: 'Vervet monkey'
       description: '''
         A regular sight in the Serengeti, this small monkey has a light gray/brown coat, small black face, and a very, very long gray tail.
+      '''
+
+    vulture:
+      label: 'Vulture'
+      description: '''
+        Large, hulking birds, typically with bald heads and necks devoid of normal feathers.
       '''
 
     warthog:
@@ -602,6 +638,11 @@ module.exports =
       reedbuck: '''
         A reedbuck is bigger than a dik dik. Their undersides are white, not gray, and they lack the ‘tear drop’ beneath the eye.
       '''
+
+    duiker:
+      reedbuck: ''
+      dikDik: ''
+      steenbok: ''
 
     gazelleGrants:
       gazelleThomsons: '''
@@ -713,6 +754,10 @@ module.exports =
       wildcat: '''
         A wildcat is smaller than a serval and doesn’t have long tufts of hair on its ears.
       '''
+
+    steenbok:
+      duiker: ''
+      dikDik: ''
 
     topi:
       hartebeest: '''
