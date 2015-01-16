@@ -157,7 +157,6 @@
         overflow: hidden;
         padding: 0;
         position: relative;
-        text-overflow: ellipsis;
         white-space: nowrap;
         width: 100%;
       }
@@ -532,7 +531,7 @@
 
       &[data-items="lots"] [data-animal] {
         font-size: 12px;
-        min-height: 6.25%;
+        height: 6.25%;
         padding: 1px 0 0 3px;
         width: 33.33%;
 
@@ -634,10 +633,15 @@
     float: none;
     margin: 35px auto;
 
-    .selection-area .items[data-items="lots"] [data-animal]  {
-      height: 12.5%
-      text-align: center
+    .selection-area .items {
+      &[data-items="lots"] [data-animal]  {
+        text-align: center
+        overflow: hidden;
+        text-overflow: ellipsis;
+        whitespace: no-wrap;
+      }
     }
+
     .characteristic-filters .filter-menu {
       width: 100%;
       margin-left: 0

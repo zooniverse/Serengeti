@@ -29,12 +29,8 @@ bc.check()
 # Map::tilesId = 53589
 # Map::apiKey = '21a5504123984624a5e1a856fc00e238'
 
-navContainer = document.getElementById('navigation')
 navigation = new Navigation
-navigation.el.appendTo navContainer
-navContainer.querySelector('.nav-button').addEventListener 'click', ->
-  console.log "this", this.classList.toggle('open')
-  navigation.el.slideToggle(150)
+navigation.el.appendTo document.getElementById('navigation')
 
 LanguagePicker = require 'controllers/language_picker'
 

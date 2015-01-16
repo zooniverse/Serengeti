@@ -3,7 +3,7 @@
     color: $white;
     font: normal 30px Georgia, serif;
     letter-spacing: 10px
-    margin: 30px auto;
+    margin: 30px auto 10px auto;
     position: relative;
     text-align: center;
     text-shadow: 0 2px 3px $black;
@@ -42,7 +42,6 @@
     text-align: center;
     width: 100%;
     z-index: 3;
-    display: none
 
     ul {
       margin: 0;
@@ -51,10 +50,16 @@
       li {
         display: inline-block;
         width: 120px;
+        border-radius: 5px
+        color: $white
 
         &:first-child {
           border-left: 0;
           box-shadow: none;
+        }
+
+        &.active {
+          text-decoration: underline
         }
 
         a {
