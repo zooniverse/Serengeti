@@ -608,6 +608,9 @@ module.exports =
       '''
 
     buffalo:
+      cattle: '''
+        Cattle are less heavy than buffalo, and have a more pronounced shoulder hump. The horns of cattle don't fuse in the middle and cattle are often more variable in color.
+      '''
       wildebeest: '''
         A wildebeest is skinnier than a buffalo, with a large head and long beard.  Its horns don’t fuse together in the center.
       '''
@@ -619,6 +622,14 @@ module.exports =
 
       lionFemale: '''
         Lions are larger and more muscular than caracals. They don't have large pointed ears. Their tails are smooth with a tuft of dark fur at the end.
+      '''
+
+    cattle:
+      buffalo: '''
+        Buffalo are stockier than cattle and lack the prominent shoulder hump. The horns of cattle don't join together in the middle.
+      '''
+      wildebeest: '''
+        The horns of cattle are shorter and don't extend as far back as those of wildebeest. While cattle have a prominent shoulder hump, they don't have the sloping back of wildebeest and lack a chin-beard.
       '''
 
     cheetah:
@@ -636,14 +647,14 @@ module.exports =
       '''
 
     dikDik:
-      reedbuck: '''
-        A reedbuck is bigger than a dik dik. Their undersides are white, not gray, and they lack the ‘tear drop’ beneath the eye.
-      '''
+      reedbuck: 'A reedbuck is bigger than a dik dik. Their undersides are white, not gray, and they lack the ‘tear drop’ beneath the eye.'
+      steenbok: 'Steenbok have larger ears than dik dik and lack the dark suborbital gland. They are slightly bigger in size.'
+      duiker: 'Dik dik have more petite, tapering noses that lack the dark muzzle stripe of a duiker. Dik dik have more prominent tufts of hair between their ears and a rounded posture.'
 
     duiker:
-      reedbuck: ''
-      dikDik: ''
-      steenbok: ''
+      reedbuck: 'Reedbuck lack the dark muzzle and forelegs of a duiker. The horns of a male duiker are straighter and smoother than those of a male reedbuck.'
+      dikDik: 'Dik dik are smaller and less stocky than a duiker, lacking the prominently dark muzzle and foreleg stripes.'
+      steenbok: 'Steenbok are more petite than duiker. The black facial glands of a steenbok do not extend to cover as much of the face as the dark muzzle stripe of the duiker.'
 
     gazelleGrants:
       gazelleThomsons: '''
@@ -757,8 +768,8 @@ module.exports =
       '''
 
     steenbok:
-      duiker: ''
-      dikDik: ''
+      duiker: 'A duiker is larger than a steenbok, with a more prominent black facial stripe and dark forelimbs.'
+      dikDik: 'Dik dik have a more rounded back and hunched posture than a steenbok. Dik dik have a more prominent tuft of hair between their ears.'
 
     topi:
       hartebeest: '''
@@ -777,6 +788,9 @@ module.exports =
     wildebeest:
       buffalo: '''
         The buffalo is larger and stockier. Horns tend to be more fused together at the center.
+      '''
+      cattle: '''
+        Wildebeest have more pronounced, curving horns than cattle. Cattle have a less bulbous muzzle and they lack the wildebeest's chin-beard.
       '''
 
     zorilla:
