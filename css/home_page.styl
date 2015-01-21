@@ -2,15 +2,15 @@
   clearfix();
   color: $white;
   font-size: 14px;
-  margin: 0 auto;
+  margin: 30px auto;
   text-shadow: 0 1px 1px $black;
-  width: 1000px;
+  max-width: 1000px;
 
   .recents {
     float: left;
     position: relative
     text-align: center;
-    width: 600px;
+    max-width: 600px;
 
     .images {
       margin-bottom: 1em;
@@ -28,7 +28,7 @@
         position: absolute;
         top: 0;
         transition: transform 0.5s ease-out;
-        width: 600px;
+        max-width: 600px;
 
         &.active {
           z-index: 1;
@@ -54,7 +54,7 @@
 
         img {
           display: block;
-          max-width: 100%;
+          width: 100%;
         }
       }
     }
@@ -137,5 +137,27 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .home-page {
+    .recents {
+      float: none;
+      margin: 0 auto;
+      .image-changer {
+        box-sizing: border-box;
+        padding: 30px;
+      }
+    }
+    .introduction {
+      width: 100%;
+      float: none;
+      margin: 0 auto;
+      max-width: 600px;
+      padding: 0 10px;
+      box-sizing: border-box;
+    }
+  }
+}
+
 
 @import "./home_page_banners"

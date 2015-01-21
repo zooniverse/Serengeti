@@ -22,7 +22,7 @@
 
 .profile {
   margin: 0 auto;
-  width: 1000px;
+  max-width: 1000px;
 
   .zooniverse-login-form {
     color: $white
@@ -118,8 +118,6 @@
 
       ul {
         clearfix();
-        margin-left: -10px;
-        margin-right: -10px;
         padding: 0;
 
         li {
@@ -211,5 +209,18 @@
 
   &.has-recents .recents .none {
     display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile .user-profile .page ul li {
+    float: none;
+    margin: 10px auto;
+    max-width: 310px;
+
+    a figure {
+      max-width: 310px;
+      width: 100%;
+    }
   }
 }

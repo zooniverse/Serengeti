@@ -25,7 +25,7 @@ feedbackContent = require 'views/feedback_page'
 # Map::apiKey = '21a5504123984624a5e1a856fc00e238'
 
 navigation = new Navigation
-navigation.el.appendTo document.body
+navigation.el.appendTo document.getElementById('navigation')
 
 LanguagePicker = require 'controllers/language_picker'
 
