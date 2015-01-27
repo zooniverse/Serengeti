@@ -2,6 +2,7 @@
 $ = require 'jqueryify'
 SubjectViewer = require './subject_viewer'
 AnimalSelector = require './animal_selector'
+AnalyticsLogger = require 'lib/analytics'
 animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
 AnimalMenuItem = require './animal_menu_item'
@@ -105,6 +106,7 @@ class Classifier extends Controller
     if tutorialDone
       @tutorial.end()
       Subject.next() if doingTutorial or not Subject.current
+      AnalyticsLogger.logEvent('test','test2','test','test')
     else
       getTutorialSubject().select()
 
