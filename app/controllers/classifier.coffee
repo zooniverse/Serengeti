@@ -1,8 +1,7 @@
 {Controller} = require 'spine'
-$ = require 'jqueryify'
 SubjectViewer = require './subject_viewer'
 AnimalSelector = require './animal_selector'
-AnalyticsLogger = require 'lib/analytics'
+#AnalyticsLogger = require 'lib/analytics'
 animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
 AnimalMenuItem = require './animal_menu_item'
@@ -103,7 +102,7 @@ class Classifier extends Controller
     tutorialDone = User.current?.project.tutorial_done
     doingTutorial = Subject.current?.metadata.tutorial
 
-    AnalyticsLogger.logEvent('test','test2','test','test')
+    #AnalyticsLogger.logEvent('test','test2','test','test')
 
     if tutorialDone
       @tutorial.end()
