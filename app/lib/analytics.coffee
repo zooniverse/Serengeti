@@ -1,3 +1,6 @@
+querystring = require 'querystring'
+http = require 'http'
+
 ###
 This will log a user interaction using the analytics.zooniverse.org API.
 eventData should be of the format:
@@ -46,7 +49,4 @@ logEvent = (user_id,subject_id,type,related_id) ->
   req.write "{\"events\":[" + dataString + "]}"
   req.end()
   return
-
-querystring = require("querystring")
-http = require("http")
-exports.logEvent = logEvent
+module.exports = logEvent
