@@ -1,6 +1,4 @@
-querystring = require 'querystring'
-http = require 'http'
-
+$ = require('jqueryify')
 ###
 This will log a user interaction using the analytics.zooniverse.org API.
 eventData should be of the format:
@@ -17,36 +15,22 @@ logEvent = (user_id,subject_id,type,related_id) ->
   eventData['subject_id'] = subject_id
   eventData['type'] = type
   eventData['related_id'] = related_id
-  dataString = JSON.stringify(eventData)
-  headers =
-    "Content-Type": "application/json; charset=utf-8"
-    "Content-Length": dataString.length + "{\"events\":[".length + "]}".length
 
-  options =
-    host: "analytics.zooniverse.org"
-    port: 80
-    path: "/events/"
-    method: "POST"
-    headers: headers
+  return $.ajax {
+        url: 'http://localhost:8090/events/',
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        contentLength: length,
+        data: "{\"events\":[" + JSON.stringify(eventData) + "]}",
+        dataType: 'jsonp',
+        complete: ->
+          console.log 'finished ajax req'
+        beforeSend: ->
+          console.log 'starting ajax req'
+        success: ->
+          console.log 'ajax req succeeded'
+        error: (xhr, status, error) ->
+            console.log 'finished ajax req with error ' + status + ': ' + error
+        }
 
-  req = http.request(options, (res) ->
-    res.setEncoding "utf-8"
-    responseString = ""
-    res.on "data", (data) ->
-      responseString += data
-      return
-
-    res.on "end", ->
-      resultObject = JSON.parse(responseString)
-      true
-
-    return
-  )
-  req.on "error", (e) ->
-    console.log e
-    false
-
-  req.write "{\"events\":[" + dataString + "]}"
-  req.end()
-  return
 module.exports = logEvent

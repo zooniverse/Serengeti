@@ -103,11 +103,11 @@ class Classifier extends Controller
     tutorialDone = User.current?.project.tutorial_done
     doingTutorial = Subject.current?.metadata.tutorial
 
+    AnalyticsLogger.logEvent('test','test2','test','test')
+
     if tutorialDone
       @tutorial.end()
       Subject.next() if doingTutorial or not Subject.current
-      alert "changed code"
-#AnalyticsLogger.logEvent('test','test2','test','test')
     else
       getTutorialSubject().select()
 
