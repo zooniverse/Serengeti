@@ -21,13 +21,5 @@
     "deploy-to-staging": "hem build && publisssh ./public zooniverse-demo/serengeti && rm -rf ./public/application.*",
     "deploy-to-production": "hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org && rm -rf ./public/application.*",
     "deploy-to-preview": "hem build && publisssh ./public zooniverse-static/preview.zooniverse.org/serengeti && rm -rf ./public/application.*"
-  },
-  "devDependencies": {
-    "aws-cli": "0.0.1",
-    "coffee": "^1.0.0",
-    "coffee-script": "^1.8.0",
-    "hem": "^0.1.9",
-    "iced-coffee-script": "^1.8.0-c",
-    "publisssh": "^0.1.3"
   }
 }
