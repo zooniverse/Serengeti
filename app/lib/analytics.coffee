@@ -15,7 +15,8 @@ logEvent = (user_id,subject_id,type,related_id) ->
   eventData['subject_id'] = subject_id
   eventData['type'] = type
   eventData['related_id'] = related_id
-
+  false
+  ###
   return $.ajax {
         url: 'http://localhost:8090/events/',
         type: 'POST',
@@ -32,5 +33,6 @@ logEvent = (user_id,subject_id,type,related_id) ->
         error: (xhr, status, error) ->
             console.log 'finished ajax req with error ' + status + ': ' + error
         }
+  ###
 
 module.exports = logEvent
