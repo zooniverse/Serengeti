@@ -106,7 +106,8 @@ class Classifier extends Controller
     if tutorialDone
       @tutorial.end()
       Subject.next() if doingTutorial or not Subject.current
-      AnalyticsLogger.logEvent('test','test2','test','test')
+      alert "changed code"
+#AnalyticsLogger.logEvent('test','test2','test','test')
     else
       getTutorialSubject().select()
 
