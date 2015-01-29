@@ -22,7 +22,6 @@ class Classifier extends Controller
 
   subject: null
   classification: null
-  loggedInUserId: null
 
   constructor: ->
     super
@@ -93,7 +92,7 @@ class Classifier extends Controller
     @subjectViewer.setClassification @classification
     @animalSelector.setClassification @classification
 
-    AnalyticsLogger.logEvent User.current?.zooniverse_id,subject.zooniverseId,'view',''
+    AnalyticsLogger.logEvent 'view'
 
     if !!subject.metadata.tutorial
       @tutorial.start()
@@ -106,12 +105,6 @@ class Classifier extends Controller
   onUserSignIn: =>
     tutorialDone = User.current?.project.tutorial_done
     doingTutorial = Subject.current?.metadata.tutorial
-
-    if User.current?
-      AnalyticsLogger.logEvent User.current?.zooniverse_id,'','login',''
-      @loggedInUserId = User.current?.zooniverse_id
-    else
-      AnalyticsLogger.logEvent @loggedInUserId,Subject.current?.zooniverseId,'logout',''
 
     if tutorialDone
       @tutorial.end()
