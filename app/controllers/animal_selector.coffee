@@ -141,7 +141,7 @@ class AnimalSelector extends Controller
     setTimeout details.show, 125
 
   onClickClearFilters: ->
-    AnalyticsLogger.logEvent User.current?.zooniverse_id,Subject.current?.zooniverseId,'clear',''
+    AnalyticsLogger.logEvent 'clear'
     @clearFilters()
 
   clearFilters: =>
@@ -150,7 +150,7 @@ class AnimalSelector extends Controller
     @searchInput.trigger 'keydown'
 
   onClickStartTutorial: ->
-    AnalyticsLogger.logEvent User.current?.zooniverse_id,Subject.current?.zooniverseId,'tutorial',''
+    AnalyticsLogger.logEvent 'tutorial'
     getTutorialSubject().select()
 
 module.exports = AnimalSelector

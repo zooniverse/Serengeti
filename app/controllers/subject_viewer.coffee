@@ -157,30 +157,30 @@ class SubjectViewer extends Controller
 
   onClickSatellite: ->
     if not @satelliteImage.hasClass 'active'
-      AnalyticsLogger.logEvent User.current?.zooniverse_id,@classification.subject.zooniverseId,'map',''
+      AnalyticsLogger.logEvent 'map', null, null, @classification.subject.zooniverseId
     @satelliteImage.add(@satelliteToggle).toggleClass 'active'
 
   onClickSignIn: ->
     $(window).trigger 'request-login-dialog'
 
-  onClickFavorite: ->
-    AnalyticsLogger.logEvent User.current?.zooniverse_id,@classification.subject.zooniverseId,'favorite',@classification.id
-    @classification.updateAttribute 'favorite', true
-
   onClickFacebook: ->
-    AnalyticsLogger.logEvent User.current?.zooniverse_id,@classification.subject.zooniverseId,'facebook',@classification.id
+    AnalyticsLogger.logEvent 'facebook', @classification.id, null, @classification.subject.zooniverseId
 
   onClickTweet: ->
-    AnalyticsLogger.logEvent User.current?.zooniverse_id,@classification.subject.zooniverseId,'tweet',@classification.id
+    AnalyticsLogger.logEvent 'tweet', @classification.id, null, @classification.subject.zooniverseId
 
   onClickPin: ->
-    AnalyticsLogger.logEvent User.current?.zooniverse_id,@classification.subject.zooniverseId,'pin',@classification.id
+    AnalyticsLogger.logEvent 'pin', @classification.id, null, @classification.subject.zooniverseId
 
   onClickTalk: ->
-    AnalyticsLogger.logEvent User.current?.zooniverse_id,@classification.subject.zooniverseId,'talk',@classification.id
+    AnalyticsLogger.logEvent 'talk', @classification.id, null, @classification.subject.zooniverseId
+
+  onClickFavorite: ->
+    AnalyticsLogger.logEvent 'favorite', @classification.id, null, @classification.subject.zooniverseId
+    @classification.updateAttribute 'favorite', true
 
   onClickUnfavorite: ->
-    AnalyticsLogger.logEvent User.current?.zooniverse_id,@classification.subject.zooniverseId,'unfavorite',@classification.id
+    AnalyticsLogger.logEvent 'unfavorite', @classification.id, null, @classification.subject.zooniverseId
     @classification.updateAttribute 'favorite', false
 
   onChangeFireCheckbox: ->
@@ -197,7 +197,7 @@ class SubjectViewer extends Controller
     @extraMessageContainer.hide() unless message
 
     @el.addClass 'finished'
-    AnalyticsLogger.logEvent User.current?.zooniverse_id,@classification.subject.zooniverseId,'classify',@classification.id
+    AnalyticsLogger.logEvent 'classify', @classification.id, null, @classification.subject.zooniverseId
     @classification.send() unless @classification.subject.metadata.empty
 
   onClickNext: ->

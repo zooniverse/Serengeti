@@ -30,7 +30,7 @@ navigation = new Navigation
 navigation.el.appendTo document.body
 
 LanguagePicker = require 'controllers/language_picker'
-
+loggedInUserId = null
 languagePicker = new LanguagePicker
 languagePicker.el.prependTo document.body
 
@@ -42,6 +42,11 @@ app = {}
 
 User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
+  if User.current?
+    AnalyticsLogger.logEvent 'login'
+    loggedInUserId = User.current?.zooniverse_id
+  else
+    AnalyticsLogger.logEvent 'logout',null,loggedInUserId
 
 Api.init
   host: if !!location.href.match /demo|beta/
@@ -103,8 +108,7 @@ Api.proxy.el().one 'load', ->
       app.topBar.loginDialog.reattach()
 
     $(window).bind('beforeunload', (e) ->
-        AnalyticsLogger.logEvent User.current?.zooniverse_id,Subject.current?.zooniverseId,'leave',''
-        event.preventDefault()
+        AnalyticsLogger.logEvent 'leave'
     )
 
     app.stack.el.appendTo 'body'
