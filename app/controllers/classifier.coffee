@@ -1,7 +1,7 @@
 {Controller} = require 'spine'
 SubjectViewer = require './subject_viewer'
 AnimalSelector = require './animal_selector'
-#AnalyticsLogger = require 'lib/analytics'
+AnalyticsLogger = require 'lib/analytics'
 animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
 AnimalMenuItem = require './animal_menu_item'
@@ -20,6 +20,7 @@ class Classifier extends Controller
 
   subject: null
   classification: null
+  loggedInUser: null
 
   constructor: ->
     super
@@ -90,6 +91,8 @@ class Classifier extends Controller
     @subjectViewer.setClassification @classification
     @animalSelector.setClassification @classification
 
+    AnalyticsLogger.logEvent User.current?.zooniverse_id,subject.zooniverseId,'view',''
+
     if !!subject.metadata.tutorial
       @tutorial.start()
     else
@@ -102,7 +105,11 @@ class Classifier extends Controller
     tutorialDone = User.current?.project.tutorial_done
     doingTutorial = Subject.current?.metadata.tutorial
 
-    #AnalyticsLogger.logEvent('test','test2','test','test')
+    if User.current?
+      AnalyticsLogger.logEvent User.current?.zooniverse_id,'','login',''
+      @loggedInUser = User.current?
+    else
+      AnalyticsLogger.logEvent @loggedInUser.zooniverse_id,Subject.current?.zooniverseId,'logout',''
 
     if tutorialDone
       @tutorial.end()
