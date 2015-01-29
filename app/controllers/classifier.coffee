@@ -2,6 +2,7 @@
 $ = require 'jqueryify'
 SubjectViewer = require './subject_viewer'
 AnimalSelector = require './animal_selector'
+User = require 'zooniverse/lib/models/user'
 AnalyticsLogger = require 'lib/analytics'
 animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
@@ -21,7 +22,7 @@ class Classifier extends Controller
 
   subject: null
   classification: null
-  loggedInUser: null
+  loggedInUserId: null
 
   constructor: ->
     super
@@ -108,9 +109,9 @@ class Classifier extends Controller
 
     if User.current?
       AnalyticsLogger.logEvent User.current?.zooniverse_id,'','login',''
-      @loggedInUser = User.current?
+      @loggedInUserId = User.current?.zooniverse_id
     else
-      AnalyticsLogger.logEvent @loggedInUser.zooniverse_id,Subject.current?.zooniverseId,'logout',''
+      AnalyticsLogger.logEvent @loggedInUserId,Subject.current?.zooniverseId,'logout',''
 
     if tutorialDone
       @tutorial.end()
