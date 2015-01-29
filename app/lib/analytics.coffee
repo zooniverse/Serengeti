@@ -16,7 +16,7 @@ logEvent = (user_id,subject_id,type,related_id) ->
   eventData['type'] = type
   eventData['related_id'] = related_id
   $.ajax {
-        url: 'http://localhost:8090/events/',
+        url: 'http://analytics.zooniverse.org/events/',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         contentLength: length,
