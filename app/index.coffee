@@ -114,6 +114,7 @@ Api.proxy.el().one 'load', ->
 
     $(window).bind('beforeunload', (e) ->
         AnalyticsLogger.logEvent 'leave'
+        event.preventDefault()
     )
 
     app.stack.el.appendTo 'body'
