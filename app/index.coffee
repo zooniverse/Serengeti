@@ -15,6 +15,8 @@ Api = require 'zooniverse/lib/api'
 seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
+Subject = require 'models/subject'
+AnalyticsLogger = require 'lib/analytics'
 googleAnalytics = require 'zooniverse/lib/google_analytics'
 # Map = require 'zooniverse/lib/map'
 
@@ -99,6 +101,11 @@ Api.proxy.el().one 'load', ->
       app.topBar.onClickSignUp()
       app.topBar.loginForm.signInButton.click()
       app.topBar.loginDialog.reattach()
+
+    $(window).bind('beforeunload', (e) ->
+        AnalyticsLogger.logEvent User.current?.zooniverse_id,Subject.current?.zooniverseId,'leave',''
+        event.preventDefault()
+    )
 
     app.stack.el.appendTo 'body'
     app.topBar.el.prependTo 'body'
