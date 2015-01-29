@@ -4,6 +4,7 @@
   "dependencies": {
     "es5-shimify": "~0.0.1",
     "hem": "~0.1.8",
+    "jqueryify": "^1.11.0",
     "json2ify": "~0.0.1",
     "moment": "~1.7.2",
     "nib": "~0.8.2",
@@ -16,7 +17,7 @@
     "zootorial": "~0.2.0"
   },
   "scripts": {
-    "start": "hem server --port 6372",
+    "start": "hem server --port 6371",
     "deploy-to-staging": "hem build && publisssh ./public zooniverse-demo/serengeti && rm -rf ./public/application.*",
     "deploy-to-production": "hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org && rm -rf ./public/application.*",
     "deploy-to-demo": "hem build && publisssh ./public demo.zooniverse.org/serengeti && rm -rf ./public/application.*"
