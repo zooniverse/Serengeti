@@ -92,8 +92,6 @@ class Classifier extends Controller
     @subjectViewer.setClassification @classification
     @animalSelector.setClassification @classification
 
-    AnalyticsLogger.logEvent 'view'
-
     if !!subject.metadata.tutorial
       @tutorial.start()
     else
@@ -114,6 +112,7 @@ class Classifier extends Controller
 
   activate: ->
     super
+    AnalyticsLogger.logEvent 'view'
     setTimeout => @tutorial.dialog.attach()
 
 module.exports = Classifier
