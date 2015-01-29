@@ -49,9 +49,9 @@ User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
   if User.current?
     AnalyticsLogger.logEvent 'login'
-    loggedInUserId = User.current?.zooniverse_id
+    @loggedInUserId = User.current?.zooniverse_id
   else
-    AnalyticsLogger.logEvent 'logout',null,loggedInUserId
+    AnalyticsLogger.logEvent 'logout',null,@loggedInUserId
 
 Api.init
   host: if !!location.href.match /demo|beta/
