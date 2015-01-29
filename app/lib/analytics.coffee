@@ -15,24 +15,22 @@ logEvent = (user_id,subject_id,type,related_id) ->
   eventData['subject_id'] = subject_id
   eventData['type'] = type
   eventData['related_id'] = related_id
-  false
-  ###
-  return $.ajax {
+  $.ajax {
         url: 'http://localhost:8090/events/',
         type: 'POST',
         contentType: 'application/json; charset=utf-8',
         contentLength: length,
         data: "{\"events\":[" + JSON.stringify(eventData) + "]}",
-        dataType: 'jsonp',
+        dataType: 'json',
         complete: ->
-          console.log 'finished ajax req'
+          #console.log 'finished ajax req'
         beforeSend: ->
-          console.log 'starting ajax req'
+          #console.log 'starting ajax req'
         success: ->
-          console.log 'ajax req succeeded'
+          #console.log 'ajax req succeeded'
         error: (xhr, status, error) ->
-            console.log 'finished ajax req with error ' + status + ': ' + error
+            #console.log 'finished ajax req with error ' + status + ': ' + error
         }
-  ###
+  true
 
-module.exports = logEvent
+exports.logEvent = logEvent
