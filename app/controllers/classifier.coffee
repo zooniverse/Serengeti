@@ -2,6 +2,8 @@
 $ = require 'jqueryify'
 SubjectViewer = require './subject_viewer'
 AnimalSelector = require './animal_selector'
+User = require 'zooniverse/lib/models/user'
+AnalyticsLogger = require 'lib/analytics'
 animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
 AnimalMenuItem = require './animal_menu_item'
@@ -110,6 +112,7 @@ class Classifier extends Controller
 
   activate: ->
     super
+    AnalyticsLogger.logEvent 'view'
     setTimeout => @tutorial.dialog.attach()
 
 module.exports = Classifier

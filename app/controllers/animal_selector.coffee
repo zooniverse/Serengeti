@@ -2,7 +2,10 @@
 $ = require 'jqueryify'
 template = require 'views/animal_selector'
 FilterMenu = require './filter_menu'
+User = require 'zooniverse/lib/models/user'
+AnalyticsLogger = require 'lib/analytics'
 columnize = require 'lib/columnize'
+Subject = require 'models/subject'
 AnimalDetails = require './animal_details'
 getTutorialSubject = require 'lib/get_tutorial_subject'
 getPhysicallyAdjacentSibling = require 'lib/get_physically_adjacent_sibling'
@@ -138,6 +141,7 @@ class AnimalSelector extends Controller
     setTimeout details.show, 125
 
   onClickClearFilters: ->
+    AnalyticsLogger.logEvent 'clear'
     @clearFilters()
 
   clearFilters: =>
@@ -146,6 +150,7 @@ class AnimalSelector extends Controller
     @searchInput.trigger 'keydown'
 
   onClickStartTutorial: ->
+    AnalyticsLogger.logEvent 'tutorial'
     getTutorialSubject().select()
 
 module.exports = AnimalSelector
