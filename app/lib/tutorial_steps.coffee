@@ -37,7 +37,7 @@ module.exports = [
     className: 'arrow right'
 
     onEnter: ->
-      @toHighlight = $('button[value="like"][name="characteristic"], [button[value="likeAntelopeDeer"][name="characteristic-value"]')
+      @toHighlight = $('button[value="like"][name="characteristic"], button[value="likeAntelopeDeer"][name="characteristic-value"]')
       @toHighlight.css 'background-color': '#490'
 
     onExit: ->
