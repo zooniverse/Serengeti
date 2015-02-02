@@ -96,6 +96,7 @@ class Classifier extends Controller
       @tutorial.start()
     else
       @tutorial.end()
+      @tutorial.dialog.close()
 
   onNoLocalSubjects: =>
     getEmptySubject().select()
