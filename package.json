@@ -12,7 +12,7 @@
     "spine": "1.0.7",
     "underscore": "1.4.2",
     "zooniverse": "zooniverse/Zooniverse#98ffd4b",
-    "zootorial": "git://github.com/brian-c/zootorial#e94c0e2",
+    "zootorial": "0.2.4",
     "moment": "1.7.2",
     "publisssh": "0.1.3"
   },
