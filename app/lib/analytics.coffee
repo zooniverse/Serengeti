@@ -20,7 +20,7 @@ logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subjec
       subject_id: subject_id
       geordi_event_type: type
       classification_id: related_id
-    }
+  }
 
   # log event with Geordi
   $.ajax {
