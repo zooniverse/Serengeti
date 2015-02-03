@@ -15,6 +15,8 @@ Api = require 'zooniverse/lib/api'
 seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
+Subject = require 'models/subject'
+AnalyticsLogger = require 'lib/analytics'
 googleAnalytics = require 'zooniverse/lib/google_analytics'
 # Map = require 'zooniverse/lib/map'
 
@@ -33,7 +35,7 @@ navigation = new Navigation
 navigation.el.appendTo document.body
 
 LanguagePicker = require 'controllers/language_picker'
-
+loggedInUserId = null
 languagePicker = new LanguagePicker
 languagePicker.el.prependTo document.body
 
@@ -45,6 +47,11 @@ app = {}
 
 User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
+  if User.current?
+    AnalyticsLogger.logEvent 'login'
+    loggedInUserId = User.current?.zooniverse_id
+  else
+    AnalyticsLogger.logEvent 'logout',null,loggedInUserId
 
 Api.init
   host: if !!location.href.match /demo|beta/
@@ -104,6 +111,11 @@ Api.proxy.el().one 'load', ->
       app.topBar.onClickSignUp()
       app.topBar.loginForm.signInButton.click()
       app.topBar.loginDialog.reattach()
+
+    $(window).bind('beforeunload', (e) ->
+        AnalyticsLogger.logEvent 'leave'
+        event.preventDefault()
+    )
 
     app.stack.el.appendTo 'body'
     app.topBar.el.prependTo 'body'
