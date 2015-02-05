@@ -165,3 +165,30 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .about-page {
+    padding: 0 10px 0 100px;
+    .column {
+      &.content {
+        width: 100%;
+      }
+      &.sidebar {
+        width: 100%;
+      }
+    }
+    > section .column {
+      width: 100%;
+      + .column {
+        padding-left: 0px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .about-page .member.organization .description {
+    margin-left: 0px;
+  }
+}
+
