@@ -26,6 +26,7 @@ class SubjectViewer extends Controller
     'click button[name="sign-in"]': 'onClickSignIn'
     'click button[name="favorite"]': 'onClickFavorite'
     'click button[name="unfavorite"]': 'onClickUnfavorite'
+    'change input[name="fire"]': 'onChangeFireCheckbox'
     'click a[name="facebook"]': 'onClickFacebook'
     'click a[name="tweet"]': 'onClickTweet'
     'click a[name="pin"]': 'onClickPin'
@@ -41,6 +42,7 @@ class SubjectViewer extends Controller
     '.extra-message': 'extraMessageContainer'
     '.toggles button': 'toggles'
     'button[name="satellite"]': 'satelliteToggle'
+    'input[name="fire"]': 'fireCheckbox'
     'input[name="nothing"]': 'nothingCheckbox'
     'button[name="finish"]': 'finishButton'
     'a.talk-link': 'talkLink'
@@ -180,6 +182,10 @@ class SubjectViewer extends Controller
   onClickUnfavorite: ->
     AnalyticsLogger.logEvent 'unfavorite', @classification.id, null, @classification.subject.zooniverseId
     @classification.updateAttribute 'favorite', false
+
+  onChangeFireCheckbox: ->
+    fire = !!@fireCheckbox.attr 'checked'
+    @classification.annotate {fire}, true
 
   onChangeNothingCheckbox: ->
     nothing = !!@nothingCheckbox.attr 'checked'

@@ -40,7 +40,8 @@ module.exports =
     play: 'View series'
     pause: 'Stop'
     satellite: 'Satellite view'
-    nothingLabel: 'Nothing here'
+    fire: 'Fire'
+    nothingLabel: 'No animals present'
     nextSubjectButton: 'Finish'
     share: 'Share'
     tweet: 'Tweet'
@@ -213,6 +214,12 @@ module.exports =
         Adults have large, dog-like muzzles and close-set eyes, whereas young dark brown and have flat, pink faces.
       '''
 
+    bat:
+      label: 'Bat'
+      description: '''
+        On the rare occasion, bats are sometimes captured at night flying in front of the camera traps.  
+      '''
+
     batEaredFox:
       label: 'Bat-eared fox'
       description: '''
@@ -253,6 +260,12 @@ module.exports =
         Large, pointed ears have prominent tufts of black hair.
       '''
 
+    cattle:
+      label: 'Cattle'
+      description: '''
+        Maasai occasionally bring their cattle inside the Park to graze -- an activity which is not allowed!
+      '''
+
     cheetah:
       label: 'Cheetah'
       description: '''
@@ -275,6 +288,12 @@ module.exports =
         This is the smallest Serengeti antelope.
         It has large eyes and an elongated upper lip and nose, with tufts of hair between its ears.
         Males have short, spiky horns.
+      '''
+
+    duiker:
+      label: 'Duiker'
+      description: '''
+        A small antelope whose body coloration can vary enormously, ranging from chestnut brown to gray. Duikers have a dark muzzle, nose, and forelegs, while their undersides are fluffy and white. Males have sharply pointed upright horns.
       '''
 
     eland:
@@ -385,6 +404,12 @@ module.exports =
         White belly and chin, and around their eyes.
         Black tufts of hair between their ears, black lines on their rump, and black spots above their heels.
         Males have large, S-shaped horns.
+      '''
+
+    insectSpider:
+      label: 'Insect/Spider'
+      description: '''
+        Insects and spiders sometimes make themselves at home in front of, or even on, the cameras. This category includes any type of "bug" that you see.
       '''
 
     jackal:
@@ -498,6 +523,12 @@ module.exports =
         The serval’s enormous pointed ears and distinctive black nose help distinguish it from the cheetah.
       '''
 
+    steenbok:
+      label: 'Steenbok'
+      description: '''
+        This is a petite antelope with extremely large rounded ears and dark eyes. The coat color ranges from tan to red, with white underparts. Steenbok have white rings surrounding their eyes and black facial glands which start at the nose and taper upward. Males have sharp, upright horns.
+      '''
+
     topi:
       label: 'Topi'
       description: '''
@@ -510,6 +541,12 @@ module.exports =
       label: 'Vervet monkey'
       description: '''
         A regular sight in the Serengeti, this small monkey has a light gray/brown coat, small black face, and a very, very long gray tail.
+      '''
+
+    vulture:
+      label: 'Vulture'
+      description: '''
+        Large, hulking birds, typically with bald heads and necks devoid of normal feathers.
       '''
 
     warthog:
@@ -571,6 +608,9 @@ module.exports =
       '''
 
     buffalo:
+      cattle: '''
+        Cattle are less heavy than buffalo, and have a more pronounced shoulder hump. The horns of cattle don't fuse in the middle and cattle are often more variable in color.
+      '''
       wildebeest: '''
         A wildebeest is skinnier than a buffalo, with a large head and long beard.  Its horns don’t fuse together in the center.
       '''
@@ -582,6 +622,14 @@ module.exports =
 
       lionFemale: '''
         Lions are larger and more muscular than caracals. They don't have large pointed ears. Their tails are smooth with a tuft of dark fur at the end.
+      '''
+
+    cattle:
+      buffalo: '''
+        Buffalo are stockier than cattle and lack the prominent shoulder hump. The horns of cattle don't join together in the middle.
+      '''
+      wildebeest: '''
+        The horns of cattle are shorter and don't extend as far back as those of wildebeest. While cattle have a prominent shoulder hump, they don't have the sloping back of wildebeest and lack a chin-beard.
       '''
 
     cheetah:
@@ -599,9 +647,14 @@ module.exports =
       '''
 
     dikDik:
-      reedbuck: '''
-        A reedbuck is bigger than a dik dik. Their undersides are white, not gray, and they lack the ‘tear drop’ beneath the eye.
-      '''
+      reedbuck: 'A reedbuck is bigger than a dik dik. Their undersides are white, not gray, and they lack the ‘tear drop’ beneath the eye.'
+      steenbok: 'Steenbok have larger ears than dik dik and lack the dark suborbital gland. They are slightly bigger in size.'
+      duiker: 'Dik dik have more petite, tapering noses that lack the dark muzzle stripe of a duiker. Dik dik have more prominent tufts of hair between their ears and a rounded posture.'
+
+    duiker:
+      reedbuck: 'Reedbuck lack the dark muzzle and forelegs of a duiker. The horns of a male duiker are straighter and smoother than those of a male reedbuck.'
+      dikDik: 'Dik dik are smaller and less stocky than a duiker, lacking the prominently dark muzzle and foreleg stripes.'
+      steenbok: 'Steenbok are more petite than duiker. The black facial glands of a steenbok do not extend to cover as much of the face as the dark muzzle stripe of the duiker.'
 
     gazelleGrants:
       gazelleThomsons: '''
@@ -714,6 +767,10 @@ module.exports =
         A wildcat is smaller than a serval and doesn’t have long tufts of hair on its ears.
       '''
 
+    steenbok:
+      duiker: 'A duiker is larger than a steenbok, with a more prominent black facial stripe and dark forelimbs.'
+      dikDik: 'Dik dik have a more rounded back and hunched posture than a steenbok. Dik dik have a more prominent tuft of hair between their ears.'
+
     topi:
       hartebeest: '''
         The hartebeest is more yellow/tan in color. Horns curve sideways then inward.
@@ -731,6 +788,9 @@ module.exports =
     wildebeest:
       buffalo: '''
         The buffalo is larger and stockier. Horns tend to be more fused together at the center.
+      '''
+      cattle: '''
+        Wildebeest have more pronounced, curving horns than cattle. Cattle have a less bulbous muzzle and they lack the wildebeest's chin-beard.
       '''
 
     zorilla:

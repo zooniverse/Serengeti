@@ -55,7 +55,12 @@
   </span>
 
   <span class="finished group">
-    <label class="nothing-label" title="[X]">
+    <label class="clickable-label" title="[X]">
+      <input type="checkbox" name="fire" data-shortcut="B" />
+      <%- translate 'span', 'classify.fire' %>
+    </label>
+
+    <label class="clickable-label nothing-label" title="[X]">
       <input type="checkbox" name="nothing" data-shortcut="X" />
       <%- translate 'span', 'classify.nothingLabel' %>
     </label>
