@@ -255,12 +255,15 @@
     .finished {
       float: right;
 
-      .nothing-label {
+      .clickable-label {
         cursor: pointer;
-        display: none;
         font-size: 12px;
         font-weight: bold;
         margin-right: 10px;
+
+        &.nothing-label {
+          visibility: hidden;
+        }
       }
 
       button {
@@ -354,8 +357,8 @@
     }
   }
 
-  &.no-annotations .controls .finished .nothing-label {
-    display: inline-block;
+  &.no-annotations .controls .finished .clickable-label.nothing-label {
+    visibility: visible;
   }
 
   &.finished {
