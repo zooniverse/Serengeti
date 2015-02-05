@@ -1,6 +1,7 @@
 .language-picker
-  float: right
-  margin: 10px
+  position: absolute
+  left: 50%
+  margin-left: -445px // mimick positioning of zooniverse/show-top-bar
 
   select
     appearance: none
@@ -13,3 +14,8 @@
     option
       color: $white
       background: $black
+
+@media screen and (max-width: 1050px)
+  .language-picker
+    margin-left: 0
+    left: 75px

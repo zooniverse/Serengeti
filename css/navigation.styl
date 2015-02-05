@@ -1,0 +1,136 @@
+#navigation {
+  > h1 {
+    color: $white;
+    font: normal 30px Georgia, serif;
+    letter-spacing: 10px
+    margin: 30px auto 15px auto;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 2px 3px $black;
+    text-transform: uppercase;
+    z-index: 1;
+    max-width: 1000px
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      img {
+        border: 0;
+        max-width: 552px;
+        width: 100%;
+        vertical-align: middle;
+        &.mobile-wordmark {
+          display: none;
+        }
+      }
+    }
+    .nav-button {
+      @extend #standard-button
+      outer-deboss: 5px;
+      letter-spacing: 0px;
+      width: 30px;
+      height: 30px;
+      margin-top: 5px; // offset oblong svg size
+      margin-right: 20px;
+      background: url("images/hamburger-icon.svg"), $green-dark;
+      background-size: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      float: right
+
+      &.open {
+        background-image: url("images/x-icon.svg");
+      }
+    }
+  }
+
+
+  nav {
+    background: transparent
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    z-index: 3;
+    display: none
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        display: inline-block;
+        width: 120px;
+        border-radius: 5px
+        color: $white
+
+        &:first-child {
+          border-left: 0;
+          box-shadow: none;
+        }
+
+        &.active {
+          text-decoration: underline
+        }
+
+        a {
+          color: $white;
+          display: block;
+          padding: 5px 0;
+          text-align: center;
+          text-decoration: none;
+          width: 100%;
+
+          &:hover,
+          &.active {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #navigation {
+    nav {
+      background: $green-dark;
+
+      ul li {
+        width: 100%;
+        a {
+          font-size: 2em;
+          font-weight: 100;
+        }
+      }
+    }
+    > h1 {
+      a {
+        overflow: auto;
+        img {
+          max-height: 50px
+          width: 70%;
+          margin-bottom: 20px
+          padding-left: 60px;
+          padding-right: 10px
+          box-sizing: border-box;
+
+          // swap the site logo for mobile
+          &.desktop-wordmark {
+            display: none;
+          }
+          &.mobile-wordmark {
+            display: inline-block;
+          }
+        }
+      }
+    }
+    > button {
+      width: 30%;
+      float: right;
+      padding: 20px; // increase size of click-zone
+      margin: -20px; // offset the padding
+    }
+  }
+}
