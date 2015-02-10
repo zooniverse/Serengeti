@@ -2,6 +2,7 @@
 template = require 'views/animal_details'
 PopupButton = require './popup_button'
 ImageChanger = require './image_changer'
+AnalyticsLogger = require 'lib/analytics'
 
 class AnimalDetails extends Controller
   animal: null
@@ -75,6 +76,7 @@ class AnimalDetails extends Controller
     @hide()
 
   onClickIdentify: ->
+    AnalyticsLogger.logEvent 'identify', @animal.id
     @classification.annotate
       species: @animal
 
