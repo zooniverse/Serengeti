@@ -154,7 +154,8 @@ class SubjectViewer extends Controller
 
   onClickToggle: ({currentTarget}) =>
     selectedIndex = $(currentTarget).val()
-    AnalyticsLogger.logEvent 'frame'+(selectedIndex+1), @classification.id, null, @classification.subject.zooniverseId
+    friendlyIndex = parseInt $(currentTarget).val()+1
+    AnalyticsLogger.logEvent 'frame'+friendlyIndex, @classification.id, null, @classification.subject.zooniverseId
     @activate selectedIndex
 
   onClickSatellite: ->
