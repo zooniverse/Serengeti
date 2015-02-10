@@ -189,10 +189,14 @@ class SubjectViewer extends Controller
 
   onChangeFireCheckbox: ->
     fire = !!@fireCheckbox.attr 'checked'
+    if fire
+      AnalyticsLogger.logEvent 'fire', @classification.id, null, @classification.subject.zooniverseId
     @classification.annotate {fire}, true
 
   onChangeNothingCheckbox: ->
     nothing = !!@nothingCheckbox.attr 'checked'
+    if nothing
+      AnalyticsLogger.logEvent 'nothing', @classification.id, null, @classification.subject.zooniverseId
     @classification.annotate {nothing}, true
 
   onClickFinish: ->
