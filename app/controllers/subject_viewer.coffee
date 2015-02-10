@@ -146,6 +146,7 @@ class SubjectViewer extends Controller
   #   delete @mouseDown
 
   onClickPlay: ->
+    AnalyticsLogger.logEvent 'play', @classification.id, null, @classification.subject.zooniverseId
     @play()
 
   onClickPause: ->
@@ -153,6 +154,8 @@ class SubjectViewer extends Controller
 
   onClickToggle: ({currentTarget}) =>
     selectedIndex = $(currentTarget).val()
+    friendlyIndex = 1 + parseInt ($(currentTarget).val())
+    AnalyticsLogger.logEvent 'frame'+friendlyIndex, @classification.id, null, @classification.subject.zooniverseId
     @activate selectedIndex
 
   onClickSatellite: ->
@@ -185,10 +188,14 @@ class SubjectViewer extends Controller
 
   onChangeFireCheckbox: ->
     fire = !!@fireCheckbox.attr 'checked'
+    if fire
+      AnalyticsLogger.logEvent 'fire', @classification.id, null, @classification.subject.zooniverseId
     @classification.annotate {fire}, true
 
   onChangeNothingCheckbox: ->
     nothing = !!@nothingCheckbox.attr 'checked'
+    if nothing
+      AnalyticsLogger.logEvent 'nothing', @classification.id, null, @classification.subject.zooniverseId
     @classification.annotate {nothing}, true
 
   onClickFinish: ->
@@ -201,6 +208,7 @@ class SubjectViewer extends Controller
     @classification.send() unless @classification.subject.metadata.empty
 
   onClickNext: ->
+    AnalyticsLogger.logEvent 'view'
     Subject.next()
 
   play: ->

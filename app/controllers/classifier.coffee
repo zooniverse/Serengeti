@@ -113,7 +113,6 @@ class Classifier extends Controller
 
   activate: ->
     super
-    AnalyticsLogger.logEvent 'view'
     setTimeout => @tutorial.dialog.attach()
 
 module.exports = Classifier
