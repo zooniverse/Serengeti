@@ -70,7 +70,10 @@ class AnimalDetails extends Controller
       checkbox.val()
 
   getBabies: ->
-    !!@babiesCheckbox.attr 'checked'
+    babies = !!@babiesCheckbox.attr 'checked'
+    if babies
+      AnalyticsLogger.logEvent 'young', @animal.id
+    babies
 
   onClickCancel: ->
     @hide()
