@@ -147,6 +147,7 @@ class SubjectViewer extends Controller
 
   onClickPlay: ->
     AnalyticsLogger.logEvent 'play', @classification.id, null, @classification.subject.zooniverseId
+    console.log 'playing'
     @play()
 
   onClickPause: ->
@@ -154,7 +155,7 @@ class SubjectViewer extends Controller
 
   onClickToggle: ({currentTarget}) =>
     selectedIndex = $(currentTarget).val()
-    friendlyIndex = parseInt $(currentTarget).val()+1
+    friendlyIndex = 1 + parseInt ($(currentTarget).val())
     AnalyticsLogger.logEvent 'frame'+friendlyIndex, @classification.id, null, @classification.subject.zooniverseId
     @activate selectedIndex
 
