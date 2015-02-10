@@ -147,7 +147,6 @@ class SubjectViewer extends Controller
 
   onClickPlay: ->
     AnalyticsLogger.logEvent 'play', @classification.id, null, @classification.subject.zooniverseId
-    console.log 'playing'
     @play()
 
   onClickPause: ->
