@@ -146,6 +146,7 @@ class SubjectViewer extends Controller
   #   delete @mouseDown
 
   onClickPlay: ->
+    AnalyticsLogger.logEvent 'play', @classification.id, null, @classification.subject.zooniverseId
     @play()
 
   onClickPause: ->
@@ -153,6 +154,7 @@ class SubjectViewer extends Controller
 
   onClickToggle: ({currentTarget}) =>
     selectedIndex = $(currentTarget).val()
+    AnalyticsLogger.logEvent 'frame'+selectedIndex, @classification.id, null, @classification.subject.zooniverseId
     @activate selectedIndex
 
   onClickSatellite: ->
