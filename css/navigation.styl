@@ -37,6 +37,7 @@
       background-position: center;
       background-repeat: no-repeat;
       float: right
+      display: none;
 
       &.open {
         background-image: url("images/x-icon.svg");
@@ -53,7 +54,6 @@
     text-align: center;
     width: 100%;
     z-index: 3;
-    display: none
 
     ul {
       margin: 0;
@@ -92,10 +92,19 @@
   }
 }
 
+@media screen and (min-width: 1001px) {
+  #navigation {
+    nav {
+      display: block !important; // ensure nav is never hides
+    }
+  }
+}
+
 @media screen and (max-width: 1000px) {
   #navigation {
     nav {
       background: $green-dark;
+      display: none;
 
       ul li {
         width: 100%;
@@ -124,6 +133,9 @@
             display: inline-block;
           }
         }
+      }
+      .nav-button {
+        display: inline-block;
       }
     }
     > button {
