@@ -72,7 +72,7 @@ class AnimalSelector extends Controller
         targets = @items.filter ':not(".dimmed")'
         targets.first().focus()
         targets.first().click() if targets.length is 1
-
+        AnalyticsLogger.logEvent 'search', @searchInput.val()
       @set.search @searchInput.val()
 
   onSelectionAreaKeyDown: (e) ->
