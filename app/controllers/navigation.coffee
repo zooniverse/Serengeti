@@ -8,7 +8,7 @@ class Navigation
     @nav = @el.find('nav')
     @navButton = @el.find('.nav-button')
 
-    @navButton.on 'click', @onNavButtonClick
+    @navButton.on 'click', @toggleNav
 
     addEventListener('hashchange', @onHashchange, false)
     @onHashchange()
@@ -17,12 +17,15 @@ class Navigation
     @el.find("a[href='#{location.hash}']")
       .parent().addClass('active')
       .siblings().removeClass('active')
+    @closeNav() if window.innerWidth <= 1000 # responsive nav breakpoint
 
-    @nav.slideUp('fast')
-    @navButton.removeClass('open')
-
-  onNavButtonClick: (e) =>
+  toggleNav: =>
     @navButton.toggleClass('open')
     @nav.slideToggle('fast')
+
+  closeNav: =>
+    @navButton.removeClass('open')
+    @nav.slideUp('fast')
+
 
 module.exports = Navigation

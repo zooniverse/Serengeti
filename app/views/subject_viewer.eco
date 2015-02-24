@@ -73,13 +73,13 @@
 
 <div class="followup">
   <span class="social group">
-    <a name="facebook" href="<%= @subject.facebookHref() %>" target="_blank"><i rel="facebook">Facebook</i><%- translate 'span', 'classify.share' %></a>
-    <a name="tweet" href="<%= @subject.twitterHref() %>" target="_blank"><i rel="twitter">Twitter</i><%- translate 'span', 'classify.tweet' %></a>
-    <a name="pin" href="<%= @subject.pinterestHref() %>" target="_blank"><i rel="pin">Pinterest</i><%- translate 'span', 'classify.pin' %></a>
+    <a id="facebook" href="<%= @subject.facebookHref() %>" target="_blank"><i rel="facebook">Facebook</i><%- translate 'span', 'classify.share' %></a>
+    <a id="tweet" href="<%= @subject.twitterHref() %>" target="_blank"><i rel="twitter">Twitter</i><%- translate 'span', 'classify.tweet' %></a>
+    <a id="pin" href="<%= @subject.pinterestHref() %>" target="_blank"><i rel="pin">Pinterest</i><%- translate 'span', 'classify.pin' %></a>
   </span>
 
   <span class="continue group">
-    <a name="talk" href="<%= @subject.talkHref() %>" target="_blank"><i rel="chat">Talk</i> <%- translate 'span', 'classify.discuss' %></a>
+    <a id="talk" href="<%= @subject.talkHref() %>" target="serengetitalk"><i rel="chat">Talk</i> <%- translate 'span', 'classify.discuss' %></a>
     <button name="next" data-shortcut="ENTER"><i rel="camera"></i> <%- translate 'span', 'classify.next' %></button>
   </span>
 </div>
