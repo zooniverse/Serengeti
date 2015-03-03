@@ -4,6 +4,8 @@ AnnotationItem = require './annotation_item'
 Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
 AnalyticsLogger = require 'lib/analytics'
+Experiments = require 'lib/experiments'
+currentExperiment = "SerengetiAwarenessExperiment1"
 $ = require 'jqueryify'
 modulus = require 'lib/modulus'
 splits = require 'lib/splits'
@@ -53,6 +55,9 @@ class SubjectViewer extends Controller
     @el.attr tabindex: 0
     @setClassification @classification
 
+  setCohort: (classification, data) ->
+    classification.cohort = Experiments.getCohort(data)
+
   # delegateEvents: ->
   #   super
   #   doc = $(document)
@@ -69,13 +74,16 @@ class SubjectViewer extends Controller
     if @classification
       @classification.bind 'change', @onClassificationChange
       @classification.bind 'add-species', @onClassificationAddSpecies
+      Experiments.getExperiment(currentExperiment).done(
+        (data) =>
+          @classification.cohort = Experiments.getCohort(data)
+          @html template @classification
 
-      @html template @classification
+          @active = Math.floor @classification.subject.location.standard.length / 2
+          @activate @active
 
-      @active = Math.floor @classification.subject.location.standard.length / 2
-      @activate @active
-
-      @onClassificationChange()
+          @onClassificationChange()
+      )
     else
       @html ''
 

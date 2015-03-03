@@ -4,7 +4,9 @@
 
 <div class="images">
   <!--<button name="zoom" style="margin-left: -20px;">+/-</button>-->
-
+  <div class="cohort" style="color:white;width:100%;">
+    <strong>Cohort: </strong> You have been assigned to the "<%= @cohort %>" cohort.
+  </div>
   <div class="subject-images">
     <% for image, i in @subject.location.standard: %>
       <figure><img src="<%= image %>" /></figure>
