@@ -10,8 +10,4 @@ getExperiment = (experiment, user_id = User.current?.zooniverse_id, subject_id =
     dataType: 'json'
   }).promise()
 
-getCohort = (data) ->
-  data.cohort
-
-exports.getCohort = getCohort
 exports.getExperiment = getExperiment

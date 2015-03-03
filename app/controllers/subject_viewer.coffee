@@ -55,9 +55,6 @@ class SubjectViewer extends Controller
     @el.attr tabindex: 0
     @setClassification @classification
 
-  setCohort: (classification, data) ->
-    classification.cohort = Experiments.getCohort(data)
-
   # delegateEvents: ->
   #   super
   #   doc = $(document)
