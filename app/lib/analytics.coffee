@@ -1,6 +1,8 @@
 $ = require('jqueryify')
 User = require 'zooniverse/lib/models/user'
 Subject = require 'models/subject'
+Experiments = require 'experiments'
+
 ###
 This will log a user interaction both in the Geordi analytics API and in Google Analytics.
 ###
@@ -12,6 +14,8 @@ logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subjec
   eventData['subjectID'] = subject_id
   eventData['type'] = type
   eventData['relatedID'] = related_id
+  eventData['experiment'] = Experiments.currentExperiment
+  eventData['cohort'] = Experiments.currentCohort
 
   # log event in Google
   dataLayer.push {

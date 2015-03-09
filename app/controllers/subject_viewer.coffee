@@ -5,7 +5,7 @@ Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
 AnalyticsLogger = require 'lib/analytics'
 Experiments = require 'lib/experiments'
-currentExperiment = "SerengetiAwarenessExperiment1"
+currentExperiment = "(none set)"
 $ = require 'jqueryify'
 modulus = require 'lib/modulus'
 splits = require 'lib/splits'
@@ -73,8 +73,7 @@ class SubjectViewer extends Controller
       @classification.bind 'add-species', @onClassificationAddSpecies
       Experiments.getExperiment(currentExperiment).done(
         (data) =>
-          @classification.cohort = Experiments.getCohort(data)
-          AnalyticsLogger.logEvent 'experimentalSplit', @classification.cohort
+          @classification.cohort = Experiments.getCohortFromResponse(data)
           @html template @classification
 
           @active = Math.floor @classification.subject.location.standard.length / 2
