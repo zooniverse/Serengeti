@@ -74,6 +74,7 @@ class SubjectViewer extends Controller
       Experiments.getExperiment(currentExperiment).done(
         (data) =>
           @classification.cohort = Experiments.getCohort(data)
+          AnalyticsLogger.logEvent 'experimentalSplit', @classification.cohort
           @html template @classification
 
           @active = Math.floor @classification.subject.location.standard.length / 2
