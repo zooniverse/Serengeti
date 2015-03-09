@@ -7,10 +7,11 @@ This will log a user interaction both in the Geordi analytics API and in Google 
 logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subject_id = Subject.current?.zooniverseId) ->
   eventData = {}
   eventData['time'] = Date.now()
-  eventData['user_id'] = user_id
-  eventData['subject_id'] = subject_id
+  eventData['projectToken'] = 'serengeti'
+  eventData['userID'] = user_id
+  eventData['subjectID'] = subject_id
   eventData['type'] = type
-  eventData['related_id'] = related_id
+  eventData['relatedID'] = related_id
 
   # log event in Google
   dataLayer.push {
@@ -22,13 +23,13 @@ logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subjec
       classification_id: related_id
   }
 
-  # log event with Geordi
+  # log event with Geordi v2
   $.ajax {
-    url: 'http://analytics.zooniverse.org/events/',
+    url: 'http://127.0.0.1:3000/api/events/',
     type: 'POST',
     contentType: 'application/json; charset=utf-8',
-    contentLength: length,
-    data: "{\"events\":[" + JSON.stringify(eventData) + "]}",
+    contentLength: length+2,
+    data: "{"+JSON.stringify(eventData)+"}",
     dataType: 'json'
   }
 
