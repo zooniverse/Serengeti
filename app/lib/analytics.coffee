@@ -28,8 +28,8 @@ logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subjec
     url: 'http://127.0.0.1:3000/api/events/',
     type: 'POST',
     contentType: 'application/json; charset=utf-8',
-    contentLength: length+2,
-    data: "{"+JSON.stringify(eventData)+"}",
+    contentLength: length,
+    data: JSON.stringify(eventData),
     dataType: 'json'
   }
 
