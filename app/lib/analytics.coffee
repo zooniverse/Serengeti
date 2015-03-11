@@ -13,6 +13,8 @@ buildEventData = (type, related_id = null, user_id = User.current?.zooniverse_id
   eventData['type'] = type
   eventData['relatedID'] = related_id
   eventData['experiment'] = Experiments.currentExperiment
+  eventData['errorCode'] = ""
+  eventData['errorDescription'] = ""
   eventData['cohort'] = Experiments.currentCohorts[eventData['experiment']]
   if typeof eventData['cohort'] == 'undefined'
     cohortRetriever = Experiments.getCohortRetriever()
