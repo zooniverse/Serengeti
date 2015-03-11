@@ -8,7 +8,7 @@ Define the active experiment here by using a string which exists in http://exper
 If no experiments should be running right now, set this to null, false or ""
 WARNING: using a non-existent experiment will crash the webapp.
 ###
-activeExperiment = null
+activeExperiment = "SerengetiInterestingAnimalsExperiment1"
 
 
 currentExperiment = activeExperiment
