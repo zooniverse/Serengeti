@@ -78,6 +78,8 @@ This will log an error in Geordi only
 ###
 logError = (error_code, error_description, type, related_id = '', user_id = User.current?.zooniverse_id, subject_id = Subject.current?.zooniverseId) ->
   deferred = buildEventData(type, related_id, user_id, subject_id)
+  eventData['errorCode'] = error_code
+  eventData['errorDescription'] = error_description
   if deferred == null
     # cohort already retrieved once for this user, no need to wait
     logToGeordi eventData
@@ -85,8 +87,6 @@ logError = (error_code, error_description, type, related_id = '', user_id = User
   else
     # log to geordi when ajax request is completed
     deferred.then( =>
-      eventData['errorCode'] = error_code
-      eventData['errorDescription'] = error_description
       logToGeordi eventData
       true
     )

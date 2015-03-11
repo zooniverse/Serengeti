@@ -13,6 +13,7 @@ activeExperiment = "SerengetiInterestingAnimalsExperiment1"
 
 currentExperiment = activeExperiment
 currentCohorts = []
+lastFailedAt = null
 
 ###
 This will contact the experiment server to find the cohort for this user & subject in the specified experiment
@@ -22,15 +23,26 @@ getCohortRetriever = (user_id = User.current?.zooniverse_id, subject_id = Subjec
     null
   else
     if typeof currentCohorts[currentExperiment] == 'undefined'
-      $.ajax({
-        url: 'http://experiments.zooniverse.org/experiment/' + currentExperiment + '?userid=' + user_id,
-        dataType: 'json'
-      }).promise().done( (data, textStatus, jqXHR) ->
-        currentCohorts[currentExperiment] = data.cohort
-        AnalyticsLogger.logEvent 'split'
-      ).fail( (jqXHR, textStatus, errorThrown) ->
-        AnalyticsLogger.logError errorThrown, textStatus, 'split'
-      )
+      now = new Date().getTime()
+      if null!=lastFailedAt
+        timeSinceLastFail = now - lastFailedAt.getTime()
+      if null==lastFailedAt || timeSinceLastFail > 30000
+        try
+          $.ajax({
+            url: 'http://experiments.zooniverse.org/experiment/' + currentExperiment + '?userid=' + user_id,
+            dataType: 'json',
+            error: =>
+              lastFailedAt = new Date()
+          }).promise().done( (data, textStatus, jqXHR) =>
+            currentCohorts[currentExperiment] = data.cohort
+            AnalyticsLogger.logEvent 'split'
+          ).fail( (jqXHR, textStatus, errorThrown) =>
+            AnalyticsLogger.logError "500", "Couldn't retrieve experimental split data", "error"
+          )
+        catch error
+          null
+      else
+        null
     else
       null
 

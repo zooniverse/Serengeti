@@ -54,8 +54,10 @@ class SubjectViewer extends Controller
     @el.attr tabindex: 0
     @setClassification @classification
 
-  setClassificationFinalPart: (cohort) =>
+  setClassificationCohort: (cohort) =>
     @classification.cohort = cohort
+
+  setClassificationFinalPart: =>
     @html template @classification
 
     @active = Math.floor @classification.subject.location.standard.length / 2
@@ -82,11 +84,14 @@ class SubjectViewer extends Controller
       deferred = Experiments.getCohortRetriever()
       if deferred
         deferred.then( =>
-          @setClassificationFinalPart Experiments.currentCohorts[Experiments.currentExperiment]
+          @setClassificationCohort Experiments.currentCohorts[Experiments.currentExperiment]
+        ).always( =>
+          @setClassificationFinalPart()
         )
       else
         # cohort already retrieved once for this user, no need to wait
-        @setClassificationFinalPart Experiments.currentCohorts[Experiments.currentExperiment]
+        @setClassificationCohort Experiments.currentCohorts[Experiments.currentExperiment]
+        @setClassificationFinalPart()
     else
       @html ''
 
