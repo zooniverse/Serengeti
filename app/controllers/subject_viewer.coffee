@@ -5,7 +5,6 @@ Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
 AnalyticsLogger = require 'lib/analytics'
 Experiments = require 'lib/experiments'
-currentExperiment = "(none set)"
 $ = require 'jqueryify'
 modulus = require 'lib/modulus'
 splits = require 'lib/splits'
@@ -55,6 +54,15 @@ class SubjectViewer extends Controller
     @el.attr tabindex: 0
     @setClassification @classification
 
+  setClassificationFinalPart: (cohort) =>
+    @classification.cohort = cohort
+    @html template @classification
+
+    @active = Math.floor @classification.subject.location.standard.length / 2
+    @activate @active
+
+    @onClassificationChange()
+
   # delegateEvents: ->
   #   super
   #   doc = $(document)
@@ -71,16 +79,14 @@ class SubjectViewer extends Controller
     if @classification
       @classification.bind 'change', @onClassificationChange
       @classification.bind 'add-species', @onClassificationAddSpecies
-      Experiments.getExperiment(currentExperiment).done(
-        (data) =>
-          @classification.cohort = Experiments.getCohortFromResponse(data)
-          @html template @classification
-
-          @active = Math.floor @classification.subject.location.standard.length / 2
-          @activate @active
-
-          @onClassificationChange()
-      )
+      deferred = Experiments.getCohortRetriever()
+      if deferred
+        deferred.then( =>
+          @setClassificationFinalPart Experiments.currentCohorts[Experiments.currentExperiment]
+        )
+      else
+        # cohort already retrieved once for this user, no need to wait
+        @setClassificationFinalPart Experiments.currentCohorts[Experiments.currentExperiment]
     else
       @html ''
 
