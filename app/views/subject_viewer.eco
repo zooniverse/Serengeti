@@ -4,7 +4,6 @@
 
 <div class="images">
   <!--<button name="zoom" style="margin-left: -20px;">+/-</button>-->
-
   <div class="subject-images">
     <% for image, i in @subject.location.standard: %>
       <figure><img src="<%= image %>" /></figure>

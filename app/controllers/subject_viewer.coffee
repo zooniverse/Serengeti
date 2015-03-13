@@ -4,6 +4,7 @@ AnnotationItem = require './annotation_item'
 Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
 AnalyticsLogger = require 'lib/analytics'
+Experiments = require 'lib/experiments'
 $ = require 'jqueryify'
 modulus = require 'lib/modulus'
 splits = require 'lib/splits'
@@ -63,19 +64,22 @@ class SubjectViewer extends Controller
     @el.removeClass 'finished'
     @classification?.unbind 'change', @onClassificationChange
     @classification?.unbind 'add-species', @onClassificationAddSpecies
-
     @classification = classification
 
     if @classification
       @classification.bind 'change', @onClassificationChange
       @classification.bind 'add-species', @onClassificationAddSpecies
+      Experiments.getCohort()
+      .then (cohort) =>
+        if cohort?
+          @classification.metadata.cohort = cohort
+      .always =>
+        @html template @classification
 
-      @html template @classification
+        @active = Math.floor @classification.subject.location.standard.length / 2
+        @activate @active
 
-      @active = Math.floor @classification.subject.location.standard.length / 2
-      @activate @active
-
-      @onClassificationChange()
+        @onClassificationChange()
     else
       @html ''
 
@@ -155,7 +159,7 @@ class SubjectViewer extends Controller
   onClickToggle: ({currentTarget}) =>
     selectedIndex = $(currentTarget).val()
     friendlyIndex = 1 + parseInt ($(currentTarget).val())
-    AnalyticsLogger.logEvent 'frame'+friendlyIndex, @classification.id, null, @classification.subject.zooniverseId
+    AnalyticsLogger.logEvent 'frame' + friendlyIndex, @classification.id, null, @classification.subject.zooniverseId
     @activate selectedIndex
 
   onClickSatellite: ->
