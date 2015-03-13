@@ -2,35 +2,54 @@ $ = require('jqueryify')
 User = require 'zooniverse/lib/models/user'
 Subject = require 'models/subject'
 Experiments = require 'lib/experiments'
-eventData = {}
+getIP = require 'lib/getip'
+currentUserID = null
+
 iteration = 0
 
-buildEventData = (type, related_id = null, user_id = User.current?.zooniverse_id, subject_id = Subject.current?.zooniverseId) ->
+buildEventData = (type, related_id = null, subject_id = Subject.current?.zooniverseId) ->
+  eventData = {}
   eventData['time'] = Date.now()
   eventData['projectToken'] = 'serengeti'
-  eventData['userID'] = user_id
   eventData['subjectID'] = subject_id
   eventData['type'] = type
   eventData['relatedID'] = related_id
-  eventData['experiment'] = Experiments.currentExperiment
+  eventData['experiment'] = Experiments.ACTIVE_EXPERIMENT
   eventData['errorCode'] = ""
   eventData['errorDescription'] = ""
-  eventData['cohort'] = Experiments.currentCohorts[eventData['experiment']]
-  if typeof eventData['cohort'] == 'undefined'
-    cohortRetriever = Experiments.getCohortRetriever()
-    if cohortRetriever
-      cohortRetriever.then( =>
-         eventData['cohort'] = Experiments.currentCohorts[eventData['experiment']]
-      )
-    else
-      null
+  eventData['cohort'] = Experiments.currentCohort
+  eventData['userID'] = "(anonymous)"
+  eventData
+
+addUserDetailsToEventData = (eventData, user_id = User.current?.zooniverse_id) ->
+  eventualEventData = new $.Deferred
+  eventData['userID'] = if user_id? then user_id else if currentUserID? then currentUserID else null
+  if eventData['userID']?
+    eventualEventData.resolve eventData
   else
-    null
+    getIP.getClientOrigin()
+    .then (data) =>
+      if data?
+        currentUserID = getIP.getNiceOriginString data
+        eventData['userID'] = currentUserID
+    .always =>
+      eventualEventData.resolve eventData
+  eventualEventData.promise()
+
+addCohortToEventData = (eventData) ->
+  eventualEventData = new $.Deferred
+  Experiments.getCohort()
+  .then (cohort) =>
+    if cohort?
+      eventData['cohort'] = cohort
+  .always =>
+    eventualEventData.resolve eventData
+  eventualEventData.promise()
 
 ###
 log event with Geordi v2
 ###
-logToGeordi = =>
+logToGeordi = (eventData) =>
   $.ajax {
     url: 'http://geordi.zooniverse.org/api/events/',
     type: 'POST',
@@ -42,7 +61,7 @@ logToGeordi = =>
 ###
 log event with Google Analytics
 ###
-logToGoogle = =>
+logToGoogle = (eventData) =>
   dataLayer.push {
     event: "gaTriggerEvent"
     project_token: eventData['projectToken']
@@ -56,41 +75,27 @@ logToGoogle = =>
 This will log a user interaction both in the Geordi analytics API and in Google Analytics.
 ###
 logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subject_id = Subject.current?.zooniverseId) =>
-  deferred = buildEventData(type, related_id, user_id, subject_id)
-  deferredType = type
-  if deferred == null
-    # cohort already retrieved once for this user, no need to wait
-    logToGeordi eventData
-    logToGoogle eventData
-    true
-  else
-    # log to geordi when ajax request is completed
-    deferred.then( =>
-      eventData.type = deferredType
+  eventData = buildEventData(type, related_id, subject_id)
+  addUserDetailsToEventData(eventData, user_id)
+  .always (eventData) =>
+    if Experiments.currentCohort?
       logToGeordi eventData
       logToGoogle eventData
-      true
-    )
-    false
+    else
+      addCohortToEventData(eventData)
+      .always (eventData) =>
+        logToGeordi eventData
+        logToGoogle eventData
 
 ###
-This will log an error in Geordi only
+This will log an error in Geordi only. In order to guarantee that this works, no new AJAX calls for cohort or user IP are initiated
 ###
 logError = (error_code, error_description, type, related_id = '', user_id = User.current?.zooniverse_id, subject_id = Subject.current?.zooniverseId) ->
-  deferred = buildEventData(type, related_id, user_id, subject_id)
+  eventData = buildEventData(type, related_id, subject_id)
   eventData['errorCode'] = error_code
   eventData['errorDescription'] = error_description
-  if deferred == null
-    # cohort already retrieved once for this user, no need to wait
-    logToGeordi eventData
-    true
-  else
-    # log to geordi when ajax request is completed
-    deferred.then( =>
-      logToGeordi eventData
-      true
-    )
-    false
+  eventData['userID'] = if currentUserID? then currentUserID else if user_id? then user_id else "(anonymous)"
+  logToGeordi eventData
 
 exports.logEvent = logEvent
 exports.logError = logError

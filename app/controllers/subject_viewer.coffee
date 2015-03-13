@@ -57,14 +57,6 @@ class SubjectViewer extends Controller
   setClassificationCohort: (cohort) =>
     @classification.cohort = cohort
 
-  setClassificationFinalPart: =>
-    @html template @classification
-
-    @active = Math.floor @classification.subject.location.standard.length / 2
-    @activate @active
-
-    @onClassificationChange()
-
   # delegateEvents: ->
   #   super
   #   doc = $(document)
@@ -75,23 +67,22 @@ class SubjectViewer extends Controller
     @el.removeClass 'finished'
     @classification?.unbind 'change', @onClassificationChange
     @classification?.unbind 'add-species', @onClassificationAddSpecies
-
     @classification = classification
 
     if @classification
       @classification.bind 'change', @onClassificationChange
       @classification.bind 'add-species', @onClassificationAddSpecies
-      deferred = Experiments.getCohortRetriever()
-      if deferred
-        deferred.then( =>
-          @setClassificationCohort Experiments.currentCohorts[Experiments.currentExperiment]
-        ).always( =>
-          @setClassificationFinalPart()
-        )
-      else
-        # cohort already retrieved once for this user, no need to wait
-        @setClassificationCohort Experiments.currentCohorts[Experiments.currentExperiment]
-        @setClassificationFinalPart()
+      Experiments.getCohort()
+      .then (cohort) =>
+        if cohort?
+          @classification.metadata.cohort = cohort
+      .always =>
+        @html template @classification
+
+        @active = Math.floor @classification.subject.location.standard.length / 2
+        @activate @active
+
+        @onClassificationChange()
     else
       @html ''
 
@@ -171,7 +162,7 @@ class SubjectViewer extends Controller
   onClickToggle: ({currentTarget}) =>
     selectedIndex = $(currentTarget).val()
     friendlyIndex = 1 + parseInt ($(currentTarget).val())
-    AnalyticsLogger.logEvent 'frame'+friendlyIndex, @classification.id, null, @classification.subject.zooniverseId
+    AnalyticsLogger.logEvent 'frame' + friendlyIndex, @classification.id, null, @classification.subject.zooniverseId
     @activate selectedIndex
 
   onClickSatellite: ->
