@@ -12,20 +12,16 @@ buildEventData = (type, related_id = null, user_id = User.current?.zooniverse_id
   eventData['subjectID'] = subject_id
   eventData['type'] = type
   eventData['relatedID'] = related_id
-  eventData['experiment'] = Experiments.currentExperiment
+  eventData['experiment'] = Experiments.activeExperiment
   eventData['errorCode'] = ""
   eventData['errorDescription'] = ""
-  eventData['cohort'] = Experiments.currentCohorts[eventData['experiment']]
+  eventData['cohort'] = Experiments.currentCohort
   if typeof eventData['cohort'] == 'undefined'
-    cohortRetriever = Experiments.getCohortRetriever()
-    if cohortRetriever
-      cohortRetriever.then( =>
-         eventData['cohort'] = Experiments.currentCohorts[eventData['experiment']]
-      )
-    else
-      null
-  else
-    null
+     Experiments.getCohort()
+        .then (cohort) =>
+          if cohort?
+            eventData['cohort'] = Experiments.currentCohort
+  eventData
 
 ###
 log event with Geordi v2
