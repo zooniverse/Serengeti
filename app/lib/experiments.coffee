@@ -3,49 +3,61 @@ User = require 'zooniverse/lib/models/user'
 Subject = require 'models/subject'
 AnalyticsLogger = require 'lib/analytics'
 
+# CONSTANTS #
+
 ###
 Define the active experiment here by using a string which exists in http://experiments.zooniverse.org/active_experiments
 If no experiments should be running right now, set this to null, false or ""
-WARNING: using a non-existent experiment will crash the webapp.
 ###
-activeExperiment = null
+ACTIVE_EXPERIMENT = null
 
+###
+When an error is encountered from the experiment server, this is the period, in milliseconds, that the code below will wait before any further attempts to contact it.
+###
+RETRY_INTERVAL = 300000 # (5 minutes) #
 
-currentExperiment = activeExperiment
-currentCohorts = []
+# VARIABLES #
+
+###
+Do not modify this initialization, it is used by the code below to keep track of the cohort so as to avoid checking many times
+###
+currentCohort = null
+
+###
+Do not modify this initialization, it is used to keep track of when the last experiment server failure was
+###
 lastFailedAt = null
 
 ###
-This will contact the experiment server to find the cohort for this user & subject in the specified experiment
+This method will contact the experiment server to find the cohort for this user & subject in the specified experiment
 ###
-getCohortRetriever = (user_id = User.current?.zooniverse_id, subject_id = Subject.current?.zooniverseId) ->
-  if typeof activeExperiment=="undefined" || !activeExperiment
-    null
+getCohort = (user_id = User.current?.zooniverse_id, subject_id = Subject.current?.zooniverseId) ->
+  eventualCohort = new $.Deferred
+  if currentCohort?
+    eventualCohort.resolve currentCohort
   else
-    if typeof currentCohorts[currentExperiment] == 'undefined'
+    if ACTIVE_EXPERIMENT?
       now = new Date().getTime()
-      if null!=lastFailedAt
+      if lastFailedAt?
         timeSinceLastFail = now - lastFailedAt.getTime()
-      if null==lastFailedAt || timeSinceLastFail > 30000
+      if lastFailedAt == null || timeSinceLastFail > RETRY_INTERVAL
         try
-          $.ajax({
-            url: 'http://experiments.zooniverse.org/experiment/' + currentExperiment + '?userid=' + user_id,
-            dataType: 'json',
-            error: =>
-              lastFailedAt = new Date()
-          }).promise().done( (data, textStatus, jqXHR) =>
-            currentCohorts[currentExperiment] = data.cohort
-            AnalyticsLogger.logEvent 'split'
-          ).fail( (jqXHR, textStatus, errorThrown) =>
+          $.get('http://experiments.zooniverse.org/experiment/' + ACTIVE_EXPERIMENT + '?userid=' + user_id)
+          .then (data) =>
+            currentCohort = data.cohort
+            eventualCohort.resolve data.cohort
+          .fail =>
+            lastFailedAt = new Date()
             AnalyticsLogger.logError "500", "Couldn't retrieve experimental split data", "error"
-          )
+            eventualCohort.resolve null
         catch error
-          null
+          eventualCohort.resolve null
       else
-        null
+        eventualCohort.resolve null
     else
-      null
+      eventualCohort.resolve null
+  eventualCohort.promise()
 
-exports.getCohortRetriever = getCohortRetriever
-exports.currentExperiment = currentExperiment
-exports.currentCohorts = currentCohorts
+exports.getCohort = getCohort
+exports.currentCohort = currentCohort
+exports.ACTIVE_EXPERIMENT = ACTIVE_EXPERIMENT
