@@ -7,13 +7,15 @@ AnalyticsLogger = require 'lib/analytics'
 animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
 AnimalMenuItem = require './animal_menu_item'
-Subject = require 'models/subject'
+Subject = require 'models/experimental_subject'
 User = require 'zooniverse/lib/models/user'
 {Tutorial} = require 'zootorial'
 tutorialSteps = require 'lib/tutorial_steps'
 getTutorialSubject = require 'lib/get_tutorial_subject'
 getEmptySubject = require 'lib/get_empty_subject'
 Classification = require 'models/classification'
+Intervention = require 'lib/intervention_agent'
+Experiments = require 'lib/experiments'
 
 class Classifier extends Controller
   className: 'classifier'
@@ -107,6 +109,8 @@ class Classifier extends Controller
 
     if tutorialDone
       @tutorial.end()
+      if Experiments.ACTIVE_EXPERIMENT?
+        performPotentialIntervention
       Subject.next() if doingTutorial or not Subject.current
     else
       getTutorialSubject().select()

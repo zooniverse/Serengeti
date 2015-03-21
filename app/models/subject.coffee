@@ -11,32 +11,42 @@ class Subject extends Model
 
   @next: (callback) =>
     @current.destroy() if @current?
-    count = @count()
+    numberOfSubjectsAlreadyLoaded = @count()
 
     # Prepare one "current" and fill the rest of the queue.
-    toFetch = (@queueLength - count) + 1
-    fetcher = @fetch toFetch unless toFetch < 1
+    numberOfSubjectsToFetch = (@queueLength - numberOfSubjectsAlreadyLoaded) + 1
+    fetcher = @loadMoreRandomSubjects numberOfSubjectsAlreadyLoaded, numberOfSubjectsToFetch
+    @advance fetcher, callback
 
-    if count is 0
-      nexter = fetcher.pipe =>
-        first = @first()
-        first?.destroy() if first?.metadata.empty
+  # after subjects have been loaded, this method actually selects the first (or triggers out of subjects event)
+  @selectFirstNonEmptySubject: =>
+    first = @first()
+    first?.destroy() if first?.metadata.empty
+    numberOfSubjectsAlreadyLoaded =  @count()
+    if numberOfSubjectsAlreadyLoaded is 0
+      @trigger 'no-subjects'
+    else
+      @first().select()
 
-        if @count() is 0
-          @trigger 'no-subjects'
-        else
-          @first().select()
+  # ensures that the next subject is selected, either now or once deferred chain is complete
+  @advance: (deferred, callback) =>
+    numberOfSubjectsAlreadyLoaded = @count()
+    if numberOfSubjectsAlreadyLoaded is 0
+      nexter = deferred.pipe =>
+        @selectFirstNonEmptySubject()
     else
       nexter = new $.Deferred
       nexter.done =>
-        @first().select()
-
+        @selectFirstNonEmptySubject()
       nexter.resolve()
-
     nexter.then callback
-
     nexter
 
+  # retrieves more subjects, but does not do anything with them
+  @loadMoreRandomSubjects: (numberOfSubjectsAlreadyLoaded, numberOfSubjectsToFetch) =>
+    @fetch numberOfSubjectsToFetch unless numberOfSubjectsToFetch < 1
+
+  # get random subjects from the API and instantiate them as models
   @fetch: (count) =>
     fetcher = new $.Deferred
 
@@ -51,6 +61,7 @@ class Subject extends Model
 
     fetcher.promise() # Resolves with all fetched subjects
 
+  # instantiate model from raw JSON API response
   @fromJSON: (raw) =>
     subject = @create
       id: raw.id

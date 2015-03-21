@@ -1,4 +1,4 @@
-Subject = require 'models/subject'
+Subject = require 'models/experimental_subject'
 
 module.exports = ->
   Subject.create

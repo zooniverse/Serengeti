@@ -5,6 +5,8 @@
 
     "jqueryify",
 
+    "mysql",
+
     "t7e",
     "t7e/editor",
 
