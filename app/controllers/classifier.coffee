@@ -109,8 +109,6 @@ class Classifier extends Controller
 
     if tutorialDone
       @tutorial.end()
-      if Experiments.ACTIVE_EXPERIMENT?
-        performPotentialIntervention
       Subject.next() if doingTutorial or not Subject.current
     else
       getTutorialSubject().select()
