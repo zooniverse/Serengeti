@@ -23,8 +23,7 @@
     "underscore/underscore",
 
     "zootorial",
-    "moment",
-    "mysql"
+    "moment"
   ],
 
   "libs": [

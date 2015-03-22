@@ -1,6 +1,6 @@
 $ = require('jqueryify')
 User = require 'zooniverse/lib/models/user'
-Subject = require 'models/experimental_subject'
+ExperimentalSubject = require 'models/experimental_subject'
 AnalyticsLogger = require 'lib/analytics'
 
 # CONSTANTS #
@@ -23,6 +23,17 @@ This determines how many random subjects will be served for every inserted image
 ###
 INSERTION_RATIO = 3
 
+###
+Until the experiment server supports user profile storage, the profiles will be hardcoded here for demo purposes.
+###
+SPECIES_INTEREST_PROFILES = {
+  "1821039": ['giraffe','lionmale','lionfemale'] # alexbfree (interesting)
+  "1928567": ['giraffe','lionmale','lionfemale'] # alexzootest1 (interesting)
+  "1928568": ['leopard','baboon'] # alexzootest2 (interesting)
+  "1928569": ['zebra','gazellethomsons'] # alexzootest3 (control)
+  "1928585": ['hippopotamus'] # alexzootest17 (control)
+}
+
 # VARIABLES #
 
 ###
@@ -36,9 +47,17 @@ Do not modify this initialization, it is used to keep track of when the last exp
 lastFailedAt = null
 
 ###
+until the experiment server supports storage of viewed and available subjects, we use local variables for storage.
+since this will not yet persist across sessions so is only a temporary measure.
+Structure of each object element:
+  intervention_histories [userID] = { 'active': true, 'interesting_subjects_viewed':['ASD123','ASD134'], .... }
+###
+interventionHistories = {}
+
+###
 This method will contact the experiment server to find the cohort for this user & subject in the specified experiment
 ###
-getCohort = (user_id = User.current?.zooniverse_id, subject_id = Subject.current?.zooniverseId) ->
+getCohort = (user_id = User.current?.zooniverse_id, subject_id = ExperimentalSubject.current?.zooniverseId) ->
   eventualCohort = new $.Deferred
   if currentCohort?
     eventualCohort.resolve currentCohort
@@ -68,4 +87,6 @@ getCohort = (user_id = User.current?.zooniverse_id, subject_id = Subject.current
 exports.getCohort = getCohort
 exports.currentCohort = currentCohort
 exports.ACTIVE_EXPERIMENT = ACTIVE_EXPERIMENT
-+exports.INSERTION_RATIO = INSERTION_RATIO
+exports.INSERTION_RATIO = INSERTION_RATIO
+exports.SPECIES_INTEREST_PROFILES = SPECIES_INTEREST_PROFILES
+exports.interventionHistories = interventionHistories

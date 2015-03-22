@@ -1,5 +1,4 @@
 User = require 'zooniverse/lib/models/user'
-mysql = require 'mysql'
 Experiments = require 'lib/experiments'
 
 class InterventionAgent
@@ -14,111 +13,35 @@ class InterventionAgent
   saveInterventionHistory: ->
     return
 
-  @openConnection: (database) ->
-    # set up db connection
-    @connection = mysql.createConnection({
-      host: 'zooniverse-db1.cezuuccr9cw6.us-east-1.rds.amazonaws.com'
-      user: 'geordi-agent'
-      database: database
-      password: '7yofU[GPO3?lAOD'
-    })
-    @connection.connect( ->
-      return false
-    )
-    true
+  getUserProfile: (scoreType) ->
+    if scoreType == "interestInSpecies"
+      Experiments.SPECIES_INTEREST_PROFILES[@userID]
+    else
+      []
 
-  @closeConnection: ->
-    @connection.end()
+  updateInterventionHistory: (history) =>
+    Experiments.interventionHistories[@userID] = {
+      'active': history.active
+      'control_subjects_viewed': history.control_subjects_viewed
+      'control_subjects_available': history.control_subjects_available
+      'intervention_subjects_viewed': history.intervention_subjects_viewed
+      'intervention_subjects_available': history.intervention_subjects_available
+    }
 
-  @getUserProfile: (scoreType) ->
-    profile = []
-    @openConnection 'geordi'
-    query = 'SELECT * FROM user_profile WHERE userID="#{currentUserID} AND scoreType="#{scoreType}";'
-    @connection.query(query, (err, rows) ->
-      if err?
-        profile
-      else
-        rows.sort((a, b) ->
-          a.score < b.score
-        )
-        for row in rows
-          profile.push row.secondaryID
-        profile
-    )
-    closeConnection()
-    profile
+  createInterventionHistory: =>
+    Experiments.interventionHistories[@userID] = {
+      'active': true
+      'control_subjects_viewed': []
+      'control_subjects_available': []
+      'intervention_subjects_viewed': []
+      'intervention_subjects_available': []
+    }
 
-  @updateInterventionHistory: (history) =>
-    success = false
-    if @openConnection 'geordi-agent'
-      for arr in ["control_subjects_viewed", "control_subjects_available", "intervention_subjects_viewed",
-                  "intervention_subjects_available"]
-        history.arr = data.arr.join ","
-
-      query = """
-      UPDATE intervention_history
-      SET cohort = #{currentCohort},
-      active = #{data.active},
-      control_subjects_viewed = #{history.control_subjects_viewed},
-      intervention_subjects_viewed = #{history.intervention_subjects_viewed},
-      control_subjects_available = #{history.control_subjects_available},
-      intervention_subjects_available = #{history.intervention_subjects_available}
-      WHERE userID="#{@userID}"
-      AND experiment="#{@experiment}";
-      """
-
-      @connection.query(query, (err) ->
-        if not err?
-          success = true
-      )
-      @closeConnection()
-    success
-
-  @createInterventionHistory: =>
-    success = false
-    if @openConnection 'geordi-agent'
-      query = """
-      INSERT INTO intervention_history
-      (userID, experiment, cohort,
-      active, control_subjects_viewed,
-      intervention_subjects_viewed,
-      control_subjects_available,
-      intervention_subjects_available)
-      VALUES(
-      "#{@userID}",
-      "#{@experiment}",
-      "#{@cohort}",
-      true,
-      "",
-      "",
-      "",
-      "");
-      """
-      @connection.query(query, (err) ->
-        if not err?
-          success = true
-      )
-      success
-
-  @getInterventionHistory: ->
-    history = null;
-    if @openConnection('geordi-agent')
-      query = 'SELECT * FROM intervention_history WHERE userID="#{currentUserID}" AND experiment="#{currentExperiment}";'
-      @connection.query(query, (err, rows) =>
-        if not err?
-          if rows.length == 0
-            if createInterventionHistory()
-              history = getInterventionHistory()
-          else
-            history = rows[0]
-            for arr in ["control_subjects_viewed", "control_subjects_available", "intervention_subjects_viewed",
-                        "intervention_subjects_available"]
-              if history.arr == ""
-                history.arr = []
-              else
-                history.arr = history.split(',')
-      )
-    @closeConnection
+  getInterventionHistory: =>
+    history = Experiments.interventionHistories[@userID]
+    if not history?
+      @createInterventionHistory()
+      history = @getInterventionHistory()
     history
 
 class ControlAgent extends InterventionAgent
@@ -133,9 +56,11 @@ class InterestingAgent extends InterventionAgent
     @userID = User.current?.zooniverse_id
     @experiment = Experiments.ACTIVE_EXPERIMENT
     @cohort = 'interesting'
+    profile = @getUserProfile "interestInSpecies"
+    interventionHistory = @getInterventionHistory()
     @data = {
-      profile: getUserProfile "interestInSpecies"
-      interventionHistory: getInterventionHistory()
+      profile: profile
+      interventionHistory: interventionHistory
     }
 
   # set up pools of known subjects, for those species with at least 20 subjects
@@ -185,8 +110,10 @@ class InterestingAgent extends InterventionAgent
     'gazellegrants': ['ASG0002zz5', 'ASG0006sld', 'ASG0014ul2', 'ASG000thrw', 'ASG000rqok', 'ASG0012isx', 'ASG0012p4u',
                       'ASG0004sny', 'ASG0014ndg', 'ASG001470k', 'ASG000zczf', 'ASG000r0jb', 'ASG0014lbh', 'ASG00147cf',
                       'ASG0014718', 'ASG000rro5', 'ASG001825f', 'ASG0008lep', 'ASG000f1bm', 'ASG0002iu8'],
-    'gazellethomsons': ['ASG000ouzl', 'ASG0008hlo', 'ASG0016ros', 'ASG000ow05', 'ASG000mv86', 'ASG001bhig', 'ASG0016ms2',
-                        'ASG00151kl', 'ASG000ntsp', 'ASG0004fm9', 'ASG00029mm', 'ASG0019b87', 'ASG00056lm', 'ASG0004tkz',
+    'gazellethomsons': ['ASG000ouzl', 'ASG0008hlo', 'ASG0016ros', 'ASG000ow05', 'ASG000mv86', 'ASG001bhig',
+                        'ASG0016ms2',
+                        'ASG00151kl', 'ASG000ntsp', 'ASG0004fm9', 'ASG00029mm', 'ASG0019b87', 'ASG00056lm',
+                        'ASG0004tkz',
                         'ASG0002iy1', 'ASG0002dl6', 'ASG0013j6a', 'ASG000cqme', 'ASG000qsu3', 'ASG0012cn9'],
     'genet': ['ASG0015jt1', 'ASG00190s5', 'ASG0003s1f', 'ASG0002fih', 'ASG0004cs4', 'ASG0004bx9', 'ASG0006dqd',
               'ASG0008jm8', 'ASG00016ly', 'ASG0002fis', 'ASG0019h7p', 'ASG0005oqz', 'ASG00190u9', 'ASG0008auq',
@@ -303,7 +230,7 @@ class InterestingAgent extends InterventionAgent
 
   addInterventionSubjectsFor: (species) ->
     if species not in @EXCLUDED_SPECIES
-      @data.interventionHistory.intervention_subjects_available.push SPECIES_SUBJECTS[species]
+      @data.interventionHistory.intervention_subjects_available.push @SPECIES_SUBJECTS[species]
     else
       # TODO log the fact we skipped a species for this user.
 
@@ -314,6 +241,7 @@ exports.agents = {
   'control': new ControlAgent()
   'interesting': new InterestingAgent()
 }
+
 exports.InterventionAgent = InterventionAgent
 exports.ControlAgent = ControlAgent
 exports.InterestingAgent = InterestingAgent

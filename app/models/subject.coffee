@@ -12,9 +12,14 @@ class Subject extends Model
   @current: null
 
   constructor: ->
+    console.log 'in subject constructor'
     @cohort = Experiments.currentCohort
     @source = "Random"
     super
+
+  @create: (attributes) =>
+    console.log 'subject create, passing up to spine'
+    super attributes
 
   @next: (callback) =>
     @current.destroy() if @current?
@@ -70,6 +75,7 @@ class Subject extends Model
 
   # instantiate model from raw JSON API response
   @fromJSON: (raw) =>
+    console.log 'parent version of fromJSON'
     subject = @create
       id: raw.id
       zooniverseId: raw.zooniverse_id
