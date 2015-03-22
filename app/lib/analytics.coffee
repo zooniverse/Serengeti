@@ -1,13 +1,13 @@
 $ = require('jqueryify')
 User = require 'zooniverse/lib/models/user'
-ExperimentalSubject = require 'models/experimental_subject'
+Subject = require 'models/subject'
 Experiments = require 'lib/experiments'
 getIP = require 'lib/getip'
 currentUserID = null
 
 iteration = 0
 
-buildEventData = (type, related_id = null, subject_id = ExperimentalSubject.current?.zooniverseId) ->
+buildEventData = (type, related_id = null, subject_id = Subject.current?.zooniverseId) ->
   eventData = {}
   eventData['time'] = Date.now()
   eventData['projectToken'] = 'serengeti'
@@ -74,7 +74,7 @@ logToGoogle = (eventData) =>
 ###
 This will log a user interaction both in the Geordi analytics API and in Google Analytics.
 ###
-logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subject_id = ExperimentalSubject.current?.zooniverseId) =>
+logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subject_id = Subject.current?.zooniverseId) =>
   eventData = buildEventData(type, related_id, subject_id)
   addUserDetailsToEventData(eventData, user_id)
   .always (eventData) =>
@@ -90,7 +90,7 @@ logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subjec
 ###
 This will log an error in Geordi only. In order to guarantee that this works, no new AJAX calls for cohort or user IP are initiated
 ###
-logError = (error_code, error_description, type, related_id = '', user_id = User.current?.zooniverse_id, subject_id = ExperimentalSubject.current?.zooniverseId) ->
+logError = (error_code, error_description, type, related_id = '', user_id = User.current?.zooniverse_id, subject_id = Subject.current?.zooniverseId) ->
   eventData = buildEventData(type, related_id, subject_id)
   eventData['errorCode'] = error_code
   eventData['errorDescription'] = error_description

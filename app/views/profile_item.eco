@@ -1,9 +1,9 @@
-<% ExperimentalSubject = require 'models/experimental_subject' %>
+<% Subject = require 'models/subject' %>
 <% Favorite = require 'zooniverse/lib/models/favorite' %>
 
 <li data-item="<%= @id %>">
   <% if @subjects?: %>
-    <a href="<%= ExperimentalSubject::talkHref.call zooniverseId: @subjects.zooniverseId || @subjects.zooniverse_id %>">
+    <a href="<%= Subject::talkHref.call zooniverseId: @subjects.zooniverseId || @subjects.zooniverse_id %>">
       <figure><img src="<%= @subjects.location?.standard[0] %>" /></figure>
     </a>
   <% else: %>
