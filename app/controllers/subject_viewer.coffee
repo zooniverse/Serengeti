@@ -1,7 +1,7 @@
 {Controller} = require 'spine'
 template = require 'views/subject_viewer'
 AnnotationItem = require './annotation_item'
-Subject = require 'models/experimental_subject'
+ExperimentalSubject = require 'models/experimental_subject'
 User = require 'zooniverse/lib/models/user'
 AnalyticsLogger = require 'lib/analytics'
 Experiments = require 'lib/experiments'
@@ -213,7 +213,7 @@ class SubjectViewer extends Controller
 
   onClickNext: ->
     AnalyticsLogger.logEvent 'view'
-    Subject.next()
+    ExperimentalSubject.next()
 
   play: ->
     # Flip the images back and forth a couple times.

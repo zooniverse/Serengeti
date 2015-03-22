@@ -7,7 +7,7 @@ AnalyticsLogger = require 'lib/analytics'
 animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
 AnimalMenuItem = require './animal_menu_item'
-Subject = require 'models/experimental_subject'
+ExperimentalSubject = require 'models/experimental_subject'
 User = require 'zooniverse/lib/models/user'
 {Tutorial} = require 'zootorial'
 tutorialSteps = require 'lib/tutorial_steps'
@@ -41,8 +41,8 @@ class Classifier extends Controller
       steps: tutorialSteps
       parent: @el
 
-    Subject.bind 'select', @onSubjectSelect
-    Subject.bind 'no-subjects', @onNoLocalSubjects
+    ExperimentalSubject.bind 'select', @onSubjectSelect
+    ExperimentalSubject.bind 'no-subjects', @onNoLocalSubjects
     User.bind 'sign-in', @onUserSignIn
 
     $(document).on 'keydown', @onKeyDown
@@ -103,11 +103,11 @@ class Classifier extends Controller
 
   onUserSignIn: =>
     tutorialDone = User.current?.project.tutorial_done
-    doingTutorial = Subject.current?.metadata.tutorial
+    doingTutorial = ExperimentalSubject.current?.metadata.tutorial
 
     if tutorialDone
       @tutorial.end()
-      Subject.next() if doingTutorial or not Subject.current
+      ExperimentalSubject.next() if doingTutorial or not ExperimentalSubject.current
     else
       getTutorialSubject().select()
 
