@@ -14,8 +14,6 @@ tutorialSteps = require 'lib/tutorial_steps'
 getTutorialSubject = require 'lib/get_tutorial_subject'
 getEmptySubject = require 'lib/get_empty_subject'
 Classification = require 'models/classification'
-Intervention = require 'lib/intervention_agent'
-Experiments = require 'lib/experiments'
 
 class Classifier extends Controller
   className: 'classifier'

@@ -1,13 +1,10 @@
-{Model} = require 'spine'
-$ = require 'jqueryify'
 Api = require 'zooniverse/lib/api'
-seasons = require 'lib/seasons'
 Subject = require 'models/subject'
 Experiments = require 'lib/experiments'
 Intervention = require 'lib/intervention_agent'
 
 class ExperimentalSubject extends Subject
-  @configure 'ExperimentalSubject', "agent"
+  @agent = null
 
   # since we don't get hold of a random subject's ID until time of GETting it, we use a placeholder to represent that random subject.
   @PLACEHOLDER = "(random-ID)"
@@ -73,9 +70,12 @@ class ExperimentalSubject extends Subject
         else
           # user has exhausted all their subjects in the experiment; fall back to control
           super callback
+    else
+      # TODO: log that failed to run experimental split for interesting user - fall back to control
+      super callback
 
   # get a specific subject by ID from the API and instantiate it as a model
-  @subjectFetch (subjectID) =>
+  @subjectFetch: (subjectID) =>
     subjectFetcher = new $.Deferred
 
     getter = Api.get("/projects/serengeti/subjects/#{subjectID}").deferred

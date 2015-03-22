@@ -9,15 +9,17 @@ AnalyticsLogger = require 'lib/analytics'
 Define the active experiment here by using a string which exists in http://experiments.zooniverse.org/active_experiments
 If no experiments should be running right now, set this to null, false or ""
 ###
-ACTIVE_EXPERIMENT = null
+ACTIVE_EXPERIMENT = "SerengetiInterestingAnimalsExperiment1"
 
 ###
-When an error is encountered from the experiment server, this is the period, in milliseconds, that the code below will wait before any further attempts to contact it.
+When an error is encountered from the experiment server, this is the period, in milliseconds, that the code below will
+  wait before any further attempts to contact it.
 ###
 RETRY_INTERVAL = 300000 # (5 minutes) #
 
 ###
-This determines how many random subjects will be served for every inserted image. For example, a value of 3 means that for every inserted subject, there will be three random subjects
+This determines how many random subjects will be served for every inserted image. For example, a value of 3 means that
+  for every inserted subject, there will be three random subjects
 ###
 INSERTION_RATIO = 3
 
@@ -66,4 +68,4 @@ getCohort = (user_id = User.current?.zooniverse_id, subject_id = Subject.current
 exports.getCohort = getCohort
 exports.currentCohort = currentCohort
 exports.ACTIVE_EXPERIMENT = ACTIVE_EXPERIMENT
-exports.INSERTION_RATIO = INSERTION_RATIO
++exports.INSERTION_RATIO = INSERTION_RATIO
