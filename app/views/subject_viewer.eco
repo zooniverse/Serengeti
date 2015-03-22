@@ -1,6 +1,14 @@
 <% translate = require 't7e' %>
 <% moment = require 'moment/moment' %>
 <% sponsoredCameraTraps = window.SERENGETI_SPONSORED_CAMERA_TRAPS || {} %>
+<% User = require 'zooniverse/lib/models/user' %>
+
+<div class="experiment" style="
+    padding: 5px;
+    text-align: center;
+    color: #ffffff;
+    background-color: rgba(20,11,3,0.50);
+"><span style="color: #cccccc;">User: </span><span class="value"><%= User.current?.name %></span> - <span style="color: #cccccc;">Cohort: </span><span class="value"><%= @subject.cohort %></span> - <span style="color: #cccccc;">Subject: </span><span class="subject-source value"><%= @subject.source %></span></div>
 
 <div class="images">
   <!--<button name="zoom" style="margin-left: -20px;">+/-</button>-->

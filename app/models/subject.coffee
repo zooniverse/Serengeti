@@ -1,13 +1,20 @@
 {Model} = require 'spine'
 $ = require 'jqueryify'
 Api = require 'zooniverse/lib/api'
+Experiments = require 'lib/experiments'
+User = require 'zooniverse/lib/models/user'
 seasons = require 'lib/seasons'
 
 class Subject extends Model
-  @configure 'Subject', 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata'
+  @configure 'Subject', 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata', 'cohort', 'source'
 
   @queueLength: 3
   @current: null
+
+  constructor: ->
+    @cohort = Experiments.currentCohort
+    @source = "Random"
+    super
 
   @next: (callback) =>
     @current.destroy() if @current?

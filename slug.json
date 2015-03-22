@@ -5,8 +5,6 @@
 
     "jqueryify",
 
-    "mysql",
-
     "t7e",
     "t7e/editor",
 
@@ -25,7 +23,8 @@
     "underscore/underscore",
 
     "zootorial",
-    "moment"
+    "moment",
+    "mysql"
   ],
 
   "libs": [
