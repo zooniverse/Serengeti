@@ -9,7 +9,7 @@ class Subject extends Model
   @queueLength: 3
   @current: null
 
-  @next: (callback) =>
+  @next: (callback) ->
     @current.destroy() if @current?
     count = @count()
 
@@ -37,7 +37,7 @@ class Subject extends Model
 
     nexter
 
-  @fetch: (count) =>
+  @fetch: (count) ->
     fetcher = new $.Deferred
 
     # Grab subjects randomly.
@@ -51,7 +51,7 @@ class Subject extends Model
 
     fetcher.promise() # Resolves with all fetched subjects
 
-  @fromJSON: (raw) =>
+  @fromJSON: (raw) ->
     subject = @create
       id: raw.id
       zooniverseId: raw.zooniverse_id
