@@ -16,17 +16,16 @@ module.exports =
       We need your help to classify all the different animals caught in millions of camera trap images.
     '''
     allSeasonsComplete: '''
-      <p>With your help, we've classified all the data we have so far. Great work!</p>
       <p>
-        We're leaving some images up for further classification, but we have more projects
-        (like <a href="http://www.cyclonecenter.org/?utm_source=Redirect&utm_medium=Link&utm_campaign=Serengeti">Cyclone Center</a>
-        and <a href="http://www.batdetective.org/?utm_source=Redirect&utm_medium=Link&utm_campaign=Serengeti">Bat Detective</a>) that need your help.
-        Visit <a href="http://www.zooniverse.org/?utm_source=Redirect&utm_medium=Link&utm_campaign=Serengeti">zooniverse.org</a> to see them all.
+        <strong>We’re done for now, but we still need you</strong>
       </p>
       <p>
-        Keep an eye on <a href="http://blog.snapshotserengeti.org/">the blog</a>
-        to learn what happens with the data the project has generated
-        and to find out when more images from the Serengeti are available.
+        With your help, we've classified all the data we have so far. Great work! We are leaving some images active for you to browse. Please keep an eye on the blog for updates about research and when new Snapshot Serengeti data will be available.</p>
+      <p>
+        If you’d like to work on a similar project, we need your animal-watching skills at
+        <strong><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></strong>
+        This project works much like Snapshot Serengeti (though there are far fewer lions) and has many active images waiting for you to explore them.
+        <strong><a href="http://www.chicagowildlifewatch.org/">Try out the CWW project today!</a></strong>
       </p>
     '''
     action: 'Start classifying'
