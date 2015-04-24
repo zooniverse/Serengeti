@@ -1,14 +1,16 @@
 <% translate = require 't7e' %>
 <% moment = require 'moment/moment' %>
 <% sponsoredCameraTraps = window.SERENGETI_SPONSORED_CAMERA_TRAPS || {} %>
-<% ExperimentalSubject = require 'models/experimental_subject' %>
+<% User = require 'zooniverse/lib/models/user' %>
+<% Subject = require 'models/experimental_subject' %>
 
 <div class="experiment" style="
     padding: 5px;
     text-align: center;
     color: #ffffff;
     background-color: rgba(20,11,3,0.50);
-"><span class="value"><% if @subject instanceof ExperimentalSubject : %>subject is an ExperimentalSubject<% else: %>subject is a parent Subject, not an ExperimentalSubject<% end %></span></div>
+    font-size: 14px;
+"><span style="color: #cccccc;"><% if User.current?: %><%= User.current.name %><% else: %>(anonymous)<% end %> (<% if Subject.cohort?: %><%= Subject.cohort %><% else: %>no<% end %> cohort) likes: </span><span class="value"><% if Subject.participant? && Subject.participant.most_liked_species?: %><%= Subject.participant.most_liked_species %><% else: %>N/A<% end %></span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<span style="color: #cccccc;">Subject: </span><span class="subject-source value"><% if Subject.missing?: %>Missing<% else : %><% if Subject.inserted?: %>Inserted<% else: %>Random<% end %><% end %></span></div>
 
 <div class="images">
   <!--<button name="zoom" style="margin-left: -20px;">+/-</button>-->
