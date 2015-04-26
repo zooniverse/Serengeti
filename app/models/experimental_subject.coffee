@@ -10,7 +10,6 @@ class ExperimentalSubject extends Subject
 
   # override parent as we need additional info
   @fromJSON: (raw) =>
-    console.log 'ES instantiating ' + raw.zooniverse_id
     if !Experiments.sources[raw.zooniverse_id]?
       Experiments.sources[raw.zooniverse_id]="RandomFill"
 
@@ -27,7 +26,6 @@ class ExperimentalSubject extends Subject
 
   # get a specific subject by ID from the API and instantiate it as a model
   @subjectFetch: (subjectID) =>
-    console.log 'fetching specific subject ' + subjectID
     subjectFetcher = new $.Deferred
 
     getter = Api.get("/projects/serengeti/subjects/#{subjectID}").deferred
@@ -57,8 +55,7 @@ class ExperimentalSubject extends Subject
           Experiments.currentParticipant = response.participant
           nextSubjectIDs = response.nextSubjectIDs
           if nextSubjectIDs? && nextSubjectIDs.length == 0
-            console.log 'no subjects';
-            # TODO add some fallback code here
+            # TODO add some fallback code here (end of experiment)
           else
             for subjectID in nextSubjectIDs
               do (subjectID) =>
@@ -88,8 +85,6 @@ class ExperimentalSubject extends Subject
     try
       $.get(Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + userID + '/next/' + numberOfSubjects)
       .then (data) =>
-        if data?
-          console.log 'got next subject IDs from experiment server: '+data.nextSubjectIDs
         subjectIDsFetcher.resolve data
       .fail =>
         AnalyticsLogger.logError "500", "Couldn't retrieve next subjects", "error"
@@ -108,7 +103,6 @@ class ExperimentalSubject extends Subject
 
         # If empty, try to prepare one random "current" quickly
         if count == 0
-          console.log 'count is 0, fetching one'
           fetcher = @fetch 1
 
         # for experimental cohort, load up the right subjects
@@ -117,7 +111,6 @@ class ExperimentalSubject extends Subject
           if participant?
             Experiments.currentParticipant = participant
             Experiments.currentCohort = participant.cohort
-            console.log 'got participant and set cohort to '+participant.cohort
             toFetch = (@queueLength - @count()) + 1
             if Experiments.currentParticipant.active && Experiments.currentCohort == Experiments.COHORT_INSERTION
               # Fill the rest of the queue in the background according to the experiment server's instructions
@@ -127,27 +120,16 @@ class ExperimentalSubject extends Subject
 
         # background work kicked off if needed, now we can advance
         if fetcher is null
-        #  console.log 'fetcher is null'
-        #  willNeedToResolve = true
           fakeFetcher = new $.Deferred
           fetcher = fakeFetcher
-        #if Experiments.currentCohort == Experiments.COHORT_INSERTION
         @current.destroy() if @current?
         @advance fetcher, callback
-        #else
         if fakeFetcher?
           fakeFetcher.resolve()
-        #    fetcher.resolve()
-        #if !Experiments.currentCohort?
-        #  # if we're not ready for experimental data yet, just advance to next in queue
-        #  @current.destroy() if @current?
-        #  @advance fetcher, callback
       else
         # wrong experiment running - revert to parent
-        console.log 'wrong experiment'
         super.next callback
     else
-      console.log 'no experiment'
       # no experiment running - revert to parent
       super.next callback
 
