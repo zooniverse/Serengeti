@@ -35,9 +35,9 @@ class ExperimentalSubject extends Subject
       subject = @first()
       if Experiments.ACTIVE_EXPERIMENT? && Experiments.ACTIVE_EXPERIMENT=="SerengetiInterestingAnimalsExperiment1"
         if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_INSERTED
-          AnalyticsLogger.logEvent 'insertion','specific'
+          AnalyticsLogger.logEvent 'insertion','specific',User.current?.zooniverse_id,subject.zooniverseId
         else if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_RANDOM
-          AnalyticsLogger.logEvent 'insertion','random'
+          AnalyticsLogger.logEvent 'insertion','random',User.current?.zooniverse_id,subject.zooniverseId
         @markAsSeen subject.zooniverseId
       subject.select()
 
@@ -72,7 +72,10 @@ class ExperimentalSubject extends Subject
           Experiments.currentParticipant = response.participant
           nextSubjectIDs = response.nextSubjectIDs
           if nextSubjectIDs? && nextSubjectIDs.length == 0
-            # TODO add some fallback code here (end of experiment)
+            Experiments.currentParticipant.cohort = Experiments.COHORT_CONTROL
+            Experiments.currentCohort = Experiments.COHORT_CONTROL
+            Experiments.currentParticipant.active = false
+            alert "You have now completed your experiment. Thanks for participating"
           else
             for subjectID in nextSubjectIDs
               do (subjectID) =>
