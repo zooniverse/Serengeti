@@ -6,18 +6,14 @@ AnalyticsLogger = require 'lib/analytics'
 
 # An Experimental Subject is the combination of Subject & experimental Participant
 class ExperimentalSubject extends Subject
-  @configure "ExperimentalSubject", 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata', 'participant', 'cohort', 'active', 'inserted'
+  @configure "ExperimentalSubject", 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata', 'participant'
 
-  # override parent as we need additional info #TODO add cohort, inserted
+  # override parent as we need additional info
   @fromJSON: (raw) =>
     console.log 'ES instantiating ' + raw.zooniverse_id
-    inserted = false
-    active = false
-    if @participant? && (raw.zooniverse_id in @participant.insertion_subjects_available || raw.zooniverse_id in @participant.insertion_subjects_seen)
-      console.log raw.zooniverse_id + ' was inserted'
-      inserted = true
-      active = @participant.active
-      cohort = @participant.cohort
+    if !Experiments.sources[raw.zooniverse_id]?
+      Experiments.sources[raw.zooniverse_id]="RandomFill"
+
     subject = @create
       id: raw.id
       zooniverseId: raw.zooniverse_id
@@ -25,11 +21,6 @@ class ExperimentalSubject extends Subject
       location: raw.location
       coords: raw.coords
       metadata: raw.metadata
-      missing: raw.missing
-      inserted: inserted
-      participant: if @participant? then @participant else null
-      cohort: cohort
-      active: active
     # Preload images.
     (new Image).src = src for src in subject.location.standard
     subject
@@ -45,11 +36,9 @@ class ExperimentalSubject extends Subject
       subjectFetcher.resolve (@fromJSON rawSubject)
 
     getter.fail =>
-      console.log "could not insert subject #{subjectID}, missing from dev Ouroboros.\n\nVerify it here: http://talk.snapshotserengeti.org/#/subjects/#{subjectID}.\n\nFalling back to a random subject."
       # resort to a random image
       @fetch(1).done (rawSubject) =>
         rawSubject.missing = true
-        debugger
         subjectFetcher.resolve (@fromJSON rawSubject)
 
     subjectFetcher.promise()
@@ -65,9 +54,7 @@ class ExperimentalSubject extends Subject
       backgroundFetcher
       .then (response) =>
         if response?
-          @participant = response.participant
-          @cohort = @participant.cohort
-          @active = @participant.active
+          Experiments.currentParticipant = response.participant
           nextSubjectIDs = response.nextSubjectIDs
           if nextSubjectIDs? && nextSubjectIDs.length == 0
             console.log 'no subjects';
@@ -77,10 +64,16 @@ class ExperimentalSubject extends Subject
               do (subjectID) =>
                 if subjectID == "RANDOM"
                   backgroundFetcher.then =>
-                    @fetch 1
+                    @fetch(1)
+                    .then (subject) =>
+                      if subject?
+                        Experiments.sources[subject[0].zooniverseId]="RandomFromSet"
                 else
                   backgroundFetcher.then =>
-                    @subjectFetch subjectID
+                    @subjectFetch(subjectID)
+                    .then (subject) =>
+                      if subject?
+                        Experiments.sources[subjectID]="InsertFromSet"
       .fail =>
         AnalyticsLogger.logError "500", "Couldn't load next experimental subjects", "error"
     else
@@ -95,6 +88,8 @@ class ExperimentalSubject extends Subject
     try
       $.get(Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + userID + '/next/' + numberOfSubjects)
       .then (data) =>
+        if data?
+          console.log 'got next subject IDs from experiment server: '+data.nextSubjectIDs
         subjectIDsFetcher.resolve data
       .fail =>
         AnalyticsLogger.logError "500", "Couldn't retrieve next subjects", "error"
@@ -120,30 +115,33 @@ class ExperimentalSubject extends Subject
         Experiments.getParticipant()
         .then (participant) =>
           if participant?
-            @participant = participant
-            @cohort = participant.cohort
-            @active = participant.active
-            if @active && @cohort == Experiments.COHORT_INSERTION
+            Experiments.currentParticipant = participant
+            Experiments.currentCohort = participant.cohort
+            console.log 'got participant and set cohort to '+participant.cohort
+            toFetch = (@queueLength - @count()) + 1
+            if Experiments.currentParticipant.active && Experiments.currentCohort == Experiments.COHORT_INSERTION
               # Fill the rest of the queue in the background according to the experiment server's instructions
-              toFetch = (@queueLength - @count()) + 1
               @loadMoreExperimentalSubjects toFetch
             else
               @loadMoreRandomSubjects toFetch
 
         # background work kicked off if needed, now we can advance
         if fetcher is null
-          console.log 'fetcher is null'
-          willNeedToResolve = true
-          fetcher = new $.Deferred
-        if @cohort == Experiments.COHORT_INSERTION
-          @current.destroy() if @current?
-          @advance fetcher, callback
-        else
-          if willNeedToResolve
-            fetcher.resolve()
-          else
-            console.log 'requesting more as we are in control cohort'
-            @nextForControlCohort callback
+        #  console.log 'fetcher is null'
+        #  willNeedToResolve = true
+          fakeFetcher = new $.Deferred
+          fetcher = fakeFetcher
+        #if Experiments.currentCohort == Experiments.COHORT_INSERTION
+        @current.destroy() if @current?
+        @advance fetcher, callback
+        #else
+        if fakeFetcher?
+          fakeFetcher.resolve()
+        #    fetcher.resolve()
+        #if !Experiments.currentCohort?
+        #  # if we're not ready for experimental data yet, just advance to next in queue
+        #  @current.destroy() if @current?
+        #  @advance fetcher, callback
       else
         # wrong experiment running - revert to parent
         console.log 'wrong experiment'
