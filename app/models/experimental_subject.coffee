@@ -4,14 +4,14 @@ Experiments = require 'lib/experiments'
 Api = require 'zooniverse/lib/api'
 AnalyticsLogger = require 'lib/analytics'
 
-# An Experimental Subject is the combination of Subject & experimental Participant
+# An Experimental Subject is a specialized subject for use in SerengetiInterestingAnimalsExperiment1 (in future can be generalized to other experiments)
 class ExperimentalSubject extends Subject
-  @configure "ExperimentalSubject", 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata', 'participant'
+  @configure "ExperimentalSubject", 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata'
 
   # override parent as we need additional info
   @fromJSON: (raw) =>
     if !Experiments.sources[raw.zooniverse_id]?
-      Experiments.sources[raw.zooniverse_id]="RandomFill"
+      Experiments.sources[raw.zooniverse_id]=Experiments.SOURCE_NORMAL
 
     subject = @create
       id: raw.id
@@ -23,6 +23,23 @@ class ExperimentalSubject extends Subject
     # Preload images.
     (new Image).src = src for src in subject.location.standard
     subject
+
+  # same as parent, but this one logs experimental insertions as they are presented to the user, and marks them as seen
+  @selectFirstNonEmptySubject: ->
+    first = @first()
+    first?.destroy() if first?.metadata.empty
+    numberOfSubjectsAlreadyLoaded = @count()
+    if numberOfSubjectsAlreadyLoaded is 0
+      @trigger 'no-subjects'
+    else
+      subject = @first()
+      if Experiments.ACTIVE_EXPERIMENT? && Experiments.ACTIVE_EXPERIMENT=="SerengetiInterestingAnimalsExperiment1"
+        if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_INSERTED
+          AnalyticsLogger.logEvent 'insertion','specific'
+        else if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_RANDOM
+          AnalyticsLogger.logEvent 'insertion','random'
+        @markAsSeen subject.zooniverseId
+      subject.select()
 
   # get a specific subject by ID from the API and instantiate it as a model
   @subjectFetch: (subjectID) =>
@@ -64,19 +81,48 @@ class ExperimentalSubject extends Subject
                     @fetch(1)
                     .then (subject) =>
                       if subject?
-                        Experiments.sources[subject[0].zooniverseId]="RandomFromSet"
+                        Experiments.sources[subject[0].zooniverseId]=Experiments.SOURCE_RANDOM
                 else
                   backgroundFetcher.then =>
                     @subjectFetch(subjectID)
                     .then (subject) =>
                       if subject?
-                        Experiments.sources[subjectID]="InsertFromSet"
+                        Experiments.sources[subjectID]=Experiments.SOURCE_INSERTED
       .fail =>
         AnalyticsLogger.logError "500", "Couldn't load next experimental subjects", "error"
     else
       backgroundFetcher = new $.Deferred
       backgroundFetcher.resolve null
     backgroundFetcher.promise()
+
+  # mark subject as seen in experiment server, and remove any "used" subjects from our queue.
+  @markAsSeen: (subjectID) ->
+    userID = User.current?.zooniverse_id
+    seenNotifier = new $.Deferred
+    try
+      if Experiments.sources[subjectID]==Experiments.SOURCE_INSERTED
+        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + userID + '/insertion/' + subjectID
+      else if Experiments.sources[subjectID]==Experiments.SOURCE_RANDOM
+        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + userID + '/random'
+      else
+        AnalyticsLogger.logError "409", "Couldn't POST subject "+subjectID+" to mark as seen", "error"
+        return null
+      $.post(url)
+      .then (participant) =>
+        Experiments.currentParticipant = participant
+        # ensure any previously seen subjects by this participant are removed from the queue if present.
+        for seenID in Experiments.currentParticipant.insertion_subjects_seen
+          for queuedSubject of ExperimentalSubject.all
+            if seenID==queuedSubject.zooniverseId
+              ExperimentalSubject.where(zooniverseId: seenID).delete
+        seenNotifier.resolve participant
+      .fail =>
+        AnalyticsLogger.logError "500", "Couldn't POST subject "+subjectID+" to mark as seen", "error"
+        seenNotifier.resolve null
+    catch error
+      AnalyticsLogger.logError "500", "Couldn't POST subject "+subjectID+" to mark as seen", "error"
+      seenNotifier.resolve null
+    seenNotifier.promise()
 
   # get the next subject IDs for the specified user ID from the experiment server	(assumes "interesting" cohort)
   @getNextSubjectIDs: (numberOfSubjects) ->
