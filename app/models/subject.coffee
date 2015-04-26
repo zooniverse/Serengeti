@@ -48,7 +48,6 @@ class Subject extends Model
     @nextForControlCohort callback
 
   @fetch: (count) ->
-    console.log 'fetching '+ count + ' at random'
     fetcher = new $.Deferred
 
     # Grab subjects randomly.
@@ -63,7 +62,6 @@ class Subject extends Model
     fetcher.promise() # Resolves with all fetched subjects
 
   @fromJSON: (raw) ->
-    console.log 'parent instantiating '+raw.zooniverse_id
     subject = @create
       id: raw.id
       zooniverseId: raw.zooniverse_id
