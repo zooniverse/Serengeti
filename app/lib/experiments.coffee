@@ -14,11 +14,16 @@ ACTIVE_EXPERIMENT = "SerengetiInterestingAnimalsExperiment1"
 ###
 The URL of the experiment server to use
 ###
-EXPERIMENT_SERVER_URL = "http://experiments.zooniverse.org/"
-#EXPERIMENT_SERVER_URL = "http://localhost:4567/"
+# prod:
+#EXPERIMENT_SERVER_URL = "http://experiments.zooniverse.org/"
+# dev:
+EXPERIMENT_SERVER_URL = "http://localhost:4567/"
 
 COHORT_CONTROL = "control"
 COHORT_INSERTION = "interesting"
+SOURCE_INSERTED = "Inserted From Set"
+SOURCE_RANDOM = "Random From Set"
+SOURCE_NORMAL = "Normal Random"
 
 ###
 When an error is encountered from the experiment server, this is the period, in milliseconds, that the code below will wait before any further attempts to contact it.
@@ -58,7 +63,7 @@ getParticipant = (user_id = User.current?.zooniverse_id) ->
       timeSinceLastFail = now - lastFailedAt.getTime()
     if lastFailedAt == null || timeSinceLastFail > RETRY_INTERVAL
       try
-        $.get('http://experiments.zooniverse.org/experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
+        $.get(EXPERIMENT_SERVER_URL+ 'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
         .then (data) =>
           currentCohort = data.cohort
           currentParticipant = data
@@ -86,10 +91,10 @@ getCohort = (user_id = User.current?.zooniverse_id) ->
       timeSinceLastFail = now - lastFailedAt.getTime()
     if lastFailedAt == null || timeSinceLastFail > RETRY_INTERVAL
       try
-        $.get('http://experiments.zooniverse.org/experiment/' + ACTIVE_EXPERIMENT + '?userid=' + user_id)
+        $.get(EXPERIMENT_SERVER_URL+'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
         .then (data) =>
           currentCohort = data.cohort
-          #currentParticipant = data
+          currentParticipant = data
           eventualCohort.resolve data.cohort
         .fail =>
           lastFailedAt = new Date()
@@ -111,4 +116,7 @@ exports.ACTIVE_EXPERIMENT = ACTIVE_EXPERIMENT
 exports.EXPERIMENT_SERVER_URL = EXPERIMENT_SERVER_URL
 exports.COHORT_CONTROL = COHORT_CONTROL
 exports.COHORT_INSERTION = COHORT_INSERTION
+exports.SOURCE_INSERTED = SOURCE_INSERTED
+exports.SOURCE_RANDOM = SOURCE_RANDOM
+exports.SOURCE_NORMAL = SOURCE_NORMAL
 exports.sources = sources

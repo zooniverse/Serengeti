@@ -11,7 +11,7 @@
     color: #ffffff;
     background-color: rgba(20,11,3,0.50);
     font-size: 13px;
-"><span style="color: #cccccc;"><% if User.current?: %><%= User.current.name %><% else: %>(anonymous)<% end %> (<% if Experiments.currentCohort?: %><%= Experiments.currentCohort %><% else: %>not yet assigned to <% end %> cohort) likes: </span><span class="value"><% if Experiments.currentParticipant? && Experiments.currentParticipant.most_liked_species?: %><%= Experiments.currentParticipant.most_liked_species.join(', ') %><% else: %>Not yet known<% end %></span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<span style="color: #cccccc;">Source: </span><span class="subject-source value"><%= Experiments.sources[@subject.zooniverseId] %></span></div>
+"><span style="color: #cccccc;"><% if User.current?: %><%= User.current.name %><% else: %>(anonymous)<% end %> (<% if Experiments.currentParticipant? && Experiments.currentParticipant.fallback: %>fallback to control<% else: %><% if Experiments.currentCohort?: %><%= Experiments.currentCohort %><% else: %>no <% end %> cohort<% end %>) likes: </span><span class="value"><% if Experiments.currentParticipant? && Experiments.currentParticipant.most_liked_species?: %><%= Experiments.currentParticipant.most_liked_species.join(', ') %><% else: %>N/A<% end %></span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<span style="color: #cccccc;">Source: </span><span class="subject-source value"><% if Experiments.sources[@subject.zooniverseId]: %><%= Experiments.sources[@subject.zooniverseId] %><% else: %>N/A<% end %></span></div>
 
 <div class="images">
   <!--<button name="zoom" style="margin-left: -20px;">+/-</button>-->
