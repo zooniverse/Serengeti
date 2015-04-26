@@ -28,7 +28,12 @@ RETRY_INTERVAL = 300000 # (5 minutes) #
 # VARIABLES #
 
 ###
-Do not modify this initialization, it is used by the code below to keep track of the cohort so as to avoid checking many times
+Do not modify this initialization, it is used by the code below to keep track of the current participant
+###
+currentParticipant = null
+
+###
+Do not modify this initialization, it is used by the code below to keep track of the current cohort (which can change for a participant as they progress)
 ###
 currentCohort = null
 
@@ -36,6 +41,11 @@ currentCohort = null
 Do not modify this initialization, it is used to keep track of when the last experiment server failure was
 ###
 lastFailedAt = null
+
+###
+Do not modify this initialization, it is used to keep track of which subjects are insertions and which are random
+###
+sources = {}
 
 ###
 This method will contact the experiment server to find the participant(experimental data) for this user in the specified experiment
@@ -50,6 +60,8 @@ getParticipant = (user_id = User.current?.zooniverse_id) ->
       try
         $.get('http://experiments.zooniverse.org/experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
         .then (data) =>
+          currentCohort = data.cohort
+          currentParticipant = data
           eventualParticipant.resolve data
         .fail =>
           lastFailedAt = new Date()
@@ -77,6 +89,7 @@ getCohort = (user_id = User.current?.zooniverse_id) ->
         $.get('http://experiments.zooniverse.org/experiment/' + ACTIVE_EXPERIMENT + '?userid=' + user_id)
         .then (data) =>
           currentCohort = data.cohort
+          #currentParticipant = data
           eventualCohort.resolve data.cohort
         .fail =>
           lastFailedAt = new Date()
@@ -93,7 +106,9 @@ getCohort = (user_id = User.current?.zooniverse_id) ->
 exports.getCohort = getCohort
 exports.getParticipant = getParticipant
 exports.currentCohort = currentCohort
+exports.currentParticipant = currentParticipant
 exports.ACTIVE_EXPERIMENT = ACTIVE_EXPERIMENT
 exports.EXPERIMENT_SERVER_URL = EXPERIMENT_SERVER_URL
 exports.COHORT_CONTROL = COHORT_CONTROL
 exports.COHORT_INSERTION = COHORT_INSERTION
+exports.sources = sources

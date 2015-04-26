@@ -63,7 +63,7 @@ class Subject extends Model
     fetcher.promise() # Resolves with all fetched subjects
 
   @fromJSON: (raw) ->
-    console.log 'instantiating '+raw.zooniverse_id
+    console.log 'parent instantiating '+raw.zooniverse_id
     subject = @create
       id: raw.id
       zooniverseId: raw.zooniverse_id
