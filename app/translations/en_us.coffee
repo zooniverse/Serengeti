@@ -20,7 +20,7 @@ module.exports =
         <strong>We’re done for now, but we still need you</strong>
       </p>
       <p>
-        With your help, we've classified all the data we have so far. Great work! We are leaving some images active for you to browse. Please keep an eye on the blog for updates about research and when new Snapshot Serengeti data will be available.</p>
+        With your help, we've classified all the data we have so far. Great work! We are leaving some images active for you to classify. Please keep an eye on the blog for updates about research and when new Snapshot Serengeti data will be available.</p>
       <p>
         If you’d like to work on a similar project, we need your animal-watching skills at
         <strong><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></strong>
