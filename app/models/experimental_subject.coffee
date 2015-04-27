@@ -1,4 +1,4 @@
-Subject = require('models/subject')
+Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
 Experiments = require 'lib/experiments'
 Api = require 'zooniverse/lib/api'
