@@ -1,8 +1,8 @@
 <% translate = require 't7e' %>
 <% moment = require 'moment/moment' %>
+<% Subject = require 'models/experimental_subject' %>
 <% sponsoredCameraTraps = window.SERENGETI_SPONSORED_CAMERA_TRAPS || {} %>
 
-<%- require('./experiment_info')(this) %>
 <div class="images">
   <!--<button name="zoom" style="margin-left: -20px;">+/-</button>-->
   <div class="subject-images">

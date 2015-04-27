@@ -1,5 +1,5 @@
 <!-- this template adds an info line showing experimental cohort, liked species, and reason for showing current subject -->
-<!-- to use: <%- require('./experiment_info')(this) %> -->
+<!-- to use: < % - require('./experiment_info')(this) % > -->
 <% User = require 'zooniverse/lib/models/user' %>
 <% Subject = require 'models/experimental_subject' %>
 <% Experiments = require 'lib/experiments' %>
