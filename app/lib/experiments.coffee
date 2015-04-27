@@ -15,9 +15,9 @@ ACTIVE_EXPERIMENT = "SerengetiInterestingAnimalsExperiment1"
 The URL of the experiment server to use
 ###
 # prod:
-#EXPERIMENT_SERVER_URL = "http://experiments.zooniverse.org/"
+EXPERIMENT_SERVER_URL = "http://experiments.zooniverse.org/"
 # dev:
-EXPERIMENT_SERVER_URL = "http://localhost:4567/"
+#EXPERIMENT_SERVER_URL = "http://localhost:4567/"
 
 COHORT_CONTROL = "control"
 COHORT_INSERTION = "interesting"

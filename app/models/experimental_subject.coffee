@@ -34,10 +34,15 @@ class ExperimentalSubject extends Subject
     else
       subject = @first()
       if Experiments.ACTIVE_EXPERIMENT? && Experiments.ACTIVE_EXPERIMENT=="SerengetiInterestingAnimalsExperiment1"
-        if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_INSERTED
-          AnalyticsLogger.logEvent 'insertion','specific',User.current?.zooniverse_id,subject.zooniverseId
-        else if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_RANDOM
-          AnalyticsLogger.logEvent 'insertion','random',User.current?.zooniverse_id,subject.zooniverseId
+        if Experiments.currentCohort == Experiments.COHORT_CONTROL
+          AnalyticsLogger.logEvent 'control','random',User.current?.zooniverse_id,subject.zooniverseId
+        else if Experiments.currentCohort == Experiments.COHORT_INSERTION
+          if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_INSERTED
+            AnalyticsLogger.logEvent 'insertion','specific',User.current?.zooniverse_id,subject.zooniverseId
+          else if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_RANDOM
+            AnalyticsLogger.logEvent 'insertion','random',User.current?.zooniverse_id,subject.zooniverseId
+        else
+          AnalyticsLogger.logEvent 'non-experimental','view',User.current?.zooniverse_id,subject.zooniverseId
         @markAsSeen subject.zooniverseId
       subject.select()
 
