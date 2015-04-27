@@ -152,41 +152,36 @@ class ExperimentalSubject extends Subject
 
   # for interesting cohort users, we will show a selection of known interesting and random unknown subjects.
   @next: (callback) =>
-    if Experiments.ACTIVE_EXPERIMENT?
-      if Experiments.ACTIVE_EXPERIMENT == "SerengetiInterestingAnimalsExperiment1"
-        @current.destroy() if @current?
-        count = @count()
+    if Experiments.ACTIVE_EXPERIMENT == "SerengetiInterestingAnimalsExperiment1"
+      @current.destroy() if @current?
+      count = @count()
 
-        # If empty, try to prepare one random "current" quickly
-        if count == 0
-          fetcher = @fetch 1
+      # If empty, try to prepare one random "current" quickly
+      if count == 0
+        fetcher = @fetch 1
 
-        # for experimental cohort, load up the right subjects
-        Experiments.getParticipant()
-        .then (participant) =>
-          if participant?
-            Experiments.currentParticipant = participant
-            Experiments.currentCohort = participant.cohort
-            toFetch = (@queueLength - @count()) + 1
-            if Experiments.currentParticipant.active && Experiments.currentCohort == Experiments.COHORT_INSERTION
-              # Fill the rest of the queue in the background according to the experiment server's instructions
-              @loadMoreExperimentalSubjects toFetch
-            else
-              @loadMoreRandomSubjects toFetch
+      # for experimental cohort, load up the right subjects
+      Experiments.getParticipant()
+      .then (participant) =>
+        if participant?
+          Experiments.currentParticipant = participant
+          Experiments.currentCohort = participant.cohort
+          toFetch = (@queueLength - @count()) + 1
+          if Experiments.currentParticipant.active && Experiments.currentCohort == Experiments.COHORT_INSERTION
+            # Fill the rest of the queue in the background according to the experiment server's instructions
+            @loadMoreExperimentalSubjects toFetch
+          else
+            @loadMoreRandomSubjects toFetch
 
-        # background work kicked off if needed, now we can advance
-        if fetcher is null
-          fakeFetcher = new $.Deferred
-          fetcher = fakeFetcher
-        @current.destroy() if @current?
-        @advance fetcher, callback
-        if fakeFetcher?
-          fakeFetcher.resolve()
-      else
-        # wrong experiment running - revert to parent
-        super.next callback
+      # background work kicked off if needed, now we can advance
+      if fetcher is null
+        fakeFetcher = new $.Deferred
+        fetcher = fakeFetcher
+      @advance fetcher, callback
+      if fakeFetcher?
+        fakeFetcher.resolve()
     else
-      # no experiment running - revert to parent
+      # InterestingAnimals experiment not running - revert to parent
       super.next callback
 
 module.exports = ExperimentalSubject
