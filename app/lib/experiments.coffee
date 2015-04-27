@@ -53,6 +53,13 @@ Do not modify this initialization, it is used to keep track of which subjects ar
 sources = {}
 
 ###
+when we first get participant, and the user has not started experiment in a previous sessions, we'll need to log it to Geordi
+###
+checkForExperimentStartAndLogIt = (participant) ->
+  if participant.insertion_subjects_seen.length==0 && participant.num_random_subjects_seen==0
+    AnalyticsLogger.logEvent 'experimentStart'
+
+###
 This method will contact the experiment server to find the participant(experimental data) for this user in the specified experiment
 ###
 getParticipant = (user_id = User.current?.zooniverse_id) ->
@@ -64,13 +71,13 @@ getParticipant = (user_id = User.current?.zooniverse_id) ->
     if lastFailedAt == null || timeSinceLastFail > RETRY_INTERVAL
       try
         $.get(EXPERIMENT_SERVER_URL+ 'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
-        .then (data) =>
-          currentCohort = data.cohort
-          startingNewSession = !currentParticipant?
-          currentParticipant = data
-          if startingNewSession
-            AnalyticsLogger.logEvent 'experimentalSessionStart'
-          eventualParticipant.resolve data
+        .then (participant) =>
+          currentCohort = participant.cohort
+          if !currentParticipant?
+            AnalyticsLogger.logEvent 'experimentResume'
+            checkForExperimentStartAndLogIt(participant)
+          currentParticipant = participant
+          eventualParticipant.resolve participant
         .fail =>
           lastFailedAt = new Date()
           AnalyticsLogger.logError "500", "Couldn't retrieve experimental participant data", "error"
@@ -95,10 +102,13 @@ getCohort = (user_id = User.current?.zooniverse_id) ->
     if lastFailedAt == null || timeSinceLastFail > RETRY_INTERVAL
       try
         $.get(EXPERIMENT_SERVER_URL+'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
-        .then (data) =>
-          currentCohort = data.cohort
-          currentParticipant = data
-          eventualCohort.resolve data.cohort
+        .then (participant) =>
+          currentCohort = participant.cohort
+          if !currentParticipant?
+            AnalyticsLogger.logEvent 'experimentResume'
+            checkForExperimentStartAndLogIt(participant)
+          currentParticipant = participant
+          eventualCohort.resolve participant.cohort
         .fail =>
           lastFailedAt = new Date()
           AnalyticsLogger.logError "500", "Couldn't retrieve experimental cohort data", "error"

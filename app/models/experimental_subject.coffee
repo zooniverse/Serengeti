@@ -98,6 +98,7 @@ class ExperimentalSubject extends Subject
                       if subject?
                         Experiments.sources[subjectID]=Experiments.SOURCE_INSERTED
       .fail =>
+        AnalyticsLogger.logEvent 'experimentEnd'
         AnalyticsLogger.logError "500", "Couldn't load next experimental subjects", "error"
     else
       backgroundFetcher = new $.Deferred
@@ -181,7 +182,9 @@ class ExperimentalSubject extends Subject
         @advance fetcher, callback
         if fakeFetcher?
           fakeFetcher.resolve()
+        AnalyticsLogger.logEvent 'view'
       else
+        AnalyticsLogger.logEvent 'view'
         # wrong experiment running - revert to parent
         super.next callback
     else

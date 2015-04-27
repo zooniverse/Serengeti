@@ -212,7 +212,6 @@ class SubjectViewer extends Controller
     @classification.send() unless @classification.subject.metadata.empty
 
   onClickNext: ->
-    AnalyticsLogger.logEvent 'view'
     ExperimentalSubject.next()
 
   play: ->
