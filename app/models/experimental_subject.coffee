@@ -99,7 +99,6 @@ class ExperimentalSubject extends Subject
                       if subject?
                         Experiments.sources[subjectID]=Experiments.SOURCE_INSERTED
       .fail =>
-        AnalyticsLogger.logEvent 'experimentEnd'
         AnalyticsLogger.logError "500", "Couldn't load next experimental subjects", "error"
     else
       backgroundFetcher = new $.Deferred
