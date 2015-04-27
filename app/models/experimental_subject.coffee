@@ -33,6 +33,7 @@ class ExperimentalSubject extends Subject
       @trigger 'no-subjects'
     else
       subject = @first()
+      AnalyticsLogger.logEvent 'view',null,User.current?.zooniverse_id,subject.zooniverseId
       if Experiments.ACTIVE_EXPERIMENT? && Experiments.ACTIVE_EXPERIMENT=="SerengetiInterestingAnimalsExperiment1"
         if Experiments.currentCohort == Experiments.COHORT_CONTROL
           AnalyticsLogger.logEvent 'control','random',User.current?.zooniverse_id,subject.zooniverseId
@@ -182,9 +183,7 @@ class ExperimentalSubject extends Subject
         @advance fetcher, callback
         if fakeFetcher?
           fakeFetcher.resolve()
-        AnalyticsLogger.logEvent 'view',null,User.current?.zooniverse_id,@current.zooniverse_id
       else
-        AnalyticsLogger.logEvent 'view',null,User.current?.zooniverse_id,@current.zooniverse_id
         # wrong experiment running - revert to parent
         super.next callback
     else
