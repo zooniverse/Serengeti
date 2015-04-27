@@ -27,7 +27,9 @@ class Subject extends Model
     if numberOfSubjectsAlreadyLoaded is 0
       @trigger 'no-subjects'
     else
-      @first().select()
+      subject = @first()
+      AnalyticsLogger.logEvent 'view',null,User.current?.zooniverse_id,subject.zooniverseId
+      subject.select()
 
   # ensures that the next subject is selected, either now or once deferred chain is complete
   @advance: (deferred, callback) ->
