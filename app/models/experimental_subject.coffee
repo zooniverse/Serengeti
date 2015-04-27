@@ -77,10 +77,11 @@ class ExperimentalSubject extends Subject
           Experiments.currentParticipant = response.participant
           nextSubjectIDs = response.nextSubjectIDs
           if nextSubjectIDs? && nextSubjectIDs.length == 0
+            # end of experiment
             Experiments.currentParticipant.cohort = Experiments.COHORT_CONTROL
             Experiments.currentCohort = Experiments.COHORT_CONTROL
             Experiments.currentParticipant.active = false
-            alert "You have now completed your experiment. Thanks for participating"
+            AnalyticsLogger.logEvent 'experimentEnd'
           else
             for subjectID in nextSubjectIDs
               do (subjectID) =>

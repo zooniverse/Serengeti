@@ -53,6 +53,13 @@ Do not modify this initialization, it is used to keep track of which subjects ar
 sources = {}
 
 ###
+  when we first get participant, and the user has not started experiment in a previous sessions, we'll need to log it to Geordi
+###
+checkForExperimentStartAndLogIt = () ->
+  if currentParticipant.insertion_subjects_seen.length==0 && currentParticipant.num_random_subjects_seen==0
+    AnalyticsLogger.logEvent 'experimentStart'
+
+###
 This method will contact the experiment server to find the participant(experimental data) for this user in the specified experiment
 ###
 getParticipant = (user_id = User.current?.zooniverse_id) ->
@@ -66,7 +73,10 @@ getParticipant = (user_id = User.current?.zooniverse_id) ->
         $.get(EXPERIMENT_SERVER_URL+ 'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
         .then (data) =>
           currentCohort = data.cohort
+          needToCheckForExperimentStart = !currentParticipant?
           currentParticipant = data
+          if needToCheckForExperimentStart
+            checkForExperimentStartAndLogIt()
           eventualParticipant.resolve data
         .fail =>
           lastFailedAt = new Date()
