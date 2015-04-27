@@ -182,9 +182,9 @@ class ExperimentalSubject extends Subject
         @advance fetcher, callback
         if fakeFetcher?
           fakeFetcher.resolve()
-        AnalyticsLogger.logEvent 'view'
+        AnalyticsLogger.logEvent 'view',null,User.current?.zooniverse_id,@current.zooniverse_id
       else
-        AnalyticsLogger.logEvent 'view'
+        AnalyticsLogger.logEvent 'view',null,User.current?.zooniverse_id,@current.zooniverse_id
         # wrong experiment running - revert to parent
         super.next callback
     else
