@@ -60,6 +60,13 @@ checkForExperimentStartAndLogIt = (participant) ->
     AnalyticsLogger.logEvent 'experimentStart'
 
 ###
+when we get cohort, and it has changed from interesting to control, must be end of experiment, we'll need to log it to Geordi
+###
+checkForExperimentEndAndLogIt = (oldCohort,newCohort) ->
+  if oldCohort==COHORT_INSERTION && newCohort==COHORT_CONTROL
+    AnalyticsLogger.logEvent 'experimentEnd'
+
+###
 This method will contact the experiment server to find the participant(experimental data) for this user in the specified experiment
 ###
 getParticipant = (user_id = User.current?.zooniverse_id) ->
@@ -72,10 +79,11 @@ getParticipant = (user_id = User.current?.zooniverse_id) ->
       try
         $.get(EXPERIMENT_SERVER_URL+ 'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
         .then (participant) =>
+          checkForExperimentEndAndLogIt currentCohort,participant.cohort
           currentCohort = participant.cohort
           if !currentParticipant?
             AnalyticsLogger.logEvent 'experimentResume'
-            checkForExperimentStartAndLogIt(participant)
+            checkForExperimentStartAndLogIt participant
           currentParticipant = participant
           eventualParticipant.resolve participant
         .fail =>
@@ -103,6 +111,7 @@ getCohort = (user_id = User.current?.zooniverse_id) ->
       try
         $.get(EXPERIMENT_SERVER_URL+'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
         .then (participant) =>
+          checkForExperimentEndAndLogIt currentCohort, participant.cohort
           currentCohort = participant.cohort
           if !currentParticipant?
             AnalyticsLogger.logEvent 'experimentResume'
