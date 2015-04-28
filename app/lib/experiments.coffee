@@ -53,6 +53,11 @@ Do not modify this initialization, it is used to keep track of which subjects ar
 sources = {}
 
 ###
+Do not modify this initialization, it is used to track any changes of cohort for this user
+###
+fallbackReason = null
+
+###
 when we first get participant, and the user has not started experiment in a previous sessions, we'll need to log it to Geordi
 ###
 checkForExperimentStartAndLogIt = (participant) ->
@@ -67,6 +72,15 @@ checkForExperimentEndAndLogIt = (oldCohort,newCohort) ->
     AnalyticsLogger.logEvent 'experimentEnd'
 
 ###
+when we get participant, we need to log to Geordi if the user's cohort was changed
+###
+checkForFallbackAndLogIt = (participant) ->
+  if !fallbackReason? && participant.fallback
+    # if not previously logged, log it.
+    fallbackReason = participant.fallback_reason
+    AnalyticsLogger.logEvent 'experimentFallback',participant.fallback_reason
+
+###
 This method will contact the experiment server to find the participant(experimental data) for this user in the specified experiment
 ###
 getParticipant = (user_id = User.current?.zooniverse_id) ->
@@ -79,6 +93,7 @@ getParticipant = (user_id = User.current?.zooniverse_id) ->
       try
         $.get(EXPERIMENT_SERVER_URL+ 'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
         .then (participant) =>
+          checkForFallbackAndLogIt participant
           checkForExperimentEndAndLogIt currentCohort,participant.cohort
           currentCohort = participant.cohort
           if !currentParticipant?
