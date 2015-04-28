@@ -34,7 +34,7 @@ class ExperimentalSubject extends Subject
     else
       subject = @first()
       AnalyticsLogger.logEvent 'view',null,User.current?.zooniverse_id,subject.zooniverseId
-      if Experiments.ACTIVE_EXPERIMENT? && Experiments.ACTIVE_EXPERIMENT=="SerengetiInterestingAnimalsExperiment1"
+      if Experiments.ACTIVE_EXPERIMENT=="SerengetiInterestingAnimalsExperiment1"
         if Experiments.currentCohort == Experiments.COHORT_CONTROL
           AnalyticsLogger.logEvent 'control','random',User.current?.zooniverse_id,subject.zooniverseId
         else if Experiments.currentCohort == Experiments.COHORT_INSERTION
