@@ -552,7 +552,7 @@ module.exports =
       label: 'Warthog'
       description: '''
         This pig-like animal has a grey body covered sparsely with darker hairs, and mane of long, wiry hairs along its neck and back.
-        Its tail is think with a black tassel.  It has tusks that curve up around its snout.
+        Its tail is thin with a black tassel.  It has tusks that curve up around its snout.
       '''
 
     waterbuck:
