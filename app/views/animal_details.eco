@@ -1,5 +1,5 @@
 <% translate = require 't7e' %>
-<% Animal = require 'models/animal' %>
+<% Animal = require '../models/animal' %>
 
 <div class="image-changer"></div>
 

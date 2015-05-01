@@ -1,8 +1,8 @@
 $ = require('jqueryify')
 User = require 'zooniverse/lib/models/user'
-ExperimentalSubject = require 'models/experimental_subject'
-Experiments = require 'lib/experiments'
-getIP = require 'lib/getip'
+ExperimentalSubject = require '../models/experimental_subject'
+Experiments = require '../lib/experiments'
+getIP = require '../lib/getip'
 currentUserID = null
 
 iteration = 0

@@ -1,4 +1,4 @@
-Characteristic = require 'models/characteristic'
+Characteristic = require '../models/characteristic'
 Value = Characteristic.Value
 translate = require 't7e'
 

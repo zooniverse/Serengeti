@@ -1,4 +1,4 @@
-characteristics = require 'lib/characteristics'
+characteristics = require '../lib/characteristics'
 {Model} = require 'spine'
 translate = require 't7e'
 

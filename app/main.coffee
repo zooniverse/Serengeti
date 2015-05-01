@@ -1,27 +1,27 @@
-require 'lib/setup'
+require './lib/setup'
 
-Navigation = require 'controllers/navigation'
-$ = require 'jqueryify'
+Navigation = require './controllers/navigation'
+# $ = require 'jqueryify'
 {Stack} = require 'spine/lib/manager'
 Route = require 'spine/lib/route'
-AboutPage = require 'controllers/about_page'
-AuthorsPage = require 'controllers/authors_page'
-HomePage = require 'controllers/home_page'
-Classifier = require 'controllers/classifier'
-Profile = require 'controllers/profile'
-# Explore = require 'controllers/explore'
-DataPage = require 'controllers/data_page'
+AboutPage = require './controllers/about_page'
+AuthorsPage = require './controllers/authors_page'
+HomePage = require './controllers/home_page'
+Classifier = require './controllers/classifier'
+Profile = require './controllers/profile'
+# Explore = require './controllers/explore'
+DataPage = require './controllers/data_page'
 Api = require 'zooniverse/lib/api'
-seasons = require 'lib/seasons'
+seasons = require './lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
-ExperimentalSubject = require 'models/experimental_subject'
-AnalyticsLogger = require 'lib/analytics'
+ExperimentalSubject = require './models/experimental_subject'
+AnalyticsLogger = require './lib/analytics'
 googleAnalytics = require 'zooniverse/lib/google_analytics'
 # Map = require 'zooniverse/lib/map'
 
-ContentPage = require 'controllers/content_page'
-feedbackContent = require 'views/feedback_page'
+ContentPage = require './controllers/content_page'
+feedbackContent = require './views/feedback_page'
 
 # Map::tilesId = 53589
 # Map::apiKey = '21a5504123984624a5e1a856fc00e238'
@@ -29,7 +29,7 @@ feedbackContent = require 'views/feedback_page'
 navigation = new Navigation
 navigation.el.appendTo document.body
 
-LanguagePicker = require 'controllers/language_picker'
+LanguagePicker = require './controllers/language_picker'
 loggedInUserId = null
 languagePicker = new LanguagePicker
 languagePicker.el.prependTo document.body

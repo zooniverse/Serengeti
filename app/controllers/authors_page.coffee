@@ -1,5 +1,5 @@
 AboutPage = require './about_page'
-template = require 'views/authors_page'
+template = require '../views/authors_page'
 $ = require 'jqueryify'
 
 class AuthorsPage extends AboutPage

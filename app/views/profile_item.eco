@@ -1,4 +1,4 @@
-<% ExperimentalSubject = require 'models/experimental_subject' %>
+<% ExperimentalSubject = require '../models/experimental_subject' %>
 <% Favorite = require 'zooniverse/lib/models/favorite' %>
 
 <li data-item="<%= @id %>">

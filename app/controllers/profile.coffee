@@ -1,11 +1,11 @@
 {Controller} = require 'spine'
 $ = require 'jqueryify'
-template = require 'views/profile'
+template = require '../views/profile'
 LoginForm = require 'zooniverse/lib/controllers/login_form'
 User = require 'zooniverse/lib/models/user'
 Favorite = require 'zooniverse/lib/models/favorite'
 Recent = require 'zooniverse/lib/models/recent'
-itemTemplate = require 'views/profile_item'
+itemTemplate = require '../views/profile_item'
 
 class Profile extends Controller
   className: 'profile'

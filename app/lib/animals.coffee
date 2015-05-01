@@ -1,5 +1,5 @@
-FilteringSet = require 'models/filtering_set'
-Animal = require 'models/animal'
+FilteringSet = require '../models/filtering_set'
+Animal = require '../models/animal'
 translate = require 't7e'
 
 # The master list of animals is generated from this spreadsheet that the science team put together.

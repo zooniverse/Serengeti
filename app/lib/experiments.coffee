@@ -1,7 +1,7 @@
 $ = require('jqueryify')
 User = require 'zooniverse/lib/models/user'
-ExperimentalSubject = require 'models/experimental_subject'
-AnalyticsLogger = require 'lib/analytics'
+ExperimentalSubject = require '../models/experimental_subject'
+AnalyticsLogger = require '../lib/analytics'
 
 # CONSTANTS #
 

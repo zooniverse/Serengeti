@@ -1,5 +1,5 @@
 {Controller} = require 'spine'
-template = require 'views/home_page'
+template = require '../views/home_page'
 ImageChanger = require './image_changer'
 Api = require 'zooniverse/lib/api'
 

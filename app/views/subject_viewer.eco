@@ -1,6 +1,6 @@
 <% translate = require 't7e' %>
-<% moment = require 'moment/moment' %>
-<% Subject = require 'models/experimental_subject' %>
+<% moment = require 'moment' %>
+<% Subject = require '../models/experimental_subject' %>
 <% sponsoredCameraTraps = window.SERENGETI_SPONSORED_CAMERA_TRAPS || {} %>
 
 <div class="images">

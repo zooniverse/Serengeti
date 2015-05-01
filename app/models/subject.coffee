@@ -1,9 +1,9 @@
 {Model} = require 'spine'
 $ = require 'jqueryify'
 Api = require 'zooniverse/lib/api'
-seasons = require 'lib/seasons'
+seasons = require '../lib/seasons'
 User = require 'zooniverse/lib/models/user'
-Subject = require 'models/experimental_subject'
+Subject = require '../models/experimental_subject'
 
 class Subject extends Model
   @configure 'Subject', 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata'

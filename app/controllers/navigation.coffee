@@ -1,4 +1,4 @@
-template = require 'views/navigation'
+template = require '../views/navigation'
 
 class Navigation
   constructor: ->

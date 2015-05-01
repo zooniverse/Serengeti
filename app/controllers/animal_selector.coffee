@@ -1,14 +1,14 @@
 {Controller} = require 'spine'
 $ = require 'jqueryify'
-template = require 'views/animal_selector'
+template = require '../views/animal_selector'
 FilterMenu = require './filter_menu'
 User = require 'zooniverse/lib/models/user'
-AnalyticsLogger = require 'lib/analytics'
-columnize = require 'lib/columnize'
-ExperimentalSubject = require 'models/experimental_subject'
+AnalyticsLogger = require '../lib/analytics'
+columnize = require '../lib/columnize'
+ExperimentalSubject = require '../models/experimental_subject'
 AnimalDetails = require './animal_details'
-getTutorialSubject = require 'lib/get_tutorial_subject'
-getPhysicallyAdjacentSibling = require 'lib/get_physically_adjacent_sibling'
+getTutorialSubject = require '../lib/get_tutorial_subject'
+getPhysicallyAdjacentSibling = require '../lib/get_physically_adjacent_sibling'
 
 class AnimalSelector extends Controller
   set: null

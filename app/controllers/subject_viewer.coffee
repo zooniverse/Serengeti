@@ -1,13 +1,13 @@
 {Controller} = require 'spine'
-template = require 'views/subject_viewer'
+template = require '../views/subject_viewer'
 AnnotationItem = require './annotation_item'
-ExperimentalSubject = require 'models/experimental_subject'
+ExperimentalSubject = require '../models/experimental_subject'
 User = require 'zooniverse/lib/models/user'
-AnalyticsLogger = require 'lib/analytics'
-Experiments = require 'lib/experiments'
+AnalyticsLogger = require '../lib/analytics'
+Experiments = require '../lib/experiments'
 $ = require 'jqueryify'
-modulus = require 'lib/modulus'
-splits = require 'lib/splits'
+modulus = require '../lib/modulus'
+splits = require '../lib/splits'
 
 class SubjectViewer extends Controller
   classification: null

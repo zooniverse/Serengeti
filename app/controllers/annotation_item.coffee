@@ -1,5 +1,5 @@
 {Controller} = require 'spine'
-template = require 'views/annotation_item'
+template = require '../views/annotation_item'
 
 class AnnotationItem extends Controller
   classification: null

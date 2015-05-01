@@ -1,5 +1,5 @@
 translate = require 't7e'
-Classification = require 'models/classification'
+Classification = require '../models/classification'
 User = require 'zooniverse/lib/models/user'
 
 userCount = -> User.count or 0

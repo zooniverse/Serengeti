@@ -1,5 +1,5 @@
 <% translate = require 't7e' %>
-<% seasons = require 'lib/seasons' %>
+<% seasons = require '../lib/seasons' %>
 
 <% allSeasonsComplete = true %>
 

@@ -1,7 +1,7 @@
 {Controller} = require 'spine'
-template = require 'views/image_changer'
+template = require '../views/image_changer'
 $ = require 'jqueryify'
-modulus = require 'lib/modulus'
+modulus = require '../lib/modulus'
 
 class ImageChanger extends Controller
   sources: null

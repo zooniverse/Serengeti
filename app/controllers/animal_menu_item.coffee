@@ -1,5 +1,5 @@
 {Controller} = require 'spine'
-template = require 'views/animal_menu_item'
+template = require '../views/animal_menu_item'
 
 class AnimalMenuItem extends Controller
   @getInstanceEl: (model) =>

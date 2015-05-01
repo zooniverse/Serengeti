@@ -1,4 +1,4 @@
-ExperimentalSubject = require 'models/experimental_subject'
+ExperimentalSubject = require '../models/experimental_subject'
 
 module.exports = ->
   ExperimentalSubject.create

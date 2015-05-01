@@ -1,8 +1,8 @@
-Subject = require 'models/subject'
+Subject = require './subject'
 User = require 'zooniverse/lib/models/user'
-Experiments = require 'lib/experiments'
+Experiments = require '../lib/experiments'
 Api = require 'zooniverse/lib/api'
-AnalyticsLogger = require 'lib/analytics'
+AnalyticsLogger = require '../lib/analytics'
 
 # An Experimental Subject is a specialized subject for use in SerengetiInterestingAnimalsExperiment1 (in future can be generalized to other experiments)
 class ExperimentalSubject extends Subject

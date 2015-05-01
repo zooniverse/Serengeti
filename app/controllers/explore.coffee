@@ -1,12 +1,12 @@
 {Controller} = require 'spine'
 $ = require 'jqueryify'
-template = require 'views/explore'
+template = require '../views/explore'
 LoginForm = require 'zooniverse/lib/controllers/login_form'
 User = require 'zooniverse/lib/models/user'
 Map = require 'zooniverse/lib/map'
 L = require 'zooniverse/vendor/leaflet/leaflet-src'
 moment = require('moment/moment')
-animals = require('lib/animals')
+animals = require('../lib/animals')
 
 
 class Explore extends Controller

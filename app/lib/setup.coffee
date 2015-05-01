@@ -1,5 +1,5 @@
 translate = require 't7e'
-enUs = require 'translations/en_us'
+enUs = require '../translations/en_us'
 $ = require 'jqueryify'
 
 translate.load enUs
@@ -11,6 +11,6 @@ require 'jqueryify'
 require 'spine'
 
 # Here so that it is included after jQuery
-require 'lib/jquery-ui-1.9.2.custom'
-require 'lib/wax.leaf'
-require 'lib/cartodb-leaflet'
+require './jquery-ui-1.9.2.custom.js'
+require './wax.leaf.js'
+require './cartodb-leaflet.js'
