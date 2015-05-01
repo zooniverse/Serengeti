@@ -11,6 +11,7 @@ require 'jqueryify'
 require 'spine'
 
 # Here so that it is included after jQuery
+require 'zooniverse/vendor/base64.js'
 require './jquery-ui-1.9.2.custom.js'
 require './wax.leaf.js'
 require './cartodb-leaflet.js'

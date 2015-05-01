@@ -18,10 +18,10 @@
     "zootorial": "0.2.4"
   },
   "scripts": {
-    "start": "haw serve --verbose",
-    "deploy-to-staging": "hem build && publisssh ./public zooniverse-demo/serengeti && rm -rf ./public/application.*",
-    "deploy-to-production": "hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org && rm -rf ./public/application.*",
-    "deploy-experiment": "hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org/happyuserexperiment && rm -rf ./public/application.*",
-    "deploy-to-demo": "hem build && publisssh ./public demo.zooniverse.org/serengeti && rm -rf ./public/application.*"
+    "start": "haw serve --port 6371",
+    "deploy-to-staging": "haw build && publisssh ./public zooniverse-demo/serengeti && rm -rf ./build",
+    "deploy-to-production": "haw build && publisssh ./public zooniverse-static/www.snapshotserengeti.org && rm -rf ./build",
+    "deploy-experiment": "haw build && publisssh ./public zooniverse-static/www.snapshotserengeti.org/happyuserexperiment && rm -rf ./build",
+    "deploy-to-demo": "haw build && publisssh ./public demo.zooniverse.org/serengeti && rm -rf ./public/build"
   }
 }
