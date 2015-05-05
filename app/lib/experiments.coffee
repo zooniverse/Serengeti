@@ -9,7 +9,7 @@ AnalyticsLogger = require 'lib/analytics'
 Define the active experiment here by using a string which exists in http://experiments.zooniverse.org/active_experiments
 If no experiments should be running right now, set this to null, false or ""
 ###
-ACTIVE_EXPERIMENT = "SerengetiInterestingAnimalsExperiment1"
+ACTIVE_EXPERIMENT = null
 
 ###
 The URL of the experiment server to use

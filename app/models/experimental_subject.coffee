@@ -182,6 +182,6 @@ class ExperimentalSubject extends Subject
         fakeFetcher.resolve()
     else
       # InterestingAnimals experiment not running - revert to parent
-      super.next callback
+      super callback
 
 module.exports = ExperimentalSubject
