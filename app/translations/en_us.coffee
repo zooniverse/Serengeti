@@ -860,7 +860,7 @@ module.exports =
         <h3>Data from Seasons 1-6 have resulted in the following publications:</h3>
         <h4>Swanson, A. 2014. Living with lions: spatiotemporal aspects of coexistence in savanna carnivores. </h4>
         <p>Ali's Dissertation used camera traps to explore how lions, hyenas, cheetahs, and African wild dogs manage to coexist.</p>
-        <p><a href="#">View this publication online</a></p>
+        <p><a href="http://gradworks.umi.com/36/43/3643700.html">View this publication online</a></p>
 
         <h4> Cusack, J., Swanson, A., Coulson, C., Packer, C., Carbone, C., Dickman, A., Kosmala, M., Lintott, C., Rowcliffe, M. In Review. Applying a random encounter model to estimate lion density from camera traps in Serengeti National Park, Tanzania </h4>
         <p>Currently in review, this paper uses the camera trap photo rates to estimate lion densities. The aim is to test this in Serengeti, where we know the actual lion numbers, and eventually apply this as a conservation method elsewhere.</p>
