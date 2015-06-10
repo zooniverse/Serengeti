@@ -25,7 +25,7 @@ module.exports =
         If you’d like to try a similar project, how about:
         <div style="margin-top:20px;">
           <div style="text-align:center;width:50%;float:left;display:inline-block;height:140px;"><a href="http://www.chicagowildlifewatch.org/"><img src="images/project-avatars/chicago_flag_square_100px.png"></a><br/><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></div>
-          <div style="wtext-align:center;width:50%;float:left;display:inline-block;height:140px;"><a href="http://www.chimpandsee.org/"><img src="images/project-avatars/chimpandsee_100px.jpg"></a><br/><a href="http://www.chimpandsee.org/">Chimp & See</a></div>
+          <div style="text-align:center;width:50%;float:left;display:inline-block;height:140px;"><a href="http://www.chimpandsee.org/"><img src="images/project-avatars/chimpandsee_100px.jpg"></a><br/><a href="http://www.chimpandsee.org/">Chimp & See</a></div>
         </div>
       </p>
       <p>
