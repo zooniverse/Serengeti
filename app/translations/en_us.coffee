@@ -16,17 +16,16 @@ module.exports =
       We need your help to classify all the different animals caught in millions of camera trap images.
     '''
     allSeasonsComplete: '''
-      <p>With your help, we've classified all the data we have so far. Great work!</p>
       <p>
-        We're leaving some images up for further classification, but we have more projects
-        (like <a href="http://www.cyclonecenter.org/?utm_source=Redirect&utm_medium=Link&utm_campaign=Serengeti">Cyclone Center</a>
-        and <a href="http://www.batdetective.org/?utm_source=Redirect&utm_medium=Link&utm_campaign=Serengeti">Bat Detective</a>) that need your help.
-        Visit <a href="http://www.zooniverse.org/?utm_source=Redirect&utm_medium=Link&utm_campaign=Serengeti">zooniverse.org</a> to see them all.
+        <strong>We’re done for now, but we still need you</strong>
       </p>
       <p>
-        Keep an eye on <a href="http://blog.snapshotserengeti.org/">the blog</a>
-        to learn what happens with the data the project has generated
-        and to find out when more images from the Serengeti are available.
+        With your help, we've classified all the data we have so far. Great work! We are leaving some images active for you to classify. Please keep an eye on the blog for updates about research and when new Snapshot Serengeti data will be available.</p>
+      <p>
+        If you’d like to work on a similar project, we need your animal-watching skills at
+        <strong><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></strong>
+        This project works much like Snapshot Serengeti (though there are far fewer lions) and has many active images waiting for you to explore them.
+        <strong><a href="http://www.chicagowildlifewatch.org/">Try out the CWW project today!</a></strong>
       </p>
     '''
     action: 'Start classifying'
@@ -861,7 +860,7 @@ module.exports =
         <h3>Data from Seasons 1-6 have resulted in the following publications:</h3>
         <h4>Swanson, A. 2014. Living with lions: spatiotemporal aspects of coexistence in savanna carnivores. </h4>
         <p>Ali's Dissertation used camera traps to explore how lions, hyenas, cheetahs, and African wild dogs manage to coexist.</p>
-        <p><a href="#">View this publication online</a></p>
+        <p><a href="http://gradworks.umi.com/36/43/3643700.html">View this publication online</a></p>
 
         <h4> Cusack, J., Swanson, A., Coulson, C., Packer, C., Carbone, C., Dickman, A., Kosmala, M., Lintott, C., Rowcliffe, M. In Review. Applying a random encounter model to estimate lion density from camera traps in Serengeti National Park, Tanzania </h4>
         <p>Currently in review, this paper uses the camera trap photo rates to estimate lion densities. The aim is to test this in Serengeti, where we know the actual lion numbers, and eventually apply this as a conservation method elsewhere.</p>
