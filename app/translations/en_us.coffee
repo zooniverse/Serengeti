@@ -23,7 +23,7 @@ module.exports =
         With your help, we've classified all the data we have so far. Great work!
       <p>
         If you’d like to try a similar project, how about:
-        <ul><li><strong><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></strong> - this works much like Snapshot Serengeti (though with fewer lions), and has plenty of images awaiting volunteers. <a href="http://www.chicagowildlifewatch.org/">Try it now!</a></li>
+        <ul><li style="margin-bottom: 4px;"><strong><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></strong> - this works much like Snapshot Serengeti (though with fewer lions), and has plenty of images awaiting volunteers. <a href="http://www.chicagowildlifewatch.org/">Try it now!</a></li>
         <li><strong><a href="http://www.chimpandsee.org/">Chimp & See</a></strong> - explore wildlife in the African jungle with photos <em>and</em> video. <a href="http://www.chimpandsee.org/">Try it now!</a></li></ul>
       </p>
       <p>
