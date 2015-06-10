@@ -2,6 +2,8 @@
 $ = require 'jqueryify'
 Api = require 'zooniverse/lib/api'
 seasons = require 'lib/seasons'
+User = require 'zooniverse/lib/models/user'
+Subject = require 'models/experimental_subject'
 
 class Subject extends Model
   @configure 'Subject', 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata'
@@ -9,35 +11,47 @@ class Subject extends Model
   @queueLength: 3
   @current: null
 
-  @next: (callback) =>
+  # get next if control or non-experimental
+  @nextForControlCohort: (callback) ->
     @current.destroy() if @current?
-    count = @count()
+    numberOfSubjectsAlreadyLoaded = @count()
 
     # Prepare one "current" and fill the rest of the queue.
-    toFetch = (@queueLength - count) + 1
-    fetcher = @fetch toFetch unless toFetch < 1
+    numberOfSubjectsToFetch = (@queueLength - numberOfSubjectsAlreadyLoaded) + 1
+    fetcher = @loadMoreRandomSubjects numberOfSubjectsToFetch
+    @advance fetcher, callback
 
-    if count is 0
-      nexter = fetcher.pipe =>
-        first = @first()
-        first?.destroy() if first?.metadata.empty
+  # after subjects have been loaded, this method actually selects the first (or triggers out of subjects event)
+  @selectFirstNonEmptySubject: ->
+    first = @first()
+    first?.destroy() if first?.metadata.empty
+    numberOfSubjectsAlreadyLoaded = @count()
+    if numberOfSubjectsAlreadyLoaded is 0
+      @trigger 'no-subjects'
+    else
+      subject = @first()
+      AnalyticsLogger.logEvent 'view',null,User.current?.zooniverse_id,subject.zooniverseId
+      subject.select()
 
-        if @count() is 0
-          @trigger 'no-subjects'
-        else
-          @first().select()
+  # ensures that the next subject is selected, either now or once deferred chain is complete
+  @advance: (deferred, callback) ->
+    numberOfSubjectsAlreadyLoaded = @count()
+    if numberOfSubjectsAlreadyLoaded is 0
+      nexter = deferred.always =>
+        @selectFirstNonEmptySubject()
     else
       nexter = new $.Deferred
-      nexter.done =>
-        @first().select()
-
+      nexter.always =>
+        @selectFirstNonEmptySubject()
       nexter.resolve()
-
     nexter.then callback
-
     nexter
 
-  @fetch: (count) =>
+  # for normal subjects, we behave just like control.
+  @next: (callback) ->
+    @nextForControlCohort callback
+
+  @fetch: (count) ->
     fetcher = new $.Deferred
 
     # Grab subjects randomly.
@@ -51,7 +65,7 @@ class Subject extends Model
 
     fetcher.promise() # Resolves with all fetched subjects
 
-  @fromJSON: (raw) =>
+  @fromJSON: (raw) ->
     subject = @create
       id: raw.id
       zooniverseId: raw.zooniverse_id
