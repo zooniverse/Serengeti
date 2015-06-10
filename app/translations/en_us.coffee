@@ -23,8 +23,10 @@ module.exports =
         With your help, we've classified all the data we have so far. Great work!
       <p>
         If you’d like to try a similar project, how about:
-        <ul><li style="margin-bottom: 4px;"><strong><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></strong> - this works much like Snapshot Serengeti (though with fewer lions), and has plenty of images awaiting volunteers. <a href="http://www.chicagowildlifewatch.org/">Try it now!</a></li>
-        <li><strong><a href="http://www.chimpandsee.org/">Chimp & See</a></strong> - explore wildlife in the African jungle with photos <em>and</em> video. <a href="http://www.chimpandsee.org/">Try it now!</a></li></ul>
+        <div>
+          <div style="width:50%;"><a href="http://www.chicagowildlifewatch.org/"><img src="/images/project-avatars/chicago_flag_square_100px"></a><br/><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></div>
+          <div style="width:50%;"><a href="http://www.chimpandsee.org/"><img src="/images/project-avatars/chimpandsee_100px"></a><br/><a href="http://www.chimpandsee.org/">Chimp & See</a></div>
+        </div>
       </p>
       <p>
         We've also left some images of the Serengeti active here so you can classify them, even though we already have enough for the science for now.
