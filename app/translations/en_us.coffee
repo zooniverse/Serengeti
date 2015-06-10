@@ -17,15 +17,20 @@ module.exports =
     '''
     allSeasonsComplete: '''
       <p>
-        <strong>We’re done for now, but we still need you</strong>
+        <strong>We’re done for now, but we still need you!</strong>
       </p>
       <p>
-        With your help, we've classified all the data we have so far. Great work! We are leaving some images active for you to classify. Please keep an eye on the blog for updates about research and when new Snapshot Serengeti data will be available.</p>
+        With your help, we've classified all the data we have so far. Great work!
       <p>
-        If you’d like to work on a similar project, we need your animal-watching skills at
-        <strong><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></strong>
-        This project works much like Snapshot Serengeti (though there are far fewer lions) and has many active images waiting for you to explore them.
-        <strong><a href="http://www.chicagowildlifewatch.org/">Try out the CWW project today!</a></strong>
+        If you’d like to try a similar project, how about:
+        <div style="margin-top:20px;">
+          <div style="text-align:center;width:50%;float:left;display:inline-block;height:140px;"><a href="http://www.chicagowildlifewatch.org/"><img src="images/project-avatars/chicago_flag_square_100px.png"></a><br/><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></div>
+          <div style="text-align:center;width:50%;float:left;display:inline-block;height:140px;"><a href="http://www.chimpandsee.org/"><img src="images/project-avatars/chimpandsee_100px.jpg"></a><br/><a href="http://www.chimpandsee.org/">Chimp & See</a></div>
+        </div>
+      </p>
+      <p>
+        We've also left some images of the Serengeti active here so you can classify them, even though we already have enough for the science for now.
+        Keep an eye on <a href="http://blog.snapshotserengeti.org/">the blog</a> for updates about the research and to hear when new data is available.</p>
       </p>
     '''
     action: 'Start classifying'
