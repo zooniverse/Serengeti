@@ -4,7 +4,7 @@ Experiments = require 'lib/experiments'
 Api = require 'zooniverse/lib/api'
 AnalyticsLogger = require 'lib/analytics'
 
-# An Experimental Subject is a specialized subject for use in SerengetiInterestingAnimalsExperiment1 (in future can be generalized to other experiments)
+# An Experimental Subject is a specialized subject for use in experiments.
 class ExperimentalSubject extends Subject
   @configure "ExperimentalSubject", 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata'
 
@@ -42,6 +42,17 @@ class ExperimentalSubject extends Subject
             AnalyticsLogger.logEvent 'insertion','specific',User.current?.zooniverse_id,subject.zooniverseId
           else if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_RANDOM
             AnalyticsLogger.logEvent 'insertion','random',User.current?.zooniverse_id,subject.zooniverseId
+        else
+          AnalyticsLogger.logEvent 'non-experimental','view',User.current?.zooniverse_id,subject.zooniverseId
+        @markAsSeen subject.zooniverseId
+      else if Experiments.ACTIVE_EXPERIMENT=="SerengetiBlanksExperiment1"
+        if Experiments.currentCohort == Experiments.COHORT_CONTROL
+          AnalyticsLogger.logEvent 'control','random',User.current?.zooniverse_id,subject.zooniverseId
+        else if Experiments.currentCohort in [Experiments.COHORT_0, Experiments.COHORT_20, Experiments.COHORT_40, Experiments.COHORT_60, Experiments.COHORT_80]
+          if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_BLANK
+            AnalyticsLogger.logEvent 'insertion','blank',User.current?.zooniverse_id,subject.zooniverseId
+          else if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_NON_BLANK
+            AnalyticsLogger.logEvent 'insertion','non-blank',User.current?.zooniverse_id,subject.zooniverseId
         else
           AnalyticsLogger.logEvent 'non-experimental','view',User.current?.zooniverse_id,subject.zooniverseId
         @markAsSeen subject.zooniverseId
@@ -84,7 +95,14 @@ class ExperimentalSubject extends Subject
             Experiments.currentParticipant.active = false
             AnalyticsLogger.logEvent 'experimentEnd'
           else
-            for subjectID in nextSubjectIDs
+            for subjectIDAndBlankness in nextSubjectIDs
+              parts = subjectIDAndBlankness.split(":").
+              subjectID = parts.first()
+              blankness = parts.last()
+              if blankness=="blank"
+                source = Experiments.SOURCE_BLANK
+              else
+                source = Experiments.SOURCE_NON_BLANK
               do (subjectID) =>
                 if subjectID == "RANDOM"
                   backgroundFetcher.then =>
@@ -97,7 +115,7 @@ class ExperimentalSubject extends Subject
                     @subjectFetch(subjectID)
                     .then (subject) =>
                       if subject?
-                        Experiments.sources[subjectID]=Experiments.SOURCE_INSERTED
+                        Experiments.sources[subjectID]=source
       .fail =>
         AnalyticsLogger.logError "500", "Couldn't load next experimental subjects", "error"
     else
@@ -114,6 +132,10 @@ class ExperimentalSubject extends Subject
         url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + userID + '/insertion/' + subjectID
       else if Experiments.sources[subjectID]==Experiments.SOURCE_RANDOM
         url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + userID + '/random'
+      if Experiments.sources[subjectID]==Experiments.SOURCE_BLANK || Experiments.sources[subjectID]==Experiments.SOURCE_NON_BLANK
+        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + userID + '/' + subjectID
+      else if Experiments.sources[subjectID]==Experiments.SOURCE_RANDOM
+        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + userID + '/random'
       else
         AnalyticsLogger.logError "409", "Couldn't POST subject "+subjectID+" to mark as seen", "error"
         return null
@@ -121,10 +143,11 @@ class ExperimentalSubject extends Subject
       .then (participant) =>
         Experiments.currentParticipant = participant
         # ensure any previously seen subjects by this participant are removed from the queue if present.
-        for seenID in Experiments.currentParticipant.insertion_subjects_seen
-          for queuedSubject of ExperimentalSubject.all
-            if seenID==queuedSubject.zooniverseId
-              ExperimentalSubject.where(zooniverseId: seenID).delete
+        for queue in [Experiments.currentParticipant.insertion_subjects_seen,Experiments.currentParticipant.blank_subjects_seen,Experiments.currentParticipant.non_blank_subjects_seen]
+          for seenID in queue
+            for queuedSubject of ExperimentalSubject.all
+              if seenID==queuedSubject.zooniverseId
+                ExperimentalSubject.where(zooniverseId: seenID).delete
         seenNotifier.resolve participant
       .fail =>
         AnalyticsLogger.logError "500", "Couldn't POST subject "+subjectID+" to mark as seen", "error"
@@ -150,9 +173,9 @@ class ExperimentalSubject extends Subject
       subjectIDsFetcher.resolve null
     subjectIDsFetcher.promise()
 
-  # for interesting cohort users, we will show a selection of known interesting and random unknown subjects.
+  # for experimental cohort users, determine next subjects accordingly
   @next: (callback) =>
-    if Experiments.ACTIVE_EXPERIMENT == "SerengetiInterestingAnimalsExperiment1"
+    if Experiments.ACTIVE_EXPERIMENT == "SerengetiBlanksExperiment1"
       @current.destroy() if @current?
       count = @count()
 
@@ -167,11 +190,11 @@ class ExperimentalSubject extends Subject
           Experiments.currentParticipant = participant
           Experiments.currentCohort = participant.cohort
           toFetch = (@queueLength - @count()) + 1
-          if Experiments.currentParticipant.active && Experiments.currentCohort == Experiments.COHORT_INSERTION
+          if Experiments.currentParticipant.active && Experiments.currentCohort != Experiments.COHORT_CONTROL && Experiments.currentCohort != Experiments.COHORT_INELIGIBLE
+            @loadMoreRandomSubjects toFetch
+          else
             # Fill the rest of the queue in the background according to the experiment server's instructions
             @loadMoreExperimentalSubjects toFetch
-          else
-            @loadMoreRandomSubjects toFetch
 
       # background work kicked off if needed, now we can advance
       if fetcher is null
