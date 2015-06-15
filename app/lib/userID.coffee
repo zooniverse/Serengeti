@@ -1,4 +1,5 @@
 User = require 'zooniverse/lib/models/user'
+currentUserID = null
 
 getClientOrigin = ->
   eventualIP = new $.Deferred
@@ -20,19 +21,22 @@ getNiceOriginString = (data) ->
   else
     "(anonymous)"
 
-getUserIDorIPAddress = (user_id = User.current?.zooniverse_id) ->
+getUserIDorIPAddress = =>
   eventualUserID = new $.Deferred
-  if user_id?
+  if currentUserID?
     eventualUserID.resolve user_id
+  else if User.current?.zooniverse_id
+    eventualUserID.resolve User.current?.zooniverse_id
   else
-    getIP.getClientOrigin()
+    getClientOrigin()
     .then (data) =>
       if data?
-        user_id = getNiceOriginString data
+        currentUserID = getNiceOriginString data
     .always =>
-      eventualUserID.resolve user_id
+      eventualUserID.resolve currentUserID
   eventualUserID.promise()
 
 exports.getClientOrigin = getClientOrigin
 exports.getNiceOriginString = getNiceOriginString
 exports.getUserIDorIPAddress = getUserIDorIPAddress
+exports.currentUserID = currentUserID

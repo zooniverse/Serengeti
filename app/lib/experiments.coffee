@@ -2,6 +2,7 @@ $ = require('jqueryify')
 User = require 'zooniverse/lib/models/user'
 ExperimentalSubject = require 'models/experimental_subject'
 AnalyticsLogger = require 'lib/analytics'
+UserGetter = require 'lib/userID'
 
 # CONSTANTS #
 
@@ -31,7 +32,7 @@ SOURCE_INSERTED = "Inserted From Set"
 SOURCE_RANDOM = "Random From Set"
 SOURCE_NORMAL = "Normal Random"
 SOURCE_BLANK = "Blank"
-SOURCE_NON_BLANK = Non-Blank"
+SOURCE_NON_BLANK = "Non-Blank"
 
 ###
 When an error is encountered from the experiment server, this is the period, in milliseconds, that the code below will wait before any further attempts to contact it.
@@ -66,6 +67,11 @@ Do not modify this initialization, it is used to track any changes of cohort for
 excludedReason = null
 
 ###
+Do not modify this initialization, it is used to track when the user has finished the experiment
+###
+experimentCompleted = false
+
+###
 when we first get participant, and the user has not started experiment in a previous sessions, we'll need to log it to Geordi
 ###
 checkForExperimentStartAndLogIt = (participant) ->
@@ -73,15 +79,15 @@ checkForExperimentStartAndLogIt = (participant) ->
     AnalyticsLogger.logEvent 'experimentStart'
 
 ###
-  TODO fix this
-when we get cohort, and it has changed from interesting to control, must be end of experiment, we'll need to log it to Geordi
+when we first discover that a user has ended the experiment, we log it to Geordi
 ###
-checkForExperimentEndAndLogIt = (oldCohort,newCohort) ->
-  if oldCohort==COHORT_INSERTION && newCohort==COHORT_CONTROL
+checkForExperimentEndAndLogIt = (participant) ->
+  if !experimentCompleted && participant? && !participant.active && participant.blank_subjects_available && participant.blank_subjects_available.length==0 && participant.non_blank_subjects_available && participant.non_blank_subjects_available.length==0
+    experimentCompleted = true
     AnalyticsLogger.logEvent 'experimentEnd'
 
 ###
-when we get participant, we need to log to Geordi if the user's cohort was changed
+when we get participant, we need to log to Geordi if the user's was excluded
 ###
 checkForExcludedAndLogIt = (participant) ->
   if !excludedReason? && participant.excluded
@@ -93,15 +99,14 @@ checkForExcludedAndLogIt = (participant) ->
 This method will contact the experiment server to find the participant(experimental data) for this user in the specified experiment
 ###
 getParticipant = () ->
-  currentUserID = "(unknown)"
-  AnalyticsLogger.getUserIDorIPAddress()
+  UserGetter.currentUserID = "(unknown)"
+  UserGetter.getUserIDorIPAddress()
   .then (data) =>
     if data?
-      currentUserID = data
+      UserGetter.currentUserID = data.toString()
   .fail (data) =>
-    currentUserID = "(anonymous)"
+    UserGetter.currentUserID = "(anonymous)"
   .always =>
-    user_id = currentUserID
     eventualParticipant = new $.Deferred
     if ACTIVE_EXPERIMENT?
       now = new Date().getTime()
@@ -109,10 +114,10 @@ getParticipant = () ->
         timeSinceLastFail = now - lastFailedAt.getTime()
       if lastFailedAt == null || timeSinceLastFail > RETRY_INTERVAL
         try
-          $.get(EXPERIMENT_SERVER_URL+ 'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
+          $.get(EXPERIMENT_SERVER_URL+ 'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + UserGetter.currentUserID)
           .then (participant) =>
             checkForExcludedAndLogIt participant
-            checkForExperimentEndAndLogIt currentCohort,participant.cohort
+            checkForExperimentEndAndLogIt participant
             currentCohort = participant.cohort
             if !currentParticipant?
               AnalyticsLogger.logEvent 'experimentResume'
@@ -134,7 +139,7 @@ getParticipant = () ->
 ###
 This method will contact the experiment server to find the cohort for this user in the specified experiment
 ###
-getCohort = (user_id = User.current?.zooniverse_id) ->
+getCohort = =>
   eventualCohort = new $.Deferred
   if ACTIVE_EXPERIMENT?
     now = new Date().getTime()
@@ -142,9 +147,9 @@ getCohort = (user_id = User.current?.zooniverse_id) ->
       timeSinceLastFail = now - lastFailedAt.getTime()
     if lastFailedAt == null || timeSinceLastFail > RETRY_INTERVAL
       try
-        $.get(EXPERIMENT_SERVER_URL+'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + user_id)
+        $.get(EXPERIMENT_SERVER_URL+'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + UserGetter.currentUserID)
         .then (participant) =>
-          checkForExperimentEndAndLogIt currentCohort, participant.cohort
+          checkForExperimentEndAndLogIt participant
           currentCohort = participant.cohort
           if !currentParticipant?
             AnalyticsLogger.logEvent 'experimentResume'
@@ -167,6 +172,7 @@ exports.getCohort = getCohort
 exports.getParticipant = getParticipant
 exports.currentCohort = currentCohort
 exports.currentParticipant = currentParticipant
+exports.experimentCompleted = experimentCompleted
 exports.ACTIVE_EXPERIMENT = ACTIVE_EXPERIMENT
 exports.EXPERIMENT_SERVER_URL = EXPERIMENT_SERVER_URL
 exports.COHORT_CONTROL = COHORT_CONTROL
