@@ -1,3 +1,5 @@
+User = require 'zooniverse/lib/models/user'
+
 getClientOrigin = ->
   eventualIP = new $.Deferred
   $.get('http://jsonip.appspot.com/')
@@ -18,5 +20,19 @@ getNiceOriginString = (data) ->
   else
     "(anonymous)"
 
+getUserIDorIPAddress = (user_id = User.current?.zooniverse_id) ->
+  eventualUserID = new $.Deferred
+  if user_id?
+    eventualUserID.resolve user_id
+  else
+    getIP.getClientOrigin()
+    .then (data) =>
+      if data?
+        user_id = getNiceOriginString data
+    .always =>
+      eventualUserID.resolve user_id
+  eventualUserID.promise()
+
 exports.getClientOrigin = getClientOrigin
 exports.getNiceOriginString = getNiceOriginString
+exports.getUserIDorIPAddress = getUserIDorIPAddress

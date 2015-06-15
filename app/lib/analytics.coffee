@@ -22,19 +22,14 @@ buildEventData = (type, related_id = null, subject_id = ExperimentalSubject.curr
   eventData
 
 addUserDetailsToEventData = (eventData, user_id = User.current?.zooniverse_id) ->
-  eventualEventData = new $.Deferred
-  eventData['userID'] = if user_id? then user_id else if currentUserID? then currentUserID else null
-  if eventData['userID']?
-    eventualEventData.resolve eventData
-  else
-    getIP.getClientOrigin()
-    .then (data) =>
-      if data?
-        currentUserID = getIP.getNiceOriginString data
-        eventData['userID'] = currentUserID
-    .always =>
-      eventualEventData.resolve eventData
-  eventualEventData.promise()
+  getIP.getUserIDorIPAddress()
+  .then (data) =>
+    if data?
+      currentUserID = data
+  .fail (data) =>
+    currentUserID = "(anonymous)"
+  .always =>
+    eventData['userID'] = currentUserID
 
 addCohortToEventData = (eventData) ->
   eventualEventData = new $.Deferred
@@ -99,4 +94,5 @@ logError = (error_code, error_description, type, related_id = '', user_id = User
 
 exports.logEvent = logEvent
 exports.logError = logError
+exports.getUserIDorIPAddress = getUserIDorIPAddress
 
