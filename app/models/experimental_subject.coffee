@@ -92,7 +92,6 @@ class ExperimentalSubject extends Subject
           if nextSubjectIDs? && nextSubjectIDs.length == 0
             # end of experiment
             Experiments.currentParticipant.active = false
-            AnalyticsLogger.logEvent 'experimentEnd'
           else
             for subjectIDAndBlankness in nextSubjectIDs
               [subjectID, blankness] = subjectIDAndBlankness.split(":")

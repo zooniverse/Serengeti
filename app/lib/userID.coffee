@@ -3,9 +3,9 @@ currentUserID = null
 
 getClientOrigin = ->
   eventualIP = new $.Deferred
-  $.get('http://jsonip.appspot.com/')
-  .then (data) =>
-    eventualIP.resolve data
+  $.get('https://api.ipify.org')
+  .then (ip) =>
+    eventualIP.resolve {ip: ip, address: ip}
   .fail =>
     eventualIP.resolve {ip: '?.?.?.?', address: '(anonymous)'}
   eventualIP.promise()
@@ -24,7 +24,7 @@ getNiceOriginString = (data) ->
 getUserIDorIPAddress = =>
   eventualUserID = new $.Deferred
   if currentUserID?
-    eventualUserID.resolve user_id
+    eventualUserID.resolve currentUserID
   else if User.current?.zooniverse_id
     eventualUserID.resolve User.current?.zooniverse_id
   else
