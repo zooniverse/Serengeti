@@ -72,6 +72,16 @@ Do not modify this initialization, it is used to track when the user has finishe
 experimentCompleted = false
 
 ###
+Upon logout, user must be forgotten
+###
+resetExperimentalFlags = =>
+  experimentCompleted = false
+  excludedReason = null
+  currentCohort = null
+  currentParticipant = null
+  UserGetter.currentUserID = null
+
+###
 when we first get participant, and the user has not started experiment in a previous sessions, we'll need to log it to Geordi
 ###
 checkForExperimentStartAndLogIt = (participant) ->
@@ -104,7 +114,7 @@ getParticipant = () ->
   .then (data) =>
     if data?
       UserGetter.currentUserID = data.toString()
-  .fail (data) =>
+  .fail =>
     UserGetter.currentUserID = "(anonymous)"
   .always =>
     eventualParticipant = new $.Deferred
@@ -189,3 +199,4 @@ exports.COHORT_60 = COHORT_60
 exports.COHORT_80 = COHORT_80
 exports.COHORT_INELIGIBLE = COHORT_INELIGIBLE
 exports.sources = sources
+exports.resetExperimentalFlags = resetExperimentalFlags

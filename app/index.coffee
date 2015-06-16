@@ -18,6 +18,7 @@ User = require 'zooniverse/lib/models/user'
 ExperimentalSubject = require 'models/experimental_subject'
 AnalyticsLogger = require 'lib/analytics'
 googleAnalytics = require 'zooniverse/lib/google_analytics'
+Experiments = require 'lib/experiments'
 # Map = require 'zooniverse/lib/map'
 
 ContentPage = require 'controllers/content_page'
@@ -44,6 +45,7 @@ User.bind 'sign-in', ->
   if User.current?
     AnalyticsLogger.logEvent 'login'
   else
+    Experiments.resetExperimentalFlags()
     AnalyticsLogger.logEvent 'logout'
 
 Api.init
