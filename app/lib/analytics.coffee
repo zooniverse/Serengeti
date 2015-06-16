@@ -16,7 +16,8 @@ buildEventData = (type, related_id = null, subject_id = ExperimentalSubject.curr
   eventData['experiment'] = Experiments.ACTIVE_EXPERIMENT
   eventData['errorCode'] = ""
   eventData['errorDescription'] = ""
-  #eventData['cohort'] = Experiments.currentCohort
+  if Experiments.currentCohort?
+    eventData['cohort'] = Experiments.currentCohort
   eventData['userID'] = "(anonymous)"
   eventData
 
