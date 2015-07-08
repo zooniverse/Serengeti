@@ -31,7 +31,7 @@
 <section data-page="teams">
   <div class="science team column">
     <h2><%- translate 'span', 'about.sections.scienceTeam' %></h2>
-    <% for member in ['swanson', 'kosmala', 'packer', 'rosengren', 'mwampeta', 'finlay']: %>
+    <% for member in ['swanson', 'kosmala', 'packer', 'rosengren', 'mwampeta', 'finlay', 'palmer']: %>
       <% staticProperties = translate "about.teams.science.#{member}" %>
       <div class="science team member">
         <img data-src="<%= staticProperties.image %>" />
