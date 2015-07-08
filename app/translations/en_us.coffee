@@ -221,7 +221,7 @@ module.exports =
     bat:
       label: 'Bat'
       description: '''
-        On the rare occasion, bats are sometimes captured at night flying in front of the camera traps.  
+        On the rare occasion, bats are sometimes captured at night flying in front of the camera traps.
       '''
 
     batEaredFox:
@@ -1130,6 +1130,13 @@ module.exports =
           description: '''
             Fred is an Associate Professor at University of Minnesota’s College of Education and Human Development.
             He’s interested in how social and cultural context influence how people learn about science, and conducts much of his research in Thailand.
+          '''
+
+        palmer:
+          name: 'Fred Finlay'
+          image: 'images/about/team/meredith.jpg'
+          description: '''
+            Meredith Palmer is a graduate student studying large mammal communities in Tanzania and South Africa. After spending a few years conducting fieldwork around the world, she began her Ph.D. at the University of Minnesota in 2013. She is interested in predator-prey interactions, particularly what ungulates do to avoid becoming lunch. When not plodding through data analyses at the University of Minnesota, she can be found in Serengeti digging Land Rovers out of the mud and continuing Ali's work with the camera traps.
           '''
 
       development:
