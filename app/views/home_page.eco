@@ -1,7 +1,7 @@
 <% translate = require 't7e' %>
 <% seasons = require 'lib/seasons' %>
 
-<% allSeasonsComplete = true %>
+<% allSeasonsComplete = false %>
 
 <div class="recents">
   <div class="image-changer"></div>
@@ -20,12 +20,12 @@
   <% else: %>
     <hr />
 
-    <% for {season, total, complete}, i in seasons: %>
+    <% for {season, name, total, complete}, i in seasons: %>
       <!-- TODO: Translate these! -->
 
       <div class="progress">
         <p>
-          <span class="season"><strong>Season <%= season %></strong></span>
+          <span class="season"><strong><%= name %></strong></span>
           <span class="track">
             <span class="fill" style="width: <%= (complete / total) * 100 %>%;"></span>
           </span>
