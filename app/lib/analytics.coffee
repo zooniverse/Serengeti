@@ -2,8 +2,7 @@ $ = require('jqueryify')
 User = require 'zooniverse/lib/models/user'
 ExperimentalSubject = require 'models/experimental_subject'
 Experiments = require 'lib/experiments'
-getIP = require 'lib/getip'
-currentUserID = null
+UserGetter = require 'lib/userID'
 
 iteration = 0
 
@@ -17,24 +16,24 @@ buildEventData = (type, related_id = null, subject_id = ExperimentalSubject.curr
   eventData['experiment'] = Experiments.ACTIVE_EXPERIMENT
   eventData['errorCode'] = ""
   eventData['errorDescription'] = ""
-  eventData['cohort'] = Experiments.currentCohort
+  if Experiments.currentCohort?
+    eventData['cohort'] = Experiments.currentCohort
   eventData['userID'] = "(anonymous)"
   eventData
 
-addUserDetailsToEventData = (eventData, user_id = User.current?.zooniverse_id) ->
-  eventualEventData = new $.Deferred
-  eventData['userID'] = if user_id? then user_id else if currentUserID? then currentUserID else null
-  if eventData['userID']?
-    eventualEventData.resolve eventData
-  else
-    getIP.getClientOrigin()
-    .then (data) =>
-      if data?
-        currentUserID = getIP.getNiceOriginString data
-        eventData['userID'] = currentUserID
-    .always =>
-      eventualEventData.resolve eventData
-  eventualEventData.promise()
+addUserDetailsToEventData = (eventData) ->
+  eventualUserIdentifier = new $.Deferred
+  UserGetter.getUserIDorIPAddress()
+  .then (data) =>
+    if data?
+      UserGetter.currentUserID = data
+  .fail =>
+    UserGetter.currentUserID = "(anonymous)"
+  .always =>
+    eventData['userID'] = UserGetter.currentUserID
+    eventualUserIdentifier.resolve eventData
+  eventualUserIdentifier.promise()
+
 
 addCohortToEventData = (eventData) ->
   eventualEventData = new $.Deferred
@@ -42,6 +41,7 @@ addCohortToEventData = (eventData) ->
   .then (cohort) =>
     if cohort?
       eventData['cohort'] = cohort
+      Experiments.currentCohort = cohort
   .always =>
     eventualEventData.resolve eventData
   eventualEventData.promise()
@@ -74,9 +74,9 @@ logToGoogle = (eventData) =>
 ###
 This will log a user interaction both in the Geordi analytics API and in Google Analytics.
 ###
-logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subject_id = ExperimentalSubject.current?.zooniverseId) =>
+logEvent = (type, related_id = '', subject_id = ExperimentalSubject.current?.zooniverseId) =>
   eventData = buildEventData(type, related_id, subject_id)
-  addUserDetailsToEventData(eventData, user_id)
+  addUserDetailsToEventData(eventData)
   .always (eventData) =>
     if Experiments.currentCohort?
       logToGeordi eventData
@@ -90,13 +90,12 @@ logEvent = (type, related_id = '', user_id = User.current?.zooniverse_id, subjec
 ###
 This will log an error in Geordi only. In order to guarantee that this works, no new AJAX calls for cohort or user IP are initiated
 ###
-logError = (error_code, error_description, type, related_id = '', user_id = User.current?.zooniverse_id, subject_id = ExperimentalSubject.current?.zooniverseId) ->
+logError = (error_code, error_description, type, related_id = '', subject_id = ExperimentalSubject.current?.zooniverseId) ->
   eventData = buildEventData(type, related_id, subject_id)
   eventData['errorCode'] = error_code
   eventData['errorDescription'] = error_description
-  eventData['userID'] = if currentUserID? then currentUserID else if user_id? then user_id else "(anonymous)"
+  eventData['userID'] = if UserGetter.currentUserID? then UserGetter.currentUserID else if User.current?.zooniverse_id? then User.current?.zooniverse_id else "(anonymous)"
   logToGeordi eventData
 
 exports.logEvent = logEvent
 exports.logError = logError
-
