@@ -18,6 +18,7 @@ User = require 'zooniverse/lib/models/user'
 ExperimentalSubject = require 'models/experimental_subject'
 AnalyticsLogger = require 'lib/analytics'
 googleAnalytics = require 'zooniverse/lib/google_analytics'
+Experiments = require 'lib/experiments'
 # Map = require 'zooniverse/lib/map'
 
 ContentPage = require 'controllers/content_page'
@@ -30,7 +31,6 @@ navigation = new Navigation
 navigation.el.appendTo document.body
 
 LanguagePicker = require 'controllers/language_picker'
-loggedInUserId = null
 languagePicker = new LanguagePicker
 languagePicker.el.prependTo document.body
 
@@ -44,17 +44,17 @@ User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
   if User.current?
     AnalyticsLogger.logEvent 'login'
-    loggedInUserId = User.current?.zooniverse_id
   else
-    AnalyticsLogger.logEvent 'logout',null,loggedInUserId
+    Experiments.resetExperimentalFlags()
+    AnalyticsLogger.logEvent 'logout'
 
 Api.init
   host: if !!location.href.match /demo|beta/
-    'https://dev.zooniverse.org'
+    'https://olddev.zooniverse.org'
   else if +location.port < 1024
     'https://api.zooniverse.org'
   else
-    'https://dev.zooniverse.org'
+    'https://olddev.zooniverse.org'
     #"#{location.protocol}//#{location.hostname}:3000"
 
 # TODO: Don't count on the proxy frame to have no loaded yet.
