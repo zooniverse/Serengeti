@@ -13,6 +13,7 @@
     "spine": "1.0.7",
     "t7e": "0.2.3",
     "underscore": "1.4.2",
+    "zoo-user-getter": "^1.0.2",
     "zooniverse": "zooniverse/Zooniverse#98ffd4b",
     "zootorial": "0.2.4"
   },

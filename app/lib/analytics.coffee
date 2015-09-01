@@ -2,7 +2,7 @@ $ = require('jqueryify')
 User = require 'zooniverse/lib/models/user'
 ExperimentalSubject = require 'models/experimental_subject'
 Experiments = require 'lib/experiments'
-UserGetter = require 'lib/userID'
+Geordi = require 'lib/geordi'
 
 iteration = 0
 
@@ -23,14 +23,14 @@ buildEventData = (type, related_id = null, subject_id = ExperimentalSubject.curr
 
 addUserDetailsToEventData = (eventData) ->
   eventualUserIdentifier = new $.Deferred
-  UserGetter.getUserIDorIPAddress()
+  Geordi.UserGetter.getUserIDorIPAddress()
   .then (data) =>
     if data?
-      UserGetter.currentUserID = data
+      Geordi.UserGetter.currentUserID = data
   .fail =>
-    UserGetter.currentUserID = "(anonymous)"
+    Geordi.UserGetter.currentUserID = "(anonymous)"
   .always =>
-    eventData['userID'] = UserGetter.currentUserID
+    eventData['userID'] = Geordi.UserGetter.currentUserID
     eventualUserIdentifier.resolve eventData
   eventualUserIdentifier.promise()
 
@@ -51,7 +51,7 @@ log event with Geordi v2
 ###
 logToGeordi = (eventData) =>
   $.ajax {
-    url: 'http://geordi.zooniverse.org/api/events/',
+    url: 'http://geordi.staging.zooniverse.org/api/events/',
     type: 'POST',
     contentType: 'application/json; charset=utf-8',
     data: JSON.stringify(eventData),
@@ -94,7 +94,7 @@ logError = (error_code, error_description, type, related_id = '', subject_id = E
   eventData = buildEventData(type, related_id, subject_id)
   eventData['errorCode'] = error_code
   eventData['errorDescription'] = error_description
-  eventData['userID'] = if UserGetter.currentUserID? then UserGetter.currentUserID else if User.current?.zooniverse_id? then User.current?.zooniverse_id else "(anonymous)"
+  eventData['userID'] = if Geordi.UserGetter.currentUserID? then Geordi.UserGetter.currentUserID else if User.current?.zooniverse_id? then User.current?.zooniverse_id else "(anonymous)"
   logToGeordi eventData
 
 exports.logEvent = logEvent

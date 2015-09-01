@@ -2,7 +2,7 @@ $ = require('jqueryify')
 User = require 'zooniverse/lib/models/user'
 ExperimentalSubject = require 'models/experimental_subject'
 AnalyticsLogger = require 'lib/analytics'
-UserGetter = require 'lib/userID'
+Geordi = require 'lib/geordi'
 
 # CONSTANTS #
 
@@ -79,7 +79,7 @@ resetExperimentalFlags = =>
   excludedReason = null
   currentCohort = null
   currentParticipant = null
-  UserGetter.currentUserID = null
+  Geordi.UserGetter.currentUserID = null
 
 ###
 when we first get participant, and the user has not started experiment in a previous sessions, we'll need to log it to Geordi
@@ -109,13 +109,13 @@ checkForExcludedAndLogIt = (participant) ->
 This method will contact the experiment server to find the participant(experimental data) for this user in the specified experiment
 ###
 getParticipant = () ->
-  UserGetter.currentUserID = "(unknown)"
-  UserGetter.getUserIDorIPAddress()
+  Geordi.UserGetter.currentUserID = "(unknown)"
+  Geordi.UserGetter.getUserIDorIPAddress()
   .then (data) =>
     if data?
-      UserGetter.currentUserID = data.toString()
+      Geordi.UserGetter.currentUserID = data.toString()
   .fail =>
-    UserGetter.currentUserID = "(anonymous)"
+    Geordi.UserGetter.currentUserID = "(anonymous)"
   .always =>
     eventualParticipant = new $.Deferred
     if ACTIVE_EXPERIMENT?
@@ -124,7 +124,7 @@ getParticipant = () ->
         timeSinceLastFail = now - lastFailedAt.getTime()
       if lastFailedAt == null || timeSinceLastFail > RETRY_INTERVAL
         try
-          $.get(EXPERIMENT_SERVER_URL+ 'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + UserGetter.currentUserID)
+          $.get(EXPERIMENT_SERVER_URL+ 'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + Geordi.UserGetter.currentUserID)
           .then (participant) =>
             checkForExcludedAndLogIt participant
             checkForExperimentEndAndLogIt participant
@@ -157,7 +157,7 @@ getCohort = =>
       timeSinceLastFail = now - lastFailedAt.getTime()
     if lastFailedAt == null || timeSinceLastFail > RETRY_INTERVAL
       try
-        $.get(EXPERIMENT_SERVER_URL+'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + UserGetter.currentUserID)
+        $.get(EXPERIMENT_SERVER_URL+'experiment/' + ACTIVE_EXPERIMENT + '?user_id=' + Geordi.UserGetter.currentUserID)
         .then (participant) =>
           checkForExperimentEndAndLogIt participant
           currentCohort = participant.cohort
