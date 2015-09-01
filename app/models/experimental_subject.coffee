@@ -3,7 +3,7 @@ User = require 'zooniverse/lib/models/user'
 Experiments = require 'lib/experiments'
 Api = require 'zooniverse/lib/api'
 AnalyticsLogger = require 'lib/analytics'
-UserGetter = require 'lib/userID'
+Geordi = require 'lib/geordi'
 
 # An Experimental Subject is a specialized subject for use in experiments.
 class ExperimentalSubject extends Subject
@@ -37,14 +37,14 @@ class ExperimentalSubject extends Subject
       AnalyticsLogger.logEvent 'view',null,subject.zooniverseId
       if Experiments.ACTIVE_EXPERIMENT=="SerengetiInterestingAnimalsExperiment1"
         if Experiments.currentCohort == Experiments.COHORT_CONTROL
-          AnalyticsLogger.logEvent 'control','random',UserGetter.currentUserID,subject.zooniverseId
+          AnalyticsLogger.logEvent 'control','random',Geordi.UserGetter.currentUserID,subject.zooniverseId
         else if Experiments.currentCohort == Experiments.COHORT_INSERTION
           if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_INSERTED
             AnalyticsLogger.logEvent 'insertion','specific',subject.zooniverseId
           else if Experiments.sources[subject.zooniverseId] == Experiments.SOURCE_RANDOM
-            AnalyticsLogger.logEvent 'insertion','random',UserGetter.currentUserID,subject.zooniverseId
+            AnalyticsLogger.logEvent 'insertion','random',Geordi.UserGetter.currentUserID,subject.zooniverseId
         else
-          AnalyticsLogger.logEvent 'non-experimental','view',UserGetter.currentUserID,subject.zooniverseId
+          AnalyticsLogger.logEvent 'non-experimental','view',Geordi.UserGetter.currentUserID,subject.zooniverseId
         @markAsSeen subject.zooniverseId
       else if Experiments.ACTIVE_EXPERIMENT=="SerengetiBlanksExperiment1"
         if Experiments.currentCohort == Experiments.COHORT_CONTROL
@@ -124,13 +124,13 @@ class ExperimentalSubject extends Subject
     seenNotifier = new $.Deferred
     try
       if Experiments.sources[subjectID]==Experiments.SOURCE_INSERTED
-        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + UserGetter.currentUserID + '/insertion/' + subjectID
+        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/insertion/' + subjectID
       else if Experiments.sources[subjectID]==Experiments.SOURCE_RANDOM
-        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + UserGetter.currentUserID + '/random'
+        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/random'
       if Experiments.sources[subjectID]==Experiments.SOURCE_BLANK || Experiments.sources[subjectID]==Experiments.SOURCE_NON_BLANK
-        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + UserGetter.currentUserID + '/' + subjectID
+        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/' + subjectID
       else if Experiments.sources[subjectID]==Experiments.SOURCE_RANDOM
-        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + UserGetter.currentUserID + '/random'
+        url = Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/random'
       else
         AnalyticsLogger.logError "409", "Couldn't POST subject "+subjectID+" to mark as seen", "error"
         return null
@@ -156,7 +156,7 @@ class ExperimentalSubject extends Subject
   @getNextSubjectIDs: (numberOfSubjects) ->
     subjectIDsFetcher = new $.Deferred
     try
-      $.get(Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + UserGetter.currentUserID + '/next/' + numberOfSubjects)
+      $.get(Experiments.EXPERIMENT_SERVER_URL + 'experiment/' + Experiments.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/next/' + numberOfSubjects)
       .then (data) =>
         subjectIDsFetcher.resolve data
       .fail =>
