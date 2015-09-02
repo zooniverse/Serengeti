@@ -50,11 +50,11 @@ User.bind 'sign-in', ->
 
 Api.init
   host: if !!location.href.match /demo|beta/
-    'https://olddev.zooniverse.org'
+    'https://dev.zooniverse.org'
   else if +location.port < 1024
     'https://api.zooniverse.org'
   else
-    'https://olddev.zooniverse.org'
+    'https://dev.zooniverse.org'
     #"#{location.protocol}//#{location.hostname}:3000"
 
 # TODO: Don't count on the proxy frame to have no loaded yet.

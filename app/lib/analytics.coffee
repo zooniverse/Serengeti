@@ -1,18 +1,18 @@
 $ = require('jqueryify')
-User = require 'zooniverse/lib/models/user'
-ExperimentalSubject = require 'models/experimental_subject'
 Experiments = require 'lib/experiments'
 Geordi = require 'lib/geordi'
 
 iteration = 0
 
-buildEventData = (type, related_id = null, subject_id = ExperimentalSubject.current?.zooniverseId) ->
+buildEventData = (type, related_id = null, subject_id = Geordi.getCurrentSubject()) ->
   eventData = {}
-  eventData['time'] = Date.now()
+  eventData['browserTime'] = Date.now()
   eventData['projectToken'] = 'serengeti'
   eventData['subjectID'] = subject_id
   eventData['type'] = type
   eventData['relatedID'] = related_id
+  eventData['serverURL'] = location.origin
+  eventData['data'] = JSON.stringify({})
   eventData['experiment'] = Experiments.ACTIVE_EXPERIMENT
   eventData['errorCode'] = ""
   eventData['errorDescription'] = ""
@@ -74,7 +74,7 @@ logToGoogle = (eventData) =>
 ###
 This will log a user interaction both in the Geordi analytics API and in Google Analytics.
 ###
-logEvent = (type, related_id = '', subject_id = ExperimentalSubject.current?.zooniverseId) =>
+logEvent = (type, related_id = '', subject_id = Geordi.getCurrentSubject()) =>
   eventData = buildEventData(type, related_id, subject_id)
   addUserDetailsToEventData(eventData)
   .always (eventData) =>
@@ -90,11 +90,11 @@ logEvent = (type, related_id = '', subject_id = ExperimentalSubject.current?.zoo
 ###
 This will log an error in Geordi only. In order to guarantee that this works, no new AJAX calls for cohort or user IP are initiated
 ###
-logError = (error_code, error_description, type, related_id = '', subject_id = ExperimentalSubject.current?.zooniverseId) ->
+logError = (error_code, error_description, type, related_id = '', subject_id = Geordi.getCurrentSubject()) ->
   eventData = buildEventData(type, related_id, subject_id)
   eventData['errorCode'] = error_code
   eventData['errorDescription'] = error_description
-  eventData['userID'] = if Geordi.UserGetter.currentUserID? then Geordi.UserGetter.currentUserID else if User.current?.zooniverse_id? then User.current?.zooniverse_id else "(anonymous)"
+  eventData['userID'] = if Geordi.UserGetter.currentUserID? then Geordi.UserGetter.currentUserID else "(anonymous)"
   logToGeordi eventData
 
 exports.logEvent = logEvent
