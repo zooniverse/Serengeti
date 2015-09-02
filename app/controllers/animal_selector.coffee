@@ -3,7 +3,7 @@ $ = require 'jqueryify'
 template = require 'views/animal_selector'
 FilterMenu = require './filter_menu'
 User = require 'zooniverse/lib/models/user'
-AnalyticsLogger = require 'lib/analytics'
+Geordi = (require 'lib/analytics').Geordi
 columnize = require 'lib/columnize'
 ExperimentalSubject = require 'models/experimental_subject'
 AnimalDetails = require './animal_details'
@@ -72,7 +72,7 @@ class AnimalSelector extends Controller
         targets = @items.filter ':not(".dimmed")'
         targets.first().focus()
         targets.first().click() if targets.length is 1
-        AnalyticsLogger.logEvent 'search', @searchInput.val()
+        Geordi.logEvent 'search', @searchInput.val()
       @set.search @searchInput.val()
 
   onSelectionAreaKeyDown: (e) ->
@@ -141,7 +141,7 @@ class AnimalSelector extends Controller
     setTimeout details.show, 125
 
   onClickClearFilters: ->
-    AnalyticsLogger.logEvent 'clear'
+    Geordi.logEvent 'clear'
     @clearFilters()
 
   clearFilters: =>
@@ -150,7 +150,7 @@ class AnimalSelector extends Controller
     @searchInput.trigger 'keydown'
 
   onClickStartTutorial: ->
-    AnalyticsLogger.logEvent 'tutorial'
+    Geordi.logEvent 'tutorial'
     getTutorialSubject().select()
 
 module.exports = AnimalSelector

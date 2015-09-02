@@ -2,7 +2,8 @@
 <!-- to use: < % - require('./experiment_info')(this) % > -->
 <% User = require 'zooniverse/lib/models/user' %>
 <% Subject = require 'models/experimental_subject' %>
-<% Experiments = require 'lib/experiments' %>
+<% Analytics = require 'lib/analytics' %>
+<% ExperimentServerClient = Analytics.ExperimentServerClient %>
 
 <div class="experiment" style="
     padding: 5px;
@@ -10,4 +11,4 @@
     color: #ffffff;
     background-color: rgba(20,11,3,0.50);
     font-size: 13px;
-"><span style="color: #cccccc;"><% if User.current?: %><%= User.current.name %><% else: %>(anonymous)<% end %> (<% if Experiments.currentParticipant? && Experiments.currentParticipant.fallback: %>fallback to control<% else: %><% if Experiments.currentCohort?: %><%= Experiments.currentCohort %><% else: %>no <% end %> cohort<% end %>) likes: </span><span class="value"><% if Experiments.currentParticipant? && Experiments.currentParticipant.most_liked_species?: %><%= Experiments.currentParticipant.most_liked_species.join(', ') %><% else: %>N/A<% end %></span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<span style="color: #cccccc;">Source: </span><span class="subject-source value"><% if Experiments.sources[@subject.zooniverseId]: %><%= Experiments.sources[@subject.zooniverseId] %><% else: %>N/A<% end %></span></div>
+"><span style="color: #cccccc;"><% if User.current?: %><%= User.current.name %><% else: %>(anonymous)<% end %> (<% if ExperimentServerClient.currentParticipant? && ExperimentServerClient.currentParticipant.fallback: %>fallback to control<% else: %><% if ExperimentServerClient.currentCohort?: %><%= ExperimentServerClient.currentCohort %><% else: %>no <% end %> cohort<% end %>) likes: </span><span class="value"><% if ExperimentServerClient.currentParticipant? && ExperimentServerClient.currentParticipant.most_liked_species?: %><%= ExperimentServerClient.currentParticipant.most_liked_species.join(', ') %><% else: %>N/A<% end %></span>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<span style="color: #cccccc;">Source: </span><span class="subject-source value"><% if ExperimentServerClient.sources[@subject.zooniverseId]: %><%= ExperimentServerClient.sources[@subject.zooniverseId] %><% else: %>N/A<% end %></span></div>
