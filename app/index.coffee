@@ -16,9 +16,10 @@ seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
 ExperimentalSubject = require 'models/experimental_subject'
-AnalyticsLogger = require 'lib/analytics'
+Analytics = require 'lib/analytics'
+Geordi = Analytics.Geordi
 googleAnalytics = require 'zooniverse/lib/google_analytics'
-Experiments = require 'lib/experiments'
+ExperimentServerClient = Analytics.ExperimentServerClient
 # Map = require 'zooniverse/lib/map'
 
 ContentPage = require 'controllers/content_page'
@@ -43,10 +44,10 @@ app = {}
 User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
   if User.current?
-    AnalyticsLogger.logEvent 'login'
+    Geordi.logEvent 'login'
   else
-    Experiments.resetExperimentalFlags()
-    AnalyticsLogger.logEvent 'logout'
+    ExperimentServerClient.resetExperimentalFlags()
+    Geordi.logEvent 'logout'
 
 Api.init
   host: if !!location.href.match /demo|beta/
@@ -108,7 +109,7 @@ Api.proxy.el().one 'load', ->
       app.topBar.loginDialog.reattach()
 
     $(window).bind('beforeunload', (e) ->
-        AnalyticsLogger.logEvent 'leave'
+        Geordi.logEvent 'leave'
         event.preventDefault()
     )
 

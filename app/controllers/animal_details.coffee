@@ -2,7 +2,7 @@
 template = require 'views/animal_details'
 PopupButton = require './popup_button'
 ImageChanger = require './image_changer'
-AnalyticsLogger = require 'lib/analytics'
+Geordi = (require 'lib/analytics').Geordi
 ExperimentalSubject = require 'models/experimental_subject'
 
 class AnimalDetails extends Controller
@@ -73,14 +73,14 @@ class AnimalDetails extends Controller
   getBabies: ->
     babies = !!@babiesCheckbox.attr 'checked'
     if babies
-      AnalyticsLogger.logEvent 'young', @animal.id
+      Geordi.logEvent 'young', @animal.id, ExperimentalSubject.current?.zooniverseId
     babies
 
   onClickCancel: ->
     @hide()
 
   onClickIdentify: ->
-    AnalyticsLogger.logEvent 'identify', @animal.id, ExperimentalSubject.current?.zooniverseId
+    Geordi.logEvent 'identify', @animal.id, ExperimentalSubject.current?.zooniverseId
     @classification.annotate
       species: @animal
 

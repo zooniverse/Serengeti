@@ -3,7 +3,7 @@ $ = require 'jqueryify'
 SubjectViewer = require './subject_viewer'
 AnimalSelector = require './animal_selector'
 User = require 'zooniverse/lib/models/user'
-AnalyticsLogger = require 'lib/analytics'
+
 animals = require 'lib/animals'
 characteristics = require 'lib/characteristics'
 AnimalMenuItem = require './animal_menu_item'
