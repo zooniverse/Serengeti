@@ -3,7 +3,6 @@ $ = require 'jqueryify'
 template = require 'views/animal_selector'
 FilterMenu = require './filter_menu'
 User = require 'zooniverse/lib/models/user'
-Geordi = (require 'lib/analytics').Geordi
 columnize = require 'lib/columnize'
 ExperimentalSubject = require 'models/experimental_subject'
 AnimalDetails = require './animal_details'

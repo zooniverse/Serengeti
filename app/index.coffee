@@ -1,5 +1,4 @@
 require 'lib/setup'
-
 Navigation = require 'controllers/navigation'
 $ = require 'jqueryify'
 {Stack} = require 'spine/lib/manager'
@@ -16,10 +15,8 @@ seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
 ExperimentalSubject = require 'models/experimental_subject'
-Analytics = require 'lib/analytics'
-Geordi = Analytics.Geordi
+{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
 googleAnalytics = require 'zooniverse/lib/google_analytics'
-ExperimentServerClient = Analytics.ExperimentServerClient
 # Map = require 'zooniverse/lib/map'
 
 ContentPage = require 'controllers/content_page'
@@ -46,7 +43,7 @@ User.bind 'sign-in', ->
   if User.current?
     Geordi.logEvent 'login'
   else
-    ExperimentServerClient.resetExperimentalFlags()
+    ExperimentServer.resetExperimentalFlags()
     Geordi.logEvent 'logout'
 
 Api.init

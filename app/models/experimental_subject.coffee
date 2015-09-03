@@ -1,10 +1,7 @@
 Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
-ExperimentServerClient = require 'lib/experiments'
 Api = require 'zooniverse/lib/api'
-Analytics = require 'lib/analytics'
-Geordi = Analytics.Geordi
-ExperimentServerClient = Analytics.ExperimentServerClient
+{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
 
 # An Experimental Subject is a specialized subject for use in experiments.
 class ExperimentalSubject extends Subject
@@ -12,8 +9,8 @@ class ExperimentalSubject extends Subject
 
   # override parent as we need additional info
   @fromJSON: (raw) =>
-    if !ExperimentServerClient.sources[raw.zooniverse_id]?
-      ExperimentServerClient.sources[raw.zooniverse_id]=ExperimentServerClient.SOURCE_NORMAL
+    if !ExperimentServer.sources[raw.zooniverse_id]?
+      ExperimentServer.sources[raw.zooniverse_id]=ExperimentServer.SOURCE_NORMAL
 
     subject = @create
       id: raw.id
@@ -36,24 +33,24 @@ class ExperimentalSubject extends Subject
     else
       subject = @first()
       Geordi.logEvent 'view',null,subject.zooniverseId
-      if ExperimentServerClient.ACTIVE_EXPERIMENT=="SerengetiInterestingAnimalsExperiment1"
-        if ExperimentServerClient.currentCohort == ExperimentServerClient.COHORT_CONTROL
+      if ExperimentServer.ACTIVE_EXPERIMENT=="SerengetiInterestingAnimalsExperiment1"
+        if ExperimentServer.currentCohort == ExperimentServer.COHORT_CONTROL
           Geordi.logEvent 'control','random',Geordi.UserGetter.currentUserID,subject.zooniverseId
-        else if ExperimentServerClient.currentCohort == ExperimentServerClient.COHORT_INSERTION
-          if ExperimentServerClient.sources[subject.zooniverseId] == ExperimentServerClient.SOURCE_INSERTED
+        else if ExperimentServer.currentCohort == ExperimentServer.COHORT_INSERTION
+          if ExperimentServer.sources[subject.zooniverseId] == ExperimentServer.SOURCE_INSERTED
             Geordi.logEvent 'insertion','specific',subject.zooniverseId
-          else if ExperimentServerClient.sources[subject.zooniverseId] == ExperimentServerClient.SOURCE_RANDOM
+          else if ExperimentServer.sources[subject.zooniverseId] == ExperimentServer.SOURCE_RANDOM
             Geordi.logEvent 'insertion','random',Geordi.UserGetter.currentUserID,subject.zooniverseId
         else
           Geordi.logEvent 'non-experimental','view',Geordi.UserGetter.currentUserID,subject.zooniverseId
         @markAsSeen subject.zooniverseId
-      else if ExperimentServerClient.ACTIVE_EXPERIMENT=="SerengetiBlanksExperiment1"
-        if ExperimentServerClient.currentCohort == ExperimentServerClient.COHORT_CONTROL
+      else if ExperimentServer.ACTIVE_EXPERIMENT=="SerengetiBlanksExperiment1"
+        if ExperimentServer.currentCohort == ExperimentServer.COHORT_CONTROL
           Geordi.logEvent 'control','random',subject.zooniverseId
-        else if ExperimentServerClient.currentCohort in [ExperimentServerClient.COHORT_0, ExperimentServerClient.COHORT_20, ExperimentServerClient.COHORT_40, ExperimentServerClient.COHORT_60, ExperimentServerClient.COHORT_80]
-          if ExperimentServerClient.sources[subject.zooniverseId] == ExperimentServerClient.SOURCE_BLANK
+        else if ExperimentServer.currentCohort in [ExperimentServer.COHORT_0, ExperimentServer.COHORT_20, ExperimentServer.COHORT_40, ExperimentServer.COHORT_60, ExperimentServer.COHORT_80]
+          if ExperimentServer.sources[subject.zooniverseId] == ExperimentServer.SOURCE_BLANK
             Geordi.logEvent 'insertion','blank',subject.zooniverseId
-          else if ExperimentServerClient.sources[subject.zooniverseId] == ExperimentServerClient.SOURCE_NON_BLANK
+          else if ExperimentServer.sources[subject.zooniverseId] == ExperimentServer.SOURCE_NON_BLANK
             Geordi.logEvent 'insertion','non-blank',subject.zooniverseId
         else
           Geordi.logEvent 'non-experimental','view',subject.zooniverseId
@@ -88,31 +85,31 @@ class ExperimentalSubject extends Subject
       backgroundFetcher
       .then (response) =>
         if response?
-          ExperimentServerClient.currentParticipant = response.participant
+          ExperimentServer.currentParticipant = response.participant
           nextSubjectIDs = response.nextSubjectIDs
           if nextSubjectIDs? && nextSubjectIDs.length == 0
             # end of experiment
-            ExperimentServerClient.currentParticipant.active = false
+            ExperimentServer.currentParticipant.active = false
           else
             for subjectIDAndBlankness in nextSubjectIDs
               [subjectID, blankness] = subjectIDAndBlankness.split(":")
               if blankness=="blank"
-                source = ExperimentServerClient.SOURCE_BLANK
+                source = ExperimentServer.SOURCE_BLANK
               else
-                source = ExperimentServerClient.SOURCE_NON_BLANK
+                source = ExperimentServer.SOURCE_NON_BLANK
               do (subjectID) =>
                 if subjectID == "RANDOM"
                   backgroundFetcher.then =>
                     @fetch(1)
                     .then (subject) =>
                       if subject?
-                        ExperimentServerClient.sources[subject[0].zooniverseId]=ExperimentServerClient.SOURCE_RANDOM
+                        ExperimentServer.sources[subject[0].zooniverseId]=ExperimentServer.SOURCE_RANDOM
                 else
                   backgroundFetcher.then =>
                     @subjectFetch(subjectID)
                     .then (subject) =>
                       if subject?
-                        ExperimentServerClient.sources[subjectID]=source
+                        ExperimentServer.sources[subjectID]=source
       .fail =>
         Geordi.logError "500", "Couldn't load next experimental subjects", "error"
     else
@@ -124,22 +121,22 @@ class ExperimentalSubject extends Subject
   @markAsSeen: (subjectID) ->
     seenNotifier = new $.Deferred
     try
-      if ExperimentServerClient.sources[subjectID]==ExperimentServerClient.SOURCE_INSERTED
-        url = ExperimentServerClient.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServerClient.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/insertion/' + subjectID
-      else if ExperimentServerClient.sources[subjectID]==ExperimentServerClient.SOURCE_RANDOM
-        url = ExperimentServerClient.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServerClient.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/random'
-      if ExperimentServerClient.sources[subjectID]==ExperimentServerClient.SOURCE_BLANK || ExperimentServerClient.sources[subjectID]==ExperimentServerClient.SOURCE_NON_BLANK
-        url = ExperimentServerClient.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServerClient.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/' + subjectID
-      else if ExperimentServerClient.sources[subjectID]==ExperimentServerClient.SOURCE_RANDOM
-        url = ExperimentServerClient.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServerClient.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/random'
+      if ExperimentServer.sources[subjectID]==ExperimentServer.SOURCE_INSERTED
+        url = ExperimentServer.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServer.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/insertion/' + subjectID
+      else if ExperimentServer.sources[subjectID]==ExperimentServer.SOURCE_RANDOM
+        url = ExperimentServer.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServer.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/random'
+      if ExperimentServer.sources[subjectID]==ExperimentServer.SOURCE_BLANK || ExperimentServer.sources[subjectID]==ExperimentServer.SOURCE_NON_BLANK
+        url = ExperimentServer.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServer.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/' + subjectID
+      else if ExperimentServer.sources[subjectID]==ExperimentServer.SOURCE_RANDOM
+        url = ExperimentServer.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServer.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/random'
       else
         Geordi.logError "409", "Couldn't POST subject "+subjectID+" to mark as seen", "error"
         return null
       $.post(url)
       .then (participant) =>
-        ExperimentServerClient.currentParticipant = participant
+        ExperimentServer.currentParticipant = participant
         # ensure any previously seen subjects by this participant are removed from the queue if present.
-        for queue in [ExperimentServerClient.currentParticipant.blank_subjects_seen,ExperimentServerClient.currentParticipant.non_blank_subjects_seen]
+        for queue in [ExperimentServer.currentParticipant.blank_subjects_seen,ExperimentServer.currentParticipant.non_blank_subjects_seen]
           for seenID in queue
             for queuedSubject of ExperimentalSubject.all
               if seenID==queuedSubject.zooniverseId
@@ -157,7 +154,7 @@ class ExperimentalSubject extends Subject
   @getNextSubjectIDs: (numberOfSubjects) ->
     subjectIDsFetcher = new $.Deferred
     try
-      $.get(ExperimentServerClient.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServerClient.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/next/' + numberOfSubjects)
+      $.get(ExperimentServer.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServer.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/next/' + numberOfSubjects)
       .then (data) =>
         subjectIDsFetcher.resolve data
       .fail =>
@@ -170,7 +167,7 @@ class ExperimentalSubject extends Subject
 
   # for experimental cohort users, determine next subjects accordingly
   @next: (callback) =>
-    if ExperimentServerClient.ACTIVE_EXPERIMENT == "SerengetiBlanksExperiment1"
+    if ExperimentServer.ACTIVE_EXPERIMENT == "SerengetiBlanksExperiment1"
       @current.destroy() if @current?
       count = @count()
 
@@ -179,13 +176,13 @@ class ExperimentalSubject extends Subject
         fetcher = @fetch 1
 
       # for experimental cohort, load up the right subjects
-      ExperimentServerClient.getParticipant()
+      ExperimentServer.getParticipant()
       .then (participant) =>
         if participant?
-          ExperimentServerClient.currentParticipant = participant
-          #ExperimentServerClient.currentCohort = participant.cohort
+          ExperimentServer.currentParticipant = participant
+          #ExperimentServer.currentCohort = participant.cohort
           toFetch = (@queueLength - @count()) + 1
-          if ExperimentServerClient.currentParticipant.active && ExperimentServerClient.currentCohort != ExperimentServerClient.COHORT_CONTROL && ExperimentServerClient.currentCohort != ExperimentServerClient.COHORT_INELIGIBLE
+          if ExperimentServer.currentParticipant.active && ExperimentServer.currentCohort != ExperimentServer.COHORT_CONTROL && ExperimentServer.currentCohort != ExperimentServer.COHORT_INELIGIBLE
             @loadMoreRandomSubjects toFetch
           else
             # Fill the rest of the queue in the background according to the experiment server's instructions

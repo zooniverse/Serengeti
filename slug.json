@@ -25,7 +25,8 @@
     "zootorial",
     "moment",
 
-    "zoo-user-getter"
+    "zooniverse-user-string-getter",
+    "zooniverse-geordi-client"
   ],
 
   "libs": [

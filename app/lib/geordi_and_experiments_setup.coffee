@@ -1,7 +1,8 @@
-$ = require('jqueryify')
 ExperimentServerClient = require 'lib/experiments'
+ExperimentServer = new ExperimentServerClient()
 ExperimentalSubject = require 'models/experimental_subject'
 User = require 'zooniverse/lib/models/user'
+GeordiClient = require 'zooniverse-geordi-client'
 
 checkZooUserID = ->
   User.current?.zooniverse_id
@@ -9,12 +10,13 @@ checkZooUserID = ->
 checkZooSubject = ->
   ExperimentalSubject.current?.zooniverseId
 
-exports.ExperimentServerClient = new ExperimentServerClient()
-
-exports.Geordi = new (require('lib/geordi'))({
+Geordi = new GeordiClient({
   "server": "staging"
   "projectToken": "serengeti"
   "zooUserIDGetter": checkZooUserID
   "subjectGetter": checkZooSubject
-  "experimentServerClient": exports.ExperimentServerClient
+  "experimentServerClient": ExperimentServer
 })
+
+module.exports = {Geordi,ExperimentServer}
+
