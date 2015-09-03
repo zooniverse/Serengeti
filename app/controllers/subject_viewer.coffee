@@ -3,12 +3,10 @@ template = require 'views/subject_viewer'
 AnnotationItem = require './annotation_item'
 ExperimentalSubject = require 'models/experimental_subject'
 User = require 'zooniverse/lib/models/user'
-Analytics = require 'lib/analytics'
-Geordi = Analytics.Geordi
-ExperimentServerClient = Analytics.ExperimentServerClient
 $ = require 'jqueryify'
 modulus = require 'lib/modulus'
 splits = require 'lib/splits'
+{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
 
 class SubjectViewer extends Controller
   classification: null
@@ -70,7 +68,7 @@ class SubjectViewer extends Controller
     if @classification
       @classification.bind 'change', @onClassificationChange
       @classification.bind 'add-species', @onClassificationAddSpecies
-      ExperimentServerClient.getCohort()
+      ExperimentServer.getCohort()
       .then (cohort) =>
         if cohort?
           @classification.metadata.cohort = cohort

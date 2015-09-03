@@ -2,7 +2,6 @@
 template = require 'views/animal_details'
 PopupButton = require './popup_button'
 ImageChanger = require './image_changer'
-Geordi = (require 'lib/analytics').Geordi
 ExperimentalSubject = require 'models/experimental_subject'
 
 class AnimalDetails extends Controller

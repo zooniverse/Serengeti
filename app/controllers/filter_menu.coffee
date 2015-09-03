@@ -2,7 +2,6 @@
 template = require 'views/filter_menu'
 $ = require 'jqueryify'
 translate = require 't7e'
-Geordi = (require 'lib/analytics').Geordi
 
 class FilterMenu extends Controller
   set: null

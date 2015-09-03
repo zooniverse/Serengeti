@@ -1,6 +1,5 @@
 $ = require('jqueryify')
 ExperimentalSubject = require 'models/experimental_subject'
-Geordi = (require 'lib/analytics').Geordi
 
 module.exports = class ExperimentServerClient
 
