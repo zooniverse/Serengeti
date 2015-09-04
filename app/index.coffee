@@ -1,5 +1,4 @@
 require 'lib/setup'
-
 Navigation = require 'controllers/navigation'
 $ = require 'jqueryify'
 {Stack} = require 'spine/lib/manager'
@@ -16,9 +15,8 @@ seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
 ExperimentalSubject = require 'models/experimental_subject'
-AnalyticsLogger = require 'lib/analytics'
+{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
 googleAnalytics = require 'zooniverse/lib/google_analytics'
-Experiments = require 'lib/experiments'
 # Map = require 'zooniverse/lib/map'
 
 ContentPage = require 'controllers/content_page'
@@ -43,18 +41,18 @@ app = {}
 User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
   if User.current?
-    AnalyticsLogger.logEvent 'login'
+    Geordi.logEvent 'login'
   else
-    Experiments.resetExperimentalFlags()
-    AnalyticsLogger.logEvent 'logout'
+    ExperimentServer.resetExperimentalFlags()
+    Geordi.logEvent 'logout'
 
 Api.init
   host: if !!location.href.match /demo|beta/
-    'https://olddev.zooniverse.org'
+    'https://dev.zooniverse.org'
   else if +location.port < 1024
     'https://api.zooniverse.org'
   else
-    'https://olddev.zooniverse.org'
+    'https://dev.zooniverse.org'
     #"#{location.protocol}//#{location.hostname}:3000"
 
 # TODO: Don't count on the proxy frame to have no loaded yet.
@@ -108,7 +106,7 @@ Api.proxy.el().one 'load', ->
       app.topBar.loginDialog.reattach()
 
     $(window).bind('beforeunload', (e) ->
-        AnalyticsLogger.logEvent 'leave'
+        Geordi.logEvent 'leave'
         event.preventDefault()
     )
 
