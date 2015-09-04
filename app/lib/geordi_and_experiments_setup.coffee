@@ -11,7 +11,7 @@ checkZooSubject = ->
   ExperimentalSubject.current?.zooniverseId
 
 Geordi = new GeordiClient({
-  "server": "staging"
+  "server": "production"
   "projectToken": "serengeti"
   "zooUserIDGetter": checkZooUserID
   "subjectGetter": checkZooSubject
