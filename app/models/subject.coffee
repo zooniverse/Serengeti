@@ -4,7 +4,6 @@ Api = require 'zooniverse/lib/api'
 seasons = require 'lib/seasons'
 User = require 'zooniverse/lib/models/user'
 Subject = require 'models/experimental_subject'
-UserGetter = require 'lib/userID'
 
 class Subject extends Model
   @configure 'Subject', 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata'
@@ -31,7 +30,7 @@ class Subject extends Model
       @trigger 'no-subjects'
     else
       subject = @first()
-      AnalyticsLogger.logEvent 'view'
+      Geordi.logEvent 'view'
       subject.select()
 
   # ensures that the next subject is selected, either now or once deferred chain is complete
