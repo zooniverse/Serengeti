@@ -103,7 +103,14 @@ module.exports = class ExperimentServerClient
     if !@excludedReason? && participant.excluded
       # if not previously logged, log it.
       @excludedReason = participant.excluded_reason
-      Geordi.logEvent 'experimentExcluded',participant.excluded_reason
+      Geordi.logEvent {
+        type: 'experimentExcluded'
+        relatedID: participant.excluded_reason
+        data: {
+          excludedReason: participant.excluded_reason
+        }
+        subjectID: @classification.subject.zooniverseId
+      }
 
   ###
   This method will contact the experiment server to find the participant(experimental data) for this user in the specified experiment
@@ -136,7 +143,11 @@ module.exports = class ExperimentServerClient
               eventualParticipant.resolve participant
             .fail =>
               @lastFailedAt = new Date()
-              Geordi.logError "500", "Couldn't retrieve experimental participant data", "error"
+              Geordi.logEvent {
+                type: "error"
+                errorCode: "500"
+                errorDescription: "Couldn't retrieve experimental participant data"
+              }
               eventualParticipant.resolve null
           catch error
             eventualParticipant.resolve null
@@ -168,7 +179,11 @@ module.exports = class ExperimentServerClient
             eventualCohort.resolve participant.cohort
           .fail =>
             @lastFailedAt = new Date()
-            Geordi.logError "500", "Couldn't retrieve experimental cohort data", "error"
+            Geordi.logEvent {
+              type: "error"
+              errorCode: "500"
+              errorDescription: "Couldn't retrieve experimental cohort data"
+            }
             eventualCohort.resolve null
         catch error
           eventualCohort.resolve null

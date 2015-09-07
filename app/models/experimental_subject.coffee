@@ -32,28 +32,95 @@ class ExperimentalSubject extends Subject
       @trigger 'no-subjects'
     else
       subject = @first()
-      Geordi.logEvent 'view',null,subject.zooniverseId
+      Geordi.logEvent {
+        type: 'view'
+        subjectID: subject.zooniverseId
+      }
       if ExperimentServer.ACTIVE_EXPERIMENT=="SerengetiInterestingAnimalsExperiment1"
         if ExperimentServer.currentCohort == ExperimentServer.COHORT_CONTROL
-          Geordi.logEvent 'control','random',Geordi.UserGetter.currentUserID,subject.zooniverseId
+          Geordi.logEvent {
+            type: 'control'
+            relatedID: 'random'
+            data: {
+              source:'random'
+            }
+            userID: Geordi.UserGetter.currentUserID
+            subjectID: subject.zooniverseId
+          }
         else if ExperimentServer.currentCohort == ExperimentServer.COHORT_INSERTION
           if ExperimentServer.sources[subject.zooniverseId] == ExperimentServer.SOURCE_INSERTED
-            Geordi.logEvent 'insertion','specific',subject.zooniverseId
+            Geordi.logEvent {
+              type: 'insertion'
+              relatedID: 'specific'
+              data: {
+                source:'specific'
+              }
+              userID: Geordi.UserGetter.currentUserID
+              subjectID: subject.zooniverseId
+            }
           else if ExperimentServer.sources[subject.zooniverseId] == ExperimentServer.SOURCE_RANDOM
-            Geordi.logEvent 'insertion','random',Geordi.UserGetter.currentUserID,subject.zooniverseId
+            Geordi.logEvent {
+              type: 'insertion'
+              relatedID: 'random'
+              data: {
+                source:'random'
+              }
+              userID: Geordi.UserGetter.currentUserID
+              subjectID: subject.zooniverseId
+            }
         else
-          Geordi.logEvent 'non-experimental','view',Geordi.UserGetter.currentUserID,subject.zooniverseId
+          Geordi.logEvent {
+            type: 'non-experimental'
+            relatedID: 'view'
+            data: {
+              nonExperimentalEventType:'view'
+            }
+            userID: Geordi.UserGetter.currentUserID
+            subjectID: subject.zooniverseId
+          }
         @markAsSeen subject.zooniverseId
       else if ExperimentServer.ACTIVE_EXPERIMENT=="SerengetiBlanksExperiment1"
         if ExperimentServer.currentCohort == ExperimentServer.COHORT_CONTROL
-          Geordi.logEvent 'control','random',subject.zooniverseId
+          Geordi.logEvent {
+            type: 'control'
+            relatedID: 'random'
+            data: {
+              source:'random'
+            }
+            userID: Geordi.UserGetter.currentUserID
+            subjectID: subject.zooniverseId
+          }
         else if ExperimentServer.currentCohort in [ExperimentServer.COHORT_0, ExperimentServer.COHORT_20, ExperimentServer.COHORT_40, ExperimentServer.COHORT_60, ExperimentServer.COHORT_80]
           if ExperimentServer.sources[subject.zooniverseId] == ExperimentServer.SOURCE_BLANK
-            Geordi.logEvent 'insertion','blank',subject.zooniverseId
+            Geordi.logEvent {
+              type: 'insertion'
+              relatedID: 'blank'
+              data: {
+                source:'blank'
+              }
+              userID: Geordi.UserGetter.currentUserID
+              subjectID: subject.zooniverseId
+            }
           else if ExperimentServer.sources[subject.zooniverseId] == ExperimentServer.SOURCE_NON_BLANK
-            Geordi.logEvent 'insertion','non-blank',subject.zooniverseId
+            Geordi.logEvent {
+              type: 'insertion'
+              relatedID: 'non-blank'
+              data: {
+                source:'non-blank'
+              }
+              userID: Geordi.UserGetter.currentUserID
+              subjectID: subject.zooniverseId
+            }
         else
-          Geordi.logEvent 'non-experimental','view',subject.zooniverseId
+          Geordi.logEvent {
+            type: 'non-experimental'
+            relatedID: 'view'
+            data: {
+              nonExperimentalEventType:'view'
+            }
+            userID: Geordi.UserGetter.currentUserID
+            subjectID: subject.zooniverseId
+          }
         @markAsSeen subject.zooniverseId
       subject.select()
 
@@ -111,7 +178,11 @@ class ExperimentalSubject extends Subject
                       if subject?
                         ExperimentServer.sources[subjectID]=source
       .fail =>
-        Geordi.logError "500", "Couldn't load next experimental subjects", "error"
+        Geordi.logEvent {
+          type: "error"
+          errorCode: "500"
+          errorDescription: "Couldn't load next experimental subjects"
+        }
     else
       backgroundFetcher = new $.Deferred
       backgroundFetcher.resolve null
@@ -130,7 +201,11 @@ class ExperimentalSubject extends Subject
       else if ExperimentServer.sources[subjectID]==ExperimentServer.SOURCE_RANDOM
         url = ExperimentServer.EXPERIMENT_SERVER_URL + 'experiment/' + ExperimentServer.ACTIVE_EXPERIMENT + '/participant/' + Geordi.UserGetter.currentUserID + '/random'
       else
-        Geordi.logError "409", "Couldn't POST subject "+subjectID+" to mark as seen", "error"
+        Geordi.logEvent {
+          type: "error"
+          errorCode: "409"
+          errorDescription: "Couldn't POST subject "+subjectID+" to mark as seen"
+        }
         return null
       $.post(url)
       .then (participant) =>
@@ -143,10 +218,18 @@ class ExperimentalSubject extends Subject
                 ExperimentalSubject.where(zooniverseId: seenID).delete
         seenNotifier.resolve participant
       .fail =>
-        Geordi.logError "500", "Couldn't POST subject "+subjectID+" to mark as seen", "error"
+        Geordi.logEvent {
+          type: "error"
+          errorCode: "500"
+          errorDescription: "Couldn't POST subject "+subjectID+" to mark as seen"
+        }
         seenNotifier.resolve null
     catch error
-      Geordi.logError "500", "Couldn't POST subject "+subjectID+" to mark as seen", "error"
+      Geordi.logEvent {
+        type: "error"
+        errorCode: "409"
+        errorDescription: "Couldn't POST subject "+subjectID+" to mark as seen"
+      }
       seenNotifier.resolve null
     seenNotifier.promise()
 
@@ -158,10 +241,18 @@ class ExperimentalSubject extends Subject
       .then (data) =>
         subjectIDsFetcher.resolve data
       .fail =>
-        Geordi.logError "500", "Couldn't retrieve next subjects", "error"
+        Geordi.logEvent {
+          type: "error"
+          errorCode: "500"
+          errorDescription: "Couldn't retrieve next subjects"
+        }
         subjectIDsFetcher.resolve null
     catch error
-      Geordi.logError "500", "Couldn't GET next subjects", "error"
+      Geordi.logEvent {
+        type: "error"
+        errorCode: "500"
+        errorDescription: "Couldn't GET nextsubjects"
+      }
       subjectIDsFetcher.resolve null
     subjectIDsFetcher.promise()
 
