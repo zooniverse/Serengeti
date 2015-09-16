@@ -3,13 +3,17 @@ $ = require 'jqueryify'
 Api = require 'zooniverse/lib/api'
 seasons = require 'lib/seasons'
 User = require 'zooniverse/lib/models/user'
-Subject = require 'models/experimental_subject'
+{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
 
 class Subject extends Model
   @configure 'Subject', 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata'
 
   @queueLength: 3
   @current: null
+
+  # instantiates more subjects, at random but does not do anything with them
+  @loadMoreRandomSubjects: (numberOfSubjectsToFetch) =>
+    @fetch numberOfSubjectsToFetch unless numberOfSubjectsToFetch < 1
 
   # get next if control or non-experimental
   @nextForControlCohort: (callback) ->
@@ -30,7 +34,10 @@ class Subject extends Model
       @trigger 'no-subjects'
     else
       subject = @first()
-      Geordi.logEvent 'view'
+      Geordi.logEvent {
+        type: 'view'
+        subjectID: Subject.current?.zooniverseId
+      }
       subject.select()
 
   # ensures that the next subject is selected, either now or once deferred chain is complete

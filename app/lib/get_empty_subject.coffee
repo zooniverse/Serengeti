@@ -1,7 +1,7 @@
-ExperimentalSubject = require 'models/experimental_subject'
+Subject = require 'models/subject'
 
 module.exports = ->
-  ExperimentalSubject.create
+  Subject.create
     id: 'EMPTY_SUBJECT'
 
     location: standard: [
