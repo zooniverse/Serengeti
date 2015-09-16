@@ -1,5 +1,5 @@
 $ = require('jqueryify')
-ExperimentalSubject = require 'models/experimental_subject'
+Subject = require 'models/subject'
 
 module.exports = class ExperimentServerClient
 
@@ -9,18 +9,19 @@ module.exports = class ExperimentServerClient
   Define the active experiment here by using a string which exists in http://experiments.zooniverse.org/active_experiments
   If no experiments should be running right now, set this to null, false or ""
   ###
-  ACTIVE_EXPERIMENT:null
+  ACTIVE_EXPERIMENT: null
   #ACTIVE_EXPERIMENT: "SerengetiBlanksExperiment1"
 
   ###
   The URL of the experiment server to use
   ###
   # prod:
-  EXPERIMENT_SERVER_URL: "http://experiments.zooniverse.org/"
+  EXPERIMENT_SERVER_URL: "http://experiments.staging.zooniverse.org/"
   # dev:
   #EXPERIMENT_SERVER_URL = "http://localhost:4567/"
 
   COHORT_CONTROL: "control"
+  COHORT_UI_EXPERIMENT: "experimental_ui"
   COHORT_0: "0"
   COHORT_20: "20"
   COHORT_40: "40"
@@ -85,26 +86,35 @@ module.exports = class ExperimentServerClient
   when we first get participant, and the user has not started experiment in a previous sessions, we'll need to log it to Geordi
   ###
   checkForExperimentStartAndLogIt: (participant) ->
-    if participant.blank_subjects_seen.length==0 && participant.non_blank_subjects_seen.length==0
-      Geordi.logEvent 'experimentStart'
+    if @ACTIVE_EXPERIMENT == "SerengetiBlanksExperiment1"
+      if participant.blank_subjects_seen.length==0 && participant.non_blank_subjects_seen.length==0
+        Geordi.logEvent 'experimentStart'
 
   ###
   when we first discover that a user has ended the experiment, we log it to Geordi
   ###
   checkForExperimentEndAndLogIt: (participant) ->
-    if !experimentCompleted && participant? && !participant.active && participant.blank_subjects_available && participant.blank_subjects_available.length==0 && participant.non_blank_subjects_available && participant.non_blank_subjects_available.length==0
-      @experimentCompleted = true
-      Geordi.logEvent 'experimentEnd'
+    if @ACTIVE_EXPERIMENT == "SerengetiBlanksExperiment1"
+      if !experimentCompleted && participant? && !participant.active && participant.blank_subjects_available && participant.blank_subjects_available.length==0 && participant.non_blank_subjects_available && participant.non_blank_subjects_available.length==0
+        @experimentCompleted = true
+        Geordi.logEvent 'experimentEnd'
 
   ###
   when we get participant, we need to log to Geordi if the user's was excluded
   ###
   checkForExcludedAndLogIt: (participant) ->
-    if !@excludedReason? && participant.excluded
-      # if not previously logged, log it.
-      @excludedReason = participant.excluded_reason
-      Geordi.logEvent 'experimentExcluded',participant.excluded_reason
-
+    if @ACTIVE_EXPERIMENT == "SerengetiBlanksExperiment1"
+      if !@excludedReason? && participant.excluded
+        # if not previously logged, log it.
+        @excludedReason = participant.excluded_reason
+        Geordi.logEvent {
+          type: 'experimentExcluded'
+          relatedID: participant.excluded_reason
+          data: {
+            excludedReason: participant.excluded_reason
+          }
+          subjectID: @classification.subject.zooniverseId
+        }
   ###
   This method will contact the experiment server to find the participant(experimental data) for this user in the specified experiment
   ###
@@ -130,13 +140,17 @@ module.exports = class ExperimentServerClient
               @checkForExperimentEndAndLogIt participant
               @currentCohort = participant.cohort
               if !@currentParticipant?
-                Geordi.logEvent 'experimentResume'
+                Geordi.logEvent 'experimentResume', null, Subject.current?.zooniverseId
                 @checkForExperimentStartAndLogIt participant
               @currentParticipant = participant
               eventualParticipant.resolve participant
             .fail =>
               @lastFailedAt = new Date()
-              Geordi.logError "500", "Couldn't retrieve experimental participant data", "error"
+              Geordi.logEvent {
+                type: "error"
+                errorCode: "500"
+                errorDescription: "Couldn't retrieve experimental participant data"
+              }
               eventualParticipant.resolve null
           catch error
             eventualParticipant.resolve null
@@ -168,7 +182,11 @@ module.exports = class ExperimentServerClient
             eventualCohort.resolve participant.cohort
           .fail =>
             @lastFailedAt = new Date()
-            Geordi.logError "500", "Couldn't retrieve experimental cohort data", "error"
+            Geordi.logEvent {
+              type: "error"
+              errorCode: "500"
+              errorDescription: "Couldn't retrieve experimental cohort data"
+            }
             eventualCohort.resolve null
         catch error
           eventualCohort.resolve null

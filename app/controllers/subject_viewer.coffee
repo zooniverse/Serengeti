@@ -1,7 +1,7 @@
 {Controller} = require 'spine'
 template = require 'views/subject_viewer'
 AnnotationItem = require './annotation_item'
-ExperimentalSubject = require 'models/experimental_subject'
+Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
 $ = require 'jqueryify'
 modulus = require 'lib/modulus'
@@ -149,7 +149,14 @@ class SubjectViewer extends Controller
   #   delete @mouseDown
 
   onClickPlay: ->
-    Geordi.logEvent 'play', @classification.id, @classification.subject.zooniverseId
+    Geordi.logEvent {
+      type: 'play'
+      relatedID: @classification.id
+      data: {
+        classificationID: @classification.id
+      }
+      subjectID: @classification.subject.zooniverseId
+    }
     @play()
 
   onClickPause: ->
@@ -158,47 +165,117 @@ class SubjectViewer extends Controller
   onClickToggle: ({currentTarget}) =>
     selectedIndex = $(currentTarget).val()
     friendlyIndex = 1 + parseInt ($(currentTarget).val())
-    Geordi.logEvent 'frame' + friendlyIndex, @classification.id, @classification.subject.zooniverseId
+    Geordi.logEvent {
+      type: 'frame'
+      relatedID: name
+      data: {
+        frame: friendlyIndex
+      }
+      subjectID: @classification.subject.zooniverseId
+    }
     @activate selectedIndex
 
   onClickSatellite: ->
     if not @satelliteImage.hasClass 'active'
-      Geordi.logEvent 'map', null, @classification.subject.zooniverseId
+      Geordi.logEvent {
+        type: 'map'
+        subjectID: @classification.subject.zooniverseId
+      }
     @satelliteImage.add(@satelliteToggle).toggleClass 'active'
 
   onClickSignIn: ->
     $(window).trigger 'request-login-dialog'
 
   onClickFacebook: ->
-    Geordi.logEvent 'facebook', @classification.id, @classification.subject.zooniverseId
+    Geordi.logEvent {
+      type: 'share'
+      relatedID: 'facebook'
+      data: {
+        shareType: 'facebook'
+        classificationID: @classification.id
+      }
+      subjectID: @classification.subject.zooniverseId
+    }
 
   onClickTweet: ->
-    Geordi.logEvent 'tweet', @classification.id, @classification.subject.zooniverseId
+    Geordi.logEvent {
+      type: 'share'
+      relatedID: 'tweet'
+      data: {
+        shareType: 'tweet'
+        classificationID: @classification.id
+      }
+      subjectID: @classification.subject.zooniverseId
+    }
+
 
   onClickPin: ->
-    Geordi.logEvent 'pin', @classification.id, @classification.subject.zooniverseId
+    Geordi.logEvent {
+      type: 'share'
+      relatedID: 'pin'
+      data: {
+        shareType: 'pin'
+        classificationID: @classification.id
+      }
+      subjectID: @classification.subject.zooniverseId
+    }
 
   onClickTalk: ->
-    Geordi.logEvent 'talk', @classification.id, @classification.subject.zooniverseId
+    Geordi.logEvent {
+      type: 'talk'
+      relatedID: @classification.id
+      data: {
+        classificationID: @classification.id
+      }
+      subjectID: @classification.subject.zooniverseId
+    }
 
   onClickFavorite: ->
-    Geordi.logEvent 'favorite', @classification.id, @classification.subject.zooniverseId
+    Geordi.logEvent {
+      type: 'favorite'
+      relatedID: @classification.id
+      data: {
+        classificationID: @classification.id
+      }
+      subjectID: @classification.subject.zooniverseId
+    }
     @classification.updateAttribute 'favorite', true
 
   onClickUnfavorite: ->
-    Geordi.logEvent 'unfavorite', @classification.id, @classification.subject.zooniverseId
+    Geordi.logEvent {
+      type: 'unfavorite'
+      relatedID: @classification.id
+      data: {
+        classificationID: @classification.id
+      }
+      subjectID: @classification.subject.zooniverseId
+    }
     @classification.updateAttribute 'favorite', false
 
   onChangeFireCheckbox: ->
     fire = !!@fireCheckbox.attr 'checked'
     if fire
-      Geordi.logEvent 'fire', @classification.id, @classification.subject.zooniverseId
+      Geordi.logEvent {
+        type: 'fire'
+        relatedID: @classification.id
+        data: {
+          classificationID: @classification.id
+        }
+        subjectID: @classification.subject.zooniverseId
+      }
     @classification.annotate {fire}, true
 
   onChangeNothingCheckbox: ->
     nothing = !!@nothingCheckbox.attr 'checked'
     if nothing
-      Geordi.logEvent 'nothing', @classification.id, @classification.subject.zooniverseId
+      Geordi.logEvent {
+        type: 'nothing'
+        relatedID: @classification.id
+        data: {
+          classificationID: @classification.id
+        }
+        subjectID: @classification.subject.zooniverseId
+      }
     @classification.annotate {nothing}, true
 
   onClickFinish: ->
@@ -207,11 +284,18 @@ class SubjectViewer extends Controller
     @extraMessageContainer.hide() unless message
 
     @el.addClass 'finished'
-    Geordi.logEvent 'classify', @classification.id, @classification.subject.zooniverseId
+    Geordi.logEvent {
+      type: 'classify'
+      relatedID: @classification.id
+      data: {
+        classificationID: @classification.id
+      }
+      subjectID: @classification.subject.zooniverseId
+    }
     @classification.send() unless @classification.subject.metadata.empty
 
   onClickNext: ->
-    ExperimentalSubject.next()
+    Subject.next()
 
   play: ->
     # Flip the images back and forth a couple times.
