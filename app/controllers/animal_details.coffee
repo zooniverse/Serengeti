@@ -2,8 +2,9 @@
 template = require 'views/animal_details'
 PopupButton = require './popup_button'
 ImageChanger = require './image_changer'
-AnalyticsLogger = require 'lib/analytics'
-ExperimentalSubject = require 'models/experimental_subject'
+Subject = require 'models/subject'
+Geordi = require 'lib/geordi_and_experiments_setup'
+ExperimentServer = Geordi.experimentServerClient
 
 class AnimalDetails extends Controller
   animal: null
@@ -72,15 +73,25 @@ class AnimalDetails extends Controller
 
   getBabies: ->
     babies = !!@babiesCheckbox.attr 'checked'
-    if babies
-      AnalyticsLogger.logEvent 'young', @animal.id
     babies
 
   onClickCancel: ->
     @hide()
 
   onClickIdentify: ->
-    AnalyticsLogger.logEvent 'identify', @animal.id, ExperimentalSubject.current?.zooniverseId
+    Geordi.logEvent {
+      type: 'identify'
+      relatedID: @animal.id
+      data: {
+        species: @animal.id
+        behavior: @getBehaviors()
+        count: @getCount()
+        babies: @getBabies()
+        filters: @set.options
+        search: @set.searchString
+      }
+      subjectID: Subject.current?.zooniverseId
+    }
     @classification.annotate
       species: @animal
 

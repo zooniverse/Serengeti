@@ -14,6 +14,8 @@
     "t7e": "0.2.3",
     "underscore": "1.4.2",
     "zooniverse": "zooniverse/Zooniverse#98ffd4b",
+    "zooniverse-geordi-client": "^1.0.0",
+    "zooniverse-user-string-getter": "^1.1.1",
     "zootorial": "0.2.4"
   },
   "scripts": {

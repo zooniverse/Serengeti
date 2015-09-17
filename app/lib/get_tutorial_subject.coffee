@@ -1,7 +1,7 @@
-ExperimentalSubject = require 'models/experimental_subject'
+Subject = require 'models/subject'
 
 module.exports = ->
-  ExperimentalSubject.create
+  Subject.create
     id: '5077375154558fabd7000003'
     zooniverseId: 'TUTORIAL_SUBJECT'
     workflowId: '5077375154558fabd7000002'
