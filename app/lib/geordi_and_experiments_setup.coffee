@@ -1,5 +1,5 @@
 ExperimentServerClient = require 'lib/experiments'
-ExperimentServer = new ExperimentServerClient()
+
 Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
 GeordiClient = require 'zooniverse-geordi-client'
@@ -15,8 +15,11 @@ Geordi = new GeordiClient({
   "projectToken": "serengeti"
   "zooUserIDGetter": checkZooUserID
   "subjectGetter": checkZooSubject
-  "experimentServerClient": ExperimentServer
 })
 
-module.exports = {Geordi,ExperimentServer}
+ExperimentServer = new ExperimentServerClient(Geordi)
+
+Geordi.experimentServerClient = ExperimentServer
+
+module.exports = Geordi
 

@@ -15,7 +15,8 @@ seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
 Subject = require 'models/subject'
-{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
+Geordi = require 'lib/geordi_and_experiments_setup'
+ExperimentServer = Geordi.experimentServerClient
 googleAnalytics = require 'zooniverse/lib/google_analytics'
 # Map = require 'zooniverse/lib/map'
 

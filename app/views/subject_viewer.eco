@@ -2,6 +2,8 @@
 <% moment = require 'moment/moment' %>
 <% Subject = require 'models/subject' %>
 <% sponsoredCameraTraps = window.SERENGETI_SPONSORED_CAMERA_TRAPS || {} %>
+<% Geordi = require 'lib/geordi_and_experiments_setup' %>
+<% ExperimentServer = Geordi.experimentServerClient %>
 
 <div class="images">
   <!--<button name="zoom" style="margin-left: -20px;">+/-</button>-->
@@ -37,7 +39,11 @@
     <button name="unfavorite" title="<%- translate 'classify.unfavorite' %> [F]" data-shortcut="F"><i rel="heart"><%- translate 'span', 'classify.unfavorite' %></i></button>
   </span>
 </div>
-
+<!--
+<div class="experiment">
+  Current cohort is <%= ExperimentServer.currentCohort %>
+</div>
+-->
 <div class="controls">
   <span class="play group">
     <button name="play" title="<%- translate 'classify.play' %> [SPACE]" data-shortcut="SPACE"><i rel="play"><%- translate 'span', 'classify.play' %></i></button>
