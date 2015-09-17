@@ -23,7 +23,10 @@
     "underscore/underscore",
 
     "zootorial",
-    "moment"
+    "moment",
+
+    "zooniverse-user-string-getter",
+    "zooniverse-geordi-client"
   ],
 
   "libs": [
