@@ -39,7 +39,7 @@
     <button name="unfavorite" title="<%- translate 'classify.unfavorite' %> [F]" data-shortcut="F"><i rel="heart"><%- translate 'span', 'classify.unfavorite' %></i></button>
   </span>
 </div>
-<!--
+<!-- experimental-ui variant could go here
 <div class="experiment">
   Current cohort is <%= ExperimentServer.currentCohort %>
 </div>
