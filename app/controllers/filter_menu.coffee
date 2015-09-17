@@ -4,7 +4,6 @@ $ = require 'jqueryify'
 translate = require 't7e'
 Subject = require 'models/subject'
 Geordi = require 'lib/geordi_and_experiments_setup'
-ExperimentServer = Geordi.experimentServerClient
 
 class FilterMenu extends Controller
   set: null
@@ -61,7 +60,7 @@ class FilterMenu extends Controller
       data: {
         filterType: id
       }
-      subjectID: ExperimentalSubject.current?.zooniverseId
+      subjectID: Subject.current?.zooniverseId
     }
     @set.filter result, false
     @close()
