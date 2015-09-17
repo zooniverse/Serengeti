@@ -6,7 +6,8 @@ User = require 'zooniverse/lib/models/user'
 $ = require 'jqueryify'
 modulus = require 'lib/modulus'
 splits = require 'lib/splits'
-{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
+Geordi = require 'lib/geordi_and_experiments_setup'
+ExperimentServer = Geordi.experimentServerClient
 
 class SubjectViewer extends Controller
   classification: null

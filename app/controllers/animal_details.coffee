@@ -3,7 +3,8 @@ template = require 'views/animal_details'
 PopupButton = require './popup_button'
 ImageChanger = require './image_changer'
 Subject = require 'models/subject'
-{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
+Geordi = require 'lib/geordi_and_experiments_setup'
+ExperimentServer = Geordi.experimentServerClient
 
 class AnimalDetails extends Controller
   animal: null

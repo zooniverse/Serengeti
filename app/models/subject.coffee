@@ -3,7 +3,8 @@ $ = require 'jqueryify'
 Api = require 'zooniverse/lib/api'
 seasons = require 'lib/seasons'
 User = require 'zooniverse/lib/models/user'
-{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
+Geordi = require 'lib/geordi_and_experiments_setup'
+ExperimentServer = Geordi.experimentServerClient
 
 class Subject extends Model
   @configure 'Subject', 'zooniverseId', 'workflowId', 'location', 'coords', 'metadata'
@@ -56,6 +57,9 @@ class Subject extends Model
 
   # for normal subjects, we behave just like control.
   @next: (callback) ->
+    eventData={}
+    Geordi.addUserDetailsToEventData(eventData)
+    ExperimentServer.getCohort()
     @nextForControlCohort callback
 
   @fetch: (count) ->

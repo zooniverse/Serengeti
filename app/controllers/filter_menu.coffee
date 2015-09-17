@@ -3,7 +3,8 @@ template = require 'views/filter_menu'
 $ = require 'jqueryify'
 translate = require 't7e'
 Subject = require 'models/subject'
-{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
+Geordi = require 'lib/geordi_and_experiments_setup'
+ExperimentServer = Geordi.experimentServerClient
 
 class FilterMenu extends Controller
   set: null
