@@ -9,7 +9,7 @@ module.exports = class ExperimentServerClient
   Define the active experiment here by using a string which exists in http://experiments.zooniverse.org/active_experiments
   If no experiments should be running right now, set this to null, false or ""
   ###
-  ACTIVE_EXPERIMENT: "SerengetiAdvisoryBoard2015Experiment"
+  ACTIVE_EXPERIMENT: "SerengetiMessagingExperiment2"
   #ACTIVE_EXPERIMENT: "SerengetiBlanksExperiment1"
   ###
   The URL of the experiment server to use
@@ -73,81 +73,7 @@ module.exports = class ExperimentServerClient
     @currentCohort = null
     @currentParticipant = null
     @Geordi.UserStringGetter.currentUserID = null
-  ###
-  when we first get participant, and the user has not started experiment in a previous sessions, we'll need to log it to Geordi
-  ###
-  #checkForExperimentStartAndLogIt: (participant) ->
-  #  if @ACTIVE_EXPERIMENT == "SerengetiBlanksExperiment1"
-  #    if participant.blank_subjects_seen.length==0 && participant.non_blank_subjects_seen.length==0
-  #      @Geordi.logEvent 'experimentStart'
-  ###
-  when we first discover that a user has ended the experiment, we log it to Geordi
-  ###
-  #checkForExperimentEndAndLogIt: (participant) ->
-  #  if @ACTIVE_EXPERIMENT == "SerengetiBlanksExperiment1"
-  #    if !experimentCompleted && participant? && !participant.active && participant.blank_subjects_available && participant.blank_subjects_available.length==0 && participant.non_blank_subjects_available && participant.non_blank_subjects_available.length==0
-  #      @experimentCompleted = true
-  #      @Geordi.logEvent 'experimentEnd'
-  ###
-  when we get participant, we need to log to Geordi if the user's was excluded
-  ###
-  #checkForExcludedAndLogIt: (participant) ->
-  #  if @ACTIVE_EXPERIMENT == "SerengetiBlanksExperiment1"
-  #    if !@excludedReason? && participant.excluded
-  #      # if not previously logged, log it.
-  #      @excludedReason = participant.excluded_reason
-  #      @Geordi.logEvent {
-  #        type: 'experimentExcluded'
-  #        relatedID: participant.excluded_reason
-  #        data: {
-  #          excludedReason: participant.excluded_reason
-  #        }
-  #        subjectID: @classification.subject.zooniverseId
-  #      }
-  ###
-  This method will contact the experiment server to find the participant(experimental data) for this user in the specified experiment
-  ###
-  #getParticipant: () ->
-  #  @Geordi.UserStringGetter.currentUserID = "(unknown)"
-  #  @Geordi.UserStringGetter.getUserIDorIPAddress()
-  #  .then (data) =>
-  #    if data?
-  #      @Geordi.UserStringGetter.currentUserID = data.toString()
-  #  .fail =>
-  #    @Geordi.UserStringGetter.currentUserID = "(anonymous)"
-  #  .always =>
-  #    eventualParticipant = new $.Deferred
-  #    if @ACTIVE_EXPERIMENT?
-  #      now = new Date().getTime()
-  #      if @lastFailedAt?
-  #        timeSinceLastFail = now - @lastFailedAt.getTime()
-  #      if @lastFailedAt == null || timeSinceLastFail > @RETRY_INTERVAL
-  #        try
-  #          $.get(@EXPERIMENT_SERVER_URL+ 'experiment/' + @ACTIVE_EXPERIMENT + '?user_id=' + @Geordi.UserStringGetter.currentUserID)
-  #          .then (participant) =>
-  #            @checkForExcludedAndLogIt participant
-  #            @checkForExperimentEndAndLogIt participant
-  #            @currentCohort = participant.cohort
-  #            if !@currentParticipant?
-  #              @Geordi.logEvent 'experimentResume', null, Subject.current?.zooniverseId
-  #              @checkForExperimentStartAndLogIt participant
-  #            @currentParticipant = participant
-  #            eventualParticipant.resolve participant
-  #          .fail =>
-  #            @lastFailedAt = new Date()
-  #            @Geordi.logEvent {
-  #              type: "error"
-  #              errorCode: "500"
-  #              errorDescription: "Couldn't retrieve experimental participant data"
-  #            }
-  #            eventualParticipant.resolve null
-  #        catch error
-  #          eventualParticipant.resolve null
-  #      else
-  #        eventualParticipant.resolve null
-  #    else
-  #      eventualParticipant.resolve null
-  #    eventualParticipant.promise()
+
   ###
   This method will contact the experiment server to find the cohort for this user in the specified experiment
   ###
@@ -155,27 +81,30 @@ module.exports = class ExperimentServerClient
     eventualCohort = new $.Deferred
     if @ACTIVE_EXPERIMENT?
       now = new Date().getTime()
-      if @lastFailedAt?
-        timeSinceLastFail = now - @lastFailedAt.getTime()
-      if @lastFailedAt == null || timeSinceLastFail > @RETRY_INTERVAL
-        try
-          $.get(@EXPERIMENT_SERVER_URL+'experiment/' + @ACTIVE_EXPERIMENT + '?userid=' + @Geordi.UserStringGetter.currentUserID)
-          .then (participant) =>
-            @currentCohort = participant.cohort
-            @currentParticipant = participant
-            eventualCohort.resolve participant.cohort
-          .fail =>
-            @lastFailedAt = new Date()
-            @Geordi.logEvent {
-              type: "error"
-              errorCode: "500"
-              errorDescription: "Couldn't retrieve experimental cohort data"
-            }
-            eventualCohort.resolve null
-        catch error
-          eventualCohort.resolve null
+      if @currentCohort?
+        eventualCohort.resolve @currentCohort
       else
-        eventualCohort.resolve null
+        if @lastFailedAt?
+          timeSinceLastFail = now - @lastFailedAt.getTime()
+        if @lastFailedAt == null || timeSinceLastFail > @RETRY_INTERVAL
+          try
+            $.get(@EXPERIMENT_SERVER_URL+'experiment/' + @ACTIVE_EXPERIMENT + '?userid=' + @Geordi.UserStringGetter.currentUserID)
+            .then (participant) =>
+              @currentCohort = participant.cohort
+              @currentParticipant = participant
+              eventualCohort.resolve participant.cohort
+            .fail =>
+              @lastFailedAt = new Date()
+              @Geordi.logEvent {
+                type: "error"
+                errorCode: "500"
+                errorDescription: "Couldn't retrieve experimental cohort data"
+              }
+              eventualCohort.resolve null
+          catch error
+            eventualCohort.resolve null
+        else
+          eventualCohort.resolve null
     else
       eventualCohort.resolve null
     eventualCohort.promise()
