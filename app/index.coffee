@@ -63,7 +63,8 @@ Api.proxy.el().one 'load', ->
     sortedSeasons = for season, {_id: id, total, complete} of project.seasons
       total ?= 0
       complete ?= 0
-      {season, id, total, complete}
+      name = if season is '0' then 'Lost Season' else "Season #{ season }"
+      {season, id, name, total, complete}
 
     sortedSeasons.sort (a, b) ->
       a.season > b.season
