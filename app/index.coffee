@@ -67,6 +67,7 @@ Api.proxy.el().one 'load', ->
       {season, id, name, total, complete}
 
     sortedSeasons.sort (a, b) ->
+      return 1 if a.season is '0'
       a.season > b.season
 
     seasons.push sortedSeasons...
