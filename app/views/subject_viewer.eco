@@ -1,8 +1,33 @@
 <% translate = require 't7e' %>
 <% moment = require 'moment/moment' %>
-<% Subject = require 'models/experimental_subject' %>
+<% Subject = require 'models/subject' %>
 <% sponsoredCameraTraps = window.SERENGETI_SPONSORED_CAMERA_TRAPS || {} %>
+<% Geordi = require 'lib/geordi_and_experiments_setup' %>
+<% ExperimentServer = Geordi.experimentServerClient %>
 
+<% if ExperimentServer.currentCohort==ExperimentServer.COHORT_UI_EXPERIMENT: %>
+<div style="
+    background: rgba(20,11,3,0.25);
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 1px 2px rgba(20,11,3,0.50) inset, 0 -1px 0px rgba(249,248,243,0.25) inset;
+    box-shadow: 0 1px 2px rgba(20,11,3,0.50) inset, 0 -1px 0px rgba(249,248,243,0.25) inset;
+    color: rgb(251, 251, 97);
+    height: 18px;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
+    -ms-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+    padding-bottom: 15px;
+"><span style="
+">Help us find the elusive animals of the Serengeti!</span>
+</div>
+<% end %>
 <div class="images">
   <!--<button name="zoom" style="margin-left: -20px;">+/-</button>-->
   <div class="subject-images">

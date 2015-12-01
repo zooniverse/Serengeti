@@ -2,7 +2,8 @@
 template = require 'views/filter_menu'
 $ = require 'jqueryify'
 translate = require 't7e'
-AnalyticsLogger = require 'lib/analytics'
+Subject = require 'models/subject'
+Geordi = require 'lib/geordi_and_experiments_setup'
 
 class FilterMenu extends Controller
   set: null
@@ -52,12 +53,28 @@ class FilterMenu extends Controller
     id = $(currentTarget).val()
     result = {}
     result[@characteristic.id] = id
-    AnalyticsLogger.logEvent id
+    subtype = id
+    Geordi.logEvent {
+      type: 'filter'
+      relatedID: id
+      data: {
+        filterType: id
+      }
+      subjectID: Subject.current?.zooniverseId
+    }
     @set.filter result, false
     @close()
 
   onClearClick: ->
-    AnalyticsLogger.logEvent 'clear' + @characteristic.id.charAt(0).toUpperCase() + @characteristic.id.slice(1)
+    subtype = 'clear' + @characteristic.id.charAt(0).toUpperCase() + @characteristic.id.slice(1)
+    Geordi.logEvent {
+      type: 'clear'
+      relatedID: subtype
+      data: {
+        clearType: subtype
+      }
+      subjectID: Subject.current?.zooniverseId
+    }
     result = {}
     result[@characteristic.id] = null
     @set.filter result, false
