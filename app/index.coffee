@@ -48,7 +48,7 @@ User.bind 'sign-in', ->
     Geordi.logEvent 'logout'
 
 Api.init
-  host: if !!location.href.match /demo|beta/
+  host: if !!location.href.match /demo|preview|beta/
     'https://dev.zooniverse.org'
   else if +location.port < 1024
     'https://api.zooniverse.org'
