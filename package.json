@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "hem server --port 6371",
-    "deploy-to-staging": "hem build && publisssh ./public zooniverse-demo/serengeti && rm -rf ./public/application.*",
+    "deploy-to-staging": "hem build && publisssh ./public zooniverse-static/preview.zooniverse.org/serengeti && rm -rf ./public/application.*",
     "deploy-to-production": "hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org && rm -rf ./public/application.*",
     "deploy-experiment": "hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org/happyuserexperiment && rm -rf ./public/application.*",
     "deploy-to-demo": "hem build && publisssh ./public demo.zooniverse.org/serengeti && rm -rf ./public/application.*"
