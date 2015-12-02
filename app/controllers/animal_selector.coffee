@@ -4,7 +4,7 @@ template = require 'views/animal_selector'
 FilterMenu = require './filter_menu'
 User = require 'zooniverse/lib/models/user'
 columnize = require 'lib/columnize'
-ExperimentalSubject = require 'models/experimental_subject'
+Geordi = require 'lib/geordi_and_experiments_setup'
 AnimalDetails = require './animal_details'
 getTutorialSubject = require 'lib/get_tutorial_subject'
 getPhysicallyAdjacentSibling = require 'lib/get_physically_adjacent_sibling'
@@ -71,7 +71,13 @@ class AnimalSelector extends Controller
         targets = @items.filter ':not(".dimmed")'
         targets.first().focus()
         targets.first().click() if targets.length is 1
-        Geordi.logEvent 'search', @searchInput.val()
+        Geordi.logEvent {
+          type: 'search'
+          relatedID: @animal.id
+          data: {
+            searchText: @searchInput.val()
+          }
+        }
       @set.search @searchInput.val()
 
   onSelectionAreaKeyDown: (e) ->
