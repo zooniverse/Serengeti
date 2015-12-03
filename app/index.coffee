@@ -47,14 +47,14 @@ User.bind 'sign-in', ->
     ExperimentServer.resetExperimentalFlags()
     Geordi.logEvent 'logout'
 
-Api.init
-  host: if location.origin is 'http://preview.zooniverse.org'
-    'https://dev.zooniverse.org'
-  else if +location.port < 1024
-    'https://api.zooniverse.org'
-  else
-    'https://dev.zooniverse.org'
-    #"#{location.protocol}//#{location.hostname}:3000"
+[host, proxyPath] = if location.origin is 'http://preview.zooniverse.org'
+  ['https://dev.zooniverse.org', '/proxy']
+else if +location.port < 1024
+  [window.location.origin, '/_ouroboros_api/proxy']
+else
+  ['https://dev.zooniverse.org', '/proxy']
+
+Api.init {host, proxyPath}
 
 # TODO: Don't count on the proxy frame to have no loaded yet.
 
