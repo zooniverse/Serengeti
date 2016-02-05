@@ -75,6 +75,12 @@ module.exports = class ExperimentServerClient
     @Geordi.UserStringGetter.currentUserID = null
 
   ###
+  Check if current user is eligible to participate in experiments
+  ###
+  shouldGetCohort: (currentUserID) =>
+    @ACTIVE_EXPERIMENT!=null && currentUserID!=@Geordi.UserStringGetter.ANONYMOUS && (!@currentCohort?) && !@experimentCompleted
+
+  ###
   This method will contact the experiment server to find the cohort for this user in the specified experiment
   ###
   getCohort: =>
