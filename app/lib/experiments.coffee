@@ -9,7 +9,7 @@ module.exports = class ExperimentServerClient
   Define the active experiment here by using a string which exists in http://experiments.zooniverse.org/active_experiments
   If no experiments should be running right now, set this to null, false or ""
   ###
-  ACTIVE_EXPERIMENT: "SerengetiMessagingExperiment2"
+  ACTIVE_EXPERIMENT: "SerengetiMessagingExperiment3"
   #ACTIVE_EXPERIMENT: "SerengetiBlanksExperiment1"
   ###
   The URL of the experiment server to use
