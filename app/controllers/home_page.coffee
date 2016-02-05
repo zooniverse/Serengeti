@@ -24,10 +24,10 @@ class HomePage extends Controller
       el: @el.find '.recents .image-changer'
       sources: []
 
-    # Api.get '/projects/serengeti', (data) =>
-    #   @classificationCount.html data.classification_count
-    #   @userCount.html data.user_count
-    #   @progressFill.width "#{100 * (data.complete_count / @totalSubjects)}%"
+    Api.get '/projects/serengeti', (data) =>
+      @classificationCount.html data.classification_count
+      @userCount.html data.user_count
+      @progressFill.width "#{100 * (data.complete_count / @totalSubjects)}%"
 
     Api.get '/projects/serengeti/recents', (recents) =>
       # Prefer to show favorites

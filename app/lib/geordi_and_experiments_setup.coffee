@@ -18,5 +18,9 @@ Geordi = new GeordiClient({
   "experimentServerClient": ExperimentServer
 })
 
-module.exports = {Geordi,ExperimentServer}
+ExperimentServer = new ExperimentServerClient(Geordi)
+
+Geordi.experimentServerClient = ExperimentServer
+
+module.exports = Geordi
 
