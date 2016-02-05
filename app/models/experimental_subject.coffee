@@ -1,7 +1,8 @@
 Subject = require 'models/subject'
 User = require 'zooniverse/lib/models/user'
 Api = require 'zooniverse/lib/api'
-{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
+Geordi = require 'lib/geordi_and_experiments_setup'
+ExperimentServer = Geordi.experimentServerClient
 
 # An Experimental Subject is a specialized subject for use in experiments.
 class ExperimentalSubject extends Subject
