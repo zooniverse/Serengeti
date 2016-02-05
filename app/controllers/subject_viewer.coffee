@@ -70,7 +70,7 @@ class SubjectViewer extends Controller
       @classification.bind 'change', @onClassificationChange
       @classification.bind 'add-species', @onClassificationAddSpecies
       if ExperimentServer.currentCohort?
-        @classification.metadata.cohort = cohort
+        @classification.metadata.cohort = ExperimentServer.currentCohort
       @html template @classification
       @active = Math.floor @classification.subject.location.standard.length / 2
       @activate @active
