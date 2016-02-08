@@ -72,10 +72,11 @@ class SubjectViewer extends Controller
       if ExperimentServer.currentCohort?
         @classification.metadata.cohort = ExperimentServer.currentCohort
       @html template @classification
+
       @active = Math.floor @classification.subject.location.standard.length / 2
       @activate @active
-      @onClassificationChange()
 
+      @onClassificationChange()
     else
       @html ''
 
