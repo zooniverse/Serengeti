@@ -67,8 +67,13 @@ Api.proxy.el().one 'load', ->
       {season, id, name, total, complete}
 
     sortedSeasons.sort (a, b) ->
-      return 1 if a.season is '0'
-      a.season > b.season
+      # Lost Season is effectively season 8.5, in ordering
+      if a.season is '0'
+        8.5 - b.season
+      else if b.season is '0'
+        a.season - 8.5
+      else
+        a.season - b.season
 
     seasons.push sortedSeasons...
 
