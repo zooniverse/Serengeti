@@ -885,7 +885,7 @@ module.exports =
     information:
       main: '''
         <h2>Observing animals in the wild</h2>
-        <p>Over the last 45 years, the <a href="http://www.cbs.umn.edu/lionresearch/" target="_blank">University of Minnesota Lion Project</a> has discovered a lot about lions – everything from why they have manes to why they live in groups. Now we’re turning our sights to understanding how an entire community of large animals interacts. We currently monitor 24 lion prides in Serengeti National Park, Tanzania, using radio-tracking.  To collect information about other species, we’ve set out a grid of 225 camera traps.  With photographs from these cameras, we’re able to study how over 30 species are distributed across the landscape – and how they interact with lions and one another.</p>
+        <p>Over the last 45 years, the <a href="http://cbs.umn.edu/research/labs/lionresearch" target="_blank">University of Minnesota Lion Project</a> has discovered a lot about lions – everything from why they have manes to why they live in groups. Now we’re turning our sights to understanding how an entire community of large animals interacts. We currently monitor 24 lion prides in Serengeti National Park, Tanzania, using radio-tracking.  To collect information about other species, we’ve set out a grid of 225 camera traps.  With photographs from these cameras, we’re able to study how over 30 species are distributed across the landscape – and how they interact with lions and one another.</p>
 
         <p style="text-align: center;"><img src="images/about/tanzania-map.png" /></p>
 
