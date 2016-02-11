@@ -59,7 +59,8 @@ class Subject extends Model
   @next: (callback) ->
     eventData={}
     Geordi.addUserDetailsToEventData(eventData)
-    ExperimentServer.getCohort()
+    if ExperimentServer.shouldGetCohort(eventData["userID"])
+      ExperimentServer.getCohort()
     @nextForControlCohort callback
 
   @fetch: (count) ->

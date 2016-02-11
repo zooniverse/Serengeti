@@ -14,7 +14,7 @@ Api = require 'zooniverse/lib/api'
 seasons = require 'lib/seasons'
 TopBar = require 'zooniverse/lib/controllers/top_bar'
 User = require 'zooniverse/lib/models/user'
-Subject = require 'models/subject'
+ExperimentalSubject = require 'models/experimental_subject'
 Geordi = require 'lib/geordi_and_experiments_setup'
 ExperimentServer = Geordi.experimentServerClient
 googleAnalytics = require 'zooniverse/lib/google_analytics'
@@ -67,13 +67,8 @@ Api.proxy.el().one 'load', ->
       {season, id, name, total, complete}
 
     sortedSeasons.sort (a, b) ->
-      # Lost Season is effectively season 8.5, in ordering
-      if a.season is '0'
-        8.5 - b.season
-      else if b.season is '0'
-        a.season - 8.5
-      else
-        a.season - b.season
+      return 1 if a.season is '0'
+      a.season > b.season
 
     seasons.push sortedSeasons...
 

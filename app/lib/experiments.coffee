@@ -9,7 +9,7 @@ module.exports = class ExperimentServerClient
   Define the active experiment here by using a string which exists in http://experiments.zooniverse.org/active_experiments
   If no experiments should be running right now, set this to null, false or ""
   ###
-  ACTIVE_EXPERIMENT: "SerengetiMessagingExperiment2"
+  ACTIVE_EXPERIMENT: "SerengetiMessagingExperiment3"
   #ACTIVE_EXPERIMENT: "SerengetiBlanksExperiment1"
   ###
   The URL of the experiment server to use
@@ -73,6 +73,12 @@ module.exports = class ExperimentServerClient
     @currentCohort = null
     @currentParticipant = null
     @Geordi.UserStringGetter.currentUserID = null
+
+  ###
+  Check if current user is eligible to participate in experiments
+  ###
+  shouldGetCohort: (currentUserID) =>
+    @ACTIVE_EXPERIMENT!=null && currentUserID!=@Geordi.UserStringGetter.ANONYMOUS && (!@currentCohort?) && !@experimentCompleted
 
   ###
   This method will contact the experiment server to find the cohort for this user in the specified experiment

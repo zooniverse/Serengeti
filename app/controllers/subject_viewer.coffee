@@ -69,17 +69,14 @@ class SubjectViewer extends Controller
     if @classification
       @classification.bind 'change', @onClassificationChange
       @classification.bind 'add-species', @onClassificationAddSpecies
-      ExperimentServer.getCohort()
-      .then (cohort) =>
-        if cohort?
-          @classification.metadata.cohort = cohort
-      .always =>
-        @html template @classification
+      if ExperimentServer.currentCohort?
+        @classification.metadata.cohort = ExperimentServer.currentCohort
+      @html template @classification
 
-        @active = Math.floor @classification.subject.location.standard.length / 2
-        @activate @active
+      @active = Math.floor @classification.subject.location.standard.length / 2
+      @activate @active
 
-        @onClassificationChange()
+      @onClassificationChange()
     else
       @html ''
 
@@ -152,6 +149,10 @@ class SubjectViewer extends Controller
   onClickPlay: ->
     Geordi.logEvent {
       type: 'play'
+      relatedID: @classification.id
+      data: {
+        classificationID: @classification.id
+      }
       subjectID: @classification.subject.zooniverseId
     }
     @play()
