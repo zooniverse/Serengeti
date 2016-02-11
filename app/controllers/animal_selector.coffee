@@ -4,7 +4,8 @@ template = require 'views/animal_selector'
 FilterMenu = require './filter_menu'
 User = require 'zooniverse/lib/models/user'
 columnize = require 'lib/columnize'
-Geordi = require 'lib/geordi_and_experiments_setup'
+ExperimentalSubject = require 'models/experimental_subject'
+{Geordi,ExperimentServer} = require 'lib/geordi_and_experiments_setup'
 AnimalDetails = require './animal_details'
 getTutorialSubject = require 'lib/get_tutorial_subject'
 getPhysicallyAdjacentSibling = require 'lib/get_physically_adjacent_sibling'
@@ -72,7 +73,7 @@ class AnimalSelector extends Controller
         targets.first().focus()
         targets.first().click() if targets.length is 1
         Geordi.logEvent {
-          type: 'search'
+          type: 'identify'
           relatedID: @animal.id
           data: {
             searchText: @searchInput.val()

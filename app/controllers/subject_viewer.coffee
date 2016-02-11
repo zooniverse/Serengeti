@@ -152,6 +152,10 @@ class SubjectViewer extends Controller
   onClickPlay: ->
     Geordi.logEvent {
       type: 'play'
+      relatedID: @classification.id
+      data: {
+        classificationID: @classification.id
+      }
       subjectID: @classification.subject.zooniverseId
     }
     @play()
