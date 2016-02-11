@@ -2,7 +2,7 @@
 template = require 'views/filter_menu'
 $ = require 'jqueryify'
 translate = require 't7e'
-Subject = require 'models/subject'
+ExperimentalSubject = require 'models/experimental_subject'
 Geordi = require 'lib/geordi_and_experiments_setup'
 
 class FilterMenu extends Controller
@@ -60,7 +60,7 @@ class FilterMenu extends Controller
       data: {
         filterType: id
       }
-      subjectID: Subject.current?.zooniverseId
+      subjectID: ExperimentalSubject.current?.zooniverseId
     }
     @set.filter result, false
     @close()
@@ -73,7 +73,7 @@ class FilterMenu extends Controller
       data: {
         clearType: subtype
       }
-      subjectID: Subject.current?.zooniverseId
+      subjectID: ExperimentalSubject.current?.zooniverseId
     }
     result = {}
     result[@characteristic.id] = null
