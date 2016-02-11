@@ -885,7 +885,7 @@ module.exports =
     information:
       main: '''
         <h2>Observing animals in the wild</h2>
-        <p>Over the last 45 years, the <a href="http://cbs.umn.edu/research/labs/lionresearch" target="_blank">University of Minnesota Lion Project</a> has discovered a lot about lions – everything from why they have manes to why they live in groups. Now we’re turning our sights to understanding how an entire community of large animals interacts. We currently monitor 24 lion prides in Serengeti National Park, Tanzania, using radio-tracking.  To collect information about other species, we’ve set out a grid of 225 camera traps.  With photographs from these cameras, we’re able to study how over 30 species are distributed across the landscape – and how they interact with lions and one another.</p>
+        <p>Over the last 45 years, the <a href="http://www.cbs.umn.edu/lionresearch/" target="_blank">University of Minnesota Lion Project</a> has discovered a lot about lions – everything from why they have manes to why they live in groups. Now we’re turning our sights to understanding how an entire community of large animals interacts. We currently monitor 24 lion prides in Serengeti National Park, Tanzania, using radio-tracking.  To collect information about other species, we’ve set out a grid of 225 camera traps.  With photographs from these cameras, we’re able to study how over 30 species are distributed across the landscape – and how they interact with lions and one another.</p>
 
         <p style="text-align: center;"><img src="images/about/tanzania-map.png" /></p>
 
@@ -1124,14 +1124,12 @@ module.exports =
             When he’s not watching lions, he’s making the rounds on the camera trap survey to ensure that Snapshot Serengeti never runs out of footage.
           '''
 
-        palmer:
-          name: 'Meredith Palmer'
-          image: 'images/about/team/meredith.jpg'
+        finlay:
+          name: 'Fred Finlay'
+          image: 'images/about/team/fred.jpg'
           description: '''
-            Meredith Palmer is a graduate student studying large mammal communities in Tanzania and South Africa. 
-            After spending a few years conducting fieldwork around the world, she began her Ph.D. at the University of Minnesota in 2013. 
-            She is interested in predator-prey interactions, particularly what ungulates do to avoid becoming lunch. 
-            When not plodding through data analyses at the University of Minnesota, she can be found in Serengeti digging Land Rovers out of the mud and continuing Ali's work with the camera traps.
+            Fred is an Associate Professor at University of Minnesota’s College of Education and Human Development.
+            He’s interested in how social and cultural context influence how people learn about science, and conducts much of his research in Thailand.
           '''
 
       development:
