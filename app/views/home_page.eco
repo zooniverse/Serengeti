@@ -1,7 +1,7 @@
 <% translate = require 't7e' %>
 <% seasons = require 'lib/seasons' %>
 
-<% allSeasonsComplete = false %>
+<% allSeasonsComplete = true %>
 
 <div class="recents">
   <div class="image-changer"></div>
