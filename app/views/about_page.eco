@@ -16,7 +16,7 @@
 <section data-page="organizations">
   <%- translate 'h2', 'about.sections.organizations' %>
 
-  <% for organization in ['umn', 'mnZoo', 'nsf', 'gpsa', 'umnGradSChool', 'explorersClub', 'asm', 'bellMuseum', 'umnCbs', 'trailCamPro', 'zgf', 'tawiri', 'tanzaniaParks', 'oxford', 'adler']: %>
+  <% for organization in ['umn', 'mnZoo', 'nsf', 'natgeo', 'gpsa', 'umnGradSChool', 'explorersClub', 'asm', 'bellMuseum', 'umnCbs', 'trailCamPro', 'zgf', 'tawiri', 'tanzaniaParks', 'oxford', 'adler']: %>
     <% staticProperties = translate "about.organizations.#{organization}" %>
     <div class="member organization">
       <img data-src="<%= staticProperties.image %>" />

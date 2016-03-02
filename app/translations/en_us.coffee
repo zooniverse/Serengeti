@@ -221,7 +221,7 @@ module.exports =
     bat:
       label: 'Bat'
       description: '''
-        On the rare occasion, bats are sometimes captured at night flying in front of the camera traps.  
+        On the rare occasion, bats are sometimes captured at night flying in front of the camera traps.
       '''
 
     batEaredFox:
@@ -924,6 +924,14 @@ module.exports =
           is dedicated to the advancement of learning and the search for truth;
           to the sharing of this knowledge through education for a diverse community;
           and to the application of this knowledge to benefit the people of the state, the nation, and the world.
+        '''
+
+      natgeo:
+        name: 'National Geographic'
+        url: 'http://www.nationalgeographic.com'
+        image: 'images/about/organizations/natgeo.jpg'
+        description: '''
+          National Geographic is a global nonprofit membership organization driven by a passionate belief in the power of science, exploration and storytelling to change the world. Working to inspire, illuminate and teach, National Geographic reaches more than 700 million people a month through its media platforms, products, events and experiences.
         '''
 
       mnZoo:
