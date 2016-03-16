@@ -24,8 +24,8 @@ module.exports =
       <p>
         If you’d like to try a similar project, how about:
         <div style="margin-top:20px;">
-          <div style="text-align:center;width:50%;float:left;display:inline-block;height:140px;"><a href="http://www.chicagowildlifewatch.org/"><img src="images/project-avatars/chicago_flag_square_100px.png"></a><br/><a href="http://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></div>
-          <div style="text-align:center;width:50%;float:left;display:inline-block;height:140px;"><a href="http://www.chimpandsee.org/"><img src="images/project-avatars/chimpandsee_100px.jpg"></a><br/><a href="http://www.chimpandsee.org/">Chimp & See</a></div>
+          <div style="text-align:center;width:50%;float:left;display:inline-block;height:140px;"><a href="https://www.chicagowildlifewatch.org/"><img src="images/project-avatars/chicago_flag_square_100px.png"></a><br/><a href="https://www.chicagowildlifewatch.org/">Chicago Wildlife Watch</a></div>
+          <div style="text-align:center;width:50%;float:left;display:inline-block;height:140px;"><a href="https://www.chimpandsee.org/"><img src="images/project-avatars/chimpandsee_100px.jpg"></a><br/><a href="https://www.chimpandsee.org/">Chimp & See</a></div>
         </div>
       </p>
       <p>
@@ -1199,7 +1199,7 @@ module.exports =
     <h2>Welcome to the Snapshot Serengeti Data Page.</h2>
     <p>Datasets containing classifications made through the Snapshot Serengeti interface are available at Dryad.</p>
     <p>Images from Snapshot Serengeti can be accessed in two ways. An image set contains 1-3 images taken in a single capture event and has a unique CaptureEventId, listed in the classification data. Additionally, each image within that set has a unique identifier, ImageID.</p>
-    <p>Specific image sets can be accessed by appending the CaptureEventId after “http://talk.snapshotserengeti.org/#/subjects/”. For example: “<a href="http://talk.snapshotserengeti.org/#/subjects/ASG0012y3d">http://talk.snapshotserengeti.org/#/subjects/ASG0012y3d</a>” links to a webpage with the 3 images in the ASG0012y3d image set.</p>
-    <p>Specific images can be accessed by appending the ImageID after “http://static.zooniverse.org/www.snapshotserengeti.org/subjects/standard/”.</p>
+    <p>Specific image sets can be accessed by appending the CaptureEventId after “https://talk.snapshotserengeti.org/#/subjects/”. For example: “<a href="https://talk.snapshotserengeti.org/#/subjects/ASG0012y3d">https://talk.snapshotserengeti.org/#/subjects/ASG0012y3d</a>” links to a webpage with the 3 images in the ASG0012y3d image set.</p>
+    <p>Specific images can be accessed by appending the ImageID after “https://static.zooniverse.org/www.snapshotserengeti.org/subjects/standard/”.</p>
     <p>Bulk image downloads from Snapshot Serengeti are available upon request by emailing <a href="mailto:ali@zooniverse.org">ali@zooniverse.org</a>.</p>
   '''

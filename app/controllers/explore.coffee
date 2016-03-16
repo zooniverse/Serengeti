@@ -92,7 +92,7 @@ class Explore extends Controller
     @map.el.appendTo @el.find('.map-container')
     
     # Create a custom layer
-    @terrainLayer = L.tileLayer("http://www.snapshotserengeti.org.s3.amazonaws.com/tiles/{z}/{x}/{y}.png",
+    @terrainLayer = L.tileLayer("https://www.snapshotserengeti.org.s3.amazonaws.com/tiles/{z}/{x}/{y}.png",
       minZoom: 7
       maxZoom: 12
       attribution: 'Natural Earth (http://www.naturalearthdata.com/)'

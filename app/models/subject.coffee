@@ -110,7 +110,7 @@ class Subject extends Model
     """.replace '\n', '', 'g'
 
   talkHref: ->
-    "http://talk.snapshotserengeti.org/#/subjects/#{@zooniverseId}"
+    "https://talk.snapshotserengeti.org/#/subjects/#{@zooniverseId}"
 
   facebookHref: ->
     title = 'Snapshot Serengeti'
@@ -127,7 +127,7 @@ class Subject extends Model
 
   twitterHref: ->
     message = "Classifying animals in the Serengeti! #{@talkHref()} via @snapserengeti"
-    "http://twitter.com/home?status=#{encodeURIComponent message}"
+    "https://twitter.com/home?status=#{encodeURIComponent message}"
 
   pinterestHref: ->
     image = $("<a href='#{@location.standard[0]}'></a>").get(0).href
