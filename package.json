@@ -1,7 +1,13 @@
 {
   "name": "serengeti",
   "version": "0.0.1",
+  "engineStrict": true,
+  "engines": {
+    "node": "0.10.38",
+    "npm": " 1.4.28"
+  },
   "dependencies": {
+    "check-engines": "^1.2.0",
     "es5-shimify": "0.0.1",
     "hem": "0.1.9",
     "jqueryify": "1.8.0",
@@ -19,8 +25,8 @@
     "zootorial": "0.2.4"
   },
   "scripts": {
-    "start": "hem server --port 6371",
-    "deploy-to-staging": "hem build && publisssh ./public zooniverse-static/preview.zooniverse.org/serengeti && rm -rf ./public/application.*",
-    "deploy-to-production": "hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org && rm -rf ./public/application.*"
+    "start": "check-engines && hem server --port 6371",
+    "deploy-to-staging": "check-engines && hem build && publisssh ./public zooniverse-static/preview.zooniverse.org/serengeti && rm -rf ./public/application.*",
+    "deploy-to-production": "check-engines && hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org && rm -rf ./public/application.*"
   }
 }
