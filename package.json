@@ -25,8 +25,8 @@
     "zootorial": "0.2.4"
   },
   "scripts": {
-    "start": "set -e && check-engines && hem server --port 6371",
-    "deploy-to-staging": "set -e && check-engines && hem build && publisssh ./public zooniverse-static/preview.zooniverse.org/serengeti && rm -rf ./public/application.*",
-    "deploy-to-production": "set -e && check-engines && hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org && rm -rf ./public/application.*"
+    "start": "check-engines && hem server --port 6371",
+    "deploy-to-staging": "check-engines && hem build && publisssh ./public zooniverse-static/preview.zooniverse.org/serengeti && rm -rf ./public/application.*",
+    "deploy-to-production": "check-engines && hem build && publisssh ./public zooniverse-static/www.snapshotserengeti.org && rm -rf ./public/application.*"
   }
 }
