@@ -47,7 +47,7 @@ User.bind 'sign-in', ->
     ExperimentServer.resetExperimentalFlags()
     Geordi.logEvent 'logout'
 
-[host, proxyPath] = if location.origin is 'http://preview.zooniverse.org'
+[host, proxyPath] = if location.origin is 'https://preview.zooniverse.org'
   ['https://dev.zooniverse.org', '/proxy']
 else if +location.port < 1024
   ['https://www.snapshotserengeti.org', '/_ouroboros_api/proxy']
