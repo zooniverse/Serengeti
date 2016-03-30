@@ -1,6 +1,5 @@
 {
   "dependencies": [
-    "check-engines",
     "es5-shimify",
     "json2ify",
 
