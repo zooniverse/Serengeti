@@ -1090,19 +1090,14 @@ module.exports =
           name: 'Ali Swanson'
           image: 'images/about/team/ali.jpg'
           description: '''
-            Ali spent several years chasing mammals, fish, and birds around North America (scientifically, of course) before beginning her Ph.D. at the University of Minnesota.
-            She initiated the camera trapping survey in 2010 for her dissertation research on how Serengeti carnivores coexist.
-            She now spends about half the year in Serengeti devising ways to foil the relentless efforts of hyenas and elephants to munch and destroy the cameras.
+          Ali is an ecologist who earned her Ph.D. at the University of Minnesota. She initiated the camera trapping survey in 2010 for her dissertation research on how Serengeti carnivores coexist. When not trying to foil the relentless efforts of hyenas and elephants to munch and destroy the cameras, she actually managed to do some science! After her PhD, she spent two years at the Zooniverse working to build citizen science projects for ecology. She is now a AAAS fellow working on environmental policy at the US Department of State, but still enjoys working with Snapshot Serengeti data when she can.
           '''
 
         kosmala:
           name: 'Margaret Kosmala'
           image: 'images/about/team/margaret.jpg'
           description: '''
-            Margaret is an ecologist finishing her Ph.D. at the University of Minnesota.
-            She explores the complex interactions among species and is especially interested in understanding how humans impact species communities.
-            She is currently a fellow at the National Museum of Natural History in Washington, D.C.
-            where she is trying to figure out what might happen to insect communities as the planet warms.
+          Margaret is an ecologist who earned her Ph.D. at the University of Minnesota and is now a researcher at Harvard University. She explores how plant and animal species and ecosystems change over time. In addition to Snapshot Serengeti, she is involved with Zooniverse projects Season Spotter and Jungle Rhythms.
           '''
 
         packer:
@@ -1142,6 +1137,20 @@ module.exports =
             When not plodding through data analyses at the University of Minnesota, she can be found in Serengeti digging Land Rovers out of the mud and continuing Ali's work with the camera traps.
           '''
 
+        anderson:
+          name: 'Michael Anderson'
+          image: 'images/about/team/michael2.jpg'
+          description: '''
+          Michael is an Associate Professor of Biology & Endowed Chair in Environmental Resources at Wake Forest University. Michael has been conducting research in Serengeti since 2000, where he has been studying plants, herbivores and how to fix a Land Rover with nothing but a Leatherman. He is particularly interested in how interactions among large herbivores and their predators can influence savanna dynamics. Michael is thrilled to be part of the Snapshot Serengeti and is happy to be working with such a great team of collaborators.
+          '''
+
+        morrison:
+          name: 'Tom Morrison'
+          image: 'images/about/team/tom.jpg'
+          description: '''
+          Tom is a postdoc research associate in the Institute of Biodiversity, Animal Health and Comparative Medicine at the University of Glasgow in Scotland. With a background in population demography, Tom’s work addresses the practical aspects of wildlife management and conservation, particularly in Tanzania. He spent 2 years living in Serengeti National Park as a postdoc of Michael Anderson at Wake Forest University on a project to understand changes in tree cover in savannas.
+          '''
+
       development:
         borden:
           name: 'Kelly Borden'
@@ -1164,7 +1173,7 @@ module.exports =
           name: 'Chris Lintott'
           image: 'images/about/team/chris.jpg'
           description: '''
-            Chris Lintott leads the Zooniverse team, and is his copious spare time is a researcher at the University of Oxford specialising in galaxy formation and evolution.
+            Chris Lintott leads the Zooniverse team, and in his copious spare time is a researcher at the University of Oxford specialising in galaxy formation and evolution.
             A keen popularizer of science, he is best known as co-presenter of the BBC's long running Sky at Night program. He's currently drinking a lot of sherry.
           '''
 
@@ -1181,7 +1190,7 @@ module.exports =
           name: 'Michael Parrish'
           image: 'images/about/team/michael.jpg'
           description: '''
-            Michael has a degree in Computer Science and has been working with The Zooniverse for the past three years as a Software Developer.
+            Michael has a degree in Computer Science and has been working with the Zooniverse for the past three years as a Software Developer.
             Aside from web development; new technologies, science, AI, reptiles, and coffee tend to occupy his attention.
           '''
 
