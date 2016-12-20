@@ -4,7 +4,7 @@
   "engineStrict": true,
   "engines": {
     "node": "~0.10.38",
-    "npm": " ~1.4.29"
+    "npm": " ~1.4.28"
   },
   "dependencies": {
     "check-engines": "^1.2.0",
