@@ -1141,7 +1141,7 @@ module.exports =
           name: 'Michael Anderson'
           image: 'images/about/team/michael2.jpg'
           description: '''
-          Michael is an Associate Professor of Biology & Endowed Chair in Environmental Resources at Wake Forest University. Michael has been conducting research in Serengeti since 2000, where he has been studying plants, herbivores and how to fix a land-rover with nothing but a leatherman. He is particularly interested in how interactions among large herbivores and their predators can influence savanna dynamics. Michael is thrilled to be part of the Snapshot Serengeti and is happy to be working with such a great team of collaborators.
+          Michael is an Associate Professor of Biology & Endowed Chair in Environmental Resources at Wake Forest University. Michael has been conducting research in Serengeti since 2000, where he has been studying plants, herbivores and how to fix a Land Rover with nothing but a Leatherman. He is particularly interested in how interactions among large herbivores and their predators can influence savanna dynamics. Michael is thrilled to be part of the Snapshot Serengeti and is happy to be working with such a great team of collaborators.
           '''
 
         morrison:
@@ -1173,7 +1173,7 @@ module.exports =
           name: 'Chris Lintott'
           image: 'images/about/team/chris.jpg'
           description: '''
-            Chris Lintott leads the Zooniverse team, and is his copious spare time is a researcher at the University of Oxford specialising in galaxy formation and evolution.
+            Chris Lintott leads the Zooniverse team, and in his copious spare time is a researcher at the University of Oxford specialising in galaxy formation and evolution.
             A keen popularizer of science, he is best known as co-presenter of the BBC's long running Sky at Night program. He's currently drinking a lot of sherry.
           '''
 
@@ -1190,7 +1190,7 @@ module.exports =
           name: 'Michael Parrish'
           image: 'images/about/team/michael.jpg'
           description: '''
-            Michael has a degree in Computer Science and has been working with The Zooniverse for the past three years as a Software Developer.
+            Michael has a degree in Computer Science and has been working with the Zooniverse for the past three years as a Software Developer.
             Aside from web development; new technologies, science, AI, reptiles, and coffee tend to occupy his attention.
           '''
 
