@@ -1,7 +1,7 @@
 ExperimentServerClient = require 'lib/experiments'
 
 Subject = require 'models/subject'
-User = require 'zooniverse/lib/models/user'
+User = require 'Zooniverse/lib/models/user'
 GeordiClient = require 'zooniverse-geordi-client'
 
 checkZooUserID = ->

@@ -1,5 +1,5 @@
 <% Subject = require 'models/subject' %>
-<% Favorite = require 'zooniverse/lib/models/favorite' %>
+<% Favorite = require 'Zooniverse/lib/models/favorite' %>
 
 <li data-item="<%= @id %>">
   <% if @subjects?: %>

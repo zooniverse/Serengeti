@@ -12,14 +12,14 @@
     "spine/lib/route",
     "spine/lib/manager",
 
-    "zooniverse/lib/controllers/browser_check",
-    "zooniverse/lib/api",
-    "zooniverse/lib/controllers/top_bar",
-    "zooniverse/lib/models/user",
-    "zooniverse/lib/models/recent",
-    "zooniverse/lib/models/favorite",
-    "zooniverse/lib/google_analytics",
-    "zooniverse/lib/map",
+    "Zooniverse/lib/controllers/browser_check",
+    "Zooniverse/lib/api",
+    "Zooniverse/lib/controllers/top_bar",
+    "Zooniverse/lib/models/user",
+    "Zooniverse/lib/models/recent",
+    "Zooniverse/lib/models/favorite",
+    "Zooniverse/lib/google_analytics",
+    "Zooniverse/lib/map",
     "underscore/underscore",
 
     "zootorial",
@@ -30,7 +30,7 @@
   ],
 
   "libs": [
-    "node_modules/zooniverse/vendor/base64.js",
+    "node_modules/Zooniverse/vendor/base64.js",
     "public/js/vendor/crossfilter.js",
     "public/js/vendor/reqwest.js"
   ]

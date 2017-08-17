@@ -1,7 +1,7 @@
 {Controller} = require 'spine'
 template = require 'views/home_page'
 ImageChanger = require './image_changer'
-Api = require 'zooniverse/lib/api'
+Api = require 'Zooniverse/lib/api'
 
 class HomePage extends Controller
   className: 'home-page'
