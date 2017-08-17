@@ -2,9 +2,9 @@
 $ = require 'jqueryify'
 template = require 'views/profile'
 LoginForm = require 'zooniverse/lib/controllers/login_form'
-User = require 'zooniverse/lib/models/user'
-Favorite = require 'zooniverse/lib/models/favorite'
-Recent = require 'zooniverse/lib/models/recent'
+User = require 'Zooniverse/lib/models/user'
+Favorite = require 'Zooniverse/lib/models/favorite'
+Recent = require 'Zooniverse/lib/models/recent'
 itemTemplate = require 'views/profile_item'
 
 class Profile extends Controller
