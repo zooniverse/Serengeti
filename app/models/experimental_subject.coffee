@@ -1,6 +1,6 @@
 Subject = require 'models/subject'
-User = require 'zooniverse/lib/models/user'
-Api = require 'zooniverse/lib/api'
+User = require 'Zooniverse/lib/models/user'
+Api = require 'Zooniverse/lib/api'
 Geordi = require 'lib/geordi_and_experiments_setup'
 ExperimentServer = Geordi.experimentServerClient
 

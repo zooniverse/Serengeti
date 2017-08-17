@@ -1,8 +1,8 @@
 {Model} = require 'spine'
 $ = require 'jqueryify'
-Api = require 'zooniverse/lib/api'
+Api = require 'Zooniverse/lib/api'
 seasons = require 'lib/seasons'
-User = require 'zooniverse/lib/models/user'
+User = require 'Zooniverse/lib/models/user'
 Geordi = require 'lib/geordi_and_experiments_setup'
 ExperimentServer = Geordi.experimentServerClient
 
