@@ -77,6 +77,10 @@ Api.proxy.el().one 'load', ->
         8.5 - b.season
       else if b.season is '0'
         a.season - 8.5
+      else if a.season is '999'
+        9.5 - b.season
+      else if b.season is '999'
+        a.season - 9.5
       else
         a.season - b.season
 
