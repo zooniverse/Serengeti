@@ -9,7 +9,7 @@ module.exports =
     authors: 'Authors'
 
   home:
-    heading: 'Welcome to Snapshot Serengeti'
+    heading: 'Redirecting to the live Snapshot Serengeti...'
     content: '''
       Hundreds of camera traps in Serengeti National Park, Tanzania,
       are providing a powerful new window into the dynamics of Africa’s most elusive wildlife species.

@@ -12,7 +12,7 @@ Profile = require 'controllers/profile'
 DataPage = require 'controllers/data_page'
 Api = require 'Zooniverse/lib/api'
 seasons = require 'lib/seasons'
-TopBar = require 'Zooniverse/lib/controllers/top_bar'
+# TopBar = require 'Zooniverse/lib/controllers/top_bar'
 User = require 'Zooniverse/lib/models/user'
 ExperimentalSubject = require 'models/experimental_subject'
 Geordi = require 'lib/geordi_and_experiments_setup'
@@ -39,6 +39,13 @@ googleAnalytics.init
 
 app = {}
 
+# REDIRECT TO SNAPSHOT SERENGETI PANOPTES PROJECT
+unless window.location.hash is "#/authors" or window.location.hash is "#/data"
+  window.location.replace 'https://www.zooniverse.org/projects/zooniverse/snapshot-serengeti'
+
+if window.location.hash is "#/data"
+  window.location.replace 'https://www.zooniverse.org/projects/zooniverse/snapshot-serengeti/about/results'
+
 User.bind 'sign-in', ->
   $('html').toggleClass 'signed-in', User.current?
   if User.current?
@@ -64,10 +71,10 @@ Api.proxy.el().one 'load', ->
       total ?= 0
       complete ?= 0
       name = if season is '0'
-        'Lost Season' 
+        'Lost Season'
       else if season is '999'
         'Season 9.5'
-      else 
+      else
         "Season #{ season }"
       {season, id, name, total, complete}
 
@@ -103,9 +110,9 @@ Api.proxy.el().one 'load', ->
 
       routes:
         '/home': 'home'
-        '/about': 'about'
-        '/classify': 'classify'
-        '/profile': 'profile',
+        # '/about': 'about'
+        # '/classify': 'classify'
+        # '/profile': 'profile',
         '/authors': 'authors'
         # '/explore': 'explore'
         '/data': 'data'
@@ -113,14 +120,14 @@ Api.proxy.el().one 'load', ->
       default: 'home'
 
     # Load the top bar last since it fetches the user.
-    app.topBar = new TopBar
-      app: 'serengeti'
-      appName: 'Snapshot Serengeti'
+    # app.topBar = new TopBar
+    #   app: 'serengeti'
+    #   appName: 'Snapshot Serengeti'
 
-    $(window).on 'request-login-dialog', ->
-      app.topBar.onClickSignUp()
-      app.topBar.loginForm.signInButton.click()
-      app.topBar.loginDialog.reattach()
+    # $(window).on 'request-login-dialog', ->
+    #   app.topBar.onClickSignUp()
+    #   app.topBar.loginForm.signInButton.click()
+    #   app.topBar.loginDialog.reattach()
 
     $(window).bind('beforeunload', (e) ->
         Geordi.logEvent 'leave'
@@ -128,7 +135,7 @@ Api.proxy.el().one 'load', ->
     )
 
     app.stack.el.appendTo 'body'
-    app.topBar.el.prependTo 'body'
+    # app.topBar.el.prependTo 'body'
 
     Route.setup()
 
